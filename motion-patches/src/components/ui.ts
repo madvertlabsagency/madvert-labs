@@ -1,4 +1,4 @@
-// Dark-theme product UI kit. Everything is drawn live so it can animate.
+// Light-theme product UI kit. Everything is drawn live so it can animate.
 import { C, F } from "../core/brand";
 import { card, chip, rr, text, icon, glow } from "../core/draw";
 import { clamp, lerp, outCubic, outBack, rgba } from "../core/ease";
@@ -11,27 +11,25 @@ export function glass(ctx: Ctx, x: number, y: number, w: number, h: number, o: {
   const r = o.r ?? 20, f = o.focus ?? 0;
   ctx.save();
   if (o.alpha !== undefined) ctx.globalAlpha *= o.alpha;
-  if (f > 0) glow(ctx, x + w / 2, y + h / 2, Math.max(w, h) * 0.75, C.elec, 0.10 * f);
-  card(ctx, x, y, w, h, { r, fill: o.fill ?? C.panel, stroke: f > 0 ? rgba(C.cyan, 0.25 + 0.55 * f) : C.line, shadow: o.shadow ?? 0.8 });
+  if (f > 0) glow(ctx, x + w / 2, y + h / 2, Math.max(w, h) * 0.75, C.cyan, 0.14 * f);
+  card(ctx, x, y, w, h, { r, fill: o.fill ?? C.panel, stroke: f > 0 ? rgba(C.elec, 0.3 + 0.5 * f) : C.line, shadow: o.shadow ?? 0.8 });
   // top sheen
-  const g = ctx.createLinearGradient(0, y, 0, y + Math.min(80, h));
-  g.addColorStop(0, "rgba(255,255,255,0.06)"); g.addColorStop(1, "rgba(255,255,255,0)");
-  rr(ctx, x + 1, y + 1, w - 2, Math.min(80, h) - 1, r); ctx.fillStyle = g; ctx.fill();
+
   ctx.restore();
 }
 
 /** App window chrome (dark). Returns content rect. */
 export function appWindow(ctx: Ctx, x: number, y: number, w: number, h: number, title = "", o: { alpha?: number; focus?: number; url?: string } = {}): Rect {
-  glass(ctx, x, y, w, h, { r: 18, alpha: o.alpha, focus: o.focus, fill: "rgba(12,20,34,0.92)" });
+  glass(ctx, x, y, w, h, { r: 18, alpha: o.alpha, focus: o.focus, fill: C.panel });
   ctx.save();
   if (o.alpha !== undefined) ctx.globalAlpha *= o.alpha;
   const bar = 44;
-  ctx.beginPath(); ctx.roundRect(x, y, w, bar, [18, 18, 0, 0]); ctx.fillStyle = "rgba(255,255,255,0.035)"; ctx.fill();
+  ctx.beginPath(); ctx.roundRect(x, y, w, bar, [18, 18, 0, 0]); ctx.fillStyle = "#F3F7FC"; ctx.fill();
   ctx.fillStyle = C.line; ctx.fillRect(x, y + bar, w, 1);
-  ["#FF5F57", "#FEBC2E", "#28C840"].forEach((c, i) => { ctx.beginPath(); ctx.arc(x + 22 + i * 18, y + bar / 2, 5.5, 0, 7); ctx.fillStyle = rgba(c, 0.85); ctx.fill(); });
+  ["#FF5F57", "#FEBC2E", "#28C840"].forEach((c, i) => { ctx.beginPath(); ctx.arc(x + 22 + i * 18, y + bar / 2, 5.5, 0, 7); ctx.fillStyle = c; ctx.fill(); });
   if (o.url) {
     const uw = Math.min(380, w * 0.45);
-    rr(ctx, x + w / 2 - uw / 2, y + 9, uw, 26, 13); ctx.fillStyle = "rgba(255,255,255,0.05)"; ctx.fill();
+    rr(ctx, x + w / 2 - uw / 2, y + 9, uw, 26, 13); ctx.fillStyle = "#fff"; ctx.fill();
     text(ctx, o.url, x + w / 2, y + 27, { size: 13, weight: 500, color: C.sub, align: "center" });
   } else if (title) text(ctx, title, x + 86, y + 28, { size: 14, weight: 600, color: C.sub });
   ctx.restore();
@@ -42,14 +40,13 @@ export function appWindow(ctx: Ctx, x: number, y: number, w: number, h: number, 
 export function phone(ctx: Ctx, x: number, y: number, w: number, h: number, o: { alpha?: number } = {}): Rect {
   ctx.save();
   if (o.alpha !== undefined) ctx.globalAlpha *= o.alpha;
-  ctx.shadowColor = "rgba(0,0,0,0.6)"; ctx.shadowBlur = 60; ctx.shadowOffsetY = 24;
+  ctx.shadowColor = "rgba(20,60,120,0.22)"; ctx.shadowBlur = 50; ctx.shadowOffsetY = 20;
   rr(ctx, x, y, w, h, w * 0.15);
-  const g = ctx.createLinearGradient(x, y, x + w, y + h); g.addColorStop(0, "#3A4556"); g.addColorStop(0.5, "#1A2230"); g.addColorStop(1, "#4A5566");
-  ctx.fillStyle = g; ctx.fill();
+  ctx.fillStyle = C.navy; ctx.fill();
   ctx.shadowColor = "transparent";
   const b = w * 0.03;
-  rr(ctx, x + b, y + b, w - 2 * b, h - 2 * b, w * 0.13); ctx.fillStyle = "#05080E"; ctx.fill();
-  rr(ctx, x + w / 2 - w * 0.16, y + b + 10, w * 0.32, w * 0.085, w * 0.045); ctx.fillStyle = "#000"; ctx.fill();
+  rr(ctx, x + b, y + b, w - 2 * b, h - 2 * b, w * 0.13); ctx.fillStyle = "#fff"; ctx.fill();
+  rr(ctx, x + w / 2 - w * 0.16, y + b + 10, w * 0.32, w * 0.085, w * 0.045); ctx.fillStyle = C.navy; ctx.fill();
   ctx.restore();
   return { x: x + b, y: y + b, w: w - 2 * b, h: h - 2 * b };
 }
@@ -58,7 +55,7 @@ export function phone(ctx: Ctx, x: number, y: number, w: number, h: number, o: {
 export function toggle(ctx: Ctx, x: number, y: number, on: number, s = 1) {
   const w = 52 * s, h = 30 * s;
   rr(ctx, x, y, w, h, h / 2);
-  ctx.fillStyle = mixHex("#2A374B", "#22D39B", on); ctx.fill();
+  ctx.fillStyle = mixHex("#CBD5E1", "#00C27A", on); ctx.fill();
   ctx.beginPath(); ctx.arc(x + h / 2 + (w - h) * on, y + h / 2, h / 2 - 3 * s, 0, 7); ctx.fillStyle = "#fff"; ctx.fill();
 }
 
@@ -75,7 +72,7 @@ export function lines(ctx: Ctx, x: number, y: number, w: number, n: number, o: {
     const lw = w * (i === n - 1 ? 0.6 : 0.92 - (i % 3) * 0.08) * clamp(p * n - i);
     if (lw <= 0) continue;
     rr(ctx, x, y + i * gap, lw, h, h / 2);
-    ctx.fillStyle = o.color ?? "rgba(255,255,255,0.08)"; ctx.fill();
+    ctx.fillStyle = o.color ?? "#E3EBF5"; ctx.fill();
   }
 }
 
@@ -94,10 +91,10 @@ export function button(ctx: Ctx, x: number, y: number, w: number, h: number, lab
   if (o.alpha !== undefined) ctx.globalAlpha *= o.alpha;
   ctx.translate(x + w / 2, y + h / 2); ctx.scale(sc, sc); ctx.translate(-x - w / 2, -y - h / 2);
   if (!o.ghost) {
-    ctx.shadowColor = rgba(C.elec, 0.35 + 0.35 * (o.hover ?? 0)); ctx.shadowBlur = 24 + 20 * (o.hover ?? 0); ctx.shadowOffsetY = 6;
+    ctx.shadowColor = rgba(C.blue, 0.3 + 0.25 * (o.hover ?? 0)); ctx.shadowBlur = 24 + 20 * (o.hover ?? 0); ctx.shadowOffsetY = 6;
   }
   rr(ctx, x, y, w, h, h / 2);
-  if (o.ghost) { ctx.fillStyle = "rgba(255,255,255,0.05)"; ctx.fill(); ctx.strokeStyle = C.line2; ctx.lineWidth = 1.5; ctx.stroke(); }
+  if (o.ghost) { ctx.fillStyle = "#fff"; ctx.fill(); ctx.strokeStyle = C.line2; ctx.lineWidth = 1.5; ctx.stroke(); }
   else { const g = ctx.createLinearGradient(x, y, x + w, y); g.addColorStop(0, C.blue); g.addColorStop(1, C.elec); ctx.fillStyle = g; ctx.fill(); }
   ctx.shadowColor = "transparent";
   const size = o.size ?? h * 0.36;
@@ -109,13 +106,13 @@ export function button(ctx: Ctx, x: number, y: number, w: number, h: number, lab
 export function field(ctx: Ctx, x: number, y: number, w: number, label: string, value: string, p: number, active = false, done = false) {
   text(ctx, label, x, y, { size: 14, weight: 600, color: C.sub });
   rr(ctx, x, y + 10, w, 46, 10);
-  ctx.fillStyle = "rgba(255,255,255,0.04)"; ctx.fill();
-  ctx.lineWidth = active ? 2 : 1.2;
+  ctx.fillStyle = "#fff"; ctx.fill();
+  ctx.lineWidth = active ? 2.2 : 1.4;
   ctx.strokeStyle = active ? C.elec : done ? rgba(C.green, 0.5) : C.line; ctx.stroke();
   const n = Math.round(clamp(p) * value.length);
   if (n > 0) text(ctx, value.slice(0, n), x + 16, y + 40, { size: 17, weight: 500, color: C.text });
   if (active && n < value.length) { rr(ctx, x + 18 + n * 9.2, y + 22, 2, 22, 1); ctx.fillStyle = C.cyan; ctx.fill(); }
-  if (done) { ctx.beginPath(); ctx.arc(x + w - 22, y + 33, 10, 0, 7); ctx.fillStyle = C.green; ctx.fill(); icon(ctx, "check", x + w - 31, y + 24, 18, "#04110B", 3); }
+  if (done) { ctx.beginPath(); ctx.arc(x + w - 22, y + 33, 10, 0, 7); ctx.fillStyle = C.green; ctx.fill(); icon(ctx, "check", x + w - 31, y + 24, 18, "#fff", 3); }
 }
 
 /** Status pill (dot + label) that pops in with p. */
@@ -125,7 +122,7 @@ export function pill(ctx: Ctx, x: number, y: number, label: string, p: number, c
   ctx.globalAlpha *= clamp(p * 3);
   const s = lerp(0.7, 1, outBack(clamp(p), 1.6));
   ctx.translate(x, y); ctx.scale(s, s); ctx.translate(-x, -y);
-  const w = chip(ctx, label, x, y, { size, fg: mixHex(color, "#FFFFFF", 0.35), bg: rgba(color, 0.14), dot: color });
+  const w = chip(ctx, label, x, y, { size, fg: mixHex(color, "#0A0F1C", 0.45), bg: rgba(color, 0.12), dot: color });
   ctx.restore();
   return w;
 }
@@ -136,19 +133,19 @@ export function checkBadge(ctx: Ctx, x: number, y: number, r: number, p = 1) {
   ctx.save();
   const s = outBack(clamp(p), 2);
   ctx.translate(x, y); ctx.scale(s, s);
-  glow(ctx, 0, 0, r * 2.4, C.green, 0.35);
+  glow(ctx, 0, 0, r * 2.4, C.green, 0.22);
   ctx.beginPath(); ctx.arc(0, 0, r, 0, 7);
-  const g = ctx.createLinearGradient(-r, -r, r, r); g.addColorStop(0, "#5BF0B8"); g.addColorStop(1, "#13B57E");
+  const g = ctx.createLinearGradient(-r, -r, r, r); g.addColorStop(0, "#2EE6A0"); g.addColorStop(1, "#00A868");
   ctx.fillStyle = g; ctx.fill();
-  icon(ctx, "check", -r * 0.62, -r * 0.62, r * 1.24, "#03150D", 3.2);
+  icon(ctx, "check", -r * 0.62, -r * 0.62, r * 1.24, "#fff", 3.2);
   ctx.restore();
 }
 
 /** Icon inside a rounded glass tile. */
-export function iconTile(ctx: Ctx, name: string, x: number, y: number, s: number, color: string = C.cyan, on = 1) {
+export function iconTile(ctx: Ctx, name: string, x: number, y: number, s: number, color: string = C.blue, on = 1) {
   rr(ctx, x, y, s, s, s * 0.26);
-  ctx.fillStyle = rgba(C.elec, 0.08 + 0.1 * on); ctx.fill();
-  ctx.strokeStyle = rgba(C.cyan, 0.15 + 0.35 * on); ctx.lineWidth = 1.2; ctx.stroke();
+  ctx.fillStyle = rgba(C.elec, 0.08 + 0.06 * on); ctx.fill();
+  ctx.strokeStyle = rgba(C.elec, 0.18 + 0.3 * on); ctx.lineWidth = 1.2; ctx.stroke();
   icon(ctx, name, x + s * 0.22, y + s * 0.22, s * 0.56, color, 2.2);
 }
 

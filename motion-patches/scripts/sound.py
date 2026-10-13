@@ -10,7 +10,7 @@ import numpy as np
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SR = 48000
 VO_OFFSET = 0.3
-DUR = 60.5
+DUR = 95.5
 N = int(DUR * SR)
 rng = np.random.default_rng(7)
 
@@ -122,10 +122,11 @@ BPM = 110; BEAT = 60 / BPM
 def music():
     m = np.zeros((2, N))
     tl = np.arange(N) / SR
-    t_solution = cut("madvert labs fixes", 0, 0.35)
-    t_reframe = cut("you don't have")
-    t_end = cut("madvert labs beyond", 0, 0.3)
-    t_pos = cut("one partner"); t_cta = cut("book your")
+    t_solution = cut("madvert labs fixes", 0, 0.3)   # system activation
+    t_reframe = cut("or you're running", 0, 0.3)      # tension peaks into the interrupt
+    t_end = cut("book a discovery", 0, 0.25)          # confident CTA resolution
+    t_pos = cut("you simply pay", 0, 0.25)            # quiet commercial reveal (half-time)
+    t_cta = cut("so instead", 0, 0.25)
     # chords (midi roots) — tension in D minor, lift through Bb F C Dm, resolve to F
     tension = [(50, 53, 57)]
     lift = [(46, 50, 53, 57), (41, 45, 48, 53), (48, 52, 55, 60), (50, 53, 57, 60)]
@@ -142,11 +143,11 @@ def music():
         ch = chord_at(tl[i0])
         y = sum(saw(note(n + 12) * (1 + dt), tt) for n in ch for dt in (-0.004, 0.004)) / (2 * len(ch))
         pad[i0:i1] = y
-    cutoff = np.interp(tl, [0, 3.5, t_reframe, t_reframe + 2, t_solution, 30, 45, t_end, DUR],
-                       [500, 700, 900, 400, 1400, 1800, 2200, 1600, 900])
+    cutoff = np.interp(tl, [0, 8, t_reframe, t_solution - 0.3, t_solution, 45, 70, t_pos, t_pos + 2.5, t_end, DUR],
+                       [450, 650, 900, 1100, 1400, 1900, 2200, 900, 1700, 2000, 900])
     pad = lp(pad, cutoff)
-    lvl = np.interp(tl, [0, 0.3, 3.5, t_reframe, t_reframe + 0.4, t_solution - 0.3, t_solution, t_cta, t_end, DUR - 1.2, DUR],
-                    [0, 0.5, 0.55, 0.6, 0.25, 0.15, 0.7, 0.6, 0.85, 0.6, 0])
+    lvl = np.interp(tl, [0, 0.3, 9, t_reframe, t_solution - 0.4, t_solution - 0.05, t_solution + 0.3, t_pos - 0.2, t_pos + 0.3, t_pos + 2.6, t_end, DUR - 1.5, DUR],
+                    [0, 0.45, 0.5, 0.6, 0.65, 0.05, 0.7, 0.65, 0.3, 0.6, 0.85, 0.6, 0])
     pad *= lvl
     # smooth chord-change clicks
     pad = lp(pad, 6000)
@@ -157,7 +158,7 @@ def music():
     k = 0
     while k * eighth < DUR - 1:
         at = k * eighth; k += 1
-        if at < 3.6 or (t_reframe < at < t_solution) or at > DUR - 2.5: continue
+        if at < 0.6 or (t_solution - 0.4 < at < t_solution) or (t_pos < at < t_pos + 2.5) or at > DUR - 3.0: continue
         r = chord_at(at)[0] - 12
         d = eighth * 0.95; tt = t_(d)
         y = (np.sin(2 * np.pi * note(r) * tt) + 0.35 * saw(note(r), tt)) * env(d, 0.004, d, 3)
@@ -172,19 +173,20 @@ def music():
         at = t_solution + b * BEAT; b += 1
         if t_pos - 0.1 < at < t_cta and (b % 2): continue  # half-time feel under the statement
         place(m, kick, at, 0.55 if at < 24 else 0.7)
-        if at > cut("we bring in") and at < t_cta:
+        if at > cut("those buyers") and not (t_pos < at < t_pos + 2.5):
             place(m, hat, at + BEAT / 2, 0.16, 0.3)
-            if cut("our studio") < at < cut("and when growth"):
+            if cut("where they fill") < at < cut("so your team") or at > cut("if you're serious"):
                 place(m, hat, at + BEAT / 4, 0.09, -0.3); place(m, hat, at + 3 * BEAT / 4, 0.09, 0.3)
     # tension ticks in the problem section
     q = 0
-    while 3.8 + q * eighth < t_reframe:
-        place(m, tick(1800, 0.02), 3.8 + q * eighth, 0.08, 0.4 if q % 2 else -0.4); q += 1
+    while 1.0 + q * eighth < t_solution - 0.4:
+        place(m, tick(1800, 0.02), 1.0 + q * eighth, 0.07, 0.4 if q % 2 else -0.4); q += 1
     # --- arp plucks from the solution
     s = 0; six = BEAT / 4
     while t_solution + s * six < t_end - 0.2:
         at = t_solution + s * six; s += 1
-        if at < cut("we bring in") and s % 2: continue
+        if at < cut("those buyers") and s % 2: continue
+        if t_pos < at < t_pos + 2.5: continue
         ch = chord_at(at); n = ch[(s * 3) % len(ch)] + 24
         d = 0.22; tt = t_(d)
         y = (np.sin(2 * np.pi * note(n) * tt) + 0.2 * np.sin(4 * np.pi * note(n) * tt)) * env(d, 0.002, d, 7)
@@ -196,89 +198,111 @@ def music():
 def sfx():
     S = np.zeros((2, N))
     C = lambda x, at, g=1.0, pan=0.0: place(S, x, at, g, pan)
-    # 01 hook — UI ticks, impact on STOP and on THIS
-    for k in range(3): C(click(), 0.02 + k * 0.07, 0.5, -0.4 + 0.4 * k)
-    C(impact(), ws("stop") - 0.01, 0.9); C(sub(1.0, 40), ws("stop"), 0.6)
-    C(whoosh(0.35), ws("not until") - 0.25, 0.25)
-    C(impact(0.8, 160, 60), ws("this"), 0.55)
-    # 02 problems
-    C(whoosh(0.45), cut("leads go cold", 0, 0.2), 0.35)
-    C(blip(700, 0.25), ws("cold"), 0.25)
-    C(pop(), ws("follow up") + 0.1, 0.35); C(typing(0.9), ws("follow up") + 0.6, 0.18)
-    C(blip(500, 0.3), ws("slow") + 0.45, 0.3); C(pop(), ws("slow") + 0.6, 0.3)
-    for k in range(5): C(tick(1500, 0.03), ws("visitors") + 0.3 + k * 0.12, 0.2, 0.6)
-    C(whoosh(0.4, False), ws("leave") + 0.1, 0.25, 0.6)
-    C(typing(0.55, 18), ws("search") + 0.05, 0.2)
-    C(whoosh(0.8, False), ws("find"), 0.25)
-    for k in range(6): C(tick(900, 0.03), ws("talk") - 0.05 + k * 0.06, 0.18, -0.6 + 0.25 * k)
-    C(impact(0.5, 220, 120), ws("talk") + 0.1, 0.25)
-    # 03 money — slow-mo drop
-    C(whoosh(0.5), cut("every gap", 0, 0.3), 0.3)
-    C(impact(1.2, 90, 38), ws("money"), 0.5)
-    for k in range(8): C(blip(1800 - k * 120, 0.06), ws("money") + 0.2 + k * 0.17, 0.08, rng.uniform(-0.5, 0.5))
-    # 04 reframe — zoom, silence, riser into "system"
-    C(whoosh(0.45), cut("you don't have"), 0.3)
-    C(blip(400, 0.2), we("marketing problem") - 0.15, 0.25)
-    C(riser(1.2), ws("system problem") - 1.15, 0.35)
-    C(impact(0.9, 130, 50), ws("system problem"), 0.45)
-    # 05 solution — sonic logo
-    C(whoosh(0.6), cut("madvert labs fixes", 0, 0.35), 0.35)
-    C(sonic_logo(), ws("madvert labs fixes") + 0.05, 0.75)
-    for k in range(6): C(blip(1400 + 120 * k, 0.07), ws("fixes") + k * 0.08, 0.12, -0.6 + 0.24 * k)
-    # 06 brand
-    C(whoosh(0.45), cut("we build brands"), 0.35)
-    for k in range(6): C(click(), ws("we build brands") + 0.05 + k * 0.09, 0.22, rng.uniform(-0.6, 0.6))
-    C(impact(0.5, 200, 90), ws("brands"), 0.3)
-    # 07 demand
-    C(whoosh(0.45), cut("we bring in"), 0.35)
-    C(impact(0.6, 160, 70), ws("demand"), 0.3)
-    C(click(), ws("google") - 0.35, 0.45, -0.6); C(chime((88,), 0, 0.3), ws("google") - 0.1, 0.12, -0.6)
-    C(typing(0.45, 20), ws("google"), 0.18, -0.2)
-    C(blip(1100, 0.1), ws("seo") + 0.1, 0.2, 0.2); C(whoosh(0.6), ws("seo") + 0.2, 0.15, 0.2)
-    C(typing(0.35, 20), ws("ai search"), 0.15, 0.6); C(chime((81, 88), 0.05, 0.5), ws("ai search") + 0.4, 0.15, 0.6)
-    # 08 convert
-    C(whoosh(0.45, True), cut("we turn"), 0.35)
-    C(whoosh(0.4), ws("booked calls") - 0.15, 0.25)
-    C(click(), ws("websites") - 0.05, 0.6, 0.3)
-    C(typing(0.6, 16), ws("websites") + 0.4, 0.18, 0.4)
-    C(blip(1500, 0.08), ws("funnels"), 0.25, 0.4); C(click(), ws("funnels") + 0.35, 0.4, 0.4)
-    C(chime((79, 86), 0.08, 0.9), ws("convert") - 0.05, 0.4, 0.2)
-    # 09 studio
-    C(blip(300, 0.3), cut("our studio", 0, 0.3) + 0.05, 0.15)
-    C(click(), ws("studio") - 0.1, 0.4, 0.5)
-    C(impact(0.7, 240, 80), ws("studio") + 0.1, 0.45); C(whoosh(0.4), ws("studio") + 0.05, 0.45)
-    C(whoosh(0.9, False), ws("ads", 1) - 0.15, 0.35)
-    C(impact(1.0, 120, 45), ws("stop", 1), 0.75); C(sub(0.8, 44), ws("stop", 1), 0.5)
-    # 10 automate — precise chain reaction
-    C(whoosh(0.45), cut("then every"), 0.35)
-    for k, p in enumerate(["every lead", "instant", "qualified", "booked and", "tracked"]):
-        at = ws(p) if p != "booked and" else ws("booked", 1)
-        C(blip(900 + 180 * k, 0.09), at - 0.05, 0.3, -0.7 + 0.35 * k)
-    C(pop(), ws("instant") + 0.1, 0.3); C(typing(0.5, 16), ws("qualified"), 0.12)
-    C(chime((84,), 0, 0.4), ws("booked", 1) + 0.15, 0.2, 0.35); C(click(), ws("tracked") + 0.1, 0.3, 0.7)
-    C(riser(0.6), ws("automatically") - 0.55, 0.25)
-    for k in range(5): C(blip(1300 + 200 * k, 0.07), ws("automatically") + k * 0.07, 0.15, -0.6 + 0.3 * k)
-    C(impact(0.8, 150, 55), ws("automatically"), 0.45)
-    # 11 build — substantial bass impact on "we build it"
-    C(whoosh(0.4), cut("and when growth"), 0.3)
-    for k in range(10): C(tick(2800, 0.02), ws("and when growth") + k * 0.11, 0.1, rng.uniform(-0.7, 0.7))
-    C(riser(1.0), ws("we build it") - 0.95, 0.3)
-    C(impact(1.6, 100, 34), ws("we build it"), 1.0); C(sub(1.6, 36), ws("we build it"), 0.75)
-    # 12 positioning
-    C(whoosh(0.35), cut("one partner"), 0.3)
-    C(impact(0.6, 180, 70), ws("one partner"), 0.3); C(impact(0.6, 180, 70), ws("one system"), 0.3)
-    C(impact(0.6, 160, 60), ws("no gaps"), 0.35); C(click(), ws("gaps") + 0.1, 0.5)
-    C(impact(1.2, 120, 40), ws("excuses"), 0.7); C(sub(1.0, 42), ws("excuses"), 0.45)
-    # 13 CTA — calm, trust
-    C(whoosh(0.45), cut("book your"), 0.3)
-    C(click(), ws("strategy") + 0.1, 0.4, 0.4); C(click(), ws("call") + 0.3, 0.5, 0.4)
-    C(chime((81, 88, 93), 0.07, 1.0), ws("call") + 0.5, 0.35, 0.3)
-    C(typing(0.7, 18), ws("madvertlabs.com"), 0.2, -0.4)
-    # 14 end — sonic logo returns, final orb pulse
-    C(whoosh(0.7), cut("madvert labs beyond", 0, 0.3), 0.2)
-    C(sonic_logo(), ws("madvert labs beyond") + 0.1, 0.8)
-    C(impact(0.7, 130, 55), ws("growth systems"), 0.3)
-    C(chime((89,), 0, 1.2), we("growth systems") + 1.2, 0.18)
+    def machine(d):  # industrial embroidery-machine bed: filtered noise with needle rhythm
+        t = t_(d); n = lp(hp(noise(d), 300), 2400)
+        rhythm = 0.55 + 0.45 * (np.sin(2 * np.pi * 14 * t) > 0.2)
+        return n * rhythm * np.minimum(1, t / 0.4) * np.minimum(1, (d - t) / 0.8)
+    # 01 hook — machine ambience, data ticks, impact on "real problem"
+    C(machine(9.6), 0.0, 0.16)
+    C(blip(900, 0.2), ws("capacity"), 0.2)
+    for k in range(12): C(tick(2400, 0.02), ws("capacity") + 0.4 + k * 0.07, 0.08, -0.5 + k * 0.08)
+    for k in range(12): C(tick(1400 if k % 3 else 700, 0.03), ws("customer acquisition") + 0.15 + k * 0.06, 0.1, -0.5 + k * 0.08)
+    C(blip(380, 0.3), ws("inconsistent"), 0.22)
+    C(riser(0.9), ws("that's the real problem") - 0.85, 0.22)
+    C(impact(1.0, 110, 40), ws("problem"), 0.75); C(sub(1.0, 40), ws("problem"), 0.5)
+    # 02 outreach — load builds with each MORE
+    C(whoosh(0.5), cut("you might", 0, 0.3), 0.3)
+    for k, p in enumerate(["more staff", "more follow-up", "more salaries", "more management"]):
+        C(impact(0.5, 200 - k * 25, 80 - k * 10), ws(p) + 0.25, 0.25 + 0.08 * k, -0.3 + 0.2 * k)
+        C(click(), ws(p), 0.35, 0.5)
+    for k in range(6): C(pop(), ws("staff") + k * 0.09, 0.12, 0.3)
+    C(typing(1.0, 12), ws("follow-up"), 0.12, 0.3)
+    C(sub(0.9, 46), ws("management") + 0.2, 0.45)
+    C(whoosh(0.5, False), we("management") + 0.05, 0.3)
+    # 03 ads — spend ticking, CPL climbing, weak leads, negative hit
+    C(whoosh(0.45), cut("or you're running", 0, 0.3), 0.3)
+    for k in range(4): C(blip(900 + 220 * k, 0.09), [ws("running ads") + 0.3, ws("which brings") + 0.1, ws("expensive leads"), ws("leads") + 0.2][k], 0.3, 0.2)
+    C(riser(1.0), ws("expensive") - 0.6, 0.18)
+    C(impact(0.6, 160, 70), ws("expensive"), 0.35)
+    for k in range(3): C(pop(), ws("too many") + k * 0.2, 0.3, 0.5)
+    C(blip(300, 0.35), ws("window shoppers"), 0.3); C(impact(0.7, 140, 60), ws("window shoppers"), 0.45)
+    # 04 interrupt — cut to silence, sweep, sub impact, sonic logo
+    C(whoosh(0.5), cut("madvert labs fixes", 0, 0.3) + 0.08, 0.5)
+    C(impact(1.4, 120, 36), ws("madvert labs fixes") - 0.02, 0.8); C(sub(1.3, 38), ws("madvert labs fixes"), 0.6)
+    C(sonic_logo(), ws("labs") + 0.2, 0.8)
+    C(impact(0.8, 170, 60), ws("fixes"), 0.4)
+    # 05 ad creative
+    C(whoosh(0.45), cut("we create", 0, 0.25), 0.3)
+    C(impact(0.5, 220, 100), ws("high-engaging"), 0.3); C(typing(0.5, 22), ws("high-engaging") + 0.35, 0.15)
+    C(pop(), ws("ads", 1), 0.3)
+    C(whoosh(0.9, False), ws("designed") - 0.1, 0.3)
+    C(click(), we("buyers", 0) - 0.1, 0.6, 0.4)
+    # 06 funnel — CTA expands, pulse travels
+    C(whoosh(0.6), cut("those buyers", 0, 0.3), 0.4)
+    C(chime((81, 88), 0.06, 0.6), ws("your branded"), 0.2)
+    C(blip(1300, 0.1), ws("funnel"), 0.25)
+    # 07 form fill — a selection click per field, upload ticks and chime
+    for k, p in enumerate(["patch type", "quantity", "size", "backing", "deadline", "contact details"]):
+        at = ws(p) if p != "deadline" else ws("deadline", 0)
+        C(click(), at + 0.1, 0.5, -0.2 + 0.08 * k)
+        C(pop(), at + 0.55, 0.2, 0.5)
+    C(typing(1.2, 18), ws("contact details") + 0.05, 0.16)
+    for k in range(10): C(tick(2600, 0.02), ws("upload") + 0.15 + k * 0.06, 0.1)
+    C(chime((84, 88, 91), 0.06, 1.0), ws("artwork", 0) + 0.02, 0.35)
+    # 08 CRM — data assemble, snap, automations, notifications
+    C(whoosh(0.6), cut("from there", 0, 0.1), 0.3)
+    for k in range(6): C(blip(1500 + 90 * k, 0.06), ws("from there") + 0.1 + k * 0.06, 0.12, -0.5 + 0.2 * k)
+    C(impact(0.4, 260, 120), ws("crm", 0) + 0.8, 0.35)
+    for k in range(6): C(blip(1000 + 160 * k, 0.08), ws("automations", 0) + k * 0.17, 0.2, -0.6 + 0.24 * k)
+    C(riser(0.7), ws("request for quotation") - 0.6, 0.18); C(impact(0.7, 150, 60), ws("request for quotation"), 0.35)
+    C(chime((88,), 0, 0.4), ws("send it") + 0.05, 0.25, 0.3)
+    C(chime((86,), 0, 0.4), ws("send it") + 0.3, 0.22, 0.4)
+    C(chime((83,), 0, 0.4), ws("send it") + 0.55, 0.22, 0.5)
+    C(chime((88, 95), 0.08, 0.8), ws("directly") + 0.3, 0.35, 0.6)
+    # 09 intent — fall away, ticks
+    C(whoosh(0.45), cut("so your team", 0, 0.25), 0.3)
+    C(whoosh(0.8, False), ws("only on people"), 0.3)
+    for k, p in enumerate(["people", "who have", "already", "shown"]): C(blip(1200 + 150 * k, 0.08), ws(p), 0.3)
+    C(impact(0.7, 150, 60), ws("real buying"), 0.4)
+    # 10 workspace — highlights, loupe, click
+    C(whoosh(0.45), cut("you get the project", 0, 0.25), 0.3)
+    for p in [("details", 1), ("deadline", 1), ("contact", 1), ("artwork", 1)]: C(blip(1100, 0.09), ws(*p), 0.22)
+    C(machine(1.2), ws("artwork", 1), 0.08)
+    C(click(), ws("starts"), 0.5, 0.4)
+    # 11 reveal — pull back + swell + sonic logo
+    C(whoosh(1.0, False), cut("that's the madvert", 0, 0.3), 0.35)
+    C(sonic_logo(), ws("patches"), 0.65)
+    C(impact(0.9, 120, 45), ws("patches"), 0.4)
+    # 12 system — pulses
+    for k in range(8): C(blip(900 + 100 * k, 0.07), ws("we handle") + 0.1 + k * 0.06, 0.12, np.sin(k))
+    C(impact(0.6, 160, 60), ws("handle"), 0.3)
+    # 13 burdens — a thud per card
+    C(whoosh(0.45), cut("and the best part", 0, 0.25), 0.3)
+    for k, p in enumerate([("ad spend", 0), ("creatives", 0), ("funnels", 0), ("crm", 1), ("automations", 1)]):
+        C(impact(0.4, 200 - 15 * k, 90), ws(*p), 0.28, -0.6 + 0.3 * k)
+    C(whoosh(0.6, False), ws("separately"), 0.3)
+    # 14 one model — collapse whoomp + resolve
+    C(riser(0.8), cut("everything is built", 0, 0.25), 0.22)
+    C(impact(1.0, 110, 40), ws("everything is built") + 0.95, 0.5); C(sub(1.0, 42), ws("everything is built") + 0.95, 0.4)
+    C(chime((77, 84, 89), 0.07, 1.2), ws("one simple model"), 0.3)
+    # 15 pay per qualified RFQ — quiet, then the strongest hit
+    for k, p in enumerate(["pay", "per"]): C(impact(0.5, 180, 70), ws(p), 0.35)
+    C(impact(1.4, 100, 34), ws("rfq"), 0.8); C(sub(1.4, 36), ws("rfq"), 0.6)
+    C(chime((89, 96), 0.06, 1.4), ws("rfq") + 0.1, 0.25)
+    # 16 activity vs orders
+    C(whoosh(0.45), cut("so instead", 0, 0.25), 0.3)
+    C(blip(300, 0.3), ws("activity") + 0.35, 0.25)
+    for k in range(3): C(pop(), ws("you're paying") + k * 0.25, 0.25, 0.5)
+    C(whoosh(0.7, False), ws("real potential") - 0.1, 0.3); C(impact(0.7, 150, 60), ws("real potential"), 0.4)
+    # 17 scale + CTA
+    C(whoosh(0.6), cut("if you're serious", 0, 0.25), 0.35)
+    C(machine(6.5), ws("scaling"), 0.1)
+    for k in range(6): C(pop(), ws("custom patch", 1) + k * 0.75, 0.28, -0.4)
+    C(riser(1.4), ws("book a discovery") - 1.35, 0.3)
+    C(impact(1.0, 130, 45), ws("book a discovery"), 0.5)
+    C(click(), ws("call") + 0.1, 0.6, 0.3)
+    C(sonic_logo(), ws("madvert", 2) + 0.2, 0.8)
+    C(chime((89,), 0, 1.4), we("today") + 1.25, 0.18)
     return S
 
 # ---------------------------------------------------------------- mix

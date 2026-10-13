@@ -22,9 +22,9 @@ export function card(ctx: Ctx, x: number, y: number, w: number, h: number, o: Ca
   ctx.save();
   if (o.alpha !== undefined) ctx.globalAlpha *= o.alpha;
   if (sh > 0) {
-    ctx.shadowColor = `rgba(0,0,0,${0.55 * sh})`;
+    ctx.shadowColor = `rgba(20,60,120,${0.16 * sh})`;
     ctx.shadowBlur = 50 * sh;
-    ctx.shadowOffsetY = 20 * sh;
+    ctx.shadowOffsetY = 18 * sh;
   }
   rr(ctx, x, y, w, h, r);
   ctx.fillStyle = o.fill ?? C.panel;
@@ -124,30 +124,35 @@ export function orb(ctx: Ctx, x: number, y: number, r: number, pulse = 0, alpha 
   ctx.restore();
 }
 
-export type BgOpts = { grid?: number; glowA?: number; gx?: number; gy?: number; hue?: number; vignette?: number };
-/** Dark cinematic backdrop: near-black to deep navy, drifting cyan light, faint grid, vignette. */
+export type BgOpts = { grid?: number; glowA?: number; gx?: number; gy?: number; vignette?: number };
+/** Premium light backdrop: cool white gradient, drifting soft lights, faint grid. */
 export function background(ctx: Ctx, t: number, o: BgOpts = {}) {
-  const g = ctx.createLinearGradient(0, 0, 0, H);
-  g.addColorStop(0, C.bg1);
-  g.addColorStop(1, C.bg0);
+  const g = ctx.createLinearGradient(0, 0, W, H);
+  g.addColorStop(0, "#FBFDFF");
+  g.addColorStop(0.55, C.bg0);
+  g.addColorStop(1, C.bg1);
   ctx.fillStyle = g;
   ctx.fillRect(0, 0, W, H);
   const ga = o.glowA ?? 1;
-  glow(ctx, 1450 + noise(t * 0.12) * 180, 120 + noise(t * 0.1 + 9) * 80, 1000, C.elec, 0.10 * ga);
-  glow(ctx, 300 + noise(t * 0.09 + 3) * 160, 1000 + noise(t * 0.11 + 5) * 60, 900, C.blue, 0.08 * ga);
-  const grid = o.grid ?? 0.5;
+  glow(ctx, 1500 + noise(t * 0.15) * 160, 160 + noise(t * 0.12 + 9) * 80, 900, C.cyan, 0.16 * ga);
+  glow(ctx, 260 + noise(t * 0.1 + 3) * 140, 980 + noise(t * 0.13 + 5) * 60, 900, C.blue, 0.10 * ga);
+  const grid = o.grid ?? 0.55;
   if (grid > 0) {
     const step = 64, ox = (((o.gx ?? 0) % step) + step) % step, oy = (((o.gy ?? 0) % step) + step) % step;
     ctx.save();
     ctx.lineWidth = 1;
-    ctx.strokeStyle = rgba(C.elec, 0.05 * grid);
+    ctx.strokeStyle = rgba(C.blue, 0.055 * grid);
     ctx.beginPath();
     for (let x = -ox; x <= W; x += step) { ctx.moveTo(x, 0); ctx.lineTo(x, H); }
     for (let y = -oy; y <= H; y += step) { ctx.moveTo(0, y); ctx.lineTo(W, y); }
     ctx.stroke();
+    const m = ctx.createRadialGradient(W / 2, H / 2, 100, W / 2, H / 2, 900);
+    m.addColorStop(0, "rgba(250,252,255,0.85)");
+    m.addColorStop(1, "rgba(250,252,255,0)");
+    ctx.fillStyle = m;
+    ctx.fillRect(0, 0, W, H);
     ctx.restore();
   }
-  vignette(ctx, o.vignette ?? 0.65);
 }
 export function vignette(ctx: Ctx, a = 0.6) {
   const m = ctx.createRadialGradient(W / 2, H / 2, 380, W / 2, H / 2, 1150);
@@ -260,9 +265,9 @@ export function cursor(ctx: Ctx, x: number, y: number, click = 0, alpha = 1) {
   ctx.translate(x, y); ctx.scale(sc, sc);
   ctx.shadowColor = "rgba(10,20,40,0.35)"; ctx.shadowBlur = 8; ctx.shadowOffsetY = 3;
   ctx.beginPath(); ctx.moveTo(0, 0); ctx.lineTo(0, 17); ctx.lineTo(4.5, 13); ctx.lineTo(7.6, 19.5); ctx.lineTo(10.4, 18.3); ctx.lineTo(7.4, 12); ctx.lineTo(13, 12); ctx.closePath();
-  ctx.fillStyle = "#fff"; ctx.fill();
+  ctx.fillStyle = C.navy; ctx.fill();
   ctx.shadowColor = "transparent";
-  ctx.strokeStyle = C.navy; ctx.lineWidth = 1.4; ctx.stroke();
+  ctx.strokeStyle = "#fff"; ctx.lineWidth = 1.4; ctx.stroke();
   ctx.restore();
 }
 
@@ -290,7 +295,7 @@ export function lineChart(ctx: Ctx, x: number, y: number, w: number, h: number, 
   pathTo();
   ctx.strokeStyle = col; ctx.lineWidth = o.lw ?? 4; ctx.lineJoin = "round"; ctx.lineCap = "round"; ctx.stroke();
   if (o.dot !== false && p > 0) {
-    ctx.beginPath(); ctx.arc(ex, ey, 7, 0, 7); ctx.fillStyle = C.bg1; ctx.fill();
+    ctx.beginPath(); ctx.arc(ex, ey, 7, 0, 7); ctx.fillStyle = "#fff"; ctx.fill();
     ctx.lineWidth = 3.5; ctx.strokeStyle = col; ctx.stroke();
   }
   ctx.restore();

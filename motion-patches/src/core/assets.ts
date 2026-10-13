@@ -12,12 +12,11 @@ export interface AssetHost {
 
 export const VIDEOS: Record<string, { frames: number; fps: number; w: number; h: number }> = {
   embroidery: { frames: 240, fps: 24, w: 1280, h: 720 },
-  factory: { frames: 192, fps: 24, w: 1280, h: 720 },
 };
 
 export const IMAGES: Record<string, string> = {
-  logo: "brand/logo-dark.png",
-  logoLight: "brand/logo-light.png",
+  logo: "brand/logo-light.png",
+  logoDark: "brand/logo-dark.png",
   logoDesc: "brand/logo-light-descriptor.png",
   icon: "brand/app-icon-512.png",
   aMark: "brand/a-mark-glow.png",

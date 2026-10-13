@@ -108,11 +108,11 @@ export function subtitles(ctx: Ctx, t: number, theme: SubMode = "dark") {
   const boxW = Math.max(...widths) + 56, boxH = lineH * linesIdx.length + 22;
   const bx = W / 2 - boxW / 2, by = Y - boxH + 14 + dy;
   ctx.globalAlpha = a;
-  const dark = true;
+  const dark = false;
   ctx.shadowColor = dark ? "rgba(0,0,0,0.3)" : "rgba(20,60,120,0.12)";
   ctx.shadowBlur = 24; ctx.shadowOffsetY = 6;
   rr(ctx, bx, by, boxW, boxH, 16);
-  ctx.fillStyle = subtle ? "rgba(6,10,18,0.45)" : "rgba(6,10,18,0.72)";
+  ctx.fillStyle = subtle ? "rgba(255,255,255,0.7)" : "rgba(255,255,255,0.88)";
   ctx.fill();
   ctx.shadowColor = "transparent";
   ctx.lineWidth = 1;
@@ -123,7 +123,7 @@ export function subtitles(ctx: Ctx, t: number, theme: SubMode = "dark") {
     const y = by + 11 + lineH * (li + 1) - SIZE * 0.36;
     for (const i of L) {
       const hi = hiStart >= 0 && i >= hiStart && i < hiStart + hiWords.length;
-      ctx.fillStyle = hi ? C.cyan : subtle ? "rgba(235,242,255,0.82)" : "#fff";
+      ctx.fillStyle = hi ? C.blue : subtle ? "rgba(10,15,28,0.78)" : C.navy;
       ctx.fillText(words[i], x, y);
       x += ww[i] + space;
     }
