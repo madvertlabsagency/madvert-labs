@@ -15,6 +15,7 @@ const eslintConfig = defineConfig([
     "studio/**",
     "motion/**",
     "motion-patches/**",
+    "motion-vertical/**",
     ".open-next/**",
     ".wrangler/**",
     "cloudflare-env.d.ts",
