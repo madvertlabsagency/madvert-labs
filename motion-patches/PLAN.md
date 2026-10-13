@@ -1,6 +1,8 @@
 # Madvert Labs Patches Partnership: Product-Demo Film Plan
 
-1920×1080 · 60 fps · dark cinematic theme · VO 91.79 s (+0.3 s lead-in) · film ≈ 95.5 s
+1920×1080 · 60 fps · **premium light theme (same as the first Madvert film)** · VO 91.79 s (+0.3 s lead-in) · film 95.5 s
+
+> Direction change (per client): the dark cinematic look was replaced with the light theme used in the first Madvert ad: cool whites, soft blue surfaces, navy type, electric-blue/cyan accents, light logo. Dark reference boards are used for layout only.
 
 ## 1. Inspection results
 
@@ -114,7 +116,7 @@ Breathing room is given to 04, 11, 14, 15 and 17, each with a held hero type mom
 **Typography levels:**
 - L1 hero: Sora 800, 120–170 px.
 - L2 support: Sora 700, 56–80 px.
-- L3: subtitles in Inter 600, 32 px, lower third, dark glass pill. They shrink to 28 px with a lower-opacity pill while hero type is on screen.
+- L3: subtitles in Inter 600, 32 px, lower third, white pill with navy text. They shrink to 27 px with a lower-opacity pill while hero type is on screen.
 
 ## 4. Asset usage plan
 
@@ -130,7 +132,7 @@ Breathing room is given to 04, 11, 14, 15 and 17, each with a held hero type mom
 | 11–14 | Logo-dark | System diagram, cards |
 | 15 | — | RFQ card, type |
 | 16 | — | Panels |
-| 17 | Factory band from the dashboard clip (blurred), logo-dark | Pipeline, CTA |
+| 17 | Embroidery clip (production panel), logo-light | Pipeline, CTA |
 
 All demo company names (Apex Apparel, etc.) are labelled as example data.
 
