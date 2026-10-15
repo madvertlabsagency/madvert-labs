@@ -1,0 +1,8 @@
+node_modules/
+film/node_modules/
+film/out/
+film/assets/video/
+film/data/dialogue.wav
+raw.mp4
+edit.mov
+audio16.f32

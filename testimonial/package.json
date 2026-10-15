@@ -1,0 +1,9 @@
+{
+  "name": "madvert-testimonial",
+  "private": true,
+  "type": "module",
+  "dependencies": {
+    "@huggingface/transformers": "^4.3.1",
+    "sts-whisper-small": "^1.0.0"
+  }
+}
