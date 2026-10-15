@@ -20,42 +20,42 @@ const ed = (src: number, k?: number) => {
   return OFF[i] + clamp(src, EDL[i][0], EDL[i][1]) - EDL[i][0];
 };
 
-// ---- subtitles (Roman Urdu as spoken; [text, highlighted words, srcStart, srcEnd, segment])
+// ---- subtitles (English translation of the Urdu interview; [text, highlighted words, srcStart, srcEnd, segment])
 type Cue = [string, string[], number, number, number];
 export const CUES: Cue[] = [
-  ["Ab MashaAllah din mein 5 se 6 orders aa jaate hain.", ["5 se 6 orders"], 65.9, 69.95, 0],
-  ["Assalam-o-Alaikum, mera naam Sania hai,", [], 0.05, 2.1, 1],
-  ["aur main Karachi mein home-based food business run karti hoon.", ["home-based food business"], 2.1, 5.45, 1],
-  ["Initially, jab maine business start kiya tha,", [], 5.5, 7.55, 1],
-  ["to main different social media platforms", ["social media"], 7.55, 9.45, 1],
-  ["aur WhatsApp ke zariye apne orders leti thi.", ["orders"], 9.45, 11.85, 1],
-  ["Customers satisfied thay, reviews achhe thay,", ["satisfied"], 11.85, 14.85, 1],
-  ["quality bhi achhi thi,", ["quality"], 14.85, 16.05, 1],
-  ["lekin business ki woh growth nahi thi jo main expect karti thi.", ["growth"], 16.05, 19.3, 1],
-  ["Phir meri Usama se baat hui, Madvert Labs ke through.", ["Madvert Labs"], 19.35, 22.2, 1],
-  ["Honestly, un ke saath kaam karne ke baad", [], 22.2, 25.15, 1],
-  ["mere business ka perspective bhi change ho gaya.", ["perspective"], 25.15, 27.6, 1],
-  ["Unhon ne sirf advertising par focus nahi kiya,", ["advertising"], 27.6, 30.1, 1],
-  ["balki hamari overall business growth ke upar focus kiya.", ["business growth"], 30.1, 33.95, 1],
-  ["Hamari overall marketing strategy, customer targeting, creatives,", ["marketing strategy", "customer targeting", "creatives"], 36.0, 40.45, 2],
-  ["aur customers ki inquiries ko orders mein badalne ke liye bhi kaam kiya.", ["inquiries", "orders"], 40.45, 45.6, 2],
-  ["Sab se achhi baat yeh thi ke woh", [], 45.85, 48.6, 2],
-  ["hamare business ko samajh ke ideas dete thay,", ["ideas"], 48.6, 51.0, 2],
-  ["na ke bas aise hi ads chala diye.", [], 51.0, 52.95, 2],
-  ["Pehle orders aate thay, lekin consistent nahi thay,", ["consistent"], 61.98, 65.62, 3],
-  ["lekin ab MashaAllah din mein 5 se 6 orders aa jaate hain.", ["5 se 6 orders"], 65.62, 69.95, 3],
-  ["Naye customers bhi aa rahe hain, repeat customers bhi aa rahe hain,", ["Naye customers", "repeat customers"], 70.2, 73.25, 3],
-  ["aur sab se achhi baat yeh hai ke", [], 73.25, 75.55, 3],
-  ["un areas se bhi inquiries aa rahi hain jahan hamari reach nahi thi.", ["inquiries", "reach"], 75.85, 79.3, 3],
-  ["Alhamdulillah, ab hum apne business ko aur expand karne ka bhi soch rahe hain.", ["expand"], 79.85, 84.15, 3],
-  ["Usama ki ek cheez mujhe personally bohot achhi lagti hai:", [], 84.3, 87.45, 3],
-  ["woh sirf marketing nahi karte,", ["marketing"], 87.6, 89.25, 3],
-  ["woh genuinely business ki growth ke baare mein sochte hain.", ["growth"], 89.25, 92.45, 3],
-  ["Un ki creativity, strategy aur attention to detail bohot achhi hai.", ["creativity", "strategy", "attention to detail"], 92.7, 98.3, 3],
-  ["To agar aap bhi apne business ko grow karna chahte hain,", ["grow"], 107.25, 110.15, 4],
-  ["especially agar aap home-based ya small business hain,", ["small business"], 110.15, 113.1, 4],
-  ["to main aap ko definitely Usama aur Madvert Labs ko recommend karoon gi.", ["recommend", "Madvert Labs"], 113.1, 117.65, 4],
-  ["Thank you so much Usama aur Madvert Labs, for being part of my journey.", ["journey"], 117.75, 121.85, 4],
+  ["Now, MashaAllah, we get 5 to 6 orders a day.", ["5 to 6 orders"], 65.9, 69.95, 0],
+  ["Assalam-o-Alaikum, my name is Saniya,", [], 0.05, 2.1, 1],
+  ["and I run a home-based food business in Karachi.", ["home-based food business"], 2.1, 5.45, 1],
+  ["When I first started my business,", [], 5.5, 7.55, 1],
+  ["I took my orders through different social media platforms", ["social media"], 7.55, 9.45, 1],
+  ["and through WhatsApp.", [], 9.45, 11.85, 1],
+  ["Customers were satisfied, the reviews were good,", ["satisfied"], 11.85, 14.85, 1],
+  ["and the quality was good too,", ["quality"], 14.85, 16.05, 1],
+  ["but the business wasn't growing the way I expected.", ["growing"], 16.05, 19.3, 1],
+  ["Then I got in touch with Usama through Madvert Labs.", ["Madvert Labs"], 19.35, 22.2, 1],
+  ["Honestly, after working with them,", [], 22.2, 25.15, 1],
+  ["my whole perspective on the business changed.", ["perspective"], 25.15, 27.6, 1],
+  ["They didn't just focus on advertising,", ["advertising"], 27.6, 30.1, 1],
+  ["they focused on our overall business growth.", ["business growth"], 30.1, 33.95, 1],
+  ["Our overall marketing strategy, customer targeting, creatives,", ["marketing strategy", "customer targeting", "creatives"], 36.0, 40.45, 2],
+  ["they even worked on turning customer inquiries into orders.", ["inquiries", "orders"], 40.45, 45.6, 2],
+  ["The best thing was that they", [], 45.85, 48.6, 2],
+  ["understood our business and gave us ideas,", ["ideas"], 48.6, 51.0, 2],
+  ["instead of just running some ads.", [], 51.0, 52.95, 2],
+  ["Before, orders came in, but they weren't consistent,", ["consistent"], 61.98, 65.62, 3],
+  ["but now, MashaAllah, we get 5 to 6 orders a day.", ["5 to 6 orders"], 65.62, 69.95, 3],
+  ["New customers are coming in, and so are repeat customers,", ["New customers", "repeat customers"], 70.2, 73.25, 3],
+  ["and the best part is that", [], 73.25, 75.55, 3],
+  ["inquiries are coming from areas we never reached before.", ["inquiries"], 75.85, 79.3, 3],
+  ["Alhamdulillah, now we're even thinking of expanding the business.", ["expanding"], 79.85, 84.15, 3],
+  ["One thing I personally really like about Usama:", [], 84.3, 87.45, 3],
+  ["he doesn't just do marketing,", ["marketing"], 87.6, 89.25, 3],
+  ["he genuinely thinks about the growth of the business.", ["growth"], 89.25, 92.45, 3],
+  ["His creativity, strategy and attention to detail are excellent.", ["creativity", "strategy", "attention to detail"], 92.7, 98.3, 3],
+  ["So if you want to grow your business too,", ["grow"], 107.25, 110.15, 4],
+  ["especially if you're a home-based or small business,", ["small business"], 110.15, 113.1, 4],
+  ["I would definitely recommend Usama and Madvert Labs.", ["recommend", "Madvert Labs"], 113.1, 117.65, 4],
+  ["Thank you so much, Usama and Madvert Labs, for being part of my journey.", ["journey"], 117.75, 121.85, 4],
 ];
 export const CUES_ED = CUES.map(([s, hi, a, b, k]) => ({ s, hi, a: ed(a, k), b: ed(b, k) }));
 
@@ -148,7 +148,7 @@ function lowerThird(ctx: any, t: number) {
   const t0 = OFF[1] + 0.9, t1 = t0 + 6.5;
   const a = ep(t, t0, 0.55, outExpo) * (1 - ep(t, t1, 0.5, inOutCubic));
   if (a <= 0) return;
-  const x = FR.x + 40, y = FR.y + FR.h - 230, w = 600, h = 156;
+  const x = FR.x + 40, y = FR.y + FR.h - 230, w = 640, h = 156;
   ctx.save();
   ctx.globalAlpha *= clamp(a * 1.4);
   ctx.translate((1 - a) * -60, 0);
@@ -161,10 +161,10 @@ function lowerThird(ctx: any, t: number) {
   // mask-revealed text
   const r1 = ep(t, t0 + 0.2, 0.5, outExpo), r2 = ep(t, t0 + 0.45, 0.5, outExpo);
   ctx.save(); ctx.beginPath(); ctx.rect(x + 40, y, (w - 40) * r1, h); ctx.clip();
-  text(ctx, "DE Wooden Spoon", x + 52, y + 72, { size: 44, weight: 800, family: F.head, color: "#F4FBFC" });
+  text(ctx, "Saniya Khan", x + 52, y + 72, { size: 44, weight: 800, family: F.head, color: "#F4FBFC" });
   ctx.restore();
   ctx.save(); ctx.beginPath(); ctx.rect(x + 40, y, (w - 40) * r2, h); ctx.clip();
-  text(ctx, "HOME CHEF BUSINESS", x + 54, y + 118, { size: 22, weight: 700, family: F.mono, ls: 5, color: C.cyan });
+  text(ctx, "OWNER · DE WOODEN SPOON", x + 54, y + 118, { size: 22, weight: 700, family: F.mono, ls: 4, color: C.cyan });
   ctx.restore();
   ctx.restore();
 }
