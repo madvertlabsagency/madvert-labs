@@ -2084,3 +2084,9 @@
   padding: 8px 10px;
   align-items: center;
 }
+
+/* Scattered start positions of the identity tiles must never widen the page. */
+.bm-is-slot {
+  overflow-x: clip;
+  overflow-y: visible;
+}
