@@ -13,14 +13,15 @@ const SHARED = /^\/(api|_next|brand|images|icon|apple-icon|manifest|robots|favic
 
 export function proxy(request: NextRequest) {
   const { pathname, search } = request.nextUrl;
-  const portalHost = process.env.ONBOARDING_HOST?.toLowerCase();
   const host = (request.headers.get("x-forwarded-host") ?? request.headers.get("host") ?? "").toLowerCase().split(":")[0];
+  // ONBOARDING_HOST wins; otherwise any "onboarding." host is treated as the portal host.
+  const portalHost = process.env.ONBOARDING_HOST?.toLowerCase() || (host.startsWith("onboarding.") ? host : undefined);
   const signedIn = Boolean(request.cookies.get("mv_ops")?.value);
 
   if (portalHost) {
     const mainSite = (process.env.NEXT_PUBLIC_SITE_URL ?? "https://madvertlabs.com").replace(/\/$/, "");
     if (host === portalHost) {
-      if (pathname === "/") return NextResponse.redirect(new URL(signedIn ? "/ops/onboarding" : "/offer-builder", request.url));
+      if (pathname === "/") return NextResponse.redirect(new URL(signedIn ? "/ops/onboarding" : "/ops/login", request.url));
       if (!PORTAL.test(pathname) && !SHARED.test(pathname) && !/\.\w{2,5}$/.test(pathname)) return NextResponse.redirect(`${mainSite}${pathname}${search}`, 308);
     } else if (PORTAL.test(pathname) && !host.startsWith("localhost") && !host.endsWith(".vercel.app")) {
       return NextResponse.redirect(`https://${portalHost}${pathname}${search}`, 308);
