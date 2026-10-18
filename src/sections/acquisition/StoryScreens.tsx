@@ -259,7 +259,7 @@ function Serp({ query, children }: { query: string; children: ReactNode }) {
   );
 }
 
-function Result({ ad = false, you = false, label }: { ad?: boolean; you?: boolean; label?: string }) {
+function Result({ ad = false, you = false, label, title = "Commercial cleaning, booked this week" }: { ad?: boolean; you?: boolean; label?: string; title?: string }) {
   return (
     <div className={`acq-result ${you ? "acq-result--you" : ""}`}>
       <span className="acq-result-site">
@@ -267,7 +267,7 @@ function Result({ ad = false, you = false, label }: { ad?: boolean; you?: boolea
         {ad ? <b className="acq-sponsored">Sponsored</b> : null}
         {label ? <span className="acq-result-domain">{label}</span> : <Bar w="64px" />}
       </span>
-      {you ? <span className="acq-result-title">Commercial cleaning, booked this week</span> : <Bar w="72%" className="acq-bar--link" />}
+      {you ? <span className="acq-result-title">{title}</span> : <Bar w="72%" className="acq-bar--link" />}
       <Bar w="92%" />
       {ad ? (
         <span className="acq-sitelinks">
@@ -501,7 +501,7 @@ function OrganicList({ climb = false }: { climb?: boolean }) {
     <div className={`acq-organic ${climb ? "acq-organic--climb" : ""}`}>
       {rows.map((r) => (
         <div key={r} className={`acq-organic-row ${r === 0 ? "acq-organic-row--you" : ""}`} style={{ ["--r" as string]: r }}>
-          {r === 0 ? <Result you label="yourbusiness.com" /> : <Result />}
+          {r === 0 ? <Result you label="yourbusiness.com" title="Office cleaning services for busy workplaces" /> : <Result />}
         </div>
       ))}
     </div>
