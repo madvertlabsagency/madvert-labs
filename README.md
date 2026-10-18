@@ -196,7 +196,7 @@ The client's Offer Workshop has **Generate my offer**: one click turns their ans
 
 ### Subdomain (onboarding.madvertlabs.com)
 
-Same Vercel project as the website. Set `ONBOARDING_HOST=onboarding.madvertlabs.com` and `ONBOARDING_BASE_URL=https://onboarding.madvertlabs.com`, then in Vercel → Project → Settings → Domains add `onboarding.madvertlabs.com` and create the DNS record Vercel shows (CNAME `onboarding` → `cname.vercel-dns.com`). On that host `/` goes to the Offer Builder (or the dashboard when signed in), marketing paths redirect to madvertlabs.com, and portal paths on the main domain redirect to the subdomain.
+Same Vercel project as the website. Set `ONBOARDING_HOST=onboarding.madvertlabs.com` and `ONBOARDING_BASE_URL=https://onboarding.madvertlabs.com`, then in Vercel → Project → Settings → Domains add `onboarding.madvertlabs.com` and create the DNS record Vercel shows (CNAME `onboarding` → `cname.vercel-dns.com`). On that host `/` opens team sign in (or the dashboard when signed in); the Offer Builder is at `/offer-builder`. Any `onboarding.*` host is detected even without `ONBOARDING_HOST`, marketing paths redirect to madvertlabs.com, and portal paths on the main domain redirect to the subdomain.
 
 ### Service-based onboarding
 
