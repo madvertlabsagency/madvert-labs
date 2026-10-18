@@ -184,7 +184,10 @@
   .bm-journey-desk {
     display: block;
     position: relative;
-    padding-top: 6px;
+    padding: 6px 8px 0;
+    margin-inline: -8px;
+    /* The track runner travels its own width; keep it from widening the page. */
+    overflow-x: clip;
   }
   .bm-journey-mob {
     display: none;
@@ -192,8 +195,8 @@
 }
 .bm-track {
   position: absolute;
-  left: calc(100% / 14);
-  right: calc(100% / 14);
+  left: calc(8px + (100% - 16px) / 14);
+  right: calc(8px + (100% - 16px) / 14);
   top: 238px;
   height: 2px;
   border-radius: 2px;

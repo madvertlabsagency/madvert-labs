@@ -46,7 +46,7 @@ const desk: Layout = {
     const d = calDaysDesk[i];
     return [3.6 + (d % 7) * 13.4, 10.6 + Math.floor(d / 7) * 13, 0.78];
   },
-  pillar: (p, k) => [p * 16 + 2.5, 13 + k * 15, 1],
+  pillar: (p, k) => [p * 16 + 2.5, 10 + k * 15, 1],
   head: (p) => [p * 16 + 2.5, 3.5],
   calCell: { x: 3, y: 10, w: 13.4, h: 13, cols: 7, rows: 4 },
 };
