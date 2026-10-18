@@ -153,6 +153,12 @@ export const footerNav = [
   { label: "Cost per Qualified Lead Calculator", href: "/tools/cost-per-qualified-lead-calculator" },
 ];
 
+/** WhatsApp chat (floating widget and contact links). */
+export const whatsapp = {
+  number: "+92 335 3572711",
+  url: `https://wa.me/923353572711?text=${encodeURIComponent("Hi Madvert Labs, I would like to talk about growing my business.")}`,
+};
+
 /** The one booking calendar used everywhere (LeadConnector / GoHighLevel widget). */
 export const booking = {
   url: process.env.NEXT_PUBLIC_BOOKING_URL ?? "https://api.madvertlabs.com/widget/booking/pvk8u6OhzYeIizvLDelx",
