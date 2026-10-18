@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 import { Minus } from "lucide-react";
 import { Reveal, EASE, AnimatedCheck, useSequence } from "../ui/motion";
 import { RegionReveal } from "../ui/RegionReveal";
@@ -137,7 +137,7 @@ function DesktopComparison() {
             ]}
           >
             {(inView) => (
-              <motion.span
+              <m.span
                 aria-hidden
                 className="pointer-events-none absolute left-[3.9%] top-[20.2%] h-[74.8%] w-[46.6%] rounded-[1.3%] ring-2 ring-brand-cyan"
                 initial={{ opacity: 0 }}
@@ -168,7 +168,7 @@ function AcceptedCard() {
         <p className="text-lg font-extrabold">{done ? "Accepted qualified RFQ" : "Checking agreed criteria…"}</p>
         <ul className="mt-4 grid gap-2">
           {ACCEPTED.map((a, i) => (
-            <motion.li
+            <m.li
               key={a}
               className="flex items-center gap-3 text-[0.92rem]"
               animate={{ opacity: step > i ? 1 : 0.3 }}
@@ -178,7 +178,7 @@ function AcceptedCard() {
                 <AnimatedCheck show={step > i} className="h-3.5 w-3.5" />
               </span>
               <span className="font-semibold">{a}</span>
-            </motion.li>
+            </m.li>
           ))}
         </ul>
       </div>
@@ -198,7 +198,7 @@ function RejectedCard() {
         <p className="text-lg font-extrabold text-muted">Does not meet agreed criteria</p>
         <ul className="mt-4 grid gap-2">
           {REJECTED.map((a, i) => (
-            <motion.li
+            <m.li
               key={a}
               className="flex items-center gap-3 text-[0.92rem] text-muted"
               animate={{ opacity: step > i ? 1 : 0.25, x: step > i ? 0 : -4 }}
@@ -207,7 +207,7 @@ function RejectedCard() {
                 <Minus className="h-3.5 w-3.5" aria-hidden />
               </span>
               {a}
-            </motion.li>
+            </m.li>
           ))}
         </ul>
       </div>

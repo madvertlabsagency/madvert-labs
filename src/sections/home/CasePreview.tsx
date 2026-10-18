@@ -1,5 +1,6 @@
 import { Cta } from "@/components/ui/Button";
 import { CaseCarousel } from "@/components/case-studies/CaseCarousel";
+import { toCardStudy } from "@/components/case-studies/utils";
 import type { CaseStudy } from "@/types/content";
 
 export function CasePreview({ studies }: { studies: CaseStudy[] }) {
@@ -20,7 +21,7 @@ export function CasePreview({ studies }: { studies: CaseStudy[] }) {
           </p>
         </div>
         <div data-reveal="fade" style={{ ["--reveal-delay" as string]: 160 }} className="mt-10 md:mt-14">
-          <CaseCarousel studies={studies.slice(0, 7)} label="Featured case studies" />
+          <CaseCarousel studies={studies.slice(0, 7).map(toCardStudy)} label="Featured case studies" />
         </div>
         <div className="mt-10 flex justify-center">
           <Cta href="/case-studies" variant="secondary" track="case_study_open" trackLabel="case_preview_all">

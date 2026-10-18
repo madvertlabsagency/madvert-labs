@@ -1,20 +1,20 @@
 "use client";
 
-import { zodResolver } from "@hookform/resolvers/zod";
+import type { ContactValues } from "@/forms/client-schemas";
+import { lazyResolver } from "@/forms/lazy-resolver";
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import { useCallback, useEffect, useMemo, useRef, useState, useSyncExternalStore } from "react";
 import { useForm, useWatch } from "react-hook-form";
-import { z } from "zod";
 import { setEnhancedConversionData, track, trackConversion } from "@/analytics/track";
 import { Button, Cta } from "@/components/ui/Button";
-import { growthBriefFields, investmentOptions } from "./schemas";
 import { Honeypot, TextArea, TextField, Turnstile, useFormMeta } from "./Fields";
 import { postJson } from "./submit";
+import { investmentOptions } from "./options";
 
 type BookingPrefill = { name: string; email: string };
 
-const clientSchema = growthBriefFields.extend({ website_confirm: z.string().optional() });
-type Values = z.input<typeof clientSchema>;
+type Values = ContactValues;
+const contactValidation = lazyResolver<Values>(() => import("@/forms/client-schemas").then((m) => m.contactResolver));
 
 type Step = { key: keyof Values | "contact"; question: string; fields: (keyof Values)[] };
 
@@ -54,7 +54,7 @@ export function ContactFlow() {
     control,
     setError: setFieldError,
     formState: { errors },
-  } = useForm<Values>({ resolver: zodResolver(clientSchema) as never, mode: "onTouched", defaultValues: { tried: "" } });
+  } = useForm<Values>({ resolver: contactValidation.resolver, mode: "onTouched", defaultValues: { tried: "" } });
 
   // Read ?service= and ?intent= without making the page dynamic; the server snapshot is empty.
   const search = useSyncExternalStore(
@@ -149,12 +149,16 @@ export function ContactFlow() {
 
   return (
     <form
+      onPointerDownCapture={contactValidation.preload}
       onSubmit={(e) => {
         e.preventDefault();
         if (last) void onSubmit(e);
         else void next();
       }}
-      onFocusCapture={begin}
+      onFocusCapture={() => {
+        void contactValidation.preload();
+        begin();
+      }}
       noValidate
       className="panel relative overflow-hidden p-6 sm:p-10"
       aria-labelledby="brief-q"

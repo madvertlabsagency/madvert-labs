@@ -1,6 +1,6 @@
 "use client";
 
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence, m } from "framer-motion";
 import { ArrowRight, CalendarCheck } from "lucide-react";
 import { useEffect, useState } from "react";
 import { track } from "@/lib/analytics";
@@ -46,7 +46,7 @@ export function StickyBookCTA() {
       {show && (
         <>
           {/* Phones */}
-          <motion.div
+          <m.div
             key="bar"
             className="fixed inset-x-0 bottom-0 z-40 border-t border-line bg-[var(--nav-bg)] px-4 pb-[max(0.75rem,env(safe-area-inset-bottom))] pt-3 backdrop-blur-xl md:hidden"
             initial={{ y: "100%" }}
@@ -58,9 +58,9 @@ export function StickyBookCTA() {
               <CalendarCheck className="h-5 w-5" aria-hidden /> Book My Discovery Call
             </a>
             <p className="mt-1.5 text-center text-[0.68rem] text-subtle">Founding beta · $15 per accepted qualified RFQ · ad spend included</p>
-          </motion.div>
+          </m.div>
           {/* Tablet & desktop */}
-          <motion.a
+          <m.a
             key="pill"
             href={BOOK_HREF}
             onClick={onClick}
@@ -72,7 +72,7 @@ export function StickyBookCTA() {
           >
             <CalendarCheck className="h-6 w-6" aria-hidden /> Book My Discovery Call
             <ArrowRight className="arrow h-5 w-5" aria-hidden />
-          </motion.a>
+          </m.a>
         </>
       )}
     </AnimatePresence>

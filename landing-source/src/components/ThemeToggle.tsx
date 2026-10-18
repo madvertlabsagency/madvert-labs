@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 import { Moon, Sun } from "lucide-react";
 import { useTheme } from "./ThemeProvider";
 
@@ -19,13 +19,13 @@ export function ThemeToggle({ className = "" }: { className?: string }) {
       <span className="sr-only">Theme</span>
       <Sun className="absolute left-2.5 h-3.5 w-3.5 text-subtle" aria-hidden />
       <Moon className="absolute right-2.5 h-3.5 w-3.5 text-subtle" aria-hidden />
-      <motion.span
+      <m.span
         className="relative z-10 grid h-7 w-7 place-items-center rounded-full bg-surface shadow-md ring-1 ring-line"
         animate={{ x: dark ? 28 : 0 }}
         transition={{ type: "spring", stiffness: 500, damping: 34 }}
       >
         {dark ? <Moon className="h-3.5 w-3.5 text-accent" aria-hidden /> : <Sun className="h-3.5 w-3.5 text-accent" aria-hidden />}
-      </motion.span>
+      </m.span>
     </button>
   );
 }

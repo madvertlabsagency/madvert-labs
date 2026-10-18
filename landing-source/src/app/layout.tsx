@@ -1,5 +1,4 @@
 import type { Metadata, Viewport } from "next";
-import { GeistMono } from "geist/font/mono";
 import { GeistSans } from "geist/font/sans";
 import { Analytics } from "@/components/Analytics";
 import { Providers } from "@/components/Providers";
@@ -64,7 +63,7 @@ const jsonLd = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" data-theme="light" suppressHydrationWarning className={`${GeistSans.variable} ${GeistMono.variable}`}>
+    <html lang="en" data-theme="light" suppressHydrationWarning className={GeistSans.variable}>
       <head>
         <script dangerouslySetInnerHTML={{ __html: themeInitScript }} />
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />

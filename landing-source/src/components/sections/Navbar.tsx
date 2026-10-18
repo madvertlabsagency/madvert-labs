@@ -1,6 +1,6 @@
 "use client";
 
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence, m } from "framer-motion";
 import { ArrowRight, Menu, X } from "lucide-react";
 import { useEffect, useState } from "react";
 import { NAV_LINKS } from "@/lib/site";
@@ -87,7 +87,7 @@ export function Navbar() {
               >
                 {l.label}
                 {active === l.id && (
-                  <motion.span
+                  <m.span
                     layoutId="nav-indicator"
                     className="absolute inset-x-3 -bottom-0.5 h-[2px] rounded-full bg-grad"
                     transition={{ type: "spring", stiffness: 420, damping: 36 }}
@@ -116,7 +116,7 @@ export function Navbar() {
 
       <AnimatePresence>
         {open && (
-          <motion.div
+          <m.div
             id="mobile-menu"
             className="fixed inset-x-0 bottom-0 top-[68px] z-40 overflow-y-auto bg-bg lg:hidden"
             initial={{ opacity: 0, y: -8 }}
@@ -127,7 +127,7 @@ export function Navbar() {
             <div className="container-x flex min-h-full flex-col pb-10 pt-6">
               <ul className="divide-y divide-line border-y border-line">
                 {NAV_LINKS.map((l, i) => (
-                  <motion.li
+                  <m.li
                     key={l.id}
                     initial={{ opacity: 0, x: -10 }}
                     animate={{ opacity: 1, x: 0 }}
@@ -141,7 +141,7 @@ export function Navbar() {
                       {l.label}
                       <ArrowRight className="h-5 w-5 text-subtle" aria-hidden />
                     </a>
-                  </motion.li>
+                  </m.li>
                 ))}
               </ul>
               <div className="mt-8 flex items-center justify-between rounded-2xl border border-line bg-surface p-4">
@@ -157,7 +157,7 @@ export function Navbar() {
                 </span>
               </div>
             </div>
-          </motion.div>
+          </m.div>
         )}
       </AnimatePresence>
     </header>

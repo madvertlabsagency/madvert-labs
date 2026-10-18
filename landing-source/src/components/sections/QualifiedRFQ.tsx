@@ -1,6 +1,6 @@
 "use client";
 
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence, m } from "framer-motion";
 import { BadgeCheck, CalendarClock, FileImage, Mail, MapPin, Phone, Ruler, Package, Layers, Shapes } from "lucide-react";
 import { Reveal, EASE, AnimatedCheck, useSequence } from "../ui/motion";
 
@@ -69,14 +69,14 @@ export function QualifiedRFQ() {
 
 function Row({ show, children, className = "" }: { show: boolean; children: React.ReactNode; className?: string }) {
   return (
-    <motion.div
+    <m.div
       className={className}
       initial={false}
       animate={show ? { opacity: 1, y: 0, filter: "blur(0px)" } : { opacity: 0.12, y: 6, filter: "blur(2px)" }}
       transition={{ duration: 0.5, ease: EASE }}
     >
       {children}
-    </motion.div>
+    </m.div>
   );
 }
 
@@ -89,7 +89,7 @@ export function RFQCard() {
   return (
     <div ref={ref} className="relative">
       <div aria-hidden className="absolute -inset-10 -z-10 bg-[radial-gradient(ellipse_at_60%_40%,var(--glow),transparent_65%)]" />
-      <motion.div
+      <m.div
         className="card overflow-hidden shadow-lg"
         animate={qualified ? { boxShadow: "0 0 0 1px var(--accent-line), 0 40px 90px -40px rgba(0,190,255,0.55)" } : {}}
         transition={{ duration: 0.8 }}
@@ -97,30 +97,30 @@ export function RFQCard() {
         {/* Header */}
         <div className="flex items-center justify-between gap-3 border-b border-line bg-surface-2 px-5 py-3.5 sm:px-6">
           <div className="flex items-center gap-2.5">
-            <motion.span
+            <m.span
               className={`grid h-7 w-7 place-items-center rounded-lg ${qualified ? "bg-grad text-navy" : "bg-surface-3 text-subtle"}`}
               animate={qualified ? { scale: [1, 1.15, 1] } : {}}
             >
               <BadgeCheck className="h-4 w-4" aria-hidden />
-            </motion.span>
+            </m.span>
             <span className="text-[0.78rem] font-extrabold uppercase tracking-[0.14em]">
               {qualified ? "Qualified RFQ" : "Incoming RFQ"}
             </span>
           </div>
           <AnimatePresence mode="wait">
             {qualified ? (
-              <motion.span
+              <m.span
                 key="hi"
                 initial={{ opacity: 0, scale: 0.8 }}
                 animate={{ opacity: 1, scale: 1 }}
                 className="rounded-md border border-[var(--accent-line)] bg-accent-soft px-2.5 py-1 text-[0.66rem] font-extrabold uppercase tracking-[0.12em] text-accent"
               >
                 High intent
-              </motion.span>
+              </m.span>
             ) : (
-              <motion.span key="rv" exit={{ opacity: 0 }} className="label-tag">
+              <m.span key="rv" exit={{ opacity: 0 }} className="label-tag">
                 Reviewing…
-              </motion.span>
+              </m.span>
             )}
           </AnimatePresence>
         </div>
@@ -164,7 +164,7 @@ export function RFQCard() {
                   <span className="block">
                     <span className="text-[0.8rem] font-semibold text-muted">apex-logo.ai</span>
                     <span className="mt-1.5 block h-1.5 overflow-hidden rounded-full bg-surface-3">
-                      <motion.span
+                      <m.span
                         className="block h-full rounded-full bg-grad"
                         initial={{ width: "0%" }}
                         animate={{ width: uploading ? "100%" : "0%" }}
@@ -200,7 +200,7 @@ export function RFQCard() {
         </div>
 
         {/* Qualified footer */}
-        <motion.div
+        <m.div
           className="flex items-center justify-between gap-3 px-5 py-4 sm:px-6"
           initial={false}
           animate={{
@@ -213,8 +213,8 @@ export function RFQCard() {
             <AnimatedCheck show={qualified} className="h-5 w-5" />
           </span>
           <span className="text-[0.75rem] text-subtle">Meets criteria agreed before launch</span>
-        </motion.div>
-      </motion.div>
+        </m.div>
+      </m.div>
     </div>
   );
 }

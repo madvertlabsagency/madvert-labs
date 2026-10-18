@@ -1,18 +1,17 @@
 "use client";
 
-import { zodResolver } from "@hookform/resolvers/zod";
+import type { ResourceValues } from "@/forms/client-schemas";
+import { lazyResolver } from "@/forms/lazy-resolver";
 import { useRef, useState } from "react";
 import { useForm } from "react-hook-form";
-import { z } from "zod";
 import { trackConversion, trackLeadMagnet } from "@/analytics/track";
 import { Button, Cta } from "@/components/ui/Button";
 import { Honeypot, TextField, Turnstile, useFormMeta } from "@/forms/Fields";
-import { resourceRequestFields } from "@/forms/schemas";
 import { postJson } from "@/forms/submit";
 import type { Resource } from "@/types/content";
 
-const clientSchema = resourceRequestFields.extend({ website_confirm: z.string().optional() });
-type Values = z.input<typeof clientSchema>;
+type Values = ResourceValues;
+const resourceValidation = lazyResolver<Values>(() => import("@/forms/client-schemas").then((m) => m.resourceResolver));
 
 /** First name + email capture with a resource specific next step after submission. */
 export function LeadMagnetForm({ resource }: { resource: Resource }) {
@@ -27,7 +26,7 @@ export function LeadMagnetForm({ resource }: { resource: Resource }) {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<Values>({ resolver: zodResolver(clientSchema) as never });
+  } = useForm<Values>({ resolver: resourceValidation.resolver });
 
   const onSubmit = (e?: React.BaseSyntheticEvent) =>
     handleSubmit(async (values) => {
@@ -75,9 +74,11 @@ export function LeadMagnetForm({ resource }: { resource: Resource }) {
 
   return (
     <form
+      onPointerDownCapture={resourceValidation.preload}
       onSubmit={onSubmit}
       noValidate
       onFocusCapture={() => {
+        void resourceValidation.preload();
         if (startedRef.current) return;
         startedRef.current = true;
         startedAtRef.current = Date.now();

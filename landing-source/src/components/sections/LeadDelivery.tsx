@@ -1,6 +1,6 @@
 "use client";
 
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence, m } from "framer-motion";
 import { Bell, FileText, Image as ImageIcon, Mail, MessageCircle, MessageSquare, Phone, SquareKanban } from "lucide-react";
 import { Reveal, EASE, AnimatedCheck, useSequence } from "../ui/motion";
 import { VISUALS, VisualFrame } from "../ui/Visual";
@@ -38,7 +38,7 @@ export function LeadDelivery() {
             {CHANNELS.map((c, i) => {
               const on = step > i;
               return (
-                <motion.li
+                <m.li
                   key={c.name}
                   className="flex items-center gap-3.5 rounded-xl border bg-surface px-4 py-3"
                   animate={{
@@ -57,7 +57,7 @@ export function LeadDelivery() {
                   <span className="text-ok">
                     <AnimatedCheck show={on} className="h-5 w-5" />
                   </span>
-                </motion.li>
+                </m.li>
               );
             })}
           </ul>
@@ -75,7 +75,7 @@ export function LeadDelivery() {
           {/* Coded notification — the operational moment */}
           <AnimatePresence>
             {showCard && (
-              <motion.div
+              <m.div
                 className="card relative z-10 border-[var(--accent-line)] mx-auto mt-4 w-full max-w-[380px] p-4 shadow-lg lg:absolute lg:-bottom-10 lg:-left-12 lg:mx-0 lg:mt-0"
                 initial={{ opacity: 0, y: 24, scale: 0.96 }}
                 animate={{ opacity: 1, y: 0, scale: 1 }}
@@ -88,7 +88,7 @@ export function LeadDelivery() {
                 </div>
                 <p className="mt-2 text-lg font-extrabold leading-tight">500 Embroidered Patches</p>
                 <p className="mt-0.5 text-[0.85rem] text-muted">Artwork uploaded · Los Angeles, CA</p>
-                <motion.div
+                <m.div
                   className="mt-3.5 grid grid-cols-3 gap-1.5"
                   initial={false}
                   animate={{ opacity: showActions ? 1 : 0, y: showActions ? 0 : 6 }}
@@ -103,8 +103,8 @@ export function LeadDelivery() {
                   <span className="flex items-center justify-center gap-1 rounded-lg border border-line-strong px-2 py-2 text-[0.7rem] font-bold">
                     <ImageIcon className="h-3.5 w-3.5" aria-hidden /> View artwork
                   </span>
-                </motion.div>
-              </motion.div>
+                </m.div>
+              </m.div>
             )}
           </AnimatePresence>
         </div>

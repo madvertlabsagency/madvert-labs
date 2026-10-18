@@ -1,6 +1,7 @@
 "use client";
 
 import { useId } from "react";
+import { Deferred } from "@/components/perf/Deferred";
 import type { CSSProperties } from "react";
 import { useActiveStep, useInView, useInViewOnce } from "@/animations/useActiveStep";
 import { usePrefersReducedMotion } from "@/hooks/usePrefersReducedMotion";
@@ -450,7 +451,9 @@ export function DemandStory() {
                 </p>
               )}
               <div className="mt-6 lg:hidden">
-                <CompactVisual phase={i as Phase} />
+                <Deferred className="min-h-[220px]" rootMargin="600px 0px">
+                  <CompactVisual phase={i as Phase} />
+                </Deferred>
                 {i === 3 && <p className="mt-3 text-[12px] text-ink-3">Illustrative pattern, not client data.</p>}
               </div>
             </div>
@@ -459,7 +462,9 @@ export function DemandStory() {
       </ol>
       <div className="hidden lg:col-span-8 lg:block">
         <div className="od-sticky">
-          <Stage phase={phase} onPick={pick} />
+          <Deferred className="min-h-[520px]" rootMargin="600px 0px">
+            <Stage phase={phase} onPick={pick} />
+          </Deferred>
         </div>
       </div>
     </div>

@@ -37,3 +37,35 @@ export function caseKicker(s: CaseStudy): string {
 export function oneLiner(s: CaseStudy): string {
   return (isReal(s.oneLiner) ? s.oneLiner : s.summary) ?? "";
 }
+
+/**
+ * The fields a case study card needs, for passing to client components. Narrative sections
+ * (challenge, strategy, implementation, gallery…) stay on the server, which keeps them out of the
+ * page's RSC payload; the full story is rendered on the case study's own page.
+ */
+export function toCardStudy(s: CaseStudy): CaseStudy {
+  return {
+    slug: s.slug,
+    title: s.title,
+    client: s.client,
+    industry: s.industry,
+    market: s.market,
+    region: s.region,
+    categories: s.categories,
+    services: s.services,
+    systemType: s.systemType,
+    summary: s.summary,
+    oneLiner: s.oneLiner,
+    metrics: verifiedMetrics(s).slice(0, 3),
+    cover: s.cover,
+    featuredImage: s.featuredImage,
+    pdfUrl: s.pdfUrl,
+    featured: s.featured,
+    placeholder: s.placeholder,
+    problem: "",
+    diagnosis: "",
+    move: "",
+    system: "",
+    result: "",
+  };
+}

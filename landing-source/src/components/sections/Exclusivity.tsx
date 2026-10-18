@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 import { ArrowDown, Cpu, Store, SquareKanban } from "lucide-react";
 import { Reveal, EASE, useSequence } from "../ui/motion";
 
@@ -80,7 +80,7 @@ function FlowDiagram() {
         const on = step >= i * 2 + 1;
         return (
           <div key={n.title}>
-            <motion.div
+            <m.div
               className={`relative rounded-2xl border p-5 ${
                 n.tone === "brand"
                   ? "border-[var(--accent-line)] bg-surface shadow-lg"
@@ -101,10 +101,10 @@ function FlowDiagram() {
                   <p className="text-[0.85rem] text-muted">{n.note}</p>
                 </div>
               </div>
-            </motion.div>
+            </m.div>
             {i < nodes.length - 1 && (
               <div className="relative mx-auto flex h-14 w-px justify-center bg-line" aria-hidden>
-                <motion.span
+                <m.span
                   className="absolute inset-x-0 top-0 bg-grad"
                   initial={{ height: 0 }}
                   animate={{ height: step >= i * 2 + 2 ? "100%" : 0 }}

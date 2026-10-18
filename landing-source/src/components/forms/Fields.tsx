@@ -1,6 +1,6 @@
 "use client";
 
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence, m } from "framer-motion";
 import { Check } from "lucide-react";
 
 /* Shared form fields: large, thumb-friendly controls with inline validation messages. */
@@ -11,7 +11,7 @@ export function FieldError({ id, error }: { id: string; error?: string }) {
   return (
     <AnimatePresence>
       {error && (
-        <motion.p
+        <m.p
           id={`e-${id}`}
           role="alert"
           className="mt-1.5 text-[0.8rem] font-semibold text-red-600 dark:text-red-300"
@@ -20,7 +20,7 @@ export function FieldError({ id, error }: { id: string; error?: string }) {
           exit={{ opacity: 0 }}
         >
           {error}
-        </motion.p>
+        </m.p>
       )}
     </AnimatePresence>
   );
@@ -69,14 +69,14 @@ export function Text({
         />
         <AnimatePresence>
           {valid && (
-            <motion.span
+            <m.span
               className="pointer-events-none absolute right-3 top-1/2 grid h-5 w-5 -translate-y-1/2 place-items-center rounded-full bg-accent-soft text-accent"
               initial={{ scale: 0, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 0, opacity: 0 }}
             >
               <Check className="h-3 w-3" strokeWidth={3} aria-hidden />
-            </motion.span>
+            </m.span>
           )}
         </AnimatePresence>
       </div>

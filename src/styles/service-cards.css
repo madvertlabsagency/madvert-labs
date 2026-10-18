@@ -300,3 +300,9 @@
 @keyframes mo-shape { 0%, 50% { opacity: 0; transform: rotate(-90deg) scale(0.5); } 68%, 100% { opacity: 1; transform: none; } }
 .mo-render { animation-name: mo-render; }
 @keyframes mo-render { 0%, 80% { opacity: 0; transform: translateY(4px); } 88%, 100% { opacity: 1; transform: none; } }
+
+/* Space reserved for a card illustration before it mounts (no layout shift). */
+.scv-defer {
+  aspect-ratio: 280 / 156;
+  width: 100%;
+}

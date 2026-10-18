@@ -1,6 +1,6 @@
 "use client";
 
-import { motion, useInView, useReducedMotion } from "framer-motion";
+import { m, useInView, useReducedMotion } from "framer-motion";
 import Image from "next/image";
 import { useRef } from "react";
 import { EASE } from "./motion";
@@ -42,19 +42,19 @@ export function RegionReveal({
 
   return (
     <div ref={ref} className={`relative ${className}`}>
-      <motion.div
+      <m.div
         initial={{ opacity: reduce ? 1 : 0 }}
         animate={inView ? { opacity: 1 } : {}}
         transition={{ delay: reduce ? 0 : total, duration: 0.6 }}
         onAnimationComplete={() => inView && onDone?.()}
       >
         <Image src={asset.src} alt={asset.alt} width={asset.width} height={asset.height} sizes={sizes} className="h-auto w-full" />
-      </motion.div>
+      </m.div>
       {!reduce &&
         regions.map((r, i) => {
           const [t, rgt, b, l] = r.inset.split(" ");
           return (
-            <motion.div
+            <m.div
               key={r.inset}
               aria-hidden
               className="pointer-events-none absolute inset-0"
@@ -68,7 +68,7 @@ export function RegionReveal({
               }}
             >
               <Image src={asset.src} alt="" fill sizes={sizes} className="object-cover" />
-            </motion.div>
+            </m.div>
           );
         })}
       {children?.(inView, inView)}

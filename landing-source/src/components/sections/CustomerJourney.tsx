@@ -1,6 +1,6 @@
 "use client";
 
-import { AnimatePresence, motion, useMotionValueEvent, useReducedMotion, useScroll, useTransform } from "framer-motion";
+import { AnimatePresence, m, useMotionValueEvent, useReducedMotion, useScroll, useTransform } from "framer-motion";
 import { useRef, useState } from "react";
 import { Reveal, EASE } from "../ui/motion";
 import { VISUALS, VisualFrame } from "../ui/Visual";
@@ -93,7 +93,7 @@ function JourneyScroller() {
           {/* Desktop step list */}
           <ol className="relative hidden lg:col-span-6 lg:block" aria-label="Customer journey steps">
             <span aria-hidden className="absolute bottom-3 left-[1.05rem] top-3 w-[2px] rounded bg-line">
-              <motion.span className="absolute inset-x-0 top-0 rounded bg-grad" style={{ height: fill }} />
+              <m.span className="absolute inset-x-0 top-0 rounded bg-grad" style={{ height: fill }} />
             </span>
             {STEPS.map((s, i) => {
               const isActive = i === active;
@@ -117,7 +117,7 @@ function JourneyScroller() {
                     </p>
                     <AnimatePresence initial={false}>
                       {isActive && (
-                        <motion.p
+                        <m.p
                           className="overflow-hidden text-[0.9rem] leading-relaxed text-muted"
                           initial={{ height: 0, opacity: 0 }}
                           animate={{ height: "auto", opacity: 1 }}
@@ -125,7 +125,7 @@ function JourneyScroller() {
                           transition={{ duration: 0.35, ease: EASE }}
                         >
                           <span className="block pt-1">{s.d}</span>
-                        </motion.p>
+                        </m.p>
                       )}
                     </AnimatePresence>
                   </div>
@@ -140,7 +140,7 @@ function JourneyScroller() {
               Step {String(active + 1).padStart(2, "0")} / {STEPS.length}
             </p>
             <AnimatePresence mode="wait">
-              <motion.div
+              <m.div
                 key={active}
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -149,7 +149,7 @@ function JourneyScroller() {
               >
                 <p className="mt-1.5 text-[1.15rem] font-extrabold leading-tight sm:text-xl">{STEPS[active].t}</p>
                 <p className="mx-auto mt-1 max-w-sm text-[0.85rem] leading-snug text-muted">{STEPS[active].d}</p>
-              </motion.div>
+              </m.div>
             </AnimatePresence>
           </div>
 
@@ -159,7 +159,7 @@ function JourneyScroller() {
               <PhoneShell className="w-[236px] sm:w-[268px] lg:w-[300px]">
                 <div className="relative h-[352px] sm:h-[392px] lg:h-[410px]">
                   <AnimatePresence mode="wait" initial={false}>
-                    <motion.div
+                    <m.div
                       key={active}
                       className="absolute inset-0"
                       initial={reduce ? false : { opacity: 0, x: 24 }}
@@ -168,12 +168,12 @@ function JourneyScroller() {
                       transition={{ duration: 0.3, ease: EASE }}
                     >
                       <JourneyScreen index={active} active />
-                    </motion.div>
+                    </m.div>
                   </AnimatePresence>
                 </div>
               </PhoneShell>
               {/* The travelling RFQ object */}
-              <motion.span
+              <m.span
                 aria-hidden
                 className="absolute -right-3 top-8 hidden h-3.5 w-3.5 rounded-full bg-brand-cyan shadow-[0_0_18px_6px_rgba(0,229,255,0.55)] sm:block"
                 style={{ top: dotTop }}

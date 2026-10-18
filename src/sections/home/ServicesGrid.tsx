@@ -1,7 +1,8 @@
 import Link from "next/link";
 import { Arrow } from "@/components/ui/Button";
 import { Eyebrow } from "@/components/ui/Section";
-import { ServiceVisual, type ServiceVisualKey } from "@/components/visuals/service-cards/ServiceVisuals";
+import type { ServiceVisualKey } from "@/components/visuals/service-cards/ServiceVisuals";
+import { ServiceVisualDeferred } from "@/components/visuals/service-cards/ServiceVisualDeferred";
 import { ServiceCardsLive } from "@/components/visuals/service-cards/ServiceCardsLive";
 import { GrowthSystem } from "@/components/visuals/growth-system/GrowthSystem";
 import "@/styles/service-cards.css";
@@ -28,7 +29,7 @@ function Card({ s, i }: { s: Svc; i: number }) {
       data-track-label={s.key}
       className="svc-card group/btn flex h-full flex-col rounded-[24px] border border-line bg-[var(--surface-card)] p-5 backdrop-blur-sm"
     >
-      <ServiceVisual name={s.visual} />
+      <ServiceVisualDeferred name={s.visual} />
       <p className="mt-5 font-display text-[11.5px] font-semibold uppercase tracking-[0.16em] text-accent-text">{s.title}</p>
       <h3 className="mt-2 font-display text-[18px] font-semibold leading-snug tracking-tight text-ink">{s.headline}</h3>
       <p className="mt-2 text-[14px] leading-relaxed text-ink-3">{s.body}</p>

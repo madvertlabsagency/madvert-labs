@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 import { Check, Circle } from "lucide-react";
 import { Reveal } from "../ui/motion";
 import { RegionReveal } from "../ui/RegionReveal";
@@ -71,7 +71,7 @@ export function ModelComparison() {
                 ]}
               >
                 {(inView) => (
-                  <motion.span
+                  <m.span
                     aria-hidden
                     className="pointer-events-none absolute left-[64.9%] top-[21.8%] h-[64.4%] w-[33%] rounded-[2%]"
                     initial={{ opacity: 0 }}

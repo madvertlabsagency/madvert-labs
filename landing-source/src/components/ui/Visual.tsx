@@ -1,6 +1,6 @@
 "use client";
 
-import { AnimatePresence, motion, useScroll, useTransform, useReducedMotion } from "framer-motion";
+import { AnimatePresence, m, useScroll, useTransform, useReducedMotion } from "framer-motion";
 import { Expand, X } from "lucide-react";
 import Image from "next/image";
 import { useCallback, useEffect, useRef, useState } from "react";
@@ -40,7 +40,7 @@ export function Lightbox({ asset, open, onClose }: { asset: VisualAsset; open: b
   return createPortal(
     <AnimatePresence>
       {open && (
-        <motion.div
+        <m.div
           role="dialog"
           aria-modal="true"
           aria-label={asset.alt}
@@ -59,7 +59,7 @@ export function Lightbox({ asset, open, onClose }: { asset: VisualAsset; open: b
           >
             <X className="h-5 w-5" />
           </button>
-          <motion.div
+          <m.div
             className="max-h-full w-full max-w-[1600px] overflow-auto"
             initial={{ scale: 0.96, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
@@ -70,9 +70,9 @@ export function Lightbox({ asset, open, onClose }: { asset: VisualAsset; open: b
             <div className="min-w-[760px] sm:min-w-0">
               <Image src={asset.src} alt={asset.alt} width={asset.width} height={asset.height} sizes="100vw" className="h-auto w-full rounded-xl" />
             </div>
-          </motion.div>
+          </m.div>
           <p className="absolute bottom-4 left-0 right-0 text-center text-xs text-white/60 sm:hidden">Scroll sideways to explore · tap outside to close</p>
-        </motion.div>
+        </m.div>
       )}
     </AnimatePresence>,
     document.body,
@@ -133,7 +133,7 @@ export function VisualFrame({
   const lb = useLightbox();
 
   return (
-    <motion.div ref={ref} style={{ y }} className={`visual-frame ${className}`}>
+    <m.div ref={ref} style={{ y }} className={`visual-frame ${className}`}>
       {label && (
         <div className="flex items-center gap-2 px-2 pb-2 pt-1">
           <span className="flex gap-1.5" aria-hidden>
@@ -147,7 +147,7 @@ export function VisualFrame({
       <div className="visual-frame-inner">
         {/* Full composition */}
         <div className={mobileCrop ? "hidden md:block" : ""}>
-          <motion.div style={{ scale }}>
+          <m.div style={{ scale }}>
             <Image
               src={asset.src}
               alt={asset.alt}
@@ -158,7 +158,7 @@ export function VisualFrame({
               className="h-auto w-full select-none"
               draggable={false}
             />
-          </motion.div>
+          </m.div>
         </div>
         {/* Mobile detail crop */}
         {mobileCrop && (
@@ -177,6 +177,6 @@ export function VisualFrame({
         {expandable && <ExpandButton onClick={lb.show} label={mobileCrop ? "View full visual" : "Expand"} />}
       </div>
       {expandable && <Lightbox asset={asset} open={lb.open} onClose={lb.hide} />}
-    </motion.div>
+    </m.div>
   );
 }

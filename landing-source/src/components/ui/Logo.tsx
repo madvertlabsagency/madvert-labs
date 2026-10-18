@@ -7,7 +7,7 @@ export function Logo({ className = "h-8 w-auto", forceDark = false }: { classNam
     <span className="inline-flex items-center" aria-label="Madvert Labs">
       {!forceDark && (
         <Image
-          src={asset("/brand/logo-on-light-nav.png")}
+          src={asset("/brand/logo-on-light-nav.webp")}
           alt="Madvert Labs"
           width={1217}
           height={258}
@@ -16,12 +16,12 @@ export function Logo({ className = "h-8 w-auto", forceDark = false }: { classNam
         />
       )}
       <Image
-        src={asset("/brand/logo-on-dark.png")}
+        src={asset("/brand/logo-on-dark.webp")}
         alt={forceDark ? "Madvert Labs" : ""}
         aria-hidden={!forceDark}
         width={1161}
         height={282}
-        priority
+        priority={forceDark}
         className={`${className} ${forceDark ? "" : "hidden dark:block"}`}
       />
     </span>

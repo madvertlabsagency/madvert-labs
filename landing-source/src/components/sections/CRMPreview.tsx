@@ -1,6 +1,6 @@
 "use client";
 
-import { LayoutGroup, motion } from "framer-motion";
+import { LayoutGroup, m } from "framer-motion";
 import { BarChart3, FileText, Inbox, LayoutDashboard, RotateCcw, Settings, SquareKanban, Users } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 import { DemoTag } from "../ui/primitives";
@@ -172,7 +172,7 @@ function Dashboard({ onReplay }: { onReplay: () => void }) {
                       </div>
                       <div className="grid min-h-[150px] content-start gap-1.5">
                         {ci === pos && (
-                          <motion.div
+                          <m.div
                             layoutId="featured-rfq"
                             className="rounded-lg border border-[var(--accent-line)] bg-surface p-2.5 shadow-md"
                             transition={{ type: "spring", stiffness: 260, damping: 30 }}
@@ -192,7 +192,7 @@ function Dashboard({ onReplay }: { onReplay: () => void }) {
                             >
                               {pos === 6 ? "Won" : STAGES[pos]}
                             </span>
-                          </motion.div>
+                          </m.div>
                         )}
                         {fillers.map((f, k) => (
                           <div key={k} className={`rounded-lg border border-line bg-surface p-2.5 ${muted ? "opacity-60" : ""}`}>

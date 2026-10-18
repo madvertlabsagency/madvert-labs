@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 import { Building2, Handshake, Phone, UserPlus } from "lucide-react";
 import { Reveal, EASE, useSequence } from "../ui/motion";
 
@@ -97,7 +97,7 @@ function CapacityGauge() {
         <Bar label="Production capacity" value={72} tone="neutral" show={step >= 1} />
         <Bar label="Pipeline demand" value={demand} tone="accent" show={step >= 1} />
       </div>
-      <motion.div
+      <m.div
         className="mt-7 rounded-xl border border-line bg-surface-2 p-4 text-[0.88rem] leading-relaxed"
         animate={{ opacity: step >= 2 ? 1 : 0.55 }}
       >
@@ -109,7 +109,7 @@ function CapacityGauge() {
         ) : (
           <span className="text-muted">Idle machines and a quiet inbox — the gap most manufacturers live with.</span>
         )}
-      </motion.div>
+      </m.div>
     </div>
   );
 }
@@ -119,12 +119,12 @@ function Bar({ label, value, tone, show }: { label: string; value: number; tone:
     <div>
       <div className="flex items-baseline justify-between">
         <span className="text-[0.72rem] font-bold uppercase tracking-[0.12em] text-muted">{label}</span>
-        <motion.span key={value} className="font-mono text-xl font-bold" initial={{ opacity: 0, y: 6 }} animate={{ opacity: 1, y: 0 }}>
+        <m.span key={value} className="font-mono text-xl font-bold" initial={{ opacity: 0, y: 6 }} animate={{ opacity: 1, y: 0 }}>
           {show ? value : 0}%
-        </motion.span>
+        </m.span>
       </div>
       <div className="mt-2.5 h-3 overflow-hidden rounded-full bg-surface-3">
-        <motion.div
+        <m.div
           className={`h-full rounded-full ${tone === "accent" ? "bg-grad" : "bg-fg/70"}`}
           initial={{ width: 0 }}
           animate={{ width: show ? `${value}%` : 0 }}

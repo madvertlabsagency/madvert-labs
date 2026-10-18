@@ -39,7 +39,7 @@ const steps = [
 ];
 
 export function ProblemStory() {
-  return <StickyStory steps={steps} stage={(a) => <ProblemStage step={a} />} />;
+  return <StickyStory steps={steps} stage={(a) => <ProblemStage step={a} />} stageAspect="640 / 485" />;
 }
 
 const GREEN = "var(--success)";

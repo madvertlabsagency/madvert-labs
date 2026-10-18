@@ -1,6 +1,6 @@
 "use client";
 
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence, m } from "framer-motion";
 import { AlertCircle, ArrowRight, CalendarCheck, Check, Loader2, Lock } from "lucide-react";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { track } from "@/lib/analytics";
@@ -67,7 +67,7 @@ export function BookingSection({ instance = "book-call" }: { instance?: BookingI
         <div className="mx-auto mt-6 max-w-4xl">
           <AnimatePresence mode="wait" initial={false}>
             {here ? (
-              <motion.div
+              <m.div
                 key="calendar"
                 id={`${instance}-calendar`}
                 className="card scroll-mt-24 p-2 shadow-lg sm:p-4"
@@ -87,10 +87,10 @@ export function BookingSection({ instance = "book-call" }: { instance?: BookingI
                   </p>
                 </div>
                 <GhlCalendar />
-              </motion.div>
+              </m.div>
             ) : elsewhere ? (
               // The calendar is already open in the other booking section; don't load it twice.
-              <motion.div key="elsewhere" className="card p-6 text-center shadow-md sm:p-8" initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
+              <m.div key="elsewhere" className="card p-6 text-center shadow-md sm:p-8" initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
                 <p className="text-lg font-bold">You&rsquo;re one step away — pick a time for your call.</p>
                 <button
                   type="button"
@@ -99,11 +99,11 @@ export function BookingSection({ instance = "book-call" }: { instance?: BookingI
                 >
                   <CalendarCheck className="h-4 w-4" aria-hidden /> Go to the calendar
                 </button>
-              </motion.div>
+              </m.div>
             ) : (
-              <motion.div key="form" initial={false} exit={{ opacity: 0, y: -10 }} transition={{ duration: 0.25 }}>
+              <m.div key="form" initial={false} exit={{ opacity: 0, y: -10 }} transition={{ duration: 0.25 }}>
                 <DiscoveryForm instance={instance} />
-              </motion.div>
+              </m.div>
             )}
           </AnimatePresence>
         </div>
@@ -197,7 +197,7 @@ function DiscoveryForm({ instance }: { instance: BookingInstance }) {
 
       <AnimatePresence>
         {status.kind === "error" && (
-          <motion.div
+          <m.div
             role="alert"
             className="mx-5 mb-2 rounded-xl border border-red-500/30 bg-red-500/10 px-4 py-3 text-[0.9rem] sm:mx-8"
             initial={{ opacity: 0, y: -4 }}
@@ -212,7 +212,7 @@ function DiscoveryForm({ instance }: { instance: BookingInstance }) {
                 Try again
               </button>
             </div>
-          </motion.div>
+          </m.div>
         )}
       </AnimatePresence>
 

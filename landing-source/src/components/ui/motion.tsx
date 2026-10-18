@@ -1,6 +1,6 @@
 "use client";
 
-import { motion, useInView, useReducedMotion, type Variants } from "framer-motion";
+import { m, useInView, useReducedMotion, type Variants } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
 
 export const EASE = [0.2, 0.7, 0.2, 1] as const;
@@ -29,7 +29,7 @@ export function Reveal({
   y?: number;
   as?: "div" | "li" | "section" | "p" | "span";
 }) {
-  const Comp = motion[as] as typeof motion.div;
+  const Comp = m[as] as typeof m.div;
   return (
     <Comp
       className={className}
@@ -46,7 +46,7 @@ export function Reveal({
 /** Clip-path mask reveal for headlines and visuals. */
 export function MaskReveal({ children, className, delay = 0 }: { children: React.ReactNode; className?: string; delay?: number }) {
   return (
-    <motion.div
+    <m.div
       className={className}
       initial={{ clipPath: "inset(0 0 100% 0)", opacity: 0.2 }}
       whileInView={{ clipPath: "inset(0 0 0% 0)", opacity: 1 }}
@@ -54,7 +54,7 @@ export function MaskReveal({ children, className, delay = 0 }: { children: React
       transition={{ duration: 0.9, ease: EASE, delay }}
     >
       {children}
-    </motion.div>
+    </m.div>
   );
 }
 
@@ -92,7 +92,7 @@ export function useSequence(total: number, { interval = 600, startDelay = 250, l
 export function AnimatedCheck({ show = true, className = "h-4 w-4", delay = 0 }: { show?: boolean; className?: string; delay?: number }) {
   return (
     <svg viewBox="0 0 24 24" className={className} fill="none" aria-hidden>
-      <motion.path
+      <m.path
         d="M5 12.5l4.2 4.2L19 7"
         stroke="currentColor"
         strokeWidth={2.6}

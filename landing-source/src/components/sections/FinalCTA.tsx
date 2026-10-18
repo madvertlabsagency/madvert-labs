@@ -1,6 +1,6 @@
 "use client";
 
-import { motion, useScroll, useTransform, useReducedMotion } from "framer-motion";
+import { m, useScroll, useTransform, useReducedMotion } from "framer-motion";
 import Image from "next/image";
 import { useRef } from "react";
 import { track } from "@/lib/analytics";
@@ -19,9 +19,9 @@ export function FinalCTA() {
     <section ref={ref} aria-labelledby="final-title" className="theme-dark relative overflow-clip">
       <div aria-hidden className="pointer-events-none absolute inset-0">
         <div className="grid-texture absolute inset-0 opacity-60" />
-        <motion.div style={{ y, opacity: glow }} className="absolute left-1/2 top-1/2 w-[min(820px,130vw)] -translate-x-1/2 -translate-y-1/2 blur-[2px]">
+        <m.div style={{ y, opacity: glow }} className="absolute left-1/2 top-1/2 w-[min(820px,130vw)] -translate-x-1/2 -translate-y-1/2 blur-[2px]">
           <Image src={asset("/brand/mark-glow.webp")} alt="" width={600} height={600} className="h-auto w-full mix-blend-screen" />
-        </motion.div>
+        </m.div>
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_20%,var(--bg)_75%)]" />
       </div>
       <div className="container-x relative py-28 text-center sm:py-36 lg:py-44">

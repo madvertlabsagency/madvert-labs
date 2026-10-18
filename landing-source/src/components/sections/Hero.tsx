@@ -1,6 +1,6 @@
 "use client";
 
-import { motion, useReducedMotion } from "framer-motion";
+import { m, useReducedMotion } from "framer-motion";
 import { track } from "@/lib/analytics";
 import { VSL } from "@/lib/site";
 import { ApplyButton } from "../ui/primitives";
@@ -23,7 +23,7 @@ export function Hero() {
       </div>
 
       <div className="container-x pb-16 pt-8 text-center sm:pb-20 sm:pt-14 lg:pb-24 lg:pt-16">
-        <motion.p
+        <m.p
           className="chip chip-accent mx-auto !px-3 !py-1.5 !text-[0.56rem] !tracking-[0.08em] uppercase sm:!text-[0.66rem] sm:!tracking-[0.14em]"
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
@@ -31,31 +31,31 @@ export function Hero() {
         >
           <span className="h-1.5 w-1.5 rounded-full bg-grad pulse-dot" aria-hidden />
           For custom patch &amp; embroidery businesses in the USA
-        </motion.p>
+        </m.p>
 
         <h1
           id="hero-title"
           className="display mx-auto mt-5 max-w-5xl normal-case tracking-[-0.03em] [text-wrap:wrap] sm:uppercase sm:tracking-[-0.038em] sm:[text-wrap:balance] text-[clamp(1.1rem,5.35vw,1.6rem)] !leading-[1.05] sm:mt-6 sm:text-[clamp(2.2rem,6.4vw,4.9rem)] sm:!leading-[0.98]"
         >
-          <motion.span
+          <m.span
             className="block"
             initial={reduce ? false : { clipPath: "inset(0 0 100% 0)", y: 20 }}
             animate={{ clipPath: "inset(0 0 0% 0)", y: 0 }}
             transition={{ duration: 0.9, ease: EASE, delay: 0.1 }}
           >
             Run a custom patch or embroidery business in the USA?
-          </motion.span>
-          <motion.span
+          </m.span>
+          <m.span
             className="mt-1 block text-grad sm:mt-2"
             initial={reduce ? false : { clipPath: "inset(0 0 100% 0)", y: 20 }}
             animate={{ clipPath: "inset(0 0 0% 0)", y: 0 }}
             transition={{ duration: 0.9, ease: EASE, delay: 0.3 }}
           >
             You&rsquo;re in the right place.
-          </motion.span>
+          </m.span>
         </h1>
 
-        <motion.p
+        <m.p
           className="mx-auto mt-4 max-w-3xl text-[0.86rem] leading-[1.5] text-muted sm:mt-6 sm:text-[clamp(1.05rem,1.5vw,1.3rem)] sm:leading-relaxed"
           initial={{ opacity: 0, y: 14 }}
           animate={{ opacity: 1, y: 0 }}
@@ -63,10 +63,10 @@ export function Hero() {
         >
           We build and run the system that turns U.S. buyers into a daily flow of pre-qualified patch order requests for your sales
           team.
-        </motion.p>
+        </m.p>
 
         {/* VSL */}
-        <motion.div
+        <m.div
           className="relative mx-auto mt-8 max-w-4xl text-left sm:mt-10"
           initial={reduce ? false : { opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
@@ -84,11 +84,11 @@ export function Hero() {
                 Watch: how the Patches Partnership works · {VSL.duration}
               </span>
             </div>
-            <VideoPlayer location="hero" preload="metadata" className="rounded-[0.85rem]" />
+            <VideoPlayer location="hero" preload="none" className="rounded-[0.85rem]" />
           </div>
-        </motion.div>
+        </m.div>
 
-        <motion.div
+        <m.div
           className="mt-8 flex flex-col items-center gap-3 sm:mt-10"
           initial={{ opacity: 0, y: 14 }}
           animate={{ opacity: 1, y: 0 }}
@@ -99,7 +99,7 @@ export function Hero() {
             onClick={() => track("HeroCTA", { location: "hero" })}
           />
           <p className="text-[0.8rem] text-subtle">Founding beta · $15 per accepted qualified RFQ · Meta ad spend included</p>
-        </motion.div>
+        </m.div>
       </div>
     </section>
   );

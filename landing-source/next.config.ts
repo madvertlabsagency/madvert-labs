@@ -15,6 +15,10 @@ const BASE_PATH = EXPORT ? "/custom-patches" : "";
 
 const nextConfig: NextConfig = {
   reactStrictMode: true,
+  // This app lives inside the main site's repo: pin the root so Next never picks up the parent
+  // project's files (e.g. its src/proxy.ts) when it detects two lockfiles.
+  turbopack: { root: process.cwd() },
+  outputFileTracingRoot: process.cwd(),
   poweredByHeader: false,
   ...(EXPORT
     ? {

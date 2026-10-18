@@ -5,6 +5,7 @@ import { useRef } from "react";
 import { useScrollScene } from "@/animations/gsap";
 import { Cta, Arrow } from "@/components/ui/Button";
 import { PillarWorld } from "@/components/visuals/PillarWorld";
+import { Deferred } from "@/components/perf/Deferred";
 import { pillars } from "@/lib/site";
 
 /** Accent per pillar for the index number (each world carries its own full palette). */
@@ -93,7 +94,10 @@ export function PillarsGallery() {
                     </div>
                   </div>
                   <div className="order-1 md:order-2">
-                    <PillarWorld icon={p.icon} className="mx-auto max-w-[480px]" />
+                    {/* Decorative scene: mounted near the viewport (wide horizontal margin for the pinned gallery). */}
+                    <Deferred className="mx-auto aspect-[5/4] w-full max-w-[480px]" rootMargin="900px 4000px">
+                      <PillarWorld icon={p.icon} className="mx-auto max-w-[480px]" />
+                    </Deferred>
                   </div>
                 </article>
               </li>

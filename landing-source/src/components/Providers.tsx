@@ -1,6 +1,6 @@
 "use client";
 
-import { MotionConfig } from "framer-motion";
+import { domAnimation, LazyMotion, MotionConfig } from "framer-motion";
 import { useEffect } from "react";
 import { AnchorScroll } from "./AnchorScroll";
 import { BookingProvider } from "./BookingContext";
@@ -17,10 +17,13 @@ export function Providers({ children }: { children: React.ReactNode }) {
   return (
     <ThemeProvider>
       <BookingProvider>
-        <MotionConfig reducedMotion="user">
-          <AnchorScroll />
-          {children}
-        </MotionConfig>
+        {/* LazyMotion + `m` components: only the DOM animation features ship, not the full motion bundle. */}
+        <LazyMotion features={domAnimation}>
+          <MotionConfig reducedMotion="user">
+            <AnchorScroll />
+            {children}
+          </MotionConfig>
+        </LazyMotion>
       </BookingProvider>
     </ThemeProvider>
   );

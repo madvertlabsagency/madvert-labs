@@ -2,6 +2,7 @@
 
 import type { ReactNode } from "react";
 import { useActiveStep } from "@/animations/useActiveStep";
+import { Deferred } from "@/components/perf/Deferred";
 
 /**
  * Scrollytelling layout.
@@ -17,13 +18,28 @@ export function StickyStory({
   stageSide = "right",
   className = "",
   stepClassName = "",
+  stageAspect,
 }: {
   steps: ReactNode[];
   stage: (active: number) => ReactNode;
   stageSide?: "left" | "right";
   className?: string;
   stepClassName?: string;
+  /**
+   * CSS aspect ratio of the stage (e.g. "640 / 470"). When set, stages are decorative and mount
+   * only near the viewport, and only the variant for the current breakpoint ever mounts
+   * (a hidden stage never intersects).
+   */
+  stageAspect?: string;
 }) {
+  const lazy = (node: ReactNode) =>
+    stageAspect ? (
+      <Deferred style={{ aspectRatio: stageAspect }} rootMargin="600px 0px">
+        {node}
+      </Deferred>
+    ) : (
+      node
+    );
   const { active, bind } = useActiveStep<HTMLLIElement>(steps.length, 0.5);
   return (
     <div className={`relative grid grid-cols-1 lg:grid-cols-12 lg:gap-12 ${className}`}>
@@ -32,7 +48,7 @@ export function StickyStory({
           stageSide === "right" ? "lg:order-2 lg:col-span-6 lg:col-start-7" : "lg:col-span-6"
         }`}
       >
-        <div className="mx-auto max-w-[620px]">{stage(active)}</div>
+        <div className="mx-auto max-w-[620px]">{lazy(stage(active))}</div>
       </div>
       <ol className={`relative lg:col-span-5 ${stageSide === "right" ? "lg:order-1" : "lg:col-start-8"}`}>
         {steps.map((s, i) => (
@@ -46,7 +62,7 @@ export function StickyStory({
           >
             <div className="w-full">
               <div className="mx-auto mb-6 max-w-[520px] lg:hidden" aria-hidden="true">
-                {stage(active >= i ? i : Math.max(0, i - 1))}
+                {lazy(stage(active >= i ? i : Math.max(0, i - 1)))}
               </div>
               {s}
             </div>

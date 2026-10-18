@@ -1,6 +1,6 @@
 "use client";
 
-import { motion, useInView } from "framer-motion";
+import { m, useInView } from "framer-motion";
 import { Check } from "lucide-react";
 import { useEffect, useRef } from "react";
 import { track } from "@/lib/analytics";
@@ -46,17 +46,17 @@ export function BetaPricing() {
       <div className="container-x section-y relative">
         <div ref={ref} className="grid items-center gap-14 lg:grid-cols-12 lg:gap-12">
           <div className="lg:col-span-7">
-            <motion.p className="eyebrow" {...show(1)}>
+            <m.p className="eyebrow" {...show(1)}>
               Founding beta
-            </motion.p>
+            </m.p>
             <h2 id="pricing-title" className="display mt-4 text-[clamp(2.1rem,4.4vw,3.6rem)]">
-              <motion.span className="block" {...show(1)}>
+              <m.span className="block" {...show(1)}>
                 One simple price.
-              </motion.span>
+              </m.span>
             </h2>
 
             <div className="mt-6 flex flex-wrap items-end gap-x-6 gap-y-2">
-              <motion.p
+              <m.p
                 className="text-[clamp(6.5rem,17vw,11.5rem)] font-extrabold leading-[0.8] tracking-[-0.07em]"
                 initial={false}
                 animate={step >= 2 ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.85 }}
@@ -64,17 +64,17 @@ export function BetaPricing() {
                 style={{ transformOrigin: "left bottom" }}
               >
                 <span className="text-grad">$15</span>
-              </motion.p>
-              <motion.p className="pb-3 text-[clamp(1.15rem,2vw,1.6rem)] font-extrabold uppercase leading-[1.05] tracking-[-0.01em]" {...show(3)}>
+              </m.p>
+              <m.p className="pb-3 text-[clamp(1.15rem,2vw,1.6rem)] font-extrabold uppercase leading-[1.05] tracking-[-0.01em]" {...show(3)}>
                 Per accepted
                 <br />
                 qualified RFQ
-              </motion.p>
+              </m.p>
             </div>
 
             <ul className="mt-8 grid gap-2.5 sm:grid-cols-3">
               {KEY_POINTS.map((k, i) => (
-                <motion.li
+                <m.li
                   key={k}
                   className="flex items-center gap-2.5 rounded-xl border border-[var(--accent-line)] bg-accent-soft px-3.5 py-3 text-[0.82rem] font-extrabold uppercase leading-tight tracking-[0.04em]"
                   {...show(4 + i)}
@@ -83,7 +83,7 @@ export function BetaPricing() {
                     <Check className="h-3 w-3" strokeWidth={3.2} aria-hidden />
                   </span>
                   {k}
-                </motion.li>
+                </m.li>
               ))}
             </ul>
           </div>
@@ -100,12 +100,12 @@ export function BetaPricing() {
           <p className="label-tag">Included in the $15</p>
           <ul className="mt-4 grid grid-cols-2 gap-2 sm:grid-cols-3 lg:grid-cols-5">
             {BADGES.map((b, i) => (
-              <motion.li key={b} className="flex items-center gap-2.5 rounded-xl border border-line bg-surface px-3.5 py-3" {...show(7 + i)}>
+              <m.li key={b} className="flex items-center gap-2.5 rounded-xl border border-line bg-surface px-3.5 py-3" {...show(7 + i)}>
                 <Check className="h-4 w-4 shrink-0 text-accent" strokeWidth={3} aria-hidden />
                 <span className="text-[0.86rem] font-semibold leading-tight">
                   {b} <span className="text-subtle">included</span>
                 </span>
-              </motion.li>
+              </m.li>
             ))}
           </ul>
         </div>

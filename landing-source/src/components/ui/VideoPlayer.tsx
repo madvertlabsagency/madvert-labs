@@ -1,6 +1,6 @@
 "use client";
 
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence, m } from "framer-motion";
 import { Play } from "lucide-react";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { track } from "@/lib/analytics";
@@ -86,7 +86,7 @@ export function VideoPlayer({
       {/* Branded play button until the first play; native controls take over after that. */}
       <AnimatePresence>
         {!started && (
-          <motion.div
+          <m.div
             className="pointer-events-none absolute inset-0 flex items-center justify-center"
             initial={false}
             exit={{ opacity: 0 }}
@@ -103,7 +103,7 @@ export function VideoPlayer({
             <span className="absolute right-3 top-3 rounded-full bg-black/65 px-2.5 py-1 font-mono text-[0.66rem] text-white/85 backdrop-blur">
               {VSL.duration}
             </span>
-          </motion.div>
+          </m.div>
         )}
       </AnimatePresence>
     </div>

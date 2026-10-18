@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 import { Check, Headphones, Image as ImageIcon } from "lucide-react";
 import { Reveal, EASE, useSequence } from "../ui/motion";
 
@@ -62,7 +62,7 @@ export function OrderTracking() {
               {/* Horizontal stepper (sm+) */}
               <div className="relative mt-8 hidden sm:block">
                 <div className="absolute left-[calc(100%/14)] right-[calc(100%/14)] top-4 h-[3px] rounded bg-surface-3">
-                  <motion.div className="h-full origin-left rounded bg-grad" initial={{ scaleX: 0 }} animate={{ scaleX: pct }} transition={{ duration: 0.6, ease: EASE }} />
+                  <m.div className="h-full origin-left rounded bg-grad" initial={{ scaleX: 0 }} animate={{ scaleX: pct }} transition={{ duration: 0.6, ease: EASE }} />
                 </div>
                 <ol className="relative grid grid-cols-7">
                   {STAGES.map((s, i) => (
@@ -77,7 +77,7 @@ export function OrderTracking() {
               {/* Vertical stepper (mobile) */}
               <ol className="relative mt-6 grid gap-3.5 sm:hidden">
                 <span className="absolute bottom-4 left-4 top-4 w-[3px] -translate-x-1/2 rounded bg-surface-3">
-                  <motion.span className="block w-full origin-top rounded bg-grad" style={{ height: "100%" }} initial={{ scaleY: 0 }} animate={{ scaleY: pct }} transition={{ duration: 0.6, ease: EASE }} />
+                  <m.span className="block w-full origin-top rounded bg-grad" style={{ height: "100%" }} initial={{ scaleY: 0 }} animate={{ scaleY: pct }} transition={{ duration: 0.6, ease: EASE }} />
                 </span>
                 {STAGES.map((s, i) => (
                   <li key={s} className="relative flex items-center gap-3">
@@ -107,7 +107,7 @@ function Node({ i, reached }: { i: number; reached: number }) {
   const done = i < reached || (i === reached && i < CURRENT);
   const current = i === CURRENT && reached >= CURRENT;
   return (
-    <motion.span
+    <m.span
       className={`relative z-10 grid h-8 w-8 shrink-0 place-items-center rounded-full border-2 transition-colors duration-300 ${
         done ? "border-transparent bg-grad text-navy" : current ? "border-brand-blue bg-surface" : "border-line-strong bg-surface"
       }`}
@@ -121,6 +121,6 @@ function Node({ i, reached }: { i: number; reached: number }) {
       ) : (
         <span className="sr-only">pending</span>
       )}
-    </motion.span>
+    </m.span>
   );
 }

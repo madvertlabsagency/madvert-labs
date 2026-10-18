@@ -1,17 +1,16 @@
 "use client";
 
-import { zodResolver } from "@hookform/resolvers/zod";
+import type { ChallengeValues } from "@/forms/client-schemas";
+import { lazyResolver } from "@/forms/lazy-resolver";
 import { useRef, useState } from "react";
 import { useForm } from "react-hook-form";
-import { z } from "zod";
 import { setEnhancedConversionData, track, trackConversion } from "@/analytics/track";
 import { Button, Cta } from "@/components/ui/Button";
-import { challengeFields } from "./schemas";
 import { Honeypot, TextArea, TextField, Turnstile, useFormMeta } from "./Fields";
 import { postMultipart } from "./submit";
 
-const clientSchema = challengeFields.extend({ website_confirm: z.string().optional() });
-type Values = z.input<typeof clientSchema>;
+type Values = ChallengeValues;
+const challengeValidation = lazyResolver<Values>(() => import("@/forms/client-schemas").then((m) => m.challengeResolver));
 
 export function ChallengeForm({ uploadsEnabled }: { uploadsEnabled: boolean }) {
   const [file, setFile] = useState<File | null>(null);
@@ -26,7 +25,7 @@ export function ChallengeForm({ uploadsEnabled }: { uploadsEnabled: boolean }) {
     handleSubmit,
     setError: setFieldError,
     formState: { errors },
-  } = useForm<Values>({ resolver: zodResolver(clientSchema) as never, mode: "onTouched" });
+  } = useForm<Values>({ resolver: challengeValidation.resolver, mode: "onTouched" });
 
   const onSubmit = (e?: React.BaseSyntheticEvent) =>
     handleSubmit(async (values) => {
@@ -63,9 +62,11 @@ export function ChallengeForm({ uploadsEnabled }: { uploadsEnabled: boolean }) {
 
   return (
     <form
+      onPointerDownCapture={challengeValidation.preload}
       onSubmit={onSubmit}
       noValidate
       onFocusCapture={() => {
+        void challengeValidation.preload();
         if (startedRef.current) return;
         startedRef.current = true;
         startedAtRef.current = Date.now();

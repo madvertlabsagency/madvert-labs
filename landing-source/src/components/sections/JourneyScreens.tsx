@@ -1,6 +1,6 @@
 "use client";
 
-import { motion, useReducedMotion } from "framer-motion";
+import { m, useReducedMotion } from "framer-motion";
 import {
   BadgeCheck,
   Bell,
@@ -56,7 +56,7 @@ function useDelayedFlag(active: boolean, delay: number) {
 
 function Option({ label, selected, className = "" }: { label: string; selected?: boolean; className?: string }) {
   return (
-    <motion.div
+    <m.div
       className={`rounded-lg border px-2 py-2 text-center text-[0.68rem] font-semibold transition-colors duration-300 ${
         selected ? "border-brand-blue bg-[rgba(0,180,255,0.12)] text-[#0a1622] dark:text-white" : "border-black/10 text-[#3c4656] dark:border-white/10 dark:text-white/70"
       } ${className}`}
@@ -64,7 +64,7 @@ function Option({ label, selected, className = "" }: { label: string; selected?:
       transition={{ duration: 0.35 }}
     >
       {label}
-    </motion.div>
+    </m.div>
   );
 }
 
@@ -76,7 +76,7 @@ function FunnelHeader({ step, title }: { step: number; title: string }) {
         <span>Step {step} of 6</span>
       </div>
       <div className="mt-2 h-1 overflow-hidden rounded-full bg-black/5 dark:bg-white/10">
-        <motion.div className="h-full rounded-full bg-grad" initial={{ width: 0 }} animate={{ width: `${(step / 6) * 100}%` }} transition={{ duration: 0.6, ease: EASE }} />
+        <m.div className="h-full rounded-full bg-grad" initial={{ width: 0 }} animate={{ width: `${(step / 6) * 100}%` }} transition={{ duration: 0.6, ease: EASE }} />
       </div>
       <p className="mt-3 text-[0.95rem] font-extrabold leading-tight text-[#0a101c] dark:text-white">{title}</p>
     </div>
@@ -103,13 +103,13 @@ export function JourneyScreen({ index, active }: { index: number; active: boolea
           </div>
           <p className="text-[0.9rem] font-extrabold leading-tight text-[#0a101c] dark:text-white">Custom Patches for Your Brand</p>
           <p className="text-[0.66rem] text-[#5a6577] dark:text-white/60">Premium quality. Fast turnaround.</p>
-          <motion.div
+          <m.div
             className="rounded-lg bg-[#1877f2] py-2 text-center text-[0.72rem] font-bold text-white"
             animate={a ? { scale: [1, 0.95, 1] } : {}}
             transition={{ duration: 0.3 }}
           >
             Get a Free Quote →
-          </motion.div>
+          </m.div>
         </div>
       );
     case 1:
@@ -155,7 +155,7 @@ export function JourneyScreen({ index, active }: { index: number; active: boolea
             {PATCHES.slice(0, 6).map((p) => {
               const sel = a && p.name === "Embroidered";
               return (
-                <motion.div
+                <m.div
                   key={p.name}
                   className={`overflow-hidden rounded-lg border text-center ${sel ? "border-brand-blue ring-2 ring-brand-blue/30" : "border-black/10 dark:border-white/10"}`}
                   animate={sel ? { scale: [1, 1.06, 1] } : {}}
@@ -168,7 +168,7 @@ export function JourneyScreen({ index, active }: { index: number; active: boolea
                     )}
                   </div>
                   <p className="py-1 text-[0.56rem] font-semibold text-[#3c4656] dark:text-white/75">{p.name}</p>
-                </motion.div>
+                </m.div>
               );
             })}
           </div>
@@ -222,14 +222,14 @@ export function JourneyScreen({ index, active }: { index: number; active: boolea
               <span className="text-[#6b7686] dark:text-white/50">2.4 MB</span>
             </div>
             <div className="mt-2 h-1.5 overflow-hidden rounded-full bg-black/5 dark:bg-white/10">
-              <motion.div className="h-full rounded-full bg-grad" initial={{ width: "0%" }} animate={{ width: active ? "100%" : "0%" }} transition={{ duration: 1.2, ease: "easeInOut", delay: 0.2 }} />
+              <m.div className="h-full rounded-full bg-grad" initial={{ width: "0%" }} animate={{ width: active ? "100%" : "0%" }} transition={{ duration: 1.2, ease: "easeInOut", delay: 0.2 }} />
             </div>
-            <motion.p
+            <m.p
               className="mt-1.5 flex items-center gap-1 text-[0.62rem] font-extrabold uppercase tracking-wide text-[#0a8a5a] dark:text-[#3ee0a1]"
               animate={{ opacity: b ? 1 : 0 }}
             >
               Upload complete <AnimatedCheck show={b} className="h-3.5 w-3.5" />
-            </motion.p>
+            </m.p>
           </div>
         </div>
       );
@@ -242,9 +242,9 @@ export function JourneyScreen({ index, active }: { index: number; active: boolea
               <Option key={d} label={d} selected={a && d === "Specific Date"} className="!py-2.5 !text-left !px-3" />
             ))}
           </div>
-          <motion.div className="flex items-center gap-2 rounded-lg border border-brand-blue/60 px-3 py-2 text-[0.72rem] font-bold text-[#0a101c] dark:text-white" animate={{ opacity: b ? 1 : 0, y: b ? 0 : 6 }}>
+          <m.div className="flex items-center gap-2 rounded-lg border border-brand-blue/60 px-3 py-2 text-[0.72rem] font-bold text-[#0a101c] dark:text-white" animate={{ opacity: b ? 1 : 0, y: b ? 0 : 6 }}>
             <CalendarDays className="h-3.5 w-3.5 text-[#0090d6] dark:text-brand-cyan" aria-hidden /> November 15
-          </motion.div>
+          </m.div>
         </div>
       );
     case 7:
@@ -259,9 +259,9 @@ export function JourneyScreen({ index, active }: { index: number; active: boolea
           ].map(([k, v], i) => (
             <div key={k} className="rounded-lg border border-black/10 px-2.5 py-1.5 dark:border-white/10">
               <p className="text-[0.52rem] font-semibold uppercase tracking-wide text-[#6b7686] dark:text-white/50">{k}</p>
-              <motion.p className="text-[0.74rem] font-semibold text-[#0a101c] dark:text-white" animate={{ opacity: active ? 1 : 0 }} transition={{ delay: 0.25 * i + 0.3 }}>
+              <m.p className="text-[0.74rem] font-semibold text-[#0a101c] dark:text-white" animate={{ opacity: active ? 1 : 0 }} transition={{ delay: 0.25 * i + 0.3 }}>
                 {v}
-              </motion.p>
+              </m.p>
             </div>
           ))}
           <div className="grid grid-cols-3 gap-1.5">
@@ -279,7 +279,7 @@ export function JourneyScreen({ index, active }: { index: number; active: boolea
             <p className="text-[0.82rem] font-extrabold text-[#0a101c] dark:text-white">Agreed criteria check</p>
           </div>
           {["Approved patch type", "Quantity ≥ agreed minimum", "Deadline provided", "Artwork uploaded", "U.S. buyer", "Valid contact"].map((c, i) => (
-            <motion.div
+            <m.div
               key={c}
               className="flex items-center justify-between rounded-lg border border-black/10 px-2.5 py-1.5 text-[0.68rem] font-semibold text-[#0a101c] dark:border-white/10 dark:text-white"
               initial={false}
@@ -290,16 +290,16 @@ export function JourneyScreen({ index, active }: { index: number; active: boolea
               <span className="text-[#0a8a5a] dark:text-[#3ee0a1]">
                 <AnimatedCheck show={active} delay={0.18 * i + 0.1} className="h-3.5 w-3.5" />
               </span>
-            </motion.div>
+            </m.div>
           ))}
-          <motion.div
+          <m.div
             className="mt-1 rounded-lg bg-grad py-2 text-center text-[0.72rem] font-extrabold uppercase tracking-wide text-navy"
             initial={false}
             animate={{ opacity: b ? 1 : 0, scale: b ? 1 : 0.9 }}
             transition={{ delay: 0.2 }}
           >
             Accepted qualified RFQ ✓
-          </motion.div>
+          </m.div>
         </div>
       );
     default:
@@ -315,7 +315,7 @@ export function JourneyScreen({ index, active }: { index: number; active: boolea
           ].map(([Icon, t, d], i) => {
             const I = Icon as typeof Bell;
             return (
-              <motion.div
+              <m.div
                 key={t as string}
                 className="flex items-center gap-2 rounded-xl border border-black/10 bg-white/70 px-2.5 py-1.5 dark:border-white/10 dark:bg-white/[0.06]"
                 initial={false}
@@ -329,7 +329,7 @@ export function JourneyScreen({ index, active }: { index: number; active: boolea
                   <p className="text-[0.62rem] font-bold text-[#0a101c] dark:text-white">{t as string}</p>
                   <p className="truncate text-[0.58rem] text-[#5a6577] dark:text-white/55">{d as string}</p>
                 </div>
-              </motion.div>
+              </m.div>
             );
           })}
           <div className="grid grid-cols-2 gap-1.5 pt-1">

@@ -1,6 +1,6 @@
 "use client";
 
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence, m } from "framer-motion";
 import { Plus } from "lucide-react";
 import { useState } from "react";
 import { FAQS } from "@/lib/faqs";
@@ -47,18 +47,18 @@ export function FAQ() {
                       <span className={`flex-1 text-[1.02rem] font-bold uppercase tracking-[-0.005em] transition-colors sm:text-[1.08rem] ${isOpen ? "text-fg" : "text-fg/85"}`}>
                         {f.q}
                       </span>
-                      <motion.span
+                      <m.span
                         className={`grid h-8 w-8 shrink-0 place-items-center rounded-full border transition-colors ${isOpen ? "border-transparent bg-grad text-navy" : "border-line-strong text-subtle"}`}
                         animate={{ rotate: isOpen ? 45 : 0 }}
                         transition={{ duration: 0.25 }}
                       >
                         <Plus className="h-4 w-4" aria-hidden />
-                      </motion.span>
+                      </m.span>
                     </button>
                   </h3>
                   <AnimatePresence initial={false}>
                     {isOpen && (
-                      <motion.div
+                      <m.div
                         id={`faq-a-${i}`}
                         role="region"
                         aria-labelledby={`faq-q-${i}`}
@@ -73,7 +73,7 @@ export function FAQ() {
                             <p key={p}>{p}</p>
                           ))}
                         </div>
-                      </motion.div>
+                      </m.div>
                     )}
                   </AnimatePresence>
                 </li>

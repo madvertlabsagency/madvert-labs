@@ -1,6 +1,6 @@
 "use client";
 
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence, m } from "framer-motion";
 import { BarChart3, Check, ChevronDown, Megaphone, Route, SquareKanban } from "lucide-react";
 import { useState } from "react";
 import { Reveal, EASE } from "../ui/motion";
@@ -138,13 +138,13 @@ export function SystemStack() {
                       <span className="mt-0.5 block text-[0.9rem] text-muted">{c.summary}</span>
                     </span>
                     <span className="hidden text-xs font-semibold text-subtle sm:block">{c.items.length} components</span>
-                    <motion.span animate={{ rotate: isOpen ? 180 : 0 }} transition={{ duration: 0.3 }}>
+                    <m.span animate={{ rotate: isOpen ? 180 : 0 }} transition={{ duration: 0.3 }}>
                       <ChevronDown className="h-5 w-5 text-subtle" aria-hidden />
-                    </motion.span>
+                    </m.span>
                   </button>
                   <AnimatePresence initial={false}>
                     {isOpen && (
-                      <motion.div
+                      <m.div
                         id={panelId}
                         initial={{ height: 0, opacity: 0 }}
                         animate={{ height: "auto", opacity: 1 }}
@@ -155,7 +155,7 @@ export function SystemStack() {
                         <div className="border-t border-line px-5 pb-6 pt-5 sm:px-6">
                           <ul className="grid gap-x-5 gap-y-2.5 sm:grid-cols-2">
                             {c.items.map((it, k) => (
-                              <motion.li
+                              <m.li
                                 key={it}
                                 className="flex items-start gap-2.5 text-[0.93rem]"
                                 initial={{ opacity: 0, x: -6 }}
@@ -166,7 +166,7 @@ export function SystemStack() {
                                   <Check className="h-3 w-3" strokeWidth={3} aria-hidden />
                                 </span>
                                 <span className={it === "Meta Ad Spend" ? "font-bold" : "font-medium"}>{it}</span>
-                              </motion.li>
+                              </m.li>
                             ))}
                           </ul>
                           {c.callout && (
@@ -175,7 +175,7 @@ export function SystemStack() {
                             </p>
                           )}
                         </div>
-                      </motion.div>
+                      </m.div>
                     )}
                   </AnimatePresence>
                 </div>
