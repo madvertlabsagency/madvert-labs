@@ -1,0 +1,321 @@
+/* ───────────── Fact & proof components (fx-*): DirectAnswer, ProcessDiagram, Checklist, CalculatorBlock, articles ───────────── */
+
+/* Direct answer under an H1: lead paragraph with a subtle left accent */
+.fx-answer {
+  position: relative;
+  padding-left: 22px;
+}
+.fx-answer::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 4px;
+  bottom: 4px;
+  width: 3px;
+  border-radius: 3px;
+  background: linear-gradient(180deg, var(--accent), var(--cyan));
+  opacity: 0.85;
+}
+.fx-answer p {
+  font-size: clamp(17px, 1.4vw, 20px);
+  line-height: 1.62;
+  color: var(--ink-2);
+  text-wrap: pretty;
+}
+.fx-answer p:first-of-type {
+  color: var(--ink);
+}
+.fx-answer p + p {
+  margin-top: 12px;
+}
+
+/* Process diagram: semantic <ol>, steps connected by a line (horizontal ≥ 900px, vertical below) */
+.fx-diagram {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0;
+  counter-reset: fx-step;
+}
+.fx-diagram-step {
+  position: relative;
+  display: grid;
+  grid-template-columns: 44px 1fr;
+  column-gap: 16px;
+  padding-bottom: 26px;
+}
+.fx-diagram-step:last-child {
+  padding-bottom: 0;
+}
+.fx-diagram-dot {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 999px;
+  font-family: var(--font-display);
+  font-size: 13px;
+  font-weight: 650;
+  letter-spacing: 0.06em;
+  color: var(--accent-text);
+  background: var(--surface-solid);
+  border: 1px solid color-mix(in srgb, var(--accent) 45%, transparent);
+  box-shadow: 0 0 0 5px color-mix(in srgb, var(--accent) 8%, transparent);
+}
+.fx-diagram-step:not(:last-child)::before {
+  content: "";
+  position: absolute;
+  left: 21px;
+  top: 44px;
+  bottom: 0;
+  width: 2px;
+  background: linear-gradient(180deg, color-mix(in srgb, var(--accent) 55%, transparent), color-mix(in srgb, var(--cyan) 20%, transparent));
+}
+.fx-diagram-body {
+  padding-top: 9px;
+}
+/* Horizontal once the diagram's own container is wide enough */
+.fx-diagram-wrap {
+  container-type: inline-size;
+}
+@container (min-width: 760px) {
+  .fx-diagram {
+    grid-template-columns: repeat(var(--fx-cols, 4), minmax(0, 1fr));
+    gap: 20px;
+  }
+  .fx-diagram-step {
+    grid-template-columns: 1fr;
+    padding-bottom: 0;
+  }
+  .fx-diagram-step:not(:last-child)::before {
+    left: 52px;
+    right: -20px;
+    top: 21px;
+    bottom: auto;
+    width: auto;
+    height: 2px;
+    background: linear-gradient(90deg, color-mix(in srgb, var(--accent) 55%, transparent), color-mix(in srgb, var(--cyan) 20%, transparent));
+  }
+  .fx-diagram-body {
+    padding-top: 18px;
+    padding-right: 8px;
+  }
+}
+
+/* Checklist */
+.fx-check {
+  display: grid;
+  gap: 14px;
+}
+.fx-check li {
+  display: flex;
+  gap: 14px;
+}
+.fx-check-mark {
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  width: 24px;
+  height: 24px;
+  margin-top: 1px;
+  border-radius: 8px;
+  color: var(--accent-text);
+  background: color-mix(in srgb, var(--accent) 14%, transparent);
+  border: 1px solid color-mix(in srgb, var(--accent) 32%, transparent);
+}
+.fx-check-mark svg {
+  width: 13px;
+  height: 13px;
+}
+
+/* Calculator shell */
+.fx-calc-field label {
+  display: block;
+  font-family: var(--font-display);
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--ink);
+}
+.fx-calc-input {
+  margin-top: 8px;
+  width: 100%;
+  height: 50px;
+  padding: 0 16px;
+  border-radius: 14px;
+  border: 1px solid var(--line-strong);
+  background: var(--surface-solid);
+  color: var(--ink);
+  font-size: 16px;
+  font-variant-numeric: tabular-nums;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+.fx-calc-input:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 22%, transparent);
+}
+.fx-calc-input[aria-invalid="true"] {
+  border-color: var(--danger);
+}
+.fx-calc-hint {
+  margin-top: 6px;
+  font-size: 13px;
+  line-height: 1.45;
+  color: var(--ink-3);
+}
+.fx-calc-error {
+  margin-top: 6px;
+  font-size: 13px;
+  line-height: 1.45;
+  color: var(--danger);
+}
+[data-theme="light"] .fx-calc-error {
+  color: #b42318;
+}
+.fx-calc-out {
+  border-radius: 18px;
+  border: 1px solid var(--line);
+  background: var(--surface-glass);
+  padding: 16px 18px;
+}
+.fx-calc-out.is-primary {
+  border-color: color-mix(in srgb, var(--accent) 45%, transparent);
+  background: color-mix(in srgb, var(--accent) 8%, var(--surface-glass));
+}
+.fx-calc-out output {
+  display: block;
+  margin-top: 6px;
+  font-family: var(--font-display);
+  font-size: clamp(22px, 2.2vw, 30px);
+  font-weight: 650;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+  font-variant-numeric: tabular-nums;
+  overflow-wrap: anywhere;
+}
+.fx-calc-formula summary {
+  cursor: pointer;
+  list-style: none;
+}
+.fx-calc-formula summary::-webkit-details-marker {
+  display: none;
+}
+.fx-calc-formula code,
+.fx-code {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 0.92em;
+  padding: 2px 7px;
+  border-radius: 7px;
+  background: var(--surface-glass-strong);
+  border: 1px solid var(--line);
+  color: var(--ink);
+  overflow-wrap: anywhere;
+}
+
+/* Article prose */
+.fx-prose > * + * {
+  margin-top: 18px;
+}
+.fx-prose p,
+.fx-prose li {
+  font-size: 17px;
+  line-height: 1.7;
+  color: var(--ink-2);
+  text-wrap: pretty;
+}
+.fx-prose strong {
+  color: var(--ink);
+  font-weight: 600;
+}
+.fx-prose h3 {
+  margin-top: 34px;
+  font-family: var(--font-display);
+  font-size: clamp(20px, 1.7vw, 23px);
+  font-weight: 650;
+  line-height: 1.25;
+  letter-spacing: -0.012em;
+  color: var(--ink);
+}
+.fx-prose ul.fx-bullets,
+.fx-prose ol.fx-numbers {
+  display: grid;
+  gap: 10px;
+  padding-left: 0;
+}
+.fx-prose ul.fx-bullets li {
+  position: relative;
+  padding-left: 22px;
+}
+.fx-prose ul.fx-bullets li::before {
+  content: "";
+  position: absolute;
+  left: 2px;
+  top: 0.72em;
+  width: 7px;
+  height: 7px;
+  border-radius: 999px;
+  background: var(--cyan);
+}
+.fx-prose ol.fx-numbers {
+  counter-reset: fx-num;
+}
+.fx-prose ol.fx-numbers li {
+  position: relative;
+  padding-left: 34px;
+  counter-increment: fx-num;
+}
+.fx-prose ol.fx-numbers li::before {
+  content: counter(fx-num);
+  position: absolute;
+  left: 0;
+  top: 0.18em;
+  display: grid;
+  place-items: center;
+  width: 24px;
+  height: 24px;
+  border-radius: 999px;
+  font-family: var(--font-display);
+  font-size: 12.5px;
+  font-weight: 650;
+  color: var(--accent-text);
+  background: color-mix(in srgb, var(--accent) 12%, transparent);
+}
+.fx-callout {
+  border-radius: 20px;
+  border: 1px solid color-mix(in srgb, var(--accent) 30%, transparent);
+  background: color-mix(in srgb, var(--accent) 6%, var(--surface-glass));
+  padding: 20px 22px;
+}
+.fx-toc a {
+  color: var(--ink-2);
+  transition: color 0.2s ease;
+}
+.fx-toc a:hover {
+  color: var(--accent-text);
+}
+
+/* Glossary */
+.fx-term {
+  scroll-margin-top: calc(var(--header-h, 72px) + 24px);
+}
+.fx-term:target {
+  border-color: color-mix(in srgb, var(--accent) 55%, transparent);
+  box-shadow: var(--glow);
+}
+.fx-jump a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 38px;
+  padding: 6px 14px;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  background: var(--surface-glass);
+  font-size: 14px;
+  color: var(--ink-2);
+  transition: border-color 0.2s ease, color 0.2s ease;
+}
+.fx-jump a:hover {
+  border-color: var(--accent);
+  color: var(--ink);
+}

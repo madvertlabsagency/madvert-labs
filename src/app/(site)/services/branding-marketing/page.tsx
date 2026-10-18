@@ -10,6 +10,7 @@ import { IdentityAlign } from "@/sections/services/IdentityAlign";
 import { AudienceFit, Touchpoints360 } from "@/sections/services/Visuals";
 import { FinalCta } from "@/sections/shared/FinalCta";
 import { BookingSection } from "@/components/booking/BookingSection";
+import { SpecialistServices } from "@/components/service-page/SpecialistServices";
 
 const path = "/services/branding-marketing";
 const description =
@@ -131,6 +132,8 @@ export default async function BrandingPage() {
         href="/resources/brand-perception-checklist"
         resource={{ title: "Brand Perception Checklist", kind: "Checklist", category: "brand" }}
       />
+
+      <SpecialistServices parent="branding-marketing" intro="Organic social media, planned and produced in the brand's identity." />
 
       <AnswerBlock
         service="Branding and Marketing"

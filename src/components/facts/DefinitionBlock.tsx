@@ -4,8 +4,8 @@ import type { ReactNode } from "react";
  * A direct, self-contained definition of a term: 2–4 plain sentences that name the subject, so the
  * answer can be read (and quoted) on its own. The term is marked with <dfn> the first time it appears.
  *
- * `definition` should start with the term (e.g. "Meta Ads Lead Generation is …"); when it does, that
- * opening words are wrapped in <dfn>. Otherwise the term is prefixed as a label.
+ * `definition` should contain the term (ideally at the start, e.g. "Meta Ads Lead Generation is …");
+ * its first occurrence is wrapped in <dfn>. Otherwise the term is prefixed as a label.
  */
 export function DefinitionBlock({
   term,
@@ -31,17 +31,20 @@ export function DefinitionBlock({
 }) {
   const Root = as;
   const headingId = heading && id ? `${id}-title` : undefined;
-  const startsWithTerm = definition.toLowerCase().startsWith(term.toLowerCase());
-  const body = startsWithTerm ? (
-    <>
-      <dfn className="not-italic font-semibold text-ink">{definition.slice(0, term.length)}</dfn>
-      {definition.slice(term.length)}
-    </>
-  ) : (
-    <>
-      <dfn className="not-italic font-semibold text-ink">{term}</dfn>: {definition}
-    </>
-  );
+  // Mark the first occurrence of the term (case-insensitive); fall back to a "Term:" prefix.
+  const at = definition.toLowerCase().indexOf(term.toLowerCase());
+  const body =
+    at >= 0 ? (
+      <>
+        {definition.slice(0, at)}
+        <dfn className="not-italic font-semibold text-ink">{definition.slice(at, at + term.length)}</dfn>
+        {definition.slice(at + term.length)}
+      </>
+    ) : (
+      <>
+        <dfn className="not-italic font-semibold text-ink">{term}</dfn>: {definition}
+      </>
+    );
   return (
     <Root id={id} className={`sp-definition ${className}`} aria-labelledby={headingId} data-definition>
       {heading ? (

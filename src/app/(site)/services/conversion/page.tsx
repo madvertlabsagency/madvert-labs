@@ -9,6 +9,7 @@ import { AnswerBlock, Capability, FreeValue, Statement } from "@/sections/servic
 import { VisitorJourney } from "@/sections/services/VisitorJourney";
 import { FinalCta } from "@/sections/shared/FinalCta";
 import { BookingSection } from "@/components/booking/BookingSection";
+import { SpecialistServices } from "@/components/service-page/SpecialistServices";
 
 const path = "/services/conversion";
 const description =
@@ -70,6 +71,8 @@ export default async function ConversionPage() {
         href="/resources/conversion-leak-checklist"
         resource={{ title: "Conversion Leak Checklist", kind: "Checklist", category: "conversion" }}
       />
+
+      <SpecialistServices parent="conversion" intro="The build side of conversion: marketing websites, landing pages and web apps." />
 
       <AnswerBlock
         service="Conversion"

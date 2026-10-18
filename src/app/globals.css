@@ -321,7 +321,7 @@ video {
 .js [data-reveal="fade"] {
   transform: none;
 }
-.js [data-reveal].is-in {
+.js [data-reveal][data-revealed] {
   opacity: 1;
   transform: none;
 }
@@ -425,9 +425,9 @@ video {
   stroke-dashoffset: 1;
   transition: stroke-dashoffset 1200ms var(--ease) 200ms;
 }
-.js .is-in .draw-on-reveal path[pathLength="1"],
-.js .is-in.draw-on-reveal path[pathLength="1"],
-.js .is-in .ribbon-underline path {
+.js [data-revealed] .draw-on-reveal path[pathLength="1"],
+.js [data-revealed].draw-on-reveal path[pathLength="1"],
+.js [data-revealed] .ribbon-underline path {
   stroke-dashoffset: 0;
 }
 @media (prefers-reduced-motion: reduce) {

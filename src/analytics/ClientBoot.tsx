@@ -20,16 +20,24 @@ export function ClientBoot() {
       (entries) => {
         for (const e of entries) {
           if (e.isIntersecting) {
-            e.target.classList.add("is-in");
+            // A data attribute, not a class: React does not reconcile unknown data attributes, so marking
+            // elements before a late island hydrates cannot cause a hydration mismatch.
+            e.target.setAttribute("data-revealed", "");
             io.unobserve(e.target);
           }
         }
       },
       { rootMargin: "0px 0px -8% 0px", threshold: 0.12 },
     );
+    // The first screen is already visible via CSS (no JS needed), so it is never touched. Everything
+    // else is observed once the browser is idle, i.e. after late client islands have hydrated.
+    const FIRST_SCREEN = "main > section:first-of-type [data-reveal], main > article > header [data-reveal]";
     const scan = (root: ParentNode) =>
-      root.querySelectorAll<HTMLElement>("[data-reveal]:not(.is-in)").forEach((el) => io.observe(el));
-    scan(document);
+      root.querySelectorAll<HTMLElement>("[data-reveal]:not([data-revealed])").forEach((el) => {
+        if (!el.matches(FIRST_SCREEN)) io.observe(el);
+      });
+    const idle = window.requestIdleCallback ?? ((cb: () => void) => window.setTimeout(cb, 200));
+    idle(() => scan(document), { timeout: 1200 });
     const mo = new MutationObserver((muts) => {
       for (const m of muts) m.addedNodes.forEach((n) => n instanceof HTMLElement && scan(n.parentNode ?? n));
     });

@@ -18,9 +18,9 @@ export function SpSection({
   aside?: ReactNode;
 }) {
   return (
-    <section id={id} className="section-tight scroll-mt-24 !py-[clamp(48px,6vw,88px)]" aria-labelledby={`${id}-title`}>
+    <section id={id} className="section-tight scroll-mt-24 !py-[clamp(36px,4.5vw,64px)]" aria-labelledby={`${id}-title`}>
       <div className="container-x">
-        <div className="hairline mb-12 md:mb-16" />
+        <div className="hairline mb-10 md:mb-12" />
         <div className={aside ? "grid grid-cols-1 gap-8 lg:grid-cols-12 lg:gap-10" : ""}>
           <div className={aside ? "lg:col-span-7" : "max-w-[820px]"}>
             <p data-reveal className="t-label">

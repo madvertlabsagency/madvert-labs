@@ -9,6 +9,7 @@ import { TechModules } from "@/sections/services/TechModules";
 import { LeadValueCalculator } from "@/sections/services/LeadValueCalculator";
 import { FinalCta } from "@/sections/shared/FinalCta";
 import { BookingSection } from "@/components/booking/BookingSection";
+import { SpecialistServices } from "@/components/service-page/SpecialistServices";
 
 const path = "/services/tech-product-development";
 const description =
@@ -59,6 +60,8 @@ export default async function TechPage() {
         href="/resources/tech-opportunity-audit"
         resource={{ title: "Tech Opportunity Audit", kind: "Audit", category: "automation" }}
       />
+
+      <SpecialistServices parent="tech-product-development" intro="Mobile apps, web apps and client portals, built around the business case." />
 
       <AnswerBlock
         service="Tech and Product Development"

@@ -13,6 +13,7 @@ import { GrowthLoop } from "@/sections/home/GrowthLoop";
 import { AnswerBlock } from "@/sections/services/Blocks";
 import { FinalCta } from "@/sections/shared/FinalCta";
 import { BookingSection } from "@/components/booking/BookingSection";
+import { SpecialistServices } from "@/components/service-page/SpecialistServices";
 
 const description =
   "Branding, client acquisition, conversion, creative production, automation and technology, connected into one growth system. See how Madvert Labs works.";
@@ -67,6 +68,12 @@ export default async function ServicesPage() {
           </ul>
         </div>
       </section>
+
+      <SpecialistServices
+        title="Specialist services and guides"
+        intro="Focused pages for individual channels and builds, plus a plain explanation of what a growth system is."
+        keys={["growth-systems", "digital-marketing", "meta-ads", "google-ads", "seo", "ai-seo-aeo", "social-media-management", "web-development", "ai-agents", "app-development"]}
+      />
 
       <Philosophy />
 

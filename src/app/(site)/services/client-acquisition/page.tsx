@@ -8,6 +8,7 @@ import { AnswerBlock, Capability, FreeValue, Statement } from "@/sections/servic
 import { CheapLeads, LeadRadar, QualifyingForm, SearchSurfaces, StreamsMerge } from "@/sections/services/Visuals";
 import { FinalCta } from "@/sections/shared/FinalCta";
 import { BookingSection } from "@/components/booking/BookingSection";
+import { SpecialistServices } from "@/components/service-page/SpecialistServices";
 
 const path = "/services/client-acquisition";
 const description =
@@ -108,6 +109,8 @@ export default async function AcquisitionPage() {
         href="/resources/qualified-lead-generation-playbook"
         resource={{ title: "Qualified Lead Generation Playbook", kind: "Playbook", category: "leads" }}
       />
+
+      <SpecialistServices parent="client-acquisition" intro="Dedicated pages for each acquisition channel: how the work is done, what is included and real results where they exist." />
 
       <AnswerBlock
         service="Client Acquisition"

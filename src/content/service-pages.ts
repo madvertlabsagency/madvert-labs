@@ -156,7 +156,6 @@ export const servicePages: Record<string, ServicePageContent> = {
       intro: "Each of these real case studies combined more than one part of the system in a single engagement, such as offer strategy, creative, paid social, landing pages, qualification and CRM delivery.",
       slugs: ["dubai-real-estate-nigeria", "bookkeeping-appointments", "agency-lead-generation"],
     },
-    quote: "The Channel Is Never More Important Than the Business Behind It.",
     faqs: [
       {
         q: "What is the difference between Full Stack Digital Marketing and a marketing agency?",

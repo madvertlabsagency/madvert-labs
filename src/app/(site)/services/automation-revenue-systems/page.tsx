@@ -11,6 +11,7 @@ import { PipelineStages, SpreadsheetVsCrm, WhatsAppChat } from "@/sections/servi
 import { PillarWorld } from "@/components/visuals/PillarWorld";
 import { FinalCta } from "@/sections/shared/FinalCta";
 import { BookingSection } from "@/components/booking/BookingSection";
+import { SpecialistServices } from "@/components/service-page/SpecialistServices";
 
 const path = "/services/automation-revenue-systems";
 const description =
@@ -97,6 +98,8 @@ export default async function AutomationPage() {
         href="/resources/revenue-leakage-audit"
         resource={{ title: "Revenue Leakage Audit", kind: "Audit", category: "automation" }}
       />
+
+      <SpecialistServices parent="automation-revenue-systems" intro="Task-specific AI assistants connected to the CRM, the calendar and the team." />
 
       <AnswerBlock
         service="Automation and Revenue Systems"
