@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import type { Testimonial } from "@/types/content";
 
 /** YouTube / Vimeo links become privacy-friendly embeds; anything else is played as a file. */
@@ -14,17 +14,23 @@ function embedUrl(url: string): string | null {
 
 /**
  * Accessible video lightbox on the native <dialog>: modal focus containment, Escape to close,
- * focus returned to the card that opened it.
+ * focus returned to the card that opened it. Portrait (9:16) videos get a portrait player.
+ * Opening it pauses any other video on the page, so only one ever plays at a time.
  */
-export function VideoLightbox({ item, onClose }: { item: Testimonial | null; onClose: () => void }) {
+export function VideoLightbox({ item, portrait, onClose }: { item: Testimonial | null; portrait?: boolean; onClose: () => void }) {
   const ref = useRef<HTMLDialogElement>(null);
   const opener = useRef<HTMLElement | null>(null);
+  // Orientation reported by the video itself once its metadata loads (overrides the poster guess).
+  const [measured, setMeasured] = useState<{ url: string; portrait: boolean } | null>(null);
 
   useEffect(() => {
     const d = ref.current;
     if (!d) return;
     if (item && !d.open) {
       opener.current = document.activeElement as HTMLElement | null;
+      document.querySelectorAll("video").forEach((v) => {
+        if (!d.contains(v)) v.pause();
+      });
       d.showModal();
       d.querySelector<HTMLElement>("[data-autofocus]")?.focus();
     } else if (!item && d.open) {
@@ -45,12 +51,13 @@ export function VideoLightbox({ item, onClose }: { item: Testimonial | null; onC
 
   const url = item?.videoUrl ?? "";
   const embed = url ? embedUrl(url) : null;
-  const meta = item ? [item.business ?? item.company, [item.industry, item.market].filter(Boolean).join(" · ")].filter(Boolean).join(" — ") : "";
+  const meta = item ? [item.role, item.business ?? item.company, item.industry, item.market].filter(Boolean).join(" · ") : "";
+  const isPortrait = !embed && (measured?.url === url ? measured.portrait : !!portrait);
 
   return (
     <dialog
       ref={ref}
-      className="tm-dialog"
+      className={`tm-dialog${isPortrait ? " tm-dialog--portrait" : ""}`}
       aria-labelledby="tm-dialog-title"
       onClick={(e) => {
         if (e.target === e.currentTarget) ref.current?.close();
@@ -75,7 +82,18 @@ export function VideoLightbox({ item, onClose }: { item: Testimonial | null; onC
             {embed ? (
               <iframe src={embed} title={`Video testimonial from ${item.name}`} allow="autoplay; fullscreen; picture-in-picture; encrypted-media" allowFullScreen />
             ) : (
-              <video src={url} poster={item.posterUrl} controls autoPlay playsInline preload="metadata">
+              <video
+                src={url}
+                poster={item.posterUrl}
+                controls
+                autoPlay
+                playsInline
+                preload="none"
+                onLoadedMetadata={(e) => {
+                  const v = e.currentTarget;
+                  if (v.videoWidth) setMeasured({ url, portrait: v.videoHeight > v.videoWidth });
+                }}
+              >
                 <track kind="captions" />
               </video>
             )}

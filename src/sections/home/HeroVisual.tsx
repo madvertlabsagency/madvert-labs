@@ -1,55 +1,67 @@
 "use client";
 
-import Image from "next/image";
 import { useEffect, useId, useRef, type CSSProperties } from "react";
 import { MadvertMark } from "@/components/ui/MadvertMark";
 import { PlatformTile, type PlatformKind } from "@/components/visuals/platforms/PlatformTile";
 import { useScrollScene } from "@/animations/gsap";
-import type { ImageAsset } from "@/types/content";
 import "@/styles/hero.css";
 
 /*
+ * The MADVERT LABS brand core with eight growth modules wired back into it.
  * Two stage layouts, switched by a container query in hero.css:
- *  - wide   (600 x 640 units): 8 platform tiles orbiting the founder frame
- *  - narrow (360 x 440 units): 6 tiles, 2 per row, nothing over the face
- * Story on load: tiles appear scattered and disconnected → glide into orbit → signal lines and
- * the Growth Ribbon draw in → data pulses travel into the centre → tiles float gently.
+ *  - wide   (600 x 640 units): core + 8 module tiles
+ *  - narrow (360 x 440 units): core + 6 tiles, 2 per row, nothing overlapping
+ * Story on load: modules appear scattered and disconnected → glide into place → signal lines and
+ * the Growth Ribbon draw in → data pulses travel INTO the core → tiles float gently.
  */
 
 type Pt = [number, number];
 type Node = {
   kind: PlatformKind;
   label: string;
+  short?: string; // label on the narrow layout
   d: Pt; // wide-layout centre
   m?: Pt; // narrow-layout centre (omitted = hidden on narrow)
   s: [number, number, number]; // scatter offset (dx, dy in wide units) + rotation
 };
 
-const W = { w: 600, h: 640, frame: { x: 175, y: 164, w: 250, h: 312 } };
-const M = { w: 360, h: 440, frame: { x: 108, y: 130, w: 144, h: 180 } };
+/** Core = circle (centre + radius) in each layout's units. `port` is the ring the connectors land on. */
+const W = { w: 600, h: 640, core: { cx: 300, cy: 320, r: 100 } };
+const M = { w: 360, h: 440, core: { cx: 180, cy: 222, r: 60 } };
 
 const NODES: Node[] = [
-  { kind: "meta", label: "Meta", d: [94, 118], m: [64, 52], s: [-70, -46, -7] },
-  { kind: "google", label: "Google", d: [300, 62], m: [296, 52], s: [26, -64, 5] },
-  { kind: "search", label: "Search", d: [506, 118], s: [78, -30, 8] },
-  { kind: "analytics", label: "Analytics", d: [80, 320], m: [52, 218], s: [-86, 14, 6] },
-  { kind: "crm", label: "CRM", d: [520, 320], m: [308, 218], s: [84, -12, -6] },
-  { kind: "website", label: "Website", d: [94, 524], m: [64, 390], s: [-64, 48, 7] },
-  { kind: "sales", label: "Sales", d: [300, 584], s: [-20, 70, -5] },
-  { kind: "ai", label: "AI", d: [506, 524], m: [296, 390], s: [72, 52, -8] },
+  { kind: "paid", label: "Paid Media", d: [94, 118], m: [64, 52], s: [-70, -46, -7] },
+  { kind: "search", label: "Search", d: [300, 62], m: [296, 52], s: [26, -64, 5] },
+  { kind: "creative", label: "Creative", d: [506, 118], m: [57, 222], s: [78, -30, 8] },
+  { kind: "analytics", label: "Analytics", d: [80, 320], m: [303, 222], s: [-86, 14, 6] },
+  { kind: "crm", label: "CRM", d: [520, 320], m: [64, 392], s: [84, -12, -6] },
+  { kind: "website", label: "Web", d: [94, 524], s: [-64, 48, 7] },
+  { kind: "sales", label: "Sales / Revenue", short: "Revenue", d: [300, 584], m: [296, 392], s: [-20, 70, -5] },
+  { kind: "automation", label: "Automation", d: [506, 524], s: [72, 52, -8] },
 ];
 
-type Frame = typeof W.frame;
+type Core = typeof W.core;
 
-/** Curved signal line from a tile centre to the nearest edge of the founder frame. */
-function connector([x, y]: Pt, f: Frame) {
-  const cx = f.x + f.w / 2;
-  const cy = f.y + f.h / 2;
-  const tx = Math.min(Math.max(x, f.x), f.x + f.w);
-  const ty = Math.min(Math.max(y, f.y + 18), f.y + f.h - 18);
-  const mx = (x + tx) / 2 + (y < cy ? 16 : -16);
-  const my = (y + ty) / 2 + (x < cx ? -16 : 16);
-  return `M${x} ${y} Q ${mx} ${my} ${tx} ${ty}`;
+/** Curved signal line from a tile centre into the core's port ring. */
+function connector([x, y]: Pt, c: Core) {
+  const dx = x - c.cx;
+  const dy = y - c.cy;
+  const len = Math.hypot(dx, dy) || 1;
+  const pr = c.r * 1.14;
+  const tx = c.cx + (dx / len) * pr;
+  const ty = c.cy + (dy / len) * pr;
+  // gentle bend, perpendicular to the direct line
+  const bend = 0.12;
+  const mx = (x + tx) / 2 - dy * bend;
+  const my = (y + ty) / 2 + dx * bend;
+  return `M${x.toFixed(1)} ${y.toFixed(1)} Q ${mx.toFixed(1)} ${my.toFixed(1)} ${tx.toFixed(1)} ${ty.toFixed(1)}`;
+}
+
+function port([x, y]: Pt, c: Core): Pt {
+  const dx = x - c.cx;
+  const dy = y - c.cy;
+  const len = Math.hypot(dx, dy) || 1;
+  return [c.cx + (dx / len) * c.r * 1.14, c.cy + (dy / len) * c.r * 1.14];
 }
 
 const pct = (v: number, of: number) => `${((v / of) * 100).toFixed(3)}%`;
@@ -61,9 +73,9 @@ function Stage({ layout, uid }: { layout: "w" | "m"; uid: string }) {
   const L = layout === "w" ? W : M;
   const nodes = NODES.filter((n) => layout === "w" || n.m);
   const ribbon = layout === "w" ? RIBBON_W : RIBBON_M;
-  const cx = L.frame.x + L.frame.w / 2;
-  const cy = L.frame.y + L.frame.h / 2;
+  const { cx, cy } = L.core;
   const g = `${uid}-${layout}`;
+  const pick = (n: Node): Pt => (layout === "w" ? n.d : n.m!);
   return (
     <svg viewBox={`0 0 ${L.w} ${L.h}`} className={`hv3-svg hv3-svg--${layout}`} aria-hidden="true">
       <defs>
@@ -86,26 +98,34 @@ function Stage({ layout, uid }: { layout: "w" | "m"; uid: string }) {
         <ellipse cx={cx} cy={cy} rx={L.w * 0.42} ry={L.h * 0.42} />
         <ellipse cx={cx} cy={cy} rx={L.w * 0.31} ry={L.h * 0.31} opacity="0.6" />
       </g>
+      {/* port ring around the core, with one port per connected module */}
+      <circle cx={cx} cy={cy} r={L.core.r * 1.14} fill="none" stroke={`url(#${g}-line)`} strokeWidth="1" opacity="0.35" />
+      <g className="hv3-ports">
+        {nodes.map((n) => {
+          const [px, py] = port(pick(n), L.core);
+          return <circle key={n.kind} cx={px} cy={py} r={layout === "w" ? 3.2 : 2.4} fill="var(--bg)" stroke="#00c8ff" strokeWidth="1.4" />;
+        })}
+      </g>
       {/* disconnected stubs (always faintly visible) */}
       <g stroke="var(--node-idle)" strokeWidth="1" fill="none" opacity="0.55" strokeDasharray="3 5" className="hv3-stubs">
         {nodes.map((n) => (
-          <path key={n.kind} d={connector(layout === "w" ? n.d : n.m!, L.frame)} />
+          <path key={n.kind} d={connector(pick(n), L.core)} />
         ))}
       </g>
       <g fill="none" stroke={`url(#${g}-line)`} strokeWidth="1.6" strokeLinecap="round" className="hv3-links">
         {nodes.map((n) => (
-          <path key={n.kind} d={connector(layout === "w" ? n.d : n.m!, L.frame)} pathLength={1} data-link />
+          <path key={n.kind} d={connector(pick(n), L.core)} pathLength={1} data-link />
         ))}
       </g>
       <g className="hv3-ribbon">
         <path d={ribbon} fill="none" stroke="#00e5ff" strokeWidth="10" strokeLinecap="round" opacity="0.1" pathLength={1} data-link />
-        <path d={ribbon} fill="none" stroke={`url(#${g}-line)`} strokeWidth="2.4" strokeLinecap="round" opacity="0.9" pathLength={1} data-link />
+        <path d={ribbon} fill="none" stroke={`url(#${g}-line)`} strokeWidth="2.2" strokeLinecap="round" opacity="0.7" pathLength={1} data-link />
       </g>
-      {/* data pulses: tile → founder / central system */}
+      {/* data pulses: module → brand core */}
       <g className="hv3-pulses">
         {nodes.map((n, i) => (
           <circle key={n.kind} r={layout === "w" ? 5 : 4} fill={`url(#${g}-pulse)`} opacity="0">
-            <animateMotion dur="2.6s" begin={`${(i * 0.53).toFixed(2)}s`} repeatCount="indefinite" path={connector(layout === "w" ? n.d : n.m!, L.frame)} calcMode="spline" keyPoints="0;1" keyTimes="0;1" keySplines="0.45 0 0.55 1" />
+            <animateMotion dur="2.6s" begin={`${(i * 0.53).toFixed(2)}s`} repeatCount="indefinite" path={connector(pick(n), L.core)} calcMode="spline" keyPoints="0;1" keyTimes="0;1" keySplines="0.45 0 0.55 1" />
             <animate attributeName="opacity" dur="2.6s" begin={`${(i * 0.53).toFixed(2)}s`} repeatCount="indefinite" values="0;1;1;0" keyTimes="0;0.2;0.8;1" />
           </circle>
         ))}
@@ -118,7 +138,7 @@ function Stage({ layout, uid }: { layout: "w" | "m"; uid: string }) {
   );
 }
 
-export function HeroVisual({ image }: { image?: ImageAsset }) {
+export function HeroVisual() {
   const root = useRef<HTMLDivElement>(null);
   const played = useRef(false);
   const uid = `hv${useId().replace(/[^a-zA-Z0-9]/g, "")}`;
@@ -198,39 +218,34 @@ export function HeroVisual({ image }: { image?: ImageAsset }) {
   }, []);
 
   return (
-    <div ref={root} className="hv3 relative mx-auto w-full max-w-[600px]">
+    <div ref={root} className="hv3 relative mx-auto w-full max-w-[600px]" aria-hidden="true" style={{ ["--hvc-orb" as string]: `url(#${uid}-orb)` }}>
+      {/* Own orb gradient: MadvertMark's shared #mm-orb can resolve to a hidden copy elsewhere on the page. */}
+      <svg width="0" height="0" className="absolute" focusable="false">
+        <defs>
+          <radialGradient id={`${uid}-orb`} cx="0.4" cy="0.35" r="0.7">
+            <stop offset="0" stopColor="#5ff0ff" />
+            <stop offset="0.55" stopColor="#00c8ff" />
+            <stop offset="1" stopColor="#008cff" />
+          </radialGradient>
+        </defs>
+      </svg>
       <div className="hv3-stage">
         <Stage layout="w" uid={uid} />
         <Stage layout="m" uid={uid} />
 
-        {/* Founder frame: the central system */}
-        <div className="hv3-frame-pos">
-          <div className="hv3-plate" aria-hidden="true" />
-          <div className="hv3-frame" data-frame>
-            <div className="hv3-frame-in">
-              {image ? (
-                <Image
-                  src={image.url}
-                  alt={image.alt}
-                  fill
-                  sizes="(min-width:1024px) 260px, 44vw"
-                  className="object-cover object-[50%_22%]"
-                  priority
-                />
-              ) : (
-                <div className="placeholder-slot !rounded-none absolute inset-0 grid place-items-center !border-0">
-                  <div className="flex flex-col items-center gap-5 px-4 text-center">
-                    <MadvertMark className="h-9 w-auto text-ink opacity-80" />
-                    <p className="t-label hidden !text-[10px] leading-relaxed sm:block">[REAL FOUNDER OR CLIENT PHOTOGRAPHY]</p>
-                  </div>
-                </div>
-              )}
-              <div className="pointer-events-none absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-[rgb(10_15_28/0.7)] to-transparent" />
-              <div className="hv3-hub">
-                <span className="hv3-hub-label">ONE SYSTEM</span>
-                <span className="hv3-hub-dot" />
-              </div>
-            </div>
+        {/* Brand core: the official Madvert mark on a layered, dimensional plate */}
+        <div className="hv3-core-pos">
+          <div className="hv3-core" data-frame>
+            <span className="hv3-core-depth" />
+            <span className="hv3-core-rim" />
+            <span className="hv3-core-face">
+              <MadvertMark className="hv3-core-mark" orbClassName="hv3-core-orb" />
+              <span className="hv3-core-name">MADVERT LABS</span>
+              <span className="hv3-core-state">
+                <span className="hv3-core-dot" />
+                One growth system
+              </span>
+            </span>
           </div>
         </div>
 
@@ -249,7 +264,20 @@ export function HeroVisual({ image }: { image?: ImageAsset }) {
             <div key={n.kind} className={`hv3-node${n.m ? "" : " hv3-node--wide"}`} style={style}>
               <div data-node data-s={n.s.join(",")}>
                 <div className="hv3-float">
-                  <PlatformTile kind={n.kind} label={n.label} uid={uid} />
+                  <PlatformTile
+                    kind={n.kind}
+                    label={
+                      n.short ? (
+                        <>
+                          <span className="hv3-l-full">{n.label}</span>
+                          <span className="hv3-l-short">{n.short}</span>
+                        </>
+                      ) : (
+                        n.label
+                      )
+                    }
+                    uid={uid}
+                  />
                 </div>
               </div>
             </div>

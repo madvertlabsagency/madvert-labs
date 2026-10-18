@@ -5,7 +5,10 @@ import { pageMetadata, schema } from "@/lib/seo";
 import { site } from "@/lib/site";
 import { ServiceHero } from "@/sections/services/ServiceHero";
 import { AnswerBlock, Capability, FreeValue, Statement } from "@/sections/services/Blocks";
-import { CheapLeads, LeadRadar, QualifyingForm, SearchSurfaces, StreamsMerge } from "@/sections/services/Visuals";
+import { CheapLeads, QualifyingForm, SearchSurfaces, StreamsMerge } from "@/sections/services/Visuals";
+import { ChannelHub } from "@/sections/acquisition/ChannelHub";
+import { ChannelRibbon } from "@/sections/acquisition/ChannelRibbon";
+import { ChannelStories } from "@/sections/acquisition/ChannelStories";
 import { FinalCta } from "@/sections/shared/FinalCta";
 import { BookingSection } from "@/components/booking/BookingSection";
 import { SpecialistServices } from "@/components/service-page/SpecialistServices";
@@ -31,8 +34,12 @@ export default async function AcquisitionPage() {
           { name: "What We Do", path: "/services" },
           { name: "Client Acquisition", path },
         ]}
-        visual={<LeadRadar />}
+        visual={<ChannelHub />}
       />
+
+      <ChannelRibbon />
+
+      <ChannelStories />
 
       <section className="section">
         <div className="container-x grid grid-cols-1 items-center gap-12 lg:grid-cols-12 lg:gap-10">

@@ -1,4 +1,4 @@
-/* ───────────── Homepage hero visual: founder + orbiting platform tiles ───────────── */
+/* ───────────── Homepage hero visual: MADVERT LABS brand core + connected growth modules ───────────── */
 
 .hv3 {
   container-type: inline-size;
@@ -24,6 +24,15 @@
   --hvp-ok: #34d399;
   --hvp-ok-bg: rgb(52 211 153 / 0.14);
   --hvp-badge: linear-gradient(160deg, #22304a, #141e31);
+  /* brand core */
+  --hvc-a: #15223a;
+  --hvc-b: #0a1322;
+  --hvc-hi: #24395a;
+  --hvc-plate: rgb(0 180 255 / 0.1);
+  --hvc-inner: rgb(0 0 0 / 0.45);
+  --hvc-side-a: #0c1628;
+  --hvc-side-b: #060c18;
+  --hvc-rim-mid: rgb(255 255 255 / 0.08);
 }
 [data-theme="light"] .hv3 {
   --hvp-tile-a: #ffffff;
@@ -46,6 +55,14 @@
   --hvp-ok: #059669;
   --hvp-ok-bg: rgb(5 150 105 / 0.1);
   --hvp-badge: linear-gradient(160deg, #ffffff, #eaf4f8);
+  --hvc-a: #ffffff;
+  --hvc-b: #e6f2f8;
+  --hvc-hi: #ffffff;
+  --hvc-plate: rgb(0 180 255 / 0.07);
+  --hvc-inner: rgb(10 60 110 / 0.12);
+  --hvc-side-a: #cfe1ea;
+  --hvc-side-b: #b9d1de;
+  --hvc-rim-mid: rgb(10 35 70 / 0.1);
 }
 
 .hv3-stage {
@@ -64,90 +81,127 @@
   display: none;
 }
 
-/* ── Founder frame ── */
-.hv3-frame-pos {
+/* ── Brand core ── */
+.hv3-core-pos {
   position: absolute;
-  left: 29.1667%;
-  top: 25.625%;
-  width: 41.6667%;
-  height: 48.75%;
+  left: 33.3333%;
+  top: 34.375%;
+  width: 33.3333%;
+  height: 31.25%;
+  z-index: 1;
 }
-.hv3-plate {
+.hv3-core {
   position: absolute;
   inset: 0;
-  border-radius: 2em;
-  transform: translate(1.1em, 1.1em);
-  border: 1px solid var(--line-strong);
-  background:
-    repeating-linear-gradient(135deg, transparent 0 10px, var(--grid-line) 10px 11px),
-    var(--surface-2);
-  opacity: 0.85;
+  border-radius: 50%;
 }
-.hv3-frame {
+.hv3-core-depth,
+.hv3-core-rim,
+.hv3-core-face {
   position: absolute;
+  border-radius: 50%;
+}
+/* the plate's thickness + its soft cast shadow */
+.hv3-core-depth {
   inset: 0;
-  padding: 1px;
-  border-radius: 2em;
-  background: linear-gradient(160deg, rgb(0 229 255 / 0.6), rgb(255 255 255 / 0.08) 38%, rgb(255 255 255 / 0.04) 62%, rgb(0 180 255 / 0.45));
+  transform: translateY(0.95em);
+  background: linear-gradient(180deg, var(--hvc-side-a), var(--hvc-side-b));
   box-shadow:
-    var(--shadow-lg),
-    0 2.4em 4em -2.4em rgb(0 160 255 / 0.4);
-  transition: box-shadow 0.8s var(--ease);
+    0 2.6em 3.8em -1.4em var(--hvp-drop),
+    0 1.8em 3.4em -1.8em var(--hvp-glow);
 }
-.hv3-frame-in {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
-  border-radius: calc(2em - 1px);
-  background: #0d1424;
+/* subtle cyan rim, slowly turning once the system is connected */
+.hv3-core-rim {
+  inset: 0;
+  background: conic-gradient(from 210deg, rgb(0 229 255 / 0.85), rgb(0 180 255 / 0.12) 28%, var(--hvc-rim-mid) 50%, rgb(0 180 255 / 0.18) 72%, rgb(0 229 255 / 0.85));
 }
-.hv3-frame-in::after {
-  /* glass edge highlight */
+.hv3.is-connected .hv3-core-rim {
+  animation: hv3-spin 16s linear infinite;
+}
+.hv3-core-face {
+  inset: 2px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.55em;
+  color: var(--ink);
+  background: radial-gradient(circle at 34% 24%, var(--hvc-hi), var(--hvc-a) 46%, var(--hvc-b) 100%);
+  box-shadow:
+    inset 0 1px 0 var(--hvp-tile-hi),
+    inset 0 -1.1em 1.8em -1em var(--hvc-inner),
+    inset 0 0 0 1px var(--hvp-hair);
+}
+.hv3-core-face::before {
+  /* inner dial ring: the plate's second layer */
   content: "";
   position: absolute;
-  inset: 0;
-  border-radius: inherit;
-  box-shadow: inset 0 1px 0 rgb(255 255 255 / 0.18), inset 0 0 0 1px rgb(255 255 255 / 0.04);
-  pointer-events: none;
-}
-.hv3.is-connected .hv3-frame {
-  box-shadow:
-    var(--shadow-lg),
-    0 0 0 1px rgb(0 200 255 / 0.12),
-    0 2.4em 4.4em -2em rgb(0 180 255 / 0.5);
-}
-.hv3-hub {
-  position: absolute;
-  inset-inline: 0.85em;
-  bottom: 0.85em;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0.6em 0.85em;
-  border-radius: 0.9em;
-  border: 1px solid rgb(255 255 255 / 0.1);
-  background: rgb(10 15 28 / 0.62);
-  backdrop-filter: blur(8px);
-}
-.hv3-hub-label {
-  font-family: var(--font-display);
-  font-size: 0.95em;
-  font-weight: 600;
-  letter-spacing: 0.16em;
-  color: rgb(255 255 255 / 0.92);
-}
-.hv3-hub-dot {
-  width: 0.6em;
-  height: 0.6em;
+  inset: 9%;
   border-radius: 50%;
-  background: #334155;
+  border: 1px solid var(--hvp-hair);
+  background: radial-gradient(circle at 50% 30%, var(--hvc-plate), transparent 70%);
+}
+.hv3-core-mark {
+  position: relative;
+  width: 44%;
+  height: auto;
+  margin-top: 0.4em;
+}
+.hv3-core-orb {
+  fill: var(--hvc-orb, #00c8ff);
+}
+.hv3-l-short {
+  display: none;
+}
+.hv3.is-connected .hv3-core-orb {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: hv3-orb 2.6s ease-in-out infinite;
+}
+.hv3-core-name {
+  position: relative;
+  font-family: var(--font-display);
+  font-size: 0.86em;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  color: var(--ink);
+  white-space: nowrap;
+}
+.hv3-core-state {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45em;
+  padding: 0.28em 0.7em;
+  border-radius: 999px;
+  font-size: 0.74em;
+  font-weight: 600;
+  color: var(--ink-3);
+  border: 1px solid var(--hvp-hair);
+  background: var(--hvp-well);
+  white-space: nowrap;
+}
+.hv3-core-dot {
+  width: 0.5em;
+  height: 0.5em;
+  border-radius: 50%;
+  background: var(--node-idle);
   transition: background 0.5s, box-shadow 0.5s;
 }
-.hv3.is-connected .hv3-hub-dot {
+.hv3.is-connected .hv3-core-dot {
   background: #00e5ff;
-  box-shadow: 0 0 0.8em #00e5ff;
-  animation: hv3-breathe 2.6s ease-in-out infinite;
+  box-shadow: 0 0 0.6em #00e5ff;
+}
+[data-theme="light"] .hv3.is-connected .hv3-core-dot {
+  background: var(--accent);
+  box-shadow: 0 0 0.45em rgb(0 160 230 / 0.6);
+}
+.hv3-ports {
+  opacity: 0.35;
+  transition: opacity 0.8s;
+}
+.hv3.is-connected .hv3-ports {
+  opacity: 1;
 }
 
 /* ── Tiles ── */
@@ -288,6 +342,9 @@
   transform-origin: center;
   animation: hv3-ping 2.4s ease-out infinite;
 }
+.hv3.is-connected .hvp-flow {
+  animation: hv3-flow 1.2s linear infinite;
+}
 .hv3.is-connected .hvp-typing circle {
   animation: hv3-typing 1.4s ease-in-out infinite;
 }
@@ -319,24 +376,32 @@
   .hv3-svg--m {
     display: block;
   }
-  .hv3-frame-pos {
-    left: 30%;
-    top: 29.5455%;
-    width: 40%;
-    height: 40.9091%;
+  .hv3-core-pos {
+    left: 33.3333%;
+    top: 36.8182%;
+    width: 33.3333%;
+    height: 27.2727%;
   }
-  .hv3-plate,
-  .hv3-frame {
-    border-radius: 1.5em;
+  .hv3-core-depth {
+    transform: translateY(0.65em);
   }
-  .hv3-frame-in {
-    border-radius: calc(1.5em - 1px);
+  .hv3-core-face {
+    gap: 0.4em;
   }
-  .hv3-plate {
-    transform: translate(0.7em, 0.7em);
+  .hv3-core-mark {
+    width: 46%;
+    margin-top: 0.2em;
   }
-  .hv3-hub {
+  .hv3-core-name {
+    font-size: 0.74em;
+    letter-spacing: 0.18em;
+  }
+  .hv3-core-state,
+  .hv3-l-full {
     display: none;
+  }
+  .hv3-l-short {
+    display: inline;
   }
   .hv3-node {
     left: var(--mx);
@@ -361,7 +426,7 @@
 
 /* Before the load sequence is armed, hide what will animate in (failsafe reveals it if JS never runs). */
 @media (prefers-reduced-motion: no-preference) {
-  .js .hv3:not(.is-armed) :is(.hv3-node, .hv3-links, .hv3-ribbon) {
+  .js .hv3:not(.is-armed) :is(.hv3-node, .hv3-links, .hv3-ribbon, .hv3-core-pos) {
     opacity: 0;
     animation: hv3-failsafe 0.6s 3.5s forwards;
   }
@@ -388,9 +453,19 @@
     transform: translate3d(0, 0.32em, 0);
   }
 }
-@keyframes hv3-breathe {
+@keyframes hv3-spin {
+  to {
+    transform: rotate(1turn);
+  }
+}
+@keyframes hv3-orb {
   50% {
-    box-shadow: 0 0 1.4em #00e5ff;
+    transform: scale(1.07);
+  }
+}
+@keyframes hv3-flow {
+  to {
+    stroke-dashoffset: -14;
   }
 }
 @keyframes hv3-blink {

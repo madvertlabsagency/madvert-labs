@@ -1,14 +1,25 @@
 import type { ReactNode } from "react";
-import { AnalyticsMark, GoogleG, MetaMark, SystemGlyph } from "./BrandMarks";
+import { AnalyticsMark, GoogleG, MetaMark, SystemGlyph, type SystemGlyphKind } from "./BrandMarks";
 
-export type PlatformKind = "meta" | "google" | "search" | "analytics" | "crm" | "ai" | "website" | "sales";
+export type PlatformKind =
+  | "meta"
+  | "paid"
+  | "google"
+  | "search"
+  | "analytics"
+  | "crm"
+  | "ai"
+  | "website"
+  | "sales"
+  | "creative"
+  | "automation";
 
 /**
  * A small layered "3D" platform tile: brand badge, label and a mini mock-up of the system.
  * Mock-ups are illustrative only: no numbers, no performance claims.
  * Colours come from --hvp-* tokens defined in src/styles/hero.css (both themes).
  */
-export function PlatformTile({ kind, label, uid }: { kind: PlatformKind; label: string; uid: string }) {
+export function PlatformTile({ kind, label, uid }: { kind: PlatformKind; label: ReactNode; uid: string }) {
   const id = `${uid}-${kind}`;
   return (
     <div className="hvp-tile">
@@ -29,28 +40,20 @@ export function PlatformTile({ kind, label, uid }: { kind: PlatformKind; label: 
 function badge(kind: PlatformKind, id: string): ReactNode {
   switch (kind) {
     case "meta":
+    case "paid":
       return <MetaMark uid={id} className="w-[78%]" />;
     case "google":
+    case "search":
       return <GoogleG className="w-[62%]" />;
     case "analytics":
       return <AnalyticsMark className="w-[62%]" />;
     default:
-      return <SystemGlyph kind={kind} uid={id} className="w-[66%]" />;
+      return <SystemGlyph kind={kind as SystemGlyphKind} uid={id} className="w-[66%]" />;
   }
 }
 
 function chip(kind: PlatformKind): ReactNode {
   if (kind === "crm") return <span className="hvp-chip">Qualified</span>;
-  if (kind === "sales")
-    return (
-      <span className="hvp-chip hvp-chip--ok">
-        <svg viewBox="0 0 12 12" aria-hidden="true">
-          <rect x="1.5" y="2.5" width="9" height="8" rx="1.8" fill="none" stroke="currentColor" strokeWidth="1.3" />
-          <path d="M1.5 5h9M4 1.5v2M8 1.5v2" stroke="currentColor" strokeWidth="1.3" strokeLinecap="round" />
-        </svg>
-        Booked
-      </span>
-    );
   return <span className="hvp-dot" />;
 }
 
@@ -60,8 +63,9 @@ const WELL = "var(--hvp-well)";
 
 function mock(kind: PlatformKind, id: string): ReactNode {
   switch (kind) {
-    /* Meta: a sponsored feed post with creative + CTA */
+    /* Meta / Paid Media: a sponsored feed post with creative + CTA */
     case "meta":
+    case "paid":
       return (
         <>
           <defs>
@@ -209,6 +213,53 @@ function mock(kind: PlatformKind, id: string): ReactNode {
           <rect x="64" y="15" width="49" height="34" rx="4" fill="var(--hvp-hi-bg)" stroke="var(--hvp-hi-line)" />
           <path d="M70 43 l9 -10 l7 6 l8 -9 l13 13Z" fill="var(--accent)" opacity="0.35" />
           <circle cx="102" cy="22" r="3" fill="var(--accent)" opacity="0.5" />
+        </>
+      );
+    /* Creative: three ad formats, the strongest one lifted and approved */
+    case "creative": {
+      const frames = [
+        { x: 0.5, y: 6, w: 26, h: 44 },
+        { x: 31, y: 0.5, w: 40, h: 55, hi: true },
+        { x: 75.5, y: 13, w: 44, h: 30 },
+      ];
+      return (
+        <>
+          <defs>
+            <linearGradient id={`${id}-cr`} x1="0" x2="1" y1="0" y2="1">
+              <stop offset="0" stopColor="#00B4FF" stopOpacity="0.7" />
+              <stop offset="1" stopColor="#7C5CFF" stopOpacity="0.45" />
+            </linearGradient>
+          </defs>
+          {frames.map((f, i) => (
+            <g key={i}>
+              <rect x={f.x} y={f.y} width={f.w} height={f.h} rx="5" fill={f.hi ? "var(--hvp-hi-bg)" : WELL} stroke={f.hi ? "var(--hvp-hi-line)" : "var(--hvp-hair)"} />
+              <rect x={f.x + 3.5} y={f.y + 3.5} width={f.w - 7} height={f.h * 0.52} rx="3" fill={f.hi ? `url(#${id}-cr)` : SK} opacity={f.hi ? 1 : 0.9} />
+              <rect x={f.x + 3.5} y={f.y + f.h * 0.52 + 7} width={(f.w - 7) * 0.8} height="2.4" rx="1.2" fill={SK2} />
+              <rect x={f.x + 3.5} y={f.y + f.h * 0.52 + 11.5} width={(f.w - 7) * 0.5} height="2.2" rx="1.1" fill={SK} />
+            </g>
+          ))}
+          <circle cx="66" cy="6" r="4.4" fill="var(--hvp-ok)" />
+          <path d="M63.9 6.1l1.5 1.5 2.7-2.9" fill="none" stroke="#fff" strokeWidth="1.3" strokeLinecap="round" strokeLinejoin="round" />
+        </>
+      );
+    }
+    /* Automation: trigger → actions workflow with a moving signal */
+    case "automation":
+      return (
+        <>
+          <path d="M30 28 C 44 28, 44 12, 58 12 M30 28 C 44 28, 44 44, 58 44 M92 12 C 100 12, 100 28, 104 28 M92 44 C 100 44, 100 28, 104 28" fill="none" stroke="var(--hvp-hi-line)" strokeWidth="1.3" />
+          <path d="M30 28 C 44 28, 44 12, 58 12" fill="none" stroke="var(--accent)" strokeWidth="1.5" strokeDasharray="3 4" className="hvp-flow" />
+          <rect x="0.5" y="18" width="30" height="20" rx="5" fill="var(--hvp-hi-bg)" stroke="var(--hvp-hi-line)" />
+          <path d="M16.6 22 12.6 28.6h3.4l-0.8 5 4.4-6.6h-3.4L16.6 22Z" fill="var(--accent)" />
+          {[2, 34].map((y, i) => (
+            <g key={y}>
+              <rect x="58" y={y + 0.5} width="34" height="19" rx="5" fill={WELL} stroke="var(--hvp-hair)" />
+              <rect x="63" y={y + 5.5} width={i ? 14 : 18} height="2.6" rx="1.3" fill={SK2} />
+              <rect x="63" y={y + 11} width={i ? 22 : 16} height="2.2" rx="1.1" fill={SK} />
+            </g>
+          ))}
+          <circle cx="111" cy="28" r="7.5" fill="var(--hvp-ok-bg)" stroke="var(--hvp-ok)" strokeWidth="1" />
+          <path d="M108 28.2l2 2 3.6-3.8" fill="none" stroke="var(--hvp-ok)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
         </>
       );
     /* Sales: pipeline stages with a deal arriving at the last stage */

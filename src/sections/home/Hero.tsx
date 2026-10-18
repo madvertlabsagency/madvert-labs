@@ -3,7 +3,6 @@ import { Glyph, type IconName } from "@/components/ui/Icon3D";
 import { Eyebrow } from "@/components/ui/Section";
 import { GrowthRibbon } from "@/components/visuals/GrowthRibbon";
 import { site } from "@/lib/site";
-import type { ImageAsset } from "@/types/content";
 import { HeroVisual } from "./HeroVisual";
 
 const proof: { label: string; icon: IconName }[] = [
@@ -13,7 +12,7 @@ const proof: { label: string; icon: IconName }[] = [
   { label: "Built for What Is Next", icon: "growth" },
 ];
 
-export function Hero({ image }: { image?: ImageAsset }) {
+export function Hero() {
   return (
     <section className="relative overflow-hidden pb-20 pt-[calc(var(--header-h)+56px)] md:pb-28 lg:pt-[calc(var(--header-h)+72px)]" aria-labelledby="hero-title">
       <div className="bg-blueprint pointer-events-none absolute inset-0" aria-hidden="true" />
@@ -47,7 +46,7 @@ export function Hero({ image }: { image?: ImageAsset }) {
         </div>
 
         <div className="sm:px-10 lg:col-span-5 lg:px-0 xl:col-span-6" data-reveal="fade" style={{ ["--reveal-delay" as string]: 200 }}>
-          <HeroVisual image={image} />
+          <HeroVisual />
         </div>
       </div>
 

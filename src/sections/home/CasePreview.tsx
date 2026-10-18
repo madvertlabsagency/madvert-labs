@@ -1,10 +1,15 @@
 import { Cta } from "@/components/ui/Button";
 import { CaseCarousel } from "@/components/case-studies/CaseCarousel";
-import { toCardStudy } from "@/components/case-studies/utils";
+import { CaseCoverMarquee, type CoverItem } from "@/components/case-studies/CaseCoverMarquee";
+import { isReal, toCardStudy } from "@/components/case-studies/utils";
 import type { CaseStudy } from "@/types/content";
 
 export function CasePreview({ studies }: { studies: CaseStudy[] }) {
   if (!studies.length) return null;
+  // Every real, published study with its PDF cover drifts past first; the carousel then opens the detail.
+  const covers: CoverItem[] = studies
+    .filter((s) => !s.placeholder && s.cover?.url)
+    .map((s) => ({ slug: s.slug, title: s.title, industry: isReal(s.industry) ? s.industry : undefined, cover: s.cover! }));
   return (
     <section className="section-tight relative overflow-clip" aria-labelledby="cases-title">
       <div className="cs-glow" aria-hidden="true" />
@@ -20,7 +25,14 @@ export function CasePreview({ studies }: { studies: CaseStudy[] }) {
             The problem, the decisions, the system we built and what changed in the business.
           </p>
         </div>
-        <div data-reveal="fade" style={{ ["--reveal-delay" as string]: 160 }} className="mt-10 md:mt-14">
+      </div>
+      {covers.length ? (
+        <div data-reveal="fade" style={{ ["--reveal-delay" as string]: 160 }} className="relative mt-8 md:mt-12">
+          <CaseCoverMarquee items={covers} label="All published case studies" />
+        </div>
+      ) : null}
+      <div className="container-x relative">
+        <div data-reveal="fade" className="mt-10 md:mt-16">
           <CaseCarousel studies={studies.slice(0, 7).map(toCardStudy)} label="Featured case studies" />
         </div>
         <div className="mt-10 flex justify-center">

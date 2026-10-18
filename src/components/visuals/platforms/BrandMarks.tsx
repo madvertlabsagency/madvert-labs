@@ -51,8 +51,10 @@ export function AnalyticsMark({ className }: { className?: string }) {
   );
 }
 
+export type SystemGlyphKind = "search" | "crm" | "ai" | "website" | "sales" | "creative" | "automation";
+
 /** Generic glyphs for the non-brand systems, tinted with the accent gradient. */
-export function SystemGlyph({ kind, uid, className }: { kind: "search" | "crm" | "ai" | "website" | "sales"; uid: string; className?: string }) {
+export function SystemGlyph({ kind, uid, className }: { kind: SystemGlyphKind; uid: string; className?: string }) {
   const g = `${uid}-sg-${kind}`;
   const stroke = `url(#${g})`;
   return (
@@ -88,6 +90,18 @@ export function SystemGlyph({ kind, uid, className }: { kind: "search" | "crm" |
           <rect x="3" y="4.5" width="18" height="15" rx="3" stroke={stroke} strokeWidth="2" />
           <path d="M3 9h18" stroke={stroke} strokeWidth="1.8" />
           <path d="M7 14h6" stroke={stroke} strokeWidth="2" />
+        </>
+      )}
+      {kind === "creative" && (
+        <>
+          <rect x="3.5" y="7" width="12" height="13" rx="2.6" stroke={stroke} strokeWidth="1.8" opacity="0.65" />
+          <rect x="8" y="3.5" width="12.5" height="13" rx="2.6" stroke={stroke} strokeWidth="2" />
+          <path d="M11 13.2l2.6-3 2 2.2 1.4-1.5" stroke={stroke} strokeWidth="1.6" />
+        </>
+      )}
+      {kind === "automation" && (
+        <>
+          <path d="M13.2 3 6 13.2h5.4L10.4 21l7.4-10.4h-5.4L13.2 3Z" stroke={stroke} strokeWidth="1.9" />
         </>
       )}
       {kind === "sales" && (

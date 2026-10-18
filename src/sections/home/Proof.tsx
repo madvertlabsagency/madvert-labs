@@ -1,16 +1,17 @@
 import Image from "next/image";
 import { Cta } from "@/components/ui/Button";
-import { Placeholder } from "@/components/ui/Section";
-import { TestimonialWall } from "@/components/testimonials/TestimonialWall";
+import { TestimonialWall, realTestimonials } from "@/components/testimonials/TestimonialWall";
 import type { ProofItem, Testimonial } from "@/types/content";
 
 /**
- * Client video testimonials (two opposing marquee rows) plus a compact evidence strip.
- * Until real, client-approved videos exist every card is a bracketed placeholder with play disabled.
+ * Real client video testimonials (featured stories while there are only a few, a two-row marquee
+ * once there are enough) plus an evidence strip that only renders real, client-approved images.
+ * Bracketed placeholders are never shown next to real clients on the homepage.
  */
 export function Proof({ items, testimonials }: { items: ProofItem[]; testimonials: Testimonial[] }) {
   // The video wall now carries testimonials and client video; the strip keeps the other evidence types.
-  const tiles = items.filter((p) => p.kind !== "testimonial" && p.kind !== "video").slice(0, 5);
+  const tiles = items.filter((p) => p.kind !== "testimonial" && p.kind !== "video" && !p.placeholder && p.image).slice(0, 5);
+  if (!realTestimonials(testimonials).length && !tiles.length) return null;
   return (
     <section className="section tm-section" aria-labelledby="proof-title">
       <div className="container-x text-center">
@@ -43,14 +44,10 @@ export function Proof({ items, testimonials }: { items: ProofItem[]; testimonial
           <ul className="mt-8 grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-5">
             {tiles.map((p, i) => (
               <li key={i} data-reveal style={{ ["--reveal-delay" as string]: i * 60 }} className={i === 4 ? "col-span-2 md:col-span-1" : ""}>
-                {p.image ? (
-                  <figure className="panel overflow-hidden">
-                    <Image src={p.image.url} alt={p.image.alt || p.label} width={p.image.width ?? 800} height={p.image.height ?? 600} className="h-36 w-full object-cover" />
-                    {p.caption ? <figcaption className="px-4 py-2.5 text-[12.5px] text-ink-3">{p.caption}</figcaption> : null}
-                  </figure>
-                ) : (
-                  <Placeholder label={p.label} className="h-36" />
-                )}
+                <figure className="panel overflow-hidden">
+                  <Image src={p.image!.url} alt={p.image!.alt || p.label} width={p.image!.width ?? 800} height={p.image!.height ?? 600} className="h-36 w-full object-cover" />
+                  {p.caption ? <figcaption className="px-4 py-2.5 text-[12.5px] text-ink-3">{p.caption}</figcaption> : null}
+                </figure>
               </li>
             ))}
           </ul>

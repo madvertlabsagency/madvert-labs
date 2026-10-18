@@ -5,12 +5,19 @@ import { PillarWorld } from "@/components/visuals/PillarWorld";
 import { pageMetadata, schema } from "@/lib/seo";
 import { site } from "@/lib/site";
 import { ServiceHero } from "@/sections/services/ServiceHero";
-import { AnswerBlock, Capability, FreeValue, Statement } from "@/sections/services/Blocks";
-import { IdentityAlign } from "@/sections/services/IdentityAlign";
-import { AudienceFit, Touchpoints360 } from "@/sections/services/Visuals";
+import { AnswerBlock, Capability } from "@/sections/services/Blocks";
+import { Touchpoints360 } from "@/sections/services/Visuals";
+import { Deferred } from "@/components/perf/Deferred";
+import { AttentionGraph } from "@/sections/branding/AttentionGraph";
+import { ContentPillars } from "@/sections/branding/ContentPillars";
+import { IdentitySection } from "@/sections/branding/IdentitySection";
+import { JudgingSection } from "@/sections/branding/JudgingSection";
+import { LogoEcosystem } from "@/sections/branding/LogoEcosystem";
+import { PerceptionAudit } from "@/sections/branding/PerceptionAudit";
 import { FinalCta } from "@/sections/shared/FinalCta";
 import { BookingSection } from "@/components/booking/BookingSection";
 import { SpecialistServices } from "@/components/service-page/SpecialistServices";
+import "@/styles/branding.css";
 
 const path = "/services/branding-marketing";
 const description =
@@ -37,30 +44,8 @@ export default async function BrandingPage() {
         visual={<PillarWorld icon="branding" satellites={["webApps", "paidMedia", "studios", "crm"]} tint="#a78bfa" />}
       />
 
-      <Statement
-        title="Your Customer Is Judging"
-        accent="Before Your Sales Team Ever Speaks."
-        lines={["They see your logo.", "Your Instagram.", "Your website.", "Your photographs.", "Your reviews.", "Your ads.", "Your tone.", "Your consistency."]}
-        closing={
-          <>
-            <p>Within seconds, they begin building an opinion.</p>
-            <p className="mt-4 flex flex-wrap gap-2 text-[15px]">
-              {["Premium.", "Average.", "Trustworthy.", "Forgettable."].map((w) => (
-                <span key={w} className="rounded-full border border-line px-3 py-1 font-sans font-medium text-ink-2">
-                  {w}
-                </span>
-              ))}
-            </p>
-            <p className="mt-6">
-              Your brand is already saying something. <span className="t-grad">The only question is whether you chose the message.</span>
-            </p>
-          </>
-        }
-      >
-        <div className="mt-16 md:mt-20">
-          <IdentityAlign />
-        </div>
-      </Statement>
+      <JudgingSection />
+      <IdentitySection />
 
       <Capability
         id="branding"
@@ -77,6 +62,11 @@ export default async function BrandingPage() {
           </>
         }
         icon="branding"
+        visual={
+          <Deferred className="bm-eco-slot">
+            <LogoEcosystem />
+          </Deferred>
+        }
         items={[
           { name: "Brand Strategy", icon: "strategy" },
           { name: "Visual Identity", icon: "branding" },
@@ -93,6 +83,11 @@ export default async function BrandingPage() {
         title="Posting Every Day Is Not a Strategy."
         support="Neither is putting “Happy Monday” over a stock photo."
         flip
+        visual={
+          <Deferred className="bm-cp-slot">
+            <ContentPillars />
+          </Deferred>
+        }
         items={[
           { name: "Social Media Management", icon: "mobileApps" },
           { name: "Content Calendars", icon: "systems" },
@@ -116,7 +111,13 @@ export default async function BrandingPage() {
           { name: "Reputation Support", icon: "tracking" },
         ]}
       />
-      <Capability id="influencer-marketing" index="04" label="Influencer Marketing" title="Borrow the Right Attention. Not Just the Biggest Audience." flip visual={<AudienceFit />} />
+      <Capability id="influencer-marketing" index="04" label="Influencer Marketing" title="Borrow the Right Attention. Not Just the Biggest Audience." flip
+        visual={
+          <Deferred className="bm-ag-slot">
+            <AttentionGraph />
+          </Deferred>
+        }
+      />
       <Capability
         id="360"
         index="05"
@@ -126,12 +127,8 @@ export default async function BrandingPage() {
         visual={<Touchpoints360 />}
       />
 
-      <FreeValue
-        title="How Does Your Brand Look From the Outside?"
-        label="Get the Brand Perception Checklist"
-        href="/resources/brand-perception-checklist"
-        resource={{ title: "Brand Perception Checklist", kind: "Checklist", category: "brand" }}
-      />
+      <PerceptionAudit />
+      <BookingSection eyebrow="Need This Built for Your Business?" context="services:branding" />
 
       <SpecialistServices parent="branding-marketing" intro="Organic social media, planned and produced in the brand's identity." />
 
@@ -147,8 +144,6 @@ export default async function BrandingPage() {
       />
 
       <FinalCta title="Build a Brand Your Marketing Can" accent="Actually Be Proud Of." primary={{ label: "Book a Brand Strategy Call", href: site.primaryCta.href }} />
-      <BookingSection eyebrow="Need This Built for Your Business?" context="services:branding" />
-
       <JsonLd
         data={schema.service({
           name: "Branding and Marketing",
