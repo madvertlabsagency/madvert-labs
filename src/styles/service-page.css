@@ -1,0 +1,170 @@
+/* ───────────── Service pages and fact components (sp-*) ───────────── */
+
+.sp-inline-link {
+  color: var(--accent-text);
+  font-weight: 500;
+  text-decoration: underline;
+  text-decoration-color: color-mix(in srgb, var(--accent-text) 35%, transparent);
+  text-underline-offset: 3px;
+  transition: text-decoration-color 0.2s ease;
+}
+.sp-inline-link:hover {
+  text-decoration-color: var(--accent-text);
+}
+
+.sp-definition dfn {
+  font-style: normal;
+}
+
+.sp-glance {
+  background: color-mix(in srgb, var(--surface) 82%, transparent);
+  backdrop-filter: blur(6px);
+}
+
+/* Bullet marks for included / not included / fit lists */
+.sp-mark {
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  width: 22px;
+  height: 22px;
+  margin-top: 2px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--accent-text);
+  background: color-mix(in srgb, var(--accent) 14%, transparent);
+  border: 1px solid color-mix(in srgb, var(--accent) 30%, transparent);
+}
+.sp-mark.is-no {
+  color: var(--ink-3);
+  background: var(--surface-glass);
+  border-color: var(--line-strong);
+}
+
+/* Process steps */
+.sp-steps {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+  counter-reset: sp-step;
+}
+@media (min-width: 768px) {
+  .sp-steps {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+@media (min-width: 1200px) {
+  .sp-steps {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+.sp-step {
+  position: relative;
+  padding: 26px 24px 26px;
+  border-radius: 22px;
+  border: 1px solid var(--line);
+  background: var(--surface-glass);
+}
+.sp-step-num {
+  display: inline-block;
+  margin-bottom: 14px;
+  font-family: var(--font-display);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  background: var(--gradient-text);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* Comparison table */
+.sp-table-wrap {
+  margin: 0;
+}
+.sp-table-scroll {
+  overflow-x: auto;
+  border: 1px solid var(--line);
+  border-radius: 22px;
+  background: var(--surface-glass);
+}
+.sp-table-scroll:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+.sp-table {
+  width: 100%;
+  min-width: 640px;
+  border-collapse: collapse;
+  font-size: 15px;
+  line-height: 1.55;
+}
+.sp-table-caption {
+  caption-side: top;
+  text-align: left;
+  padding: 18px 22px 14px;
+  font-family: var(--font-display);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+  border-bottom: 1px solid var(--line);
+}
+.sp-table th,
+.sp-table td {
+  padding: 15px 22px;
+  text-align: left;
+  vertical-align: top;
+  border-bottom: 1px solid var(--line);
+}
+.sp-table tbody tr:last-child th,
+.sp-table tbody tr:last-child td {
+  border-bottom: 0;
+}
+.sp-table thead th {
+  font-family: var(--font-display);
+  font-size: 15px;
+  font-weight: 650;
+  color: var(--ink);
+}
+.sp-table tbody th {
+  font-weight: 600;
+  color: var(--ink);
+  width: 22%;
+}
+.sp-table td {
+  color: var(--ink-2);
+}
+.sp-table .is-highlight {
+  background: color-mix(in srgb, var(--accent) 7%, transparent);
+}
+.sp-table thead .is-highlight {
+  color: var(--accent-text);
+}
+
+/* Quote */
+.sp-quote blockquote {
+  margin: 0;
+}
+.sp-quote blockquote p {
+  text-wrap: balance;
+}
+
+/* Article byline (growth systems) */
+.sp-byline {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px 14px;
+  font-size: 14.5px;
+  color: var(--ink-3);
+}
+.sp-byline a {
+  color: var(--ink);
+  font-weight: 600;
+}
+.sp-byline a:hover {
+  color: var(--accent-text);
+}

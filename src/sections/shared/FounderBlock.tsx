@@ -1,6 +1,8 @@
 import Image from "next/image";
+import Link from "next/link";
 import { Cta } from "@/components/ui/Button";
 import { Placeholder } from "@/components/ui/Section";
+import { founder } from "@/lib/entities";
 import { site } from "@/lib/site";
 import type { ImageAsset } from "@/types/content";
 
@@ -50,10 +52,13 @@ export function FounderBlock({ photo, headingLevel = "h2" }: { photo?: ImageAsse
             <p>We keep looking until the business logic makes sense.</p>
           </div>
           <p data-reveal className="t-h3 mt-8">The Channel Is Never More Important Than the Business Behind It.</p>
-          <div data-reveal className="mt-9">
+          <div data-reveal className="mt-9 flex flex-col items-start gap-5 sm:flex-row sm:items-center sm:gap-7">
             <Cta href={site.founderCta.href} size="lg" track="strategy_call_click" trackLabel="founder_cta" className="!whitespace-normal">
               {site.founderCta.label}
             </Cta>
+            <Link href={founder.path} className="text-[15px] font-medium text-accent-text underline-offset-4 hover:underline">
+              More about {site.founder.name}
+            </Link>
           </div>
         </div>
       </div>
