@@ -178,7 +178,7 @@ export function CrmSystemMap() {
           </p>
         </div>
 
-        <div data-reveal="fade" className="crm-map mt-12">
+        <InView decorative={false} className="crm-map mt-12">
           <div className="crm-side">
             {left.map((c) => (
               <Cluster key={c.title} c={c} />
@@ -186,7 +186,7 @@ export function CrmSystemMap() {
           </div>
 
           <div className="crm-core-wrap">
-            <InView className="crm-core">
+            <div className="crm-core" aria-hidden="true">
               <div className="crm-core-head">
                 <span className="crm-core-avatar" />
                 <span className="grid flex-1 gap-1.5">
@@ -216,7 +216,7 @@ export function CrmSystemMap() {
                   </li>
                 ))}
               </ol>
-            </InView>
+            </div>
             <p className="crm-core-caption">Illustrative record. Every module above writes to it.</p>
           </div>
 
@@ -225,7 +225,7 @@ export function CrmSystemMap() {
               <Cluster key={c.title} c={c} />
             ))}
           </div>
-        </div>
+        </InView>
 
         <div className="mt-6 grid grid-cols-1 gap-4 lg:grid-cols-2">
           <div data-reveal className="crm-panel">

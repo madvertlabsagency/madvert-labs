@@ -6,7 +6,7 @@ import { useEffect, useRef, useState, type CSSProperties, type ReactNode } from 
  * Wrapper for decorative CSS animations: sets data-paused="true" while the element is off screen,
  * so `.mv-inview[data-paused="true"] *` can pause every animation inside it.
  */
-export function InView({ children, className = "", style }: { children: ReactNode; className?: string; style?: CSSProperties }) {
+export function InView({ children, className = "", style, decorative = true }: { children: ReactNode; className?: string; style?: CSSProperties; decorative?: boolean }) {
   const ref = useRef<HTMLDivElement>(null);
   const [paused, setPaused] = useState(true);
   useEffect(() => {
@@ -17,7 +17,7 @@ export function InView({ children, className = "", style }: { children: ReactNod
     return () => io.disconnect();
   }, []);
   return (
-    <div ref={ref} className={`mv-inview ${className}`} style={style} data-paused={paused ? "true" : "false"} aria-hidden="true">
+    <div ref={ref} className={`mv-inview ${className}`} style={style} data-paused={paused ? "true" : "false"} aria-hidden={decorative ? "true" : undefined}>
       {children}
     </div>
   );

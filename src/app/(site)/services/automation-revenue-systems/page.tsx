@@ -9,6 +9,7 @@ import { InterestTemperature } from "@/sections/services/InterestTemperature";
 import { LeadJourney } from "@/sections/services/LeadJourney";
 import { PipelineStages, SpreadsheetVsCrm, WhatsAppChat } from "@/sections/services/Visuals";
 import { PillarWorld } from "@/components/visuals/PillarWorld";
+import { CrmSystemMap } from "@/sections/crm/CrmSystemMap";
 import { FinalCta } from "@/sections/shared/FinalCta";
 import { BookingSection } from "@/components/booking/BookingSection";
 import { SpecialistServices } from "@/components/service-page/SpecialistServices";
@@ -39,6 +40,7 @@ export default async function AutomationPage() {
 
       <Capability id="speed" index="01" label="Speed" title="Interest Has a Temperature." visual={<InterestTemperature />} />
       <Capability id="crm" index="02" label="CRM" title="Your CRM Should Know More Than Your Spreadsheet." flip visual={<SpreadsheetVsCrm />} />
+      <CrmSystemMap />
       <Capability
         id="ai-agents"
         index="03"

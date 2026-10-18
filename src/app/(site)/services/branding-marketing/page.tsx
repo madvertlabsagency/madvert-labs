@@ -23,7 +23,11 @@ const path = "/services/branding-marketing";
 const description =
   "Brand strategy, identity, social media, digital PR, influencer marketing and 360 degree execution. Madvert Labs shapes how your business looks, sounds and shows up everywhere.";
 
-export const metadata: Metadata = pageMetadata({ title: "Branding and Marketing", description, path });
+export const metadata: Metadata = pageMetadata({
+  title: "Branding and Marketing",
+  description,
+  path,
+});
 
 export default async function BrandingPage() {
   const faqs = await getFaqs("branding-marketing");
@@ -36,12 +40,21 @@ export default async function BrandingPage() {
         campaignLine="Being Good Is Not Enough If You Look Forgettable."
         sub="We build and execute complete brand and marketing systems that shape how your business looks, sounds, communicates and shows up across every important touchpoint."
         primary={{ label: "Build My Brand", href: "#book" }}
-        secondary={{ label: "Get the Brand Perception Checklist", href: "/resources/brand-perception-checklist" }}
+        secondary={{
+          label: "Get the Brand Perception Checklist",
+          href: "/resources/brand-perception-checklist",
+        }}
         crumbs={[
           { name: "What We Do", path: "/services" },
           { name: "Branding and Marketing", path },
         ]}
-        visual={<PillarWorld icon="branding" satellites={["webApps", "paidMedia", "studios", "crm"]} tint="#a78bfa" />}
+        visual={
+          <PillarWorld
+            icon="branding"
+            satellites={["webApps", "paidMedia", "studios", "crm"]}
+            tint="#a78bfa"
+          />
+        }
       />
 
       <JudgingSection />
@@ -56,8 +69,10 @@ export default async function BrandingPage() {
           <>
             <p>A strong identity does more than look attractive.</p>
             <p className="mt-2">
-              It creates recognition. It creates consistency. It makes your business easier to remember. It makes every campaign, post, proposal and customer
-              touchpoint feel like it came from the same company.
+              It creates recognition. It creates consistency. It makes your
+              business easier to remember. It makes every campaign, post,
+              proposal and customer touchpoint feel like it came from the same
+              company.
             </p>
           </>
         }
@@ -111,7 +126,13 @@ export default async function BrandingPage() {
           { name: "Reputation Support", icon: "tracking" },
         ]}
       />
-      <Capability id="influencer-marketing" index="04" label="Influencer Marketing" title="Borrow the Right Attention. Not Just the Biggest Audience." flip
+      <Capability
+        id="influencer-marketing"
+        index="04"
+        label="Influencer Marketing"
+        title="Borrow the Right Attention. Not Just the Biggest Audience."
+        support="A smaller audience that already trusts the voice, buys in your category and looks like your customer is worth more than a huge one that was never going to buy."
+        flip
         visual={
           <Deferred className="bm-ag-slot">
             <AttentionGraph />
@@ -128,22 +149,51 @@ export default async function BrandingPage() {
       />
 
       <PerceptionAudit />
-      <BookingSection eyebrow="Need This Built for Your Business?" context="services:branding" />
+      <BookingSection
+        eyebrow="Need This Built for Your Business?"
+        context="services:branding"
+      />
 
-      <SpecialistServices parent="branding-marketing" intro="Organic social media, planned and produced in the brand's identity." />
+      <SpecialistServices
+        parent="branding-marketing"
+        intro="Organic social media, planned and produced in the brand's identity."
+      />
 
       <AnswerBlock
         service="Branding and Marketing"
         glance={[
-          { label: "Who it is for", value: "Established businesses whose quality is not yet reflected in how they look and communicate." },
-          { label: "Problem solved", value: "Inconsistent, forgettable or outdated presence across logo, social, website, PR and creative." },
-          { label: "Process", value: "Diagnose perception, define strategy and identity, build the system, execute across touchpoints." },
-          { label: "Measured by", value: "Consistency, brand search demand, enquiry quality and content performance." },
+          {
+            label: "Who it is for",
+            value:
+              "Established businesses whose quality is not yet reflected in how they look and communicate.",
+          },
+          {
+            label: "Problem solved",
+            value:
+              "Inconsistent, forgettable or outdated presence across logo, social, website, PR and creative.",
+          },
+          {
+            label: "Process",
+            value:
+              "Diagnose perception, define strategy and identity, build the system, execute across touchpoints.",
+          },
+          {
+            label: "Measured by",
+            value:
+              "Consistency, brand search demand, enquiry quality and content performance.",
+          },
         ]}
         faqs={faqs}
       />
 
-      <FinalCta title="Build a Brand Your Marketing Can" accent="Actually Be Proud Of." primary={{ label: "Book a Brand Strategy Call", href: site.primaryCta.href }} />
+      <FinalCta
+        title="Build a Brand Your Marketing Can"
+        accent="Actually Be Proud Of."
+        primary={{
+          label: "Book a Brand Strategy Call",
+          href: site.primaryCta.href,
+        }}
+      />
       <JsonLd
         data={schema.service({
           name: "Branding and Marketing",
