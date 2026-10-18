@@ -30,5 +30,5 @@
     ".next/dev/types/**/*.ts",
     "**/*.mts"
   ],
-  "exclude": ["node_modules", "studio", "motion", "motion-patches", "motion-vertical", "testimonial", ".open-next", ".wrangler"]
+  "exclude": ["node_modules", "studio", "motion", "motion-patches", "motion-vertical", "testimonial", "testimonial2", ".open-next", ".wrangler"]
 }
