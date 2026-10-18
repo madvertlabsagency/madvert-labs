@@ -5,15 +5,12 @@ import { useCallback, useEffect, useRef, useState, type MouseEvent } from "react
 import { track } from "@/analytics/track";
 import type { Testimonial } from "@/types/content";
 import { VideoLightbox } from "./VideoLightbox";
+import { realTestimonials } from "./utils";
 import "@/styles/testimonials.css";
 
 /** Below this many real videos the wall shows them as featured stories instead of a marquee. */
 const MARQUEE_MIN = 6;
 
-/** Only real, playable client videos are shown. Bracketed placeholders never sit next to real clients. */
-export function realTestimonials(items: Testimonial[]) {
-  return items.filter((t) => !t.placeholder && !!t.videoUrl);
-}
 
 /** Repeat a row until it is long enough to fill a wide screen, so the marquee never shows a gap. */
 function fill<T>(list: T[], min: number): T[] {

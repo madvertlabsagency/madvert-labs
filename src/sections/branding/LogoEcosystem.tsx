@@ -64,7 +64,7 @@ const nodes: { label: string; art: ReactNode }[] = [
 
 const pos = nodes.map((_, i) => {
   const a = ((-90 + i * 45) * Math.PI) / 180;
-  return { x: +(50 + 36 * Math.cos(a)).toFixed(2), y: +(50 + 38 * Math.sin(a)).toFixed(2) };
+  return { x: +(50 + 32 * Math.cos(a)).toFixed(2), y: +(50 + 39 * Math.sin(a)).toFixed(2) };
 });
 
 const TOTAL = nodes.length;

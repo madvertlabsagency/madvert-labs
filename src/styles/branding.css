@@ -194,7 +194,7 @@
   position: absolute;
   left: calc(100% / 14);
   right: calc(100% / 14);
-  top: 252px;
+  top: 238px;
   height: 2px;
   border-radius: 2px;
   background: repeating-linear-gradient(90deg, var(--line-strong) 0 6px, transparent 6px 12px);
@@ -207,15 +207,20 @@
   transform-origin: left center;
   transition: transform 1s var(--ease);
 }
+.bm-track-run {
+  position: absolute;
+  inset: 0;
+  transition: transform 1s var(--ease);
+}
 .bm-track-dot {
   position: absolute;
+  left: -6px;
   top: -5px;
   width: 12px;
   height: 12px;
   border-radius: 50%;
   background: var(--cyan);
   box-shadow: 0 0 0 4px rgb(0 229 255 / 0.18), 0 0 14px rgb(0 229 255 / 0.6);
-  transition: left 1s var(--ease);
 }
 .bm-stages {
   display: grid;
@@ -1074,8 +1079,7 @@
 }
 .bm-eco-lines line {
   stroke: var(--accent);
-  stroke-width: 1.2;
-  vector-effect: non-scaling-stroke;
+  stroke-width: 0.3;
   stroke-dasharray: 1;
   stroke-dashoffset: 1;
   opacity: 0.55;
@@ -1092,8 +1096,7 @@
   flex-direction: column;
   align-items: center;
   gap: 8px;
-  translate: -50% -50%;
-  transform: scale(1.75);
+  transform: translate(-50%, -50%) scale(1.75);
   transition: transform 1s var(--ease);
   z-index: 2;
 }
@@ -1101,7 +1104,7 @@
   animation: bm-float 4s ease-in-out infinite;
 }
 .bm-eco[data-shrunk] .bm-eco-logo {
-  transform: scale(1);
+  transform: translate(-50%, -50%) scale(1);
 }
 .bm-eco-logo-card {
   display: flex;
@@ -1149,16 +1152,15 @@
   background: var(--bm-card);
   box-shadow: var(--bm-shadow);
   white-space: nowrap;
-  translate: -50% -50%;
   opacity: 0;
-  transform: scale(0.85);
+  transform: translate(-50%, -50%) scale(0.85);
   transition:
     opacity 0.5s,
     transform 0.6s var(--ease);
 }
 .bm-eco-node[data-on] {
   opacity: 1;
-  transform: none;
+  transform: translate(-50%, -50%);
 }
 .bm-eco-ic {
   display: grid;
@@ -1221,17 +1223,24 @@
     align-items: center;
     gap: 16px;
   }
-  .bm-eco-logo {
+  .bm-eco-logo,
+  .bm-eco[data-shrunk] .bm-eco-logo {
     position: relative;
     left: auto;
     top: auto;
-    translate: none;
+    transform: scale(1.35);
     margin-top: 40px;
     margin-bottom: 30px;
     transform-origin: center top;
   }
   .bm-eco[data-shrunk] .bm-eco-logo {
     transform: scale(0.8);
+  }
+  .bm-eco-node {
+    transform: translateY(8px);
+  }
+  .bm-eco-node[data-on] {
+    transform: none;
   }
   .bm-eco-nodes {
     display: grid;
@@ -1244,7 +1253,6 @@
     position: relative;
     left: auto !important;
     top: auto !important;
-    translate: none;
     white-space: normal;
     min-height: 48px;
   }
@@ -1749,9 +1757,11 @@
 .bm-ag-meter[data-good] .bm-ag-mv {
   color: var(--accent-text);
 }
-.bm-ag-mob {
-  display: grid;
-  gap: 14px;
+@media (max-width: 639px) {
+  .bm-ag-mob {
+    display: grid;
+    gap: 14px;
+  }
 }
 .bm-ag-mcard {
   padding: 14px;
@@ -1890,7 +1900,13 @@
   transition: transform 0.9s var(--ease) calc(0.3s + var(--i) * 0.28s);
 }
 .bm[data-seen] .bm-au-bar i {
-  transform: scaleX(1);
+  transform: scaleX(var(--f));
+}
+.bm-au-rows li.is-mixed .bm-au-bar i {
+  background: var(--bm-mid);
+}
+.bm-au-rows li.is-fix .bm-au-bar i {
+  background: var(--bm-bad);
 }
 .bm-au-v {
   min-width: 96px;
@@ -2010,9 +2026,8 @@
   .bm-ag-spoke {
     stroke-dashoffset: 0;
   }
-  .bm-ag-track i,
   .bm-au-bar i {
-    transform: scaleX(1);
+    transform: scaleX(var(--f));
   }
   .bm-ag-track i {
     transform: scaleX(0.18);
@@ -2023,4 +2038,16 @@
   .bm-au-scan {
     display: none;
   }
+}
+
+/* Website tile: tighter vertical rhythm so the CTA never clips */
+.bm-is-web .bm-web-h {
+  margin-top: 5px;
+}
+.bm-is-web .bm-btn {
+  margin-top: 6px;
+}
+.bm-is-web-b {
+  padding: 8px 10px;
+  align-items: center;
 }

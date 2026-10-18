@@ -258,7 +258,9 @@ export function PerceptionJourney() {
       <div className="bm-journey-desk">
         <div className="bm-track">
           <span className="bm-track-fill" style={{ transform: `scaleX(${step < 0 ? 0 : progress})` }} />
-          <span className="bm-track-dot" style={{ left: `calc(${(step < 0 ? 0 : progress) * 100}% - 6px)` }} />
+          <span className="bm-track-run" style={{ transform: `translateX(${(step < 0 ? 0 : progress) * 100}%)` }}>
+            <span className="bm-track-dot" />
+          </span>
         </div>
         <ol className="bm-stages">
           {stages.map((s, i) => (

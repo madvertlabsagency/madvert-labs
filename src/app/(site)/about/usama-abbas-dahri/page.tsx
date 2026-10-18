@@ -17,22 +17,23 @@ import { absoluteUrl, site } from "@/lib/site";
 
 /*
  * Founder profile. Every statement on this page is taken from copy already published on the site
- * (FounderBlock, About page, booking copy, the official resource covers that name the author).
- * No years of experience, employers, education, awards or client counts are stated, because none
+ * (FounderBlock, About page, booking copy, the official resource covers that name the author) or
+ * supplied by the client for the About page ("approximately five years" of practice, the quote).
+ * No employers, education, awards, certifications or client counts are stated, because none
  * have been supplied. Add verified facts here (and to entities.ts sameAs) when the client provides them.
  */
 
 const path = founder.path;
 const portrait = {
   url: "/images/usama-abbas-dahri-portrait.webp",
-  alt: "Portrait of Usama Abbas Dahri, Founder of Madvert Labs",
+  alt: "Portrait of Usama Abbas Dahri, Founder & CEO of Madvert Labs",
   width: 800,
   height: 1000,
 };
-const description = `${founder.name} is the founder of ${organization.name}, a digital marketing and growth systems company. Usama leads business strategy calls and is the author of several free Madvert Vault playbooks and checklists.`;
+const description = `${founder.name} is the Founder & CEO of ${organization.name}, a digital marketing and growth systems company. Usama leads business strategy calls and is the author of several free Madvert Vault playbooks and checklists.`;
 
 export const metadata: Metadata = pageMetadata({
-  title: `${founder.name}, Founder of ${organization.name}`,
+  title: `${founder.name}, ${founder.jobTitle} of ${organization.name}`,
   description,
   path,
   type: "profile",
@@ -95,7 +96,7 @@ export default async function FounderPage() {
                 </Link>
               </p>
               <p data-reveal style={{ ["--reveal-delay" as string]: 140 }} className="t-lead measure mt-6">
-                {founder.name} is the founder of {organization.name}, a digital marketing and growth systems company. {organization.slogan}
+                {founder.name} is the {founder.jobTitle} of {organization.name}, a digital marketing and growth systems company. {organization.slogan}
               </p>
               <div data-reveal style={{ ["--reveal-delay" as string]: 200 }} className="mt-9">
                 <Cta href={site.founderCta.href} size="lg" track="strategy_call_click" trackLabel="founder_profile_hero" className="!whitespace-normal">
@@ -133,12 +134,17 @@ export default async function FounderPage() {
               how {organization.name} works: the team does not stop at the first visible problem and keeps looking until the business logic makes sense.
             </p>
             <p data-reveal>
-              {organization.name} started with marketing. A client needed leads, so the team ran campaigns. Then the landing page was weak, the follow up was
-              slow, the CRM was missing and reporting was fragmented, so each problem was fixed in turn. That is how a marketing company became a growth
-              systems company.
+              Usama&apos;s work began in digital marketing and performance acquisition. The campaigns kept uncovering bigger problems behind them: weak
+              offers, poor landing pages, low quality leads, slow follow up, missing CRM systems, poor tracking, fragmented marketing and technology gaps.
+              That is why {organization.name} evolved from campaign execution into connected growth systems.
+            </p>
+            <p data-reveal>
+              For approximately five years Usama has worked across digital marketing, customer acquisition, funnels, automation and growth systems, for
+              businesses with very different buying journeys, from direct to consumer products to established corporate and service based businesses. The
+              approach: understand the business first, then decide what marketing, system or technology should be built.
             </p>
             <p data-reveal className="border-l-2 border-[#00e5ff] pl-5 t-h3 !font-medium text-ink">
-              The Channel Is Never More Important Than the Business Behind It.
+              &ldquo;When people were learning it, I was building it.&rdquo;
             </p>
             <p data-reveal>
               <Link href="/about" className="group/btn inline-flex items-center gap-2 font-medium text-accent-text">
@@ -236,7 +242,7 @@ export default async function FounderPage() {
         data={{
           "@context": "https://schema.org",
           "@type": "ProfilePage",
-          name: `${founder.name}, Founder of ${organization.name}`,
+          name: `${founder.name}, ${founder.jobTitle} of ${organization.name}`,
           description,
           url: absoluteUrl(path),
           dateModified: pageDates[path],

@@ -32,7 +32,7 @@ export function AuditScan() {
         </div>
         <ul className="bm-au-rows">
           {rows.map((r, i) => (
-            <li key={r.k} style={{ ["--i" as string]: i }}>
+            <li key={r.k} className={`is-${r.v}`} style={{ ["--i" as string]: i, ["--f" as string]: r.v === "ok" ? 0.92 : r.v === "mixed" ? 0.55 : 0.28 }}>
               <span className="bm-au-k">{r.k}</span>
               <span className="bm-au-bar">
                 <i />

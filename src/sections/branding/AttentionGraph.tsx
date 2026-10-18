@@ -46,8 +46,8 @@ function edges(pts: Pt[], k = 2) {
 }
 
 // Desktop scene (560 x 400)
-const bigD = scatter(150, 148, 262, 122, 104, 7);
-const fitD = scatter(22, 428, 262, 86, 82, 19);
+const bigD = scatter(240, 148, 262, 124, 106, 7);
+const fitD = scatter(24, 428, 262, 92, 84, 31);
 const fitEdgesD = edges(fitD);
 const hubD = { x: 428, y: 262 };
 
@@ -130,7 +130,7 @@ export function AttentionGraph() {
           </defs>
           <line x1="290" y1="120" x2="290" y2="390" className="bm-ag-div" />
           {bigD.map((p, i) => (
-            <circle key={i} cx={p.x} cy={p.y} r={2.6 + p.h * 1.6} className="bm-ag-dot" style={{ ["--d" as string]: `${(p.h * 6).toFixed(2)}s` }} data-flick={i % 23 === 0 ? "" : undefined} />
+            <circle key={i} cx={p.x} cy={p.y} r={2.2 + p.h * 1.4} className="bm-ag-dot" style={{ ["--d" as string]: `${(p.h * 6).toFixed(2)}s` }} data-flick={i % 23 === 0 ? "" : undefined} />
           ))}
           <ellipse cx={hubD.x} cy={hubD.y} rx="120" ry="112" fill={`url(#${heatId})`} className="bm-ag-heat" />
           {fitEdgesD.map(([a, b], i) => (

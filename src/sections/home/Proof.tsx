@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { Cta } from "@/components/ui/Button";
-import { TestimonialWall, realTestimonials } from "@/components/testimonials/TestimonialWall";
+import { TestimonialWall } from "@/components/testimonials/TestimonialWall";
+import { realTestimonials } from "@/components/testimonials/utils";
 import type { ProofItem, Testimonial } from "@/types/content";
 
 /**

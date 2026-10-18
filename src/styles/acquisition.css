@@ -1064,6 +1064,9 @@
   border-width: 4px;
 }
 .acq-phone-bar {
+  position: relative;
+  z-index: 2;
+  background: var(--acq-screen);
   display: flex;
   align-items: center;
   gap: 8px;
