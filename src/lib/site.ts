@@ -148,6 +148,9 @@ export const footerNav = [
   { label: "Contact Us", href: "/contact" },
   { label: "Challenge Madvert", href: "/challenge" },
   { label: "What Is a Growth System?", href: "/growth-systems" },
+  { label: "Insights", href: "/insights" },
+  { label: "Growth Glossary", href: "/glossary" },
+  { label: "Cost per Qualified Lead Calculator", href: "/tools/cost-per-qualified-lead-calculator" },
 ];
 
 /** The one booking calendar used everywhere (LeadConnector / GoHighLevel widget). */

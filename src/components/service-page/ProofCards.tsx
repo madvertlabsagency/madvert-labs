@@ -1,3 +1,4 @@
+import { publishableMetrics } from "@/components/facts/metrics";
 import Link from "next/link";
 import { Arrow } from "@/components/ui/Button";
 import { fallbackCaseStudies } from "@/cms/fallback";
@@ -25,7 +26,7 @@ export function ProofCards({ slugs, headingLevel = "h3" }: { slugs: string[]; he
             </H>
             <p className="mt-3 text-[15px] leading-relaxed text-ink-2">{c.oneLiner}</p>
             <dl className="mt-5 grid grid-cols-1 gap-2 border-t border-line pt-4 text-[14px] sm:grid-cols-3">
-              {c.metrics.slice(0, 3).map((m) => (
+              {publishableMetrics(c.metrics).slice(0, 3).map((m) => (
                 <div key={`${m.label}-${m.value}`}>
                   <dt className="text-ink-3">{m.label}</dt>
                   <dd className="mt-0.5 font-display text-[18px] font-semibold text-ink">{m.value}</dd>

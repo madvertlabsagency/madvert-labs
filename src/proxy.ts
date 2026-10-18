@@ -14,15 +14,24 @@ import { knownPublicPaths } from "@/seo/known-paths";
 const PORTAL = /^\/(onboarding|ops|offer-builder|offer)(\/|$)/;
 const SHARED = /^\/(api|_next|brand|images|icon|apple-icon|manifest|robots|favicon)/;
 
+/** Detail routes whose valid slugs are all known at build time while content comes from local files. */
+const DETAIL = /^\/(insights|case-studies|resources)\/[^/]+\/?$/;
+const CMS_CONFIGURED = Boolean(process.env.NEXT_PUBLIC_SANITY_PROJECT_ID);
+
 export function proxy(request: NextRequest, event: NextFetchEvent) {
-  const response = route(request);
+  const path = request.nextUrl.pathname.replace(/\/$/, "") || "/";
+  // Unknown slugs get a real 404 status (not a streamed "not found" page with 200).
+  // Skipped when Sanity is configured, because CMS entries are not known here.
+  const response =
+    !CMS_CONFIGURED && DETAIL.test(path) && !knownPublicPaths.has(path)
+      ? NextResponse.rewrite(new URL("/_not-found-page", request.url), { status: 404 })
+      : route(request);
   const host = (request.headers.get("x-forwarded-host") ?? request.headers.get("host") ?? "").toLowerCase();
   // Preview / staging deployments must never be indexed.
   if (host.endsWith(".vercel.app")) response.headers.set("X-Robots-Tag", "noindex, nofollow");
 
   const crawler = identifyCrawler(request.headers.get("user-agent"));
   if (crawler && request.method === "GET") {
-    const path = request.nextUrl.pathname;
     const redirect = response.headers.get("location") ? String(response.status) : null;
     const status = redirect ?? (knownPublicPaths.has(path) || PORTAL.test(path) ? "200" : "unlisted (possible 404)");
     event.waitUntil(recordCrawl({ crawler: crawler.name, category: crawler.category, path, status }));

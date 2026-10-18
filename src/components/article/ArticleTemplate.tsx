@@ -53,12 +53,12 @@ function Block({ b }: { b: ArticleBlock }) {
     case "table":
       return (
         <div className="!mt-8">
-          <ComparisonTable caption={b.caption} rowHeader={b.rowHeader} columns={b.columns} rows={b.rows} highlight={b.highlight} note={b.note} />
+          <ComparisonTable caption={b.caption} rowHeader={b.rowHeader} columns={b.columns} rows={b.rows} highlight={b.highlight} note={b.note} className={b.columns.length <= 2 ? "fx-compact" : ""} />
         </div>
       );
     case "definition":
       return (
-        <DefinitionBlock as="div" id={b.id} term={b.term} definition={b.definition} textClassName="" className="panel scroll-mt-28 p-6 sm:p-7">
+        <DefinitionBlock as="div" id={b.id} term={b.term} definition={b.definition} textClassName="text-[16.5px] leading-relaxed text-ink-2" className="panel scroll-mt-28 p-6 sm:p-7">
           {b.more?.map((m) => (
             <p key={m}>
               <RichText text={m} />
@@ -77,7 +77,7 @@ function Block({ b }: { b: ArticleBlock }) {
         <aside className="fx-callout" aria-label={b.label}>
           <p className="t-label !text-accent-text">{b.label}</p>
           {b.text.map((t) => (
-            <p key={t} className="mt-2 !text-[15.5px]">
+            <p key={t} className="mt-2 text-[15.5px] leading-relaxed text-ink-2">
               <RichText text={t} />
             </p>
           ))}
@@ -155,11 +155,11 @@ export function ArticleTemplate({
                   </Link>
                   , {role}
                 </span>
-                <span aria-hidden="true">·</span>
+                <span aria-hidden="true" className="hidden sm:inline">·</span>
                 <span>
                   Published <time dateTime={a.datePublished}>{formatIsoDate(a.datePublished)}</time>
                 </span>
-                <span aria-hidden="true">·</span>
+                <span aria-hidden="true" className="hidden sm:inline">·</span>
                 <span>
                   Updated <time dateTime={a.dateModified}>{formatIsoDate(a.dateModified)}</time>
                 </span>

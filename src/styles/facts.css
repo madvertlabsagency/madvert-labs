@@ -217,8 +217,9 @@
 .fx-prose > * + * {
   margin-top: 18px;
 }
-.fx-prose p,
-.fx-prose li {
+.fx-prose > p,
+.fx-prose > ul > li,
+.fx-prose > ol > li {
   font-size: 17px;
   line-height: 1.7;
   color: var(--ink-2);
@@ -228,7 +229,7 @@
   color: var(--ink);
   font-weight: 600;
 }
-.fx-prose h3 {
+.fx-prose > h3 {
   margin-top: 34px;
   font-family: var(--font-display);
   font-size: clamp(20px, 1.7vw, 23px);
@@ -318,4 +319,16 @@
 .fx-jump a:hover {
   border-color: var(--accent);
   color: var(--ink);
+}
+
+/* Two-column comparison tables fit a phone without sideways scrolling */
+.fx-compact .sp-table {
+  min-width: 0;
+}
+@media (max-width: 520px) {
+  .fx-compact .sp-table th,
+  .fx-compact .sp-table td {
+    padding: 13px 14px;
+    font-size: 14.5px;
+  }
 }

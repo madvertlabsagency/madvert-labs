@@ -189,6 +189,7 @@ export const servicePages: Record<string, ServicePageContent> = {
       { key: "automation-revenue-systems", anchor: "CRM and automated follow up", note: "Pipelines, WhatsApp and email follow up so no enquiry goes cold." },
       { key: "studios", anchor: "Ad creative and video", note: "Creative production built to earn attention in the first seconds." },
       { key: "branding-marketing", anchor: "Brand strategy and identity", note: "When the business looks smaller online than it really is." },
+      { href: "/glossary#external-growth-department", anchor: "What an external growth department is", note: "How one connected outside team differs from an agency or an in-house hire." },
     ],
     resources: ["growth-systems-audit", "qualified-lead-generation-playbook", "revenue-leakage-audit"],
     cta: {
@@ -317,6 +318,8 @@ export const servicePages: Record<string, ServicePageContent> = {
       { key: "studios", anchor: "Scroll-stopping ad creative", note: "Static, motion and video ads produced for performance." },
       { key: "conversion", anchor: "Landing pages for paid traffic", note: "Pages and forms that turn the click into a qualified enquiry." },
       { key: "automation-revenue-systems", anchor: "Follow up that starts in minutes", note: "CRM delivery, WhatsApp replies and booking after the lead arrives." },
+      { href: "/glossary#qualified-lead", anchor: "What counts as a qualified lead", note: "The definition Meta campaigns are judged against." },
+      { href: "/tools/cost-per-qualified-lead-calculator", anchor: "Work out your cost per qualified lead", note: "A free calculator for CPL, CPQL and qualification rate." },
     ],
     resources: ["meta-ads-pre-launch-checklist", "steal-these-hooks", "build-that-offer"],
     cta: {
@@ -432,6 +435,8 @@ export const servicePages: Record<string, ServicePageContent> = {
       { key: "meta-ads", anchor: "Demand creation on Facebook and Instagram", note: "Reach buyers before they start searching." },
       { key: "conversion", anchor: "Conversion work on landing pages", note: "Make every paid click more likely to become an enquiry." },
       { key: "automation-revenue-systems", anchor: "Fast replies to new enquiries", note: "Route search leads into the CRM and follow up automatically." },
+      { href: "/tools/cost-per-qualified-lead-calculator", anchor: "Compare cost per qualified lead", note: "Check what each qualified search enquiry really costs." },
+      { href: "/glossary#meta-ads-vs-google-ads", anchor: "Meta Ads or Google Ads?", note: "A side by side comparison of demand creation and demand capture." },
     ],
     resources: ["landing-pages-that-sell", "conversion-leak-checklist", "qualified-lead-generation-playbook"],
     cta: {
@@ -547,6 +552,7 @@ export const servicePages: Record<string, ServicePageContent> = {
       { key: "google-ads", anchor: "Paid search while rankings build", note: "Capture search demand immediately with Google Ads." },
       { key: "web-development", anchor: "Fast, crawlable websites", note: "Technical foundations built in from the first line of code." },
       { key: "branding-marketing", anchor: "Digital PR and authority building", note: "Coverage and mentions that support trust in search." },
+      { href: "/glossary#seo-vs-paid-ads", anchor: "SEO compared with paid ads", note: "When owned search visibility pays off and when paid search is faster." },
     ],
     resources: ["seo-ai-search-playbook", "landing-pages-that-sell"],
     cta: {
@@ -674,6 +680,8 @@ export const servicePages: Record<string, ServicePageContent> = {
       { key: "seo", anchor: "Search engine optimisation fundamentals", note: "Crawling, indexing and content: the base AI search depends on." },
       { key: "web-development", anchor: "Server-rendered, fast websites", note: "Sites whose content is readable without running scripts." },
       { key: "branding-marketing", anchor: "Consistent brand messaging and PR", note: "One clear story about the business, told the same way everywhere." },
+      { href: "/glossary#aeo", anchor: "What answer engine optimisation means", note: "A plain definition of AEO and how it relates to SEO." },
+      { href: "/glossary#ai-seo-vs-traditional-seo", anchor: "AI SEO vs traditional SEO", note: "What changes, and what stays the same, when answers come from AI." },
     ],
     resources: ["seo-ai-search-playbook", "brand-perception-checklist"],
     cta: {
@@ -1148,6 +1156,8 @@ export const servicePages: Record<string, ServicePageContent> = {
       { key: "meta-ads", anchor: "Lead generation that needs fast replies", note: "Campaigns where response speed decides lead quality." },
       { key: "app-development", anchor: "Custom apps and client portals", note: "Products where an agent can sit inside the experience." },
       { key: "tech-product-development", anchor: "Custom software and integrations", note: "When the agent needs a tool or data source that does not exist yet." },
+      { href: "/glossary#revenue-response-system", anchor: "What a revenue response system is", note: "How enquiries get answered, qualified and booked without delay." },
+      { href: "/glossary#speed-to-lead", anchor: "Why speed-to-lead matters", note: "The time between an enquiry and the first reply." },
     ],
     resources: ["automated-lead-engine", "revenue-leakage-audit", "ai-content-automation-playbook"],
     cta: {

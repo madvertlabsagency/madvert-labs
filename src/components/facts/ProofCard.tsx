@@ -26,7 +26,7 @@ export function ProofCard({
   const metrics = (study.metrics ?? []).filter(isPublishableMetric);
   const metric = (metricLabel ? metrics.find((m) => m.label === metricLabel) : undefined) ?? metrics[0];
   const href = `/case-studies/${study.slug}`;
-  const kicker = [study.industry, study.market].filter((v) => v && !v.includes("[")).join(" · ");
+  const kicker = study.industry && !study.industry.includes("[") ? study.industry : "";
   const H = headingLevel;
   return (
     <article className={`panel flex h-full flex-col p-6 sm:p-7 ${className}`} data-proof-card>

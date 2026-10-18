@@ -131,7 +131,7 @@ export default function GlossaryPage() {
                 </h3>
                 <p className="mt-3 max-w-[760px] text-[16px] leading-relaxed text-ink-2">{c.intro}</p>
                 <div className="mt-6">
-                  <ComparisonTable caption={c.caption} rowHeader={c.rowHeader} columns={c.columns} rows={c.rows} note={c.note} />
+                  <ComparisonTable caption={c.caption} rowHeader={c.rowHeader} columns={c.columns} rows={c.rows} note={c.note} className={c.columns.length <= 2 ? "fx-compact" : ""} />
                 </div>
                 <ul className="mt-4 flex flex-wrap gap-x-6 gap-y-2 text-[14.5px]">
                   {c.links.map((l) => (

@@ -1,5 +1,6 @@
 import type { Metric } from "@/types/content";
 import { VerifiedMetric } from "./VerifiedMetric";
+import { publishableMetrics } from "./metrics";
 
 /**
  * The verified result of a case study: the outcome in the client's terms, every verified figure
@@ -8,7 +9,7 @@ import { VerifiedMetric } from "./VerifiedMetric";
  */
 export function CaseStudyResult({
   outcome,
-  metrics,
+  metrics: allMetrics,
   limitations,
   client,
   period,
@@ -29,6 +30,7 @@ export function CaseStudyResult({
   outcomeNumber?: number;
   limitationsNumber?: number;
 }) {
+  const metrics = publishableMetrics(allMetrics);
   const num = (n?: number) =>
     n ? (
       <span className="cs-step-num" aria-hidden="true">
