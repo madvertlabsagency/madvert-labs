@@ -229,17 +229,15 @@ const glyphs: Record<IconName, Glyph> = {
     body: <path d="M24 4.5 41 14.3v19.4L24 43.5 7 33.7V14.3z" />,
     accent: <path d="M24 14.5c.9 4.9 4.6 8.6 9.5 9.5-4.9.9-8.6 4.6-9.5 9.5-.9-4.9-4.6-8.6-9.5-9.5 4.9-.9 8.6-4.6 9.5-9.5z" />,
   },
+  // Magnet: demand pulled in, not a target (target / bullseye imagery is off-brand).
   acquisition: {
     body: (
-      <path
-        d="M22 7a17 17 0 1 1 0 34 17 17 0 0 1 0-34zm0 5a12 12 0 1 0 0 24 12 12 0 0 0 0-24zm0 5.5a6.5 6.5 0 1 1 0 13 6.5 6.5 0 0 1 0-13z"
-        fillRule="evenodd"
-      />
+      <path d="M9 9h8v14a7 7 0 0 0 14 0V9h8v14a15 15 0 0 1-30 0z" />
     ),
     accent: (
       <>
-        <path d="M23.4 25.4 39 9.8" fill="none" strokeWidth="3.4" strokeLinecap="round" />
-        <path d="M35.5 5.5h7v7l-3.2.4z" />
+        <path d="M9 9h8v6H9zM31 9h8v6h-8z" />
+        <path d="M14 43.5c2.6-1.6 5.9-2.5 10-2.5s7.4.9 10 2.5" fill="none" strokeWidth="2.6" strokeLinecap="round" />
       </>
     ),
   },

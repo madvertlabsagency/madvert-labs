@@ -728,18 +728,206 @@ export const fallbackCaseStudies: CaseStudy[] = [
     pdfUrl: "/case-studies/dubai-real-estate-nigeria.pdf",
     placeholder: false,
   },
+  {
+    slug: "dubai-interior-design",
+    title: "111 Qualified Interior Design Inquiries at AED 93 Per Inquiry",
+    client: "Casa Elegance Interiors",
+    industry: "Luxury Interior Design",
+    market: "Dubai, UAE",
+    categories: ["acquisition", "studios"],
+    services: ["Meta Ads", "Offer Strategy", "Video", "Funnel / Qualification"],
+    systemType: "Video-ad acquisition system with qualification funnel and consultation booking",
+    summary:
+      "111 qualified interior design inquiries for a Dubai luxury interior design company at AED 93.02 per inquiry, on AED 10,325.19 spend.",
+    oneLiner:
+      "111 qualified interior design inquiries for a Dubai luxury interior design company at AED 93.02 per inquiry, on AED 10,325.19 spend.",
+    problem:
+      "The company was struggling to generate leads. It needed serious interior-design prospects with fully qualified project quotations, not just names and phone numbers.",
+    challenge:
+      "The company was struggling to generate leads. It needed serious interior-design prospects with fully qualified project quotations, not just names and phone numbers.",
+    context:
+      "Casa Elegance Interiors, a luxury interior design company in Dubai, UAE. Madvert Labs built a high-converting offer, a video-ad campaign, a qualification funnel and a consultation-booking journey.",
+    diagnosis: "",
+    move: "",
+    strategy:
+      "A complete, high-converting ad system designed to attract serious interior-design prospects, built in four steps: (1) market research: studied Dubai interior buyers, pain points and buying triggers; (2) offer engineering: crafted a compelling consultation-focused offer, not a generic ad; (3) creative production: scriptwriting, shoot direction, video editing and ad creative variations; (4) campaign launch: deployed the ad system to drive high-intent prospects into the funnel.",
+    built:
+      "Video ads (Instagram video creatives, e.g. \"Planning to renovate your home in Dubai, Sharjah, or Ajman?\" and \"Get Your Interior Design Cost in 2 Minutes\"); a six-step qualification funnel with an estimate flow; and a consultation-booking journey ending in a free 1-on-1 consultation.",
+    system:
+      "Video ads (Instagram video creatives, e.g. \"Planning to renovate your home in Dubai, Sharjah, or Ajman?\" and \"Get Your Interior Design Cost in 2 Minutes\"); a six-step qualification funnel with an estimate flow; and a consultation-booking journey ending in a free 1-on-1 consultation.",
+    implementation:
+      "Every inquiry was qualified through a structured consultation-booking journey: (1) property type (apartment, villa, townhouse, commercial); (2) property details (area, bedrooms, bathrooms); (3) project scope (light upgrade, standard renovation, full turnkey fitout); (4) finish level (essential, premium, signature); (5) estimate review; (6) book a free consultation (date and time for a 1-on-1 consultation). Each inquiry that reached the client was fully qualified, with property type, area size, bedrooms and bathrooms, drawings availability, project status, project scope, finish level, timeline to start and a confirmed consultation booking.",
+    outcome:
+      '"A complete growth system that turned targeted video ads into qualified inquiries and booked consultations for a Dubai luxury interior design company." "For a Dubai interior design business with project values in the tens of thousands of dirhams, an AED 93 qualified inquiry was a highly profitable outcome."',
+    result:
+      '"A complete growth system that turned targeted video ads into qualified inquiries and booked consultations for a Dubai luxury interior design company." "For a Dubai interior design business with project values in the tens of thousands of dirhams, an AED 93 qualified inquiry was a highly profitable outcome."',
+    metrics: [
+      {
+        label: "Qualified Inquiries",
+        value: "111",
+        source: "Performance overview screenshot in the case study PDF",
+        qualification: "Shown in the performance overview as Leads (Form): 111.",
+      },
+      {
+        label: "Cost Per Inquiry",
+        value: "AED 93.02",
+        source: "Performance overview screenshot in the case study PDF",
+        qualification: "Shown in the performance overview as Per lead (form). The headline rounds it to AED 93.",
+      },
+      {
+        label: "Total Spend",
+        value: "AED 10,325.19",
+        source: "Performance overview screenshot in the case study PDF",
+      },
+    ],
+    cover: {
+      url: "/case-studies/dubai-interior-design-cover.webp",
+      alt: "Cover of the Madvert Labs case study: Luxury Interior Design, Dubai, UAE, fully qualified interior design project quotations through a full funnel",
+      width: 1000,
+      height: 1778,
+    },
+    gallery: [
+      {
+        url: "/case-studies/dubai-interior-design-1.webp",
+        alt: "Results page: 111 qualified inquiries at AED 93.02 per inquiry, AED 10,325.19 total spend, performance overview screenshot and why it worked",
+        width: 1200,
+        height: 2133,
+      },
+      {
+        url: "/case-studies/dubai-interior-design-2.webp",
+        alt: "Qualification funnel: six steps from property type to a booked free consultation, and the project details the client received",
+        width: 1200,
+        height: 2133,
+      },
+    ],
+    datePublished: "2026-10-18",
+    dateModified: "2026-10-18",
+    serviceKeys: ["meta-ads", "client-acquisition", "studios"],
+    channels: ["Meta Ads (Instagram video ads)"],
+    limitations: [
+      "Money figures are in UAE dirhams (AED). The case study does not state the reporting period; the performance chart runs from 15 Jul without showing a year.",
+      "The figures count qualified form leads. The case study does not state how many consultations were booked or how many projects were won.",
+      "Project values in the tens of thousands of dirhams are the case study's own description, not a reported figure.",
+    ],
+    pdfUrl: "/case-studies/dubai-interior-design.pdf",
+    placeholder: false,
+  },
+  {
+    slug: "earthly-elementals",
+    title: "Private Label Health Brand: 162 Website Purchases at Rs 844.57 Per Purchase",
+    client: "Earthly Elementals PK",
+    industry: "Health & Wellness (Private Label E-commerce)",
+    market: "Pakistan",
+    categories: ["acquisition", "studios"],
+    services: ["Meta Ads", "Creative Strategy", "Influencer / DVC Content", "Landing Page Optimization"],
+    systemType: "Private label e-commerce growth system",
+    summary:
+      "162 website purchases for a private label Shilajit brand at Rs 844.57 per purchase, on Rs136,820.57 spend.",
+    oneLiner:
+      "162 website purchases for a private label Shilajit brand at Rs 844.57 per purchase, on Rs136,820.57 spend.",
+    problem: "",
+    context:
+      "Earthly Elementals PK (earthlyelementals.pk), a private label health and wellness brand selling Pure Himalayan Shilajit resin online. Madvert Labs delivered strategy, creatives and scaling as a private label e-commerce growth strategy.",
+    diagnosis: "",
+    move: "",
+    strategy:
+      "Deep work on creative strategy to identify which angles work and which do not: angle research (tested health, energy, stamina and trust angles); influencer collaborations (creators and collaborations to build relatability); DVC shoots (direct response video creatives and product visuals); creative testing (multiple hooks, formats and messages); and a content ecosystem (paid ads supported by strong organic-style content).",
+    built:
+      "A complete private label e-commerce growth system: creative strategy, influencer and DVC content, landing page optimization and scalable e-commerce growth. Supporting elements: FDA, ISO and GMP positioning; 85+ essential minerals messaging; trust-building product education; offer and USP highlighting; and a conversion-focused product page.",
+    system:
+      "A complete private label e-commerce growth system: creative strategy, influencer and DVC content, landing page optimization and scalable e-commerce growth. Supporting elements: FDA, ISO and GMP positioning; 85+ essential minerals messaging; trust-building product education; offer and USP highlighting; and a conversion-focused product page.",
+    implementation:
+      "Creative strategy + content + landing page optimization = scalable e-commerce growth. Ad creatives used angles such as \"Natural Energy, Real Results\", \"85+ Essential Minerals\" (more energy, better stamina, sharper focus, natural support) and \"Real People, Real Results\" creator content, driving traffic to a conversion-focused product page on earthlyelementals.pk.",
+    outcome:
+      "162 website purchases at Rs 844.57 cost per purchase, with Rs136,820.57 amount spent, as shown in the ads dashboard screenshot in the case study.",
+    result:
+      "162 website purchases at Rs 844.57 cost per purchase, with Rs136,820.57 amount spent, as shown in the ads dashboard screenshot in the case study.",
+    metrics: [
+      {
+        label: "Website Purchases",
+        value: "162",
+        source: "Ads dashboard screenshot in the case study PDF",
+      },
+      {
+        label: "Cost Per Purchase",
+        value: "Rs 844.57",
+        source: "Ads dashboard screenshot in the case study PDF",
+      },
+      {
+        label: "Amount spent",
+        value: "Rs136,820.57",
+        source: "Ads dashboard screenshot in the case study PDF",
+      },
+    ],
+    cover: {
+      url: "/case-studies/earthly-elementals-cover.webp",
+      alt: "Cover of the Madvert Labs x Earthly Elementals case study: Private Label Health Brand, with 162 website purchases at Rs844.57 per purchase",
+      width: 1000,
+      height: 1778,
+    },
+    gallery: [
+      {
+        url: "/case-studies/earthly-elementals-1.webp",
+        alt: "Earthly Elementals PK results: 162 website purchases at Rs 844.57 cost per purchase, Pure Himalayan Shilajit product",
+        width: 1200,
+        height: 2133,
+      },
+      {
+        url: "/case-studies/earthly-elementals-2.webp",
+        alt: "Creative strategy: influencer and product ad creatives, angle research, influencer collabs, DVC shoots, creative testing and content ecosystem",
+        width: 1200,
+        height: 2133,
+      },
+    ],
+    datePublished: "2026-10-18",
+    dateModified: "2026-10-18",
+    serviceKeys: ["meta-ads", "client-acquisition", "studios", "conversion"],
+    channels: ["Meta Ads"],
+    limitations: [
+      "Money figures are in Pakistani rupees (Rs). The case study does not state the reporting period.",
+      "The figures come from a single ads dashboard screenshot; the case study does not report revenue, return on ad spend or repeat purchases.",
+      "FDA, ISO and GMP claims and product benefits are the brand's own positioning shown in the case study, not claims verified by Madvert Labs.",
+    ],
+    pdfUrl: "/case-studies/earthly-elementals.pdf",
+    placeholder: false,
+  },
 ];
 
 export { leadMagnets as fallbackResources } from "@/content/lead-magnets";
 
 /**
- * Video testimonial slots. No real client videos have been supplied yet, so every entry is a
- * bracketed placeholder (play disabled). Replace with real, client-approved entries in Sanity:
- * name, business, industry, market, quote, videoUrl, poster and duration.
+ * Video testimonials. The first two are real client videos (names, roles, businesses and quotes
+ * are taken from the videos' own captions; the business name for Azeem Qadir was confirmed by
+ * the client). The remaining slots are bracketed placeholders until more videos are supplied.
  */
-export const fallbackTestimonials: Testimonial[] = Array.from(
-  { length: 8 },
-  (_, i) => ({
+const realTestimonials: Testimonial[] = [
+  {
+    id: "azeem-qadir",
+    name: "Muhammad Azeem Qadir",
+    role: "CEO & Founder",
+    business: "The Event Planet",
+    industry: "Events",
+    quote: "From my side, it's 10 out of 10 for these people.",
+    videoUrl: "/video/testimonials/azeem-qadir-the-event-planet.mp4",
+    posterUrl: "/video/testimonials/azeem-qadir-the-event-planet-poster.webp",
+    duration: "1:55",
+  },
+  {
+    id: "saniya-khan",
+    name: "Saniya Khan",
+    role: "Owner",
+    business: "DE Wooden Spoon",
+    industry: "Home Chef Business",
+    quote: "Now, MashaAllah, we get 5 to 6 orders a day. I would definitely recommend Usama and Madvert Labs.",
+    videoUrl: "/video/testimonials/de-wooden-spoon.mp4",
+    posterUrl: "/video/testimonials/de-wooden-spoon-poster.webp",
+    duration: "1:51",
+  },
+];
+
+export const fallbackTestimonials: Testimonial[] = [
+  ...realTestimonials,
+  ...Array.from({ length: 6 }, (_, i) => ({
     id: `t${i + 1}`,
     quote: "[Short client quote]",
     name: "[Client name]",
@@ -748,8 +936,8 @@ export const fallbackTestimonials: Testimonial[] = Array.from(
     market: "[Market]",
     duration: "[0:00]",
     placeholder: true,
-  }),
-);
+  })),
+];
 
 export const fallbackProof: ProofItem[] = [
   { kind: "campaign", label: "[REAL CAMPAIGN SCREENSHOT]", placeholder: true },
