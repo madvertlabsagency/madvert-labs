@@ -217,7 +217,7 @@ export function CrmSystemMap() {
                 ))}
               </ol>
             </div>
-            <p className="crm-core-caption">Illustrative record. Every module above writes to it.</p>
+            <p className="crm-core-caption">Illustrative record. Every module feeds it.</p>
           </div>
 
           <div className="crm-side">

@@ -862,15 +862,16 @@
   .bm-is-v:nth-child(3) {
     display: none;
   }
-  .bm-is-tag {
+  .bm-is .bm-is-tag {
     font-size: 0;
     gap: 0;
     padding: 4px;
   }
-  .bm-is-web-b {
+  .bm-is .bm-is-web-b {
     grid-template-columns: 1fr;
   }
-  .bm-is-web-b .bm-web-hero {
+  .bm-is .bm-is-web-b .bm-web-hero,
+  .bm-is .bm-is-web .bm-chrome {
     display: none;
   }
 }
