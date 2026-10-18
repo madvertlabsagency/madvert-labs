@@ -179,7 +179,9 @@ export function ChannelStories() {
                           </span>
                           <span className="min-w-0">
                             <span className="acq-step-title">{s.title}</span>
-                            <span className="acq-step-text">{s.text}</span>
+                            <span className="acq-step-text">
+                              <span className="acq-step-text-in">{s.text}</span>
+                            </span>
                           </span>
                           {state === "is-current" && playing ? (
                             <span key={`${active}-${step}`} className="acq-step-progress" style={{ "--dur": `${STEP_MS}ms` } as CSSProperties} aria-hidden="true" />
@@ -193,7 +195,7 @@ export function ChannelStories() {
             ))}
           </div>
 
-          <div className="lg:col-span-7">
+          <div className="-order-1 lg:order-none lg:col-span-7">
             <div className={`acq-stage acq-stage--${ch.key} ${playing ? "" : "is-still"}`} aria-hidden="true">
               <div className="acq-stage-head">
                 <span className="acq-stage-logo">{ch.logo}</span>

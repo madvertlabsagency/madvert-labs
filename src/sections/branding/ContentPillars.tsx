@@ -14,7 +14,11 @@ const pillars = [
 ];
 
 const generic = ["Happy Monday!", "Motivation", "Happy Tuesday!", "Quote of the day", "Happy Monday!", "New week!"];
-const phases = ["Posting every day", "A busy calendar", "Strategic pillars"] as const;
+const phases = [
+  ["Posting every day", "Daily posts"],
+  ["A busy calendar", "Calendar"],
+  ["Strategic pillars", "Pillars"],
+] as const;
 
 type Layout = {
   perPillar: number;
@@ -157,9 +161,10 @@ export function ContentPillars() {
     <div ref={root} className="bm bm-cp panel" data-phase={phase} aria-hidden="true">
       <div className="bm-cp-top">
         <div className="bm-cp-tabs">
-          {phases.map((p, i) => (
-            <span key={p} data-on={phase === i ? "" : undefined}>
-              {p}
+          {phases.map(([long, short], i) => (
+            <span key={long} data-on={phase === i ? "" : undefined}>
+              <b className="bm-cp-long">{long}</b>
+              <b className="bm-cp-short">{short}</b>
             </span>
           ))}
         </div>

@@ -510,6 +510,10 @@
   overflow: hidden;
   transition: grid-template-rows 0.4s var(--ease), margin 0.4s var(--ease);
 }
+.acq-step-text-in {
+  min-height: 0;
+  overflow: hidden;
+}
 .acq-step.is-current .acq-step-text {
   grid-template-rows: 1fr;
   margin-top: 4px;

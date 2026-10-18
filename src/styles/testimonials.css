@@ -446,9 +446,8 @@
 }
 .tm-story-dur {
   position: absolute;
-  left: 50%;
-  bottom: 12px;
-  translate: -50% 0;
+  right: 10px;
+  top: 10px;
   font-size: 11.5px;
   font-weight: 600;
   font-variant-numeric: tabular-nums;

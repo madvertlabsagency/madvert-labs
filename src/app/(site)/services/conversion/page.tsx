@@ -7,6 +7,7 @@ import { site } from "@/lib/site";
 import { ServiceHero } from "@/sections/services/ServiceHero";
 import { AnswerBlock, Capability, FreeValue, Statement } from "@/sections/services/Blocks";
 import { VisitorJourney } from "@/sections/services/VisitorJourney";
+import { ConversionJourney } from "@/sections/conversion/ConversionJourney";
 import { FinalCta } from "@/sections/shared/FinalCta";
 import { BookingSection } from "@/components/booking/BookingSection";
 import { SpecialistServices } from "@/components/service-page/SpecialistServices";
@@ -44,6 +45,25 @@ export default async function ConversionPage() {
           </h2>
           <div className="mt-16">
             <VisitorJourney />
+          </div>
+        </div>
+      </section>
+
+      <section className="section pt-0" aria-labelledby="journey-title">
+        <div className="container-x">
+          <div className="max-w-[880px]">
+            <p data-reveal className="t-eyebrow">
+              From click to conversation
+            </p>
+            <h2 id="journey-title" data-reveal className="t-h1 mt-5">
+              Conversion Does Not End at the Form. <span className="t-grad">It Ends in a Sales Conversation.</span>
+            </h2>
+            <p data-reveal className="t-lead mt-6 max-w-[640px]">
+              We design every step between the click and your sales team, so a good visitor never gets lost in the gaps between tools.
+            </p>
+          </div>
+          <div data-reveal="fade" className="mt-12 md:mt-14">
+            <ConversionJourney />
           </div>
         </div>
       </section>

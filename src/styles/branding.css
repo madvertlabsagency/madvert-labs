@@ -50,7 +50,7 @@
   position: absolute;
   inset: 26% 26% 40% 26%;
   background: #fff;
-  border-radius: 999px 999px 3px 999px;
+  border-radius: 999px 2px 999px 2px;
 }
 .bm-mark-w {
   display: inline-block;
@@ -63,7 +63,7 @@
   position: absolute;
   inset: 22% 22% 36% 22%;
   background: #fff;
-  border-radius: 999px 999px 3px 999px;
+  border-radius: 999px 2px 999px 2px;
 }
 .bm-lockup {
   display: inline-flex;
@@ -300,9 +300,13 @@
 }
 .bm-check {
   position: absolute;
-  top: 8px;
-  right: 8px;
-  padding: 3px 8px 3px 6px;
+  top: 188px;
+  left: 50%;
+  width: 70px;
+  margin-left: -35px;
+  text-align: center;
+  padding: 3px 0;
+  box-shadow: 0 6px 14px -6px rgb(0 160 230 / 0.6);
   border-radius: 999px;
   font-size: 10px;
   font-weight: 600;
@@ -315,7 +319,7 @@
     transform 0.4s var(--ease);
 }
 .bm-stage:nth-child(even) .bm-check {
-  top: 26px;
+  top: 206px;
 }
 .bm-stage[data-state="done"] .bm-check,
 .bm-stage[data-state="on"] .bm-check {
@@ -854,8 +858,19 @@
 .bm-is-v.is-grad {
   background: var(--yb-grad);
 }
-@media (max-width: 380px) {
+@media (max-width: 479px) {
   .bm-is-v:nth-child(3) {
+    display: none;
+  }
+  .bm-is-tag {
+    font-size: 0;
+    gap: 0;
+    padding: 4px;
+  }
+  .bm-is-web-b {
+    grid-template-columns: 1fr;
+  }
+  .bm-is-web-b .bm-web-hero {
     display: none;
   }
 }
@@ -1051,7 +1066,7 @@
 
 /* ═════════════ 3. Logo ecosystem ═════════════ */
 .bm-eco-slot {
-  min-height: 600px;
+  min-height: 500px;
 }
 @media (min-width: 640px) {
   .bm-eco-slot {
@@ -1311,6 +1326,20 @@
     background-color 0.4s,
     color 0.4s,
     box-shadow 0.4s;
+}
+.bm-cp-tabs b {
+  font-weight: inherit;
+}
+.bm-cp-long {
+  display: none;
+}
+@media (min-width: 640px) {
+  .bm-cp-long {
+    display: inline;
+  }
+  .bm-cp-short {
+    display: none;
+  }
 }
 .bm-cp-tabs span[data-on] {
   color: var(--ink);

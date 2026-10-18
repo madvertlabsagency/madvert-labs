@@ -52,7 +52,7 @@ const fitEdgesD = edges(fitD);
 const hubD = { x: 428, y: 262 };
 
 // Mobile scenes (340 x 150 each)
-const bigM = scatter(90, 170, 78, 150, 62, 11);
+const bigM = scatter(150, 170, 78, 155, 64, 11);
 const fitM = scatter(16, 170, 78, 110, 58, 23);
 const fitEdgesM = edges(fitM);
 const hubM = { x: 170, y: 78 };
