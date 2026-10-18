@@ -1,4 +1,4 @@
-"""Testimonial audio: cleaned dialogue + halal bed: synthesized vocal choir + daf only, with ducking,
+"""Testimonial audio: cleaned dialogue + halal bed: synthesized daf only, with ducking,
 music swell under the end card, -14 LUFS / -1 dBTP.
 Run: uv run --no-project --with numpy python scripts/mix.py <edit_len> <duration>"""
 import json, os, subprocess, sys, wave
@@ -17,34 +17,10 @@ def place(buf, x, at, g=1.0, pan=0.0):
     j = min(buf.shape[1], i + len(x)); x = x[: j - i]
     buf[0, i:j] += x * g * np.cos((pan + 1) * np.pi / 4) * 1.41; buf[1, i:j] += x * g * np.sin((pan + 1) * np.pi / 4) * 1.41
 
-# Halal bed: voice-only "ooh/aah" choir (additive formant synthesis) + daf (frame drum). No other instruments.
+# Halal bed: daf (frame drum) only. No instruments, no vocals.
 BPM = 84; BEAT = 60 / BPM; BAR = 4 * BEAT
 tl = np.arange(N) / SR
 m = np.zeros((2, N))
-FORM = {"oo": [(320, 80, 1.0), (800, 100, 0.35), (2400, 160, 0.06)], "aa": [(700, 110, 1.0), (1220, 120, 0.55), (2600, 170, 0.12)]}
-def voice(f0, d, vowel, seed):
-    """One sung voice: harmonics shaped by vowel formants, gentle vibrato, slow breath in/out."""
-    r = np.random.default_rng(seed); t = t_(d)
-    vib = 1 + 0.006 * np.sin(2 * np.pi * (5.0 + r.uniform(-.4, .4)) * t + r.uniform(0, 6)) * np.minimum(1, t / 0.9)
-    drift = 1 + 0.002 * np.sin(2 * np.pi * 0.23 * t + r.uniform(0, 6))
-    ph = 2 * np.pi * np.cumsum(f0 * vib * drift) / SR
-    y = np.zeros(len(t))
-    for k in range(1, 24):
-        fk = f0 * k
-        if fk > 5000: break
-        amp = sum(g * np.exp(-0.5 * ((fk - fc) / bw) ** 2) for fc, bw, g in FORM[vowel]) + 0.02 / k
-        y += amp * np.sin(k * ph + r.uniform(0, 6))
-    env = np.minimum(1, t / 1.1) * np.minimum(1, np.maximum(0, d - t) / 1.3)
-    return y * env
-# I–V–vi–IV in D, sung as soft open vowels, one chord every 2 bars
-chords = [(50, 57, 62, 66), (45, 52, 57, 61), (47, 54, 59, 62), (43, 50, 55, 59)]
-choir = np.zeros((2, N)); seg = 2 * BAR; b = 0
-while b * seg < DUR:
-    ch = chords[b % 4]; vw = "aa" if b % 4 == 2 else "oo"
-    for j, n in enumerate(ch):
-        for dt, pan in ((-0.004, -0.5), (0.004, 0.5)):
-            place(choir, voice(note(n) * (1 + dt), seg + 1.4, vw, b * 31 + j * 7 + (dt > 0)), b * seg, 0.25 / (1 + 0.25 * j), pan * (0.3 + 0.2 * j))
-    b += 1
 # daf: "dum" (low pitched membrane) and "tak" (rim slap); quiet pattern, fuller later
 def dum(v=1.0):
     t = t_(0.7); f = 72 + 55 * np.exp(-t * 30)
@@ -71,9 +47,7 @@ while bar * BAR < DUR - 0.5:
         if kind == "D": place(daf, dum(v), at, 0.9, -0.1)
         else: place(daf, tak(v * (1.0 if kind == "T" else 0.6)), at, 0.55, 0.15)
     bar += 1
-choir /= np.abs(choir).max() + 1e-9; daf /= np.abs(daf).max() + 1e-9
-m = choir * 0.75 + daf * 0.55
-m /= np.abs(m).max() + 1e-9
+m = daf / (np.abs(daf).max() + 1e-9)
 # dialogue
 raw = subprocess.run(["ffmpeg", "-v", "error", "-i", os.path.join(ROOT, "data/dialogue.wav"), "-f", "f32le", "-ac", "2", "-ar", str(SR), "-"], capture_output=True, check=True).stdout
 d = np.frombuffer(raw, dtype=np.float32).reshape(-1, 2).T
