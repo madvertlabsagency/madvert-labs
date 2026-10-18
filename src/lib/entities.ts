@@ -21,6 +21,8 @@ export const organization = {
     "Madvert Labs is a digital marketing and growth systems company. It connects branding, client acquisition, conversion, creative production, CRM and automation, AI and technology into one growth system built around each client's business.",
   url: site.url,
   logo: absoluteUrl("/brand/app-icon-512.png"),
+  /** Primary market first, then international clients. Stated by the business; no office address is claimed. */
+  areaServed: [{ "@type": "Country", name: "Pakistan" }, "Worldwide"] as (string | { "@type": "Country"; name: string })[],
   email: process.env.NEXT_PUBLIC_CONTACT_EMAIL || undefined,
   /**
    * Verified official profiles only (company LinkedIn, Instagram, YouTube…).
@@ -36,7 +38,7 @@ export const founder = {
   name: site.founder.name,
   givenName: "Usama",
   familyName: "Abbas Dahri",
-  jobTitle: "Founder",
+  jobTitle: "Founder & CEO",
   path: "/about/usama-abbas-dahri",
   image: "/images/usama-abbas-dahri.jpg",
   /** Verified official profiles for the founder. Comma separated full URLs. */
@@ -228,6 +230,9 @@ export function getServiceEntity(key: ServiceKey) {
 export const serviceAliases: Record<string, string> = {
   "/digital-marketing": "/services/digital-marketing",
   "/full-stack-digital-marketing": "/services/digital-marketing",
+  "/seo-ai-aeo": "/services/ai-seo-aeo",
+  "/qualified-lead-generation": "/services/client-acquisition",
+  "/lead-generation": "/services/client-acquisition",
   "/meta-ads": "/services/meta-ads",
   "/facebook-ads": "/services/meta-ads",
   "/google-ads": "/services/google-ads",

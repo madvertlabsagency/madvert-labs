@@ -49,6 +49,7 @@ export const schema = {
     logo: { "@type": "ImageObject", url: organization.logo, width: 512, height: 512 },
     email: organization.email,
     founder: { "@id": PERSON_ID },
+    areaServed: organization.areaServed,
     sameAs: organization.sameAs.length ? organization.sameAs : undefined,
     knowsAbout: [
       "Digital marketing",
@@ -129,7 +130,7 @@ export const schema = {
     description: s.description,
     url: absoluteUrl(s.path),
     provider: { "@id": ORG_ID },
-    areaServed: "Worldwide",
+    areaServed: organization.areaServed,
     audience: s.audience ? { "@type": "BusinessAudience", audienceType: s.audience } : undefined,
   }),
   faq: (items: { q: string; a: string }[]) => ({
@@ -141,15 +142,30 @@ export const schema = {
       acceptedAnswer: { "@type": "Answer", text: f.a },
     })),
   }),
-  article: (a: { headline: string; description: string; path: string; image?: string; datePublished?: string; type?: string }) => ({
+  article: (a: {
+    headline: string;
+    description: string;
+    path: string;
+    image?: string;
+    datePublished?: string;
+    dateModified?: string;
+    type?: string;
+    /** "founder" only when the page visibly shows the founder's byline. */
+    author?: "founder" | "organization";
+    about?: string[];
+  }) => ({
     "@context": "https://schema.org",
     "@type": a.type ?? "Article",
     headline: a.headline,
     description: a.description,
     url: absoluteUrl(a.path),
+    mainEntityOfPage: absoluteUrl(a.path),
     image: a.image,
     datePublished: a.datePublished,
-    author: { "@id": ORG_ID },
+    dateModified: a.dateModified ?? a.datePublished,
+    author: { "@id": a.author === "founder" ? PERSON_ID : ORG_ID },
     publisher: { "@id": ORG_ID },
+    about: a.about?.length ? a.about.map((name) => ({ "@type": "Thing", name })) : undefined,
+    inLanguage: "en",
   }),
 };

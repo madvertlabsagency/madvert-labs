@@ -19,7 +19,7 @@ import { site } from "@/lib/site";
  *
  * Preview and development deployments disallow everything so staging URLs are never crawled.
  */
-const PRIVATE = ["/api/", "/ops", "/onboarding", "/offer-builder", "/offer/", "/auth", "/admin"];
+const PRIVATE = ["/api/", "/ops", "/onboarding", "/offer-builder", "/offer/", "/client", "/internal", "/auth", "/admin"];
 
 /** Search and AI search crawlers named explicitly so their access is a deliberate, visible choice. */
 const SEARCH_CRAWLERS = [

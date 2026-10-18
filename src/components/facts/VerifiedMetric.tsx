@@ -21,6 +21,8 @@ export function VerifiedMetric({
   /** Compact tile: value, label and context only (used in the headline band). */
   compact?: boolean;
 }) {
+  // Never render a placeholder or explicitly unverified figure.
+  if (/\[/.test(metric.value) || metric.verified === false) return null;
   const meta = [client, period].filter(Boolean).join(" · ");
   return (
     <div className="rounded-2xl border border-line bg-glass p-5 md:p-6" data-metric>

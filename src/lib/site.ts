@@ -1,5 +1,21 @@
 import type { IconName } from "@/components/ui/Icon3D";
 
+/**
+ * The one canonical origin: https, no www, never localhost or a vercel.app preview, so canonicals,
+ * sitemap URLs and structured data always point at the production domain.
+ */
+function canonicalOrigin(env?: string) {
+  const fallback = "https://madvertlabs.com";
+  if (!env) return fallback;
+  try {
+    const u = new URL(env);
+    if (u.protocol !== "https:" || /localhost|127\.0\.0\.1|\.vercel\.app$/.test(u.hostname)) return fallback;
+    return `https://${u.hostname.replace(/^www\./, "")}`;
+  } catch {
+    return fallback;
+  }
+}
+
 export const site = {
   name: "Madvert Labs",
   legalName: "Madvert Labs",
@@ -8,7 +24,7 @@ export const site = {
   belief: "Growth Is a System. Not a Campaign.",
   promise: "One Growth Partner for Everything Between Attention and Revenue.",
   footerLine: "Bismillah. Build with purpose. Grow with clarity.",
-  url: (process.env.NEXT_PUBLIC_SITE_URL ?? "https://madvertlabs.com").replace(/\/$/, ""),
+  url: canonicalOrigin(process.env.NEXT_PUBLIC_SITE_URL),
   founder: {
     name: "Usama Abbas Dahri",
     shortName: "Usama",

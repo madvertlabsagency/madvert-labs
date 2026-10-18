@@ -10,6 +10,8 @@ export type Metric = {
   source?: string;
   /** Honest caveat shown next to the figure (rounding, what is and is not visible in the evidence). */
   qualification?: string;
+  /** Set false to keep a figure out of every public page until it is verified. */
+  verified?: boolean;
 };
 
 export type ImageAsset = { url: string; alt: string; width?: number; height?: number };
