@@ -5,6 +5,7 @@ import { useRef, useState } from "react";
 import { track } from "@/analytics/track";
 import { GrowthRibbon } from "@/components/visuals/GrowthRibbon";
 import "@/styles/intro-video.css";
+import { INTRO_TRANSCRIPT } from "@/content/intro-video";
 
 const VIDEO = {
   hd: "/video/madvert-intro-1080.mp4",
@@ -85,6 +86,15 @@ export function IntroVideo() {
             </div>
           </div>
         </div>
+
+        <details className="mx-auto mt-8 max-w-[760px] rounded-2xl border border-line bg-surface/70 px-5 py-4 text-[15px] text-ink-2 sm:px-6">
+          <summary className="cursor-pointer font-display text-[14px] font-semibold text-ink">Read the transcript</summary>
+          <div className="mt-4 space-y-2.5 leading-relaxed">
+            {INTRO_TRANSCRIPT.map((line) => (
+              <p key={line}>{line}</p>
+            ))}
+          </div>
+        </details>
       </div>
     </section>
   );

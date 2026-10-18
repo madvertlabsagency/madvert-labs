@@ -15,7 +15,24 @@ import {
   verifiedMetrics,
 } from "@/components/case-studies/utils";
 import { Arrow } from "@/components/ui/Button";
+import { CaseStudyResult } from "@/components/facts/CaseStudyResult";
+import { VerifiedMetric } from "@/components/facts/VerifiedMetric";
+import { getServiceEntity, organization } from "@/lib/entities";
+import { absoluteUrl, site } from "@/lib/site";
+import Link from "next/link";
 import "@/styles/cases.css";
+
+const ORG_ID = `${site.url}/#organization`;
+
+/** "2026-10-15" -> "15 October 2026" (fixed UTC so server and client agree). */
+function formatDate(iso: string) {
+  return new Date(`${iso.slice(0, 10)}T12:00:00Z`).toLocaleDateString("en-GB", {
+    day: "numeric",
+    month: "long",
+    year: "numeric",
+    timeZone: "UTC",
+  });
+}
 
 export async function generateStaticParams() {
   const studies = await getCaseStudies();
@@ -53,24 +70,26 @@ export default async function CaseStudyPage({
     : undefined;
   const cover = s.cover ?? s.featuredImage;
   const cat = primaryCategory(s);
-  const facts = [
-    ["Client", s.client],
-    ["Industry", s.industry],
-    ["Market", s.market ?? s.region],
-    ["Growth system", s.systemType],
-  ].filter((f): f is [string, string] => isReal(f[1]));
+  const services = (s.serviceKeys ?? []).map(getServiceEntity);
+  const confidential = /confidential/i.test(
+    `${s.context ?? ""} ${s.client ?? ""}`,
+  );
+  const clientLabel = isReal(s.client)
+    ? s.client
+    : s.placeholder
+      ? undefined
+      : confidential
+        ? "Identity withheld for confidentiality"
+        : "Not named in the case study";
+  const clientShort = isReal(s.client) ? s.client : undefined;
+  const datePublished = s.datePublished ?? s.publishedAt;
+  const dateModified = s.dateModified ?? datePublished;
 
   const sections = [
     {
       id: "challenge",
-      label: "The Challenge",
+      label: "The Problem",
       body: real(s.challenge) ?? s.problem,
-    },
-    {
-      id: "context",
-      label: "Context",
-      body: real(s.context) ?? s.diagnosis,
-      facts,
     },
     { id: "strategy", label: "Strategy", body: real(s.strategy) ?? s.move },
     {
@@ -80,14 +99,68 @@ export default async function CaseStudyPage({
     },
     {
       id: "implementation",
-      label: "Implementation",
+      label: "Execution",
       body: real(s.implementation) ?? s.execution,
     },
     { id: "creative", label: "Creative", body: s.creative },
-    { id: "outcome", label: "Verified Outcome", body: outcome },
-    { id: "learned", label: "What We Learned", body: s.learned },
   ].filter((x) => x.body);
+  const learned = isReal(s.learned) ? s.learned : undefined;
+  const hasResult = Boolean(outcome || metrics.length);
+  const hasLimits = Boolean(s.limitations?.length);
   const gallery = s.gallery?.length ? s.gallery : null;
+
+  // Numbered steps in reading order, used by both the page index and the step badges.
+  const index: { id: string; label: string }[] = [
+    { id: "context", label: "Client and Context" },
+    ...sections.map((x) => ({ id: x.id, label: x.label })),
+    ...(hasResult ? [{ id: "outcome", label: "Verified Outcome" }] : []),
+    ...(hasLimits
+      ? [{ id: "limitations", label: "Limitations and Context" }]
+      : []),
+    ...(services.length
+      ? [{ id: "services", label: "Relevant Services" }]
+      : []),
+    ...(learned ? [{ id: "learned", label: "What We Learned" }] : []),
+    { id: "gallery", label: "Screenshots" },
+  ];
+  const stepNo = (id: string) => index.findIndex((x) => x.id === id) + 1;
+  const stepBadge = (id: string) => (
+    <span className="cs-step-num" aria-hidden="true">
+      {String(stepNo(id)).padStart(2, "0")}
+    </span>
+  );
+  const stepClass = "cs-step scroll-mt-28 border-t border-line py-10";
+
+  const facts = [
+    ["Client", clientLabel],
+    ["Industry", s.industry],
+    ["Market", s.market ?? s.region],
+    ["Channels", s.channels?.join(", ")],
+    ["Growth system", s.systemType],
+    ["Reporting period", s.period],
+  ].filter((f): f is [string, string] => isReal(f[1]));
+
+  const jsonLd = {
+    ...schema.article({
+      headline: s.title,
+      description: s.seo?.description ?? s.summary,
+      path: `/case-studies/${s.slug}`,
+      image: cover?.url ? absoluteUrl(cover.url) : undefined,
+      datePublished,
+    }),
+    dateModified,
+    mainEntityOfPage: absoluteUrl(`/case-studies/${s.slug}`),
+    author: { "@id": ORG_ID },
+    publisher: { "@id": ORG_ID },
+    about: services.length
+      ? services.map((x) => ({
+          "@type": "Service",
+          name: x.name,
+          url: absoluteUrl(x.path),
+          provider: { "@id": ORG_ID },
+        }))
+      : undefined,
+  };
 
   return (
     <article>
@@ -131,6 +204,27 @@ export default async function CaseStudyPage({
             >
               {isReal(s.oneLiner) ? s.oneLiner : s.summary}
             </p>
+            {datePublished ? (
+              <p
+                data-reveal
+                style={{ ["--reveal-delay" as string]: 150 }}
+                className="mt-5 text-[13.5px] text-ink-3"
+              >
+                Case study by {organization.name} · Published{" "}
+                <time dateTime={datePublished}>
+                  {formatDate(datePublished)}
+                </time>
+                {dateModified ? (
+                  <>
+                    {" "}
+                    · Updated{" "}
+                    <time dateTime={dateModified}>
+                      {formatDate(dateModified)}
+                    </time>
+                  </>
+                ) : null}
+              </p>
+            ) : null}
             <div
               data-reveal
               style={{ ["--reveal-delay" as string]: 180 }}
@@ -196,18 +290,38 @@ export default async function CaseStudyPage({
               Verified Numbers
             </h2>
             <dl className="mt-6 grid grid-cols-2 gap-3 md:grid-cols-3 lg:grid-cols-4">
-              {metrics.map((m) => (
-                <div key={`${m.label}-${m.value}`} className="rounded-2xl border border-line bg-glass p-5 md:p-6">
-                  <dt className="text-[13.5px] text-ink-3">{m.label}</dt>
-                  <dd className="mt-3 font-display text-[clamp(22px,2.4vw,34px)] font-semibold tracking-tight text-ink">
-                    {m.value}
-                  </dd>
-                  {m.context ? (
-                    <p className="mt-2 text-[12.5px] text-ink-3">{m.context}</p>
-                  ) : null}
-                </div>
+              {metrics.slice(0, 4).map((m) => (
+                <VerifiedMetric
+                  key={`${m.label}-${m.value}`}
+                  metric={m}
+                  compact
+                />
               ))}
             </dl>
+            {hasResult ? (
+              <p className="mt-4 text-[13px] text-ink-3">
+                Sources, caveats and every figure:{" "}
+                <a
+                  href="#outcome"
+                  className="text-accent-text underline-offset-4 hover:underline"
+                >
+                  Verified Outcome
+                </a>
+                {hasLimits ? (
+                  <>
+                    {" "}
+                    and{" "}
+                    <a
+                      href="#limitations"
+                      className="text-accent-text underline-offset-4 hover:underline"
+                    >
+                      Limitations and Context
+                    </a>
+                  </>
+                ) : null}
+                .
+              </p>
+            ) : null}
           </div>
         </section>
       ) : null}
@@ -218,7 +332,7 @@ export default async function CaseStudyPage({
           className="hidden lg:col-span-3 lg:block"
         >
           <ol className="sticky top-[calc(var(--header-h)+32px)] space-y-2 border-l border-line pl-5 text-[14px]">
-            {sections.map((x) => (
+            {index.map((x) => (
               <li key={x.id}>
                 <a
                   href={`#${x.id}`}
@@ -228,49 +342,137 @@ export default async function CaseStudyPage({
                 </a>
               </li>
             ))}
-            <li>
-              <a
-                href="#gallery"
-                className="text-ink-3 transition-colors hover:text-ink"
-              >
-                Screenshots
-              </a>
-            </li>
           </ol>
         </nav>
         <div className="lg:col-span-8 lg:col-start-5">
-          {sections.map((x, i) => (
+          <section
+            id="context"
+            className={stepClass}
+            aria-labelledby="context-title"
+          >
+            {stepBadge("context")}
+            <div>
+              <h2 id="context-title" className="t-label !text-accent-text">
+                Client and Context
+              </h2>
+              {(real(s.context) ?? s.diagnosis) ? (
+                <p className="mt-4 text-[18px] leading-relaxed text-ink">
+                  {real(s.context) ?? s.diagnosis}
+                </p>
+              ) : null}
+              <dl className="mt-6 grid grid-cols-1 gap-3 sm:grid-cols-2">
+                {facts.map(([k, v]) => (
+                  <div
+                    key={k}
+                    className="rounded-xl border border-line px-4 py-3"
+                  >
+                    <dt className="text-[12px] text-ink-3">{k}</dt>
+                    <dd className="mt-1 text-[15px] font-medium text-ink">
+                      {v}
+                    </dd>
+                  </div>
+                ))}
+                {services.length ? (
+                  <div className="rounded-xl border border-line px-4 py-3 sm:col-span-2">
+                    <dt className="text-[12px] text-ink-3">Services</dt>
+                    <dd className="mt-1 text-[15px] font-medium text-ink">
+                      {services.map((x, i) => (
+                        <span key={x.key}>
+                          {i ? ", " : null}
+                          <Link
+                            href={x.path}
+                            className="text-accent-text underline-offset-4 hover:underline"
+                          >
+                            {x.name}
+                          </Link>
+                        </span>
+                      ))}
+                    </dd>
+                  </div>
+                ) : null}
+              </dl>
+            </div>
+          </section>
+
+          {sections.map((x) => (
             <section
               key={x.id}
               id={x.id}
-              className="cs-step scroll-mt-28 border-t border-line py-10"
+              className={stepClass}
+              aria-labelledby={`${x.id}-title`}
             >
-              <span className="cs-step-num" aria-hidden="true">
-                {String(i + 1).padStart(2, "0")}
-              </span>
+              {stepBadge(x.id)}
               <div>
-                <h2 className="t-label !text-accent-text">{x.label}</h2>
+                <h2 id={`${x.id}-title`} className="t-label !text-accent-text">
+                  {x.label}
+                </h2>
                 <p className="mt-4 text-[18px] leading-relaxed text-ink">
                   {x.body}
                 </p>
-                {x.facts?.length ? (
-                  <dl className="mt-6 grid grid-cols-1 gap-3 sm:grid-cols-2">
-                    {x.facts.map(([k, v]) => (
-                      <div
-                        key={k}
-                        className="rounded-xl border border-line px-4 py-3"
-                      >
-                        <dt className="text-[12px] text-ink-3">{k}</dt>
-                        <dd className="mt-1 text-[15px] font-medium text-ink">
-                          {v}
-                        </dd>
-                      </div>
-                    ))}
-                  </dl>
-                ) : null}
               </div>
             </section>
           ))}
+
+          <CaseStudyResult
+            outcome={outcome}
+            metrics={metrics}
+            limitations={s.limitations}
+            client={clientShort}
+            period={s.period}
+            stepClassName={stepClass}
+            outcomeNumber={stepNo("outcome")}
+            limitationsNumber={stepNo("limitations")}
+          />
+
+          {services.length ? (
+            <section
+              id="services"
+              className={stepClass}
+              aria-labelledby="services-title"
+            >
+              {stepBadge("services")}
+              <div>
+                <h2 id="services-title" className="t-label !text-accent-text">
+                  Relevant Services
+                </h2>
+                <ul className="mt-5 grid grid-cols-1 gap-3">
+                  {services.map((x) => (
+                    <li key={x.key}>
+                      <Link
+                        href={x.path}
+                        className="group/btn block rounded-2xl border border-line p-5 transition-colors hover:border-[color:var(--accent)]"
+                      >
+                        <span className="flex items-center gap-2 font-display text-[16px] font-semibold text-ink">
+                          {x.name} <Arrow />
+                        </span>
+                        <span className="mt-2 block text-[14.5px] leading-relaxed text-ink-2">
+                          {x.definition}
+                        </span>
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </section>
+          ) : null}
+
+          {learned ? (
+            <section
+              id="learned"
+              className={stepClass}
+              aria-labelledby="learned-title"
+            >
+              {stepBadge("learned")}
+              <div>
+                <h2 id="learned-title" className="t-label !text-accent-text">
+                  What We Learned
+                </h2>
+                <p className="mt-4 text-[18px] leading-relaxed text-ink">
+                  {learned}
+                </p>
+              </div>
+            </section>
+          ) : null}
 
           <section
             id="gallery"
@@ -283,27 +485,34 @@ export default async function CaseStudyPage({
             {gallery ? (
               <div className="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-2">
                 {gallery.map((g) => (
-                  <a
-                    key={g.url}
-                    href={g.url}
-                    target="_blank"
-                    rel="noopener"
-                    className="group block overflow-hidden rounded-2xl border border-line transition-colors hover:border-[color:var(--accent)]"
-                  >
-                    <Image
-                      src={g.url}
-                      alt={g.alt}
-                      width={g.width ?? 1200}
-                      height={g.height ?? 800}
-                      loading="lazy"
-                      sizes="(min-width:1024px) 420px, (min-width:640px) 50vw, 100vw"
-                      className="h-auto w-full"
-                    />
-                    <span className="sr-only">
-                      {" "}
-                      (opens full size in a new tab)
-                    </span>
-                  </a>
+                  <figure key={g.url}>
+                    <a
+                      href={g.url}
+                      target="_blank"
+                      rel="noopener"
+                      className="group block overflow-hidden rounded-2xl border border-line transition-colors hover:border-[color:var(--accent)]"
+                    >
+                      <Image
+                        src={g.url}
+                        alt={g.alt}
+                        width={g.width ?? 1200}
+                        height={g.height ?? 800}
+                        loading="lazy"
+                        sizes="(min-width:1024px) 420px, (min-width:640px) 50vw, 100vw"
+                        className="h-auto w-full"
+                      />
+                      <span className="sr-only">
+                        {" "}
+                        (opens full size in a new tab)
+                      </span>
+                    </a>
+                    <figcaption className="mt-3 text-[13px] leading-snug text-ink-3">
+                      <span className="text-ink-2">
+                        From the case study PDF:
+                      </span>{" "}
+                      {g.alt}
+                    </figcaption>
+                  </figure>
                 ))}
               </div>
             ) : (
@@ -414,16 +623,7 @@ export default async function CaseStudyPage({
       </section>
 
       <BookingSection eyebrow="Ready When You Are" context="case-study" />
-      <JsonLd
-        data={schema.article({
-          headline: s.title,
-          description: s.summary,
-          path: `/case-studies/${s.slug}`,
-          image: cover?.url,
-          datePublished: s.publishedAt,
-          type: "CreativeWork",
-        })}
-      />
+      <JsonLd data={jsonLd} />
     </article>
   );
 }

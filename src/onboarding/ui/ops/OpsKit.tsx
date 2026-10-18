@@ -17,6 +17,7 @@ const NAV = [
   { href: "/ops/guides", label: "Guides", icon: "eye", admin: true },
   { href: "/ops/template", label: "Template", icon: "edit", admin: true },
   { href: "/ops/team", label: "Team", icon: "user", admin: true },
+  { href: "/ops/crawlers", label: "Crawlers", icon: "eye", admin: true },
   { href: "/ops/settings", label: "Settings", icon: "shield", admin: true },
 ];
 

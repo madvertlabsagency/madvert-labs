@@ -1,4 +1,5 @@
 import type { NextConfig } from "next";
+import { serviceAliases } from "./src/lib/entities";
 
 const securityHeaders = [
   { key: "Referrer-Policy", value: "strict-origin-when-cross-origin" },
@@ -32,6 +33,8 @@ const nextConfig: NextConfig = {
       { source: "/resources/seo-and-ai-search-guide", destination: "/resources/seo-ai-search-playbook", permanent: true },
       { source: "/resources/seo-ai-search-guide", destination: "/resources/seo-ai-search-playbook", permanent: true },
       { source: "/resources/madvert-studios-portfolio", destination: "/resources/madvert-studios-showreel", permanent: true },
+      // Short service URLs → the one canonical page for each service.
+      ...Object.entries(serviceAliases).map(([source, destination]) => ({ source, destination, permanent: true })),
     ];
   },
   async headers() {
@@ -39,13 +42,16 @@ const nextConfig: NextConfig = {
       { source: "/:path*", headers: securityHeaders },
       // Private portal: never cached or indexed, and the bearer link never leaks through Referer.
       {
-        source: "/(onboarding|ops)/:path*",
+        source: "/(onboarding|ops|offer-builder|offer)/:path*",
         headers: [
           { key: "Referrer-Policy", value: "no-referrer" },
           { key: "X-Robots-Tag", value: "noindex, nofollow" },
           { key: "Cache-Control", value: "private, no-store" },
         ],
       },
+      { source: "/(onboarding|ops|offer-builder)", headers: [{ key: "X-Robots-Tag", value: "noindex, nofollow" }] },
+      // API responses are never search results.
+      { source: "/api/:path*", headers: [{ key: "X-Robots-Tag", value: "noindex, nofollow" }] },
     ];
   },
   turbopack: {

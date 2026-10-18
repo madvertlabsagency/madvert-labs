@@ -42,6 +42,9 @@ export const COLLECTIONS = [
   "custom_questions",
   "team_users",
   "offer_shares",
+  // Marketing site: search visibility bookkeeping (not onboarding data).
+  "indexnow_state",
+  "crawler_hits",
 ] as const;
 export type Collection = (typeof COLLECTIONS)[number];
 

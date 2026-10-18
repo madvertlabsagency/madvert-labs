@@ -24,6 +24,7 @@ import { BookingSection } from "@/components/booking/BookingSection";
 import { ServicesGrid } from "@/sections/home/ServicesGrid";
 import { HireDepartment } from "@/sections/home/HireDepartment";
 import { IntroVideo } from "@/sections/home/IntroVideo";
+import { INTRO_TRANSCRIPT, INTRO_VIDEO } from "@/content/intro-video";
 
 const description =
   "Madvert Labs connects branding, customer acquisition, conversion, creative, automation and technology into one intelligent growth system built around your business.";
@@ -94,7 +95,20 @@ export default async function HomePage() {
         <p>Bring the business. Bring the numbers. Bring the challenge.</p>
         <p className="mt-1">We will bring the questions.</p>
       </FinalCta>
-      <JsonLd data={schema.webPage(site.name, description, "/")} />
+      <JsonLd
+        data={[
+          schema.webPage(site.name, description, "/"),
+          {
+            ...schema.video({
+              ...INTRO_VIDEO,
+              thumbnail: "/video/madvert-intro-poster-v2.webp",
+              contentUrl: "/video/madvert-intro-1080.mp4",
+              path: "/",
+            }),
+            transcript: INTRO_TRANSCRIPT.join(" "),
+          },
+        ]}
+      />
     </>
   );
 }

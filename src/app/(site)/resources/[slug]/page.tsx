@@ -11,9 +11,23 @@ import { ResourceCard } from "@/components/lead-magnets/ResourceCard";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { Eyebrow } from "@/components/ui/Section";
 import { GrowthRibbon } from "@/components/visuals/GrowthRibbon";
+import Link from "next/link";
+import { founder, getServiceEntity, organization } from "@/lib/entities";
 import { pageMetadata, schema } from "@/lib/seo";
-import { absoluteUrl } from "@/lib/site";
+import { absoluteUrl, site } from "@/lib/site";
 import { InlineLink } from "@/sections/services/Blocks";
+import type { Resource } from "@/types/content";
+
+const ORG_ID = `${site.url}/#organization`;
+const PERSON_ID = `${site.url}/#founder`;
+
+/** "2026-10-13" -> "October 2026". */
+function monthYear(iso: string) {
+  return new Date(`${iso.slice(0, 10)}T12:00:00Z`).toLocaleDateString("en-GB", { month: "long", year: "numeric", timeZone: "UTC" });
+}
+
+/** Open resources that only point elsewhere (e.g. the showreel) have no substance of their own yet. */
+const isThin = (r: Resource) => r.gating === "open" && Boolean(r.externalUrl);
 
 export async function generateStaticParams() {
   const all = await getResources();
@@ -30,6 +44,7 @@ export async function generateMetadata({ params }: PageProps<"/resources/[slug]"
     path: `/resources/${r.slug}`,
     image: r.cover && !r.artworkPending ? absoluteUrl(r.cover.url.replace(/\.webp$/, ".jpg")) : undefined,
     type: "article",
+    noindex: isThin(r) || r.placeholder,
   });
 }
 
@@ -38,6 +53,11 @@ export default async function LeadMagnetLandingPage({ params }: PageProps<"/reso
   const { slug } = await params;
   const [r, all, studies] = await Promise.all([getResource(slug), getResources(), getCaseStudies()]);
   if (!r) notFound();
+  const byFounder = r.author === "founder";
+  const updated = r.dateModified ?? r.datePublished;
+  const service = r.relatedServices?.length ? getServiceEntity(r.relatedServices[0]) : undefined;
+  const kindLower = r.kind.toLowerCase();
+  const coverImage = r.cover && !r.artworkPending ? absoluteUrl(r.cover.url.replace(/\.webp$/, ".jpg")) : undefined;
   const related = (r.related ?? []).map((s) => all.find((x) => x.slug === s)).filter((x): x is NonNullable<typeof x> => Boolean(x)).slice(0, 3);
 
   return (
@@ -69,6 +89,26 @@ export default async function LeadMagnetLandingPage({ params }: PageProps<"/reso
               <p data-reveal style={{ ["--reveal-delay" as string]: 140 }} className="t-lead measure mt-6">
                 {r.description}
               </p>
+              {byFounder || updated ? (
+                <p data-reveal style={{ ["--reveal-delay" as string]: 170 }} className="mt-5 text-[14px] text-ink-3">
+                  {byFounder ? (
+                    <>
+                      By{" "}
+                      <Link href={founder.path} rel="author" className="font-medium text-ink-2 underline-offset-4 hover:text-ink hover:underline">
+                        {founder.name}
+                      </Link>
+                      , {founder.jobTitle} of {organization.name}
+                    </>
+                  ) : (
+                    <>By {organization.name}</>
+                  )}
+                  {updated ? (
+                    <>
+                      {" "}· Updated <time dateTime={updated}>{monthYear(updated)}</time>
+                    </>
+                  ) : null}
+                </p>
+              ) : null}
               <div data-reveal style={{ ["--reveal-delay" as string]: 200 }} className="mt-9 max-w-[640px]" id="get">
                 <LeadMagnetForm resource={r} />
               </div>
@@ -112,6 +152,15 @@ export default async function LeadMagnetLandingPage({ params }: PageProps<"/reso
                 </li>
               ))}
             </ol>
+            {service ? (
+              <p data-reveal className="mt-8 text-[15.5px] leading-relaxed text-ink-2">
+                The free {kindLower} “{r.title.replace(/[.!]$/, "")}” supports the{" "}
+                <Link href={service.path} className="font-medium text-accent-text underline-offset-4 hover:underline">
+                  {service.name}
+                </Link>{" "}
+                service from {organization.name}. {service.definition}
+              </p>
+            ) : null}
           </div>
         </div>
       </section>
@@ -182,14 +231,26 @@ export default async function LeadMagnetLandingPage({ params }: PageProps<"/reso
       ) : null}
 
       <JsonLd
-        data={schema.article({
-          headline: r.title,
+        data={{
+          "@context": "https://schema.org",
+          "@type": "CreativeWork",
+          name: r.title,
+          headline: r.heroHeadline ?? r.title,
           description: r.outcome ?? r.description,
-          path: `/resources/${r.slug}`,
-          image: r.cover && !r.artworkPending ? absoluteUrl(r.cover.url.replace(/\.webp$/, ".jpg")) : undefined,
-          type: "CreativeWork",
-        })}
+          genre: r.kind,
+          url: absoluteUrl(`/resources/${r.slug}`),
+          mainEntityOfPage: absoluteUrl(`/resources/${r.slug}`),
+          inLanguage: "en",
+          image: coverImage,
+          author: byFounder ? { "@id": PERSON_ID } : { "@id": ORG_ID },
+          publisher: { "@id": ORG_ID },
+          datePublished: r.datePublished,
+          dateModified: updated,
+          isAccessibleForFree: true,
+          about: service ? { "@type": "Service", name: service.name, url: absoluteUrl(service.path), provider: { "@id": ORG_ID } } : undefined,
+        }}
       />
+      {byFounder ? <JsonLd data={schema.founder()} /> : null}
     </div>
   );
 }

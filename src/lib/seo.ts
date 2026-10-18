@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { absoluteUrl, site } from "./site";
+import { founder, organization } from "./entities";
 
 export function pageMetadata({
   title,
@@ -32,27 +33,36 @@ const ORG_ID = `${site.url}/#organization`;
 const PERSON_ID = `${site.url}/#founder`;
 
 export const schema = {
+  /**
+   * Organization only: Madvert Labs is not marketed as a walk-in local business and no verified
+   * address has been supplied, so LocalBusiness / ProfessionalService types are deliberately not used.
+   */
   organization: () => ({
     "@context": "https://schema.org",
-    "@type": ["Organization", "ProfessionalService"],
+    "@type": "Organization",
     "@id": ORG_ID,
-    name: site.name,
-    alternateName: "Madvert",
-    description: `${site.name} is a ${site.descriptor.toLowerCase()} company. ${site.tagline}`,
-    slogan: site.tagline,
-    url: site.url,
-    logo: absoluteUrl("/brand/app-icon-512.png"),
+    name: organization.name,
+    alternateName: ["Madvert", organization.brandMark],
+    description: organization.description,
+    slogan: organization.slogan,
+    url: organization.url,
+    logo: { "@type": "ImageObject", url: organization.logo, width: 512, height: 512 },
+    email: organization.email,
     founder: { "@id": PERSON_ID },
+    sameAs: organization.sameAs.length ? organization.sameAs : undefined,
     knowsAbout: [
-      "Branding",
       "Digital marketing",
-      "Paid media",
+      "Growth systems",
+      "Branding",
+      "Meta Ads lead generation",
+      "Google Ads",
       "Search engine optimisation",
       "AI search visibility",
       "Conversion rate optimisation",
-      "Creative production",
+      "Creative and video production",
       "CRM and marketing automation",
-      "Custom software development",
+      "AI agents",
+      "Web and app development",
     ],
   }),
   website: () => ({
@@ -61,20 +71,40 @@ export const schema = {
     "@id": `${site.url}/#website`,
     url: site.url,
     name: site.name,
+    description: organization.description,
+    inLanguage: "en",
     publisher: { "@id": ORG_ID },
   }),
   founder: () => ({
     "@context": "https://schema.org",
     "@type": "Person",
     "@id": PERSON_ID,
-    name: site.founder.name,
-    jobTitle: "Founder",
-    image: absoluteUrl("/images/usama-abbas-dahri.jpg"),
+    name: founder.name,
+    givenName: founder.givenName,
+    familyName: founder.familyName,
+    jobTitle: founder.jobTitle,
+    url: absoluteUrl(founder.path),
+    image: absoluteUrl(founder.image),
     worksFor: { "@id": ORG_ID },
+    sameAs: founder.sameAs.length ? founder.sameAs : undefined,
+  }),
+  video: (v: { name: string; description: string; thumbnail: string; contentUrl: string; uploadDate: string; duration: string; path: string }) => ({
+    "@context": "https://schema.org",
+    "@type": "VideoObject",
+    name: v.name,
+    description: v.description,
+    thumbnailUrl: [absoluteUrl(v.thumbnail)],
+    contentUrl: absoluteUrl(v.contentUrl),
+    uploadDate: v.uploadDate,
+    duration: v.duration,
+    inLanguage: "en",
+    publisher: { "@id": ORG_ID },
+    url: absoluteUrl(v.path),
   }),
   webPage: (name: string, description: string, path: string) => ({
     "@context": "https://schema.org",
     "@type": "WebPage",
+    "@id": `${absoluteUrl(path)}#webpage`,
     name,
     description,
     url: absoluteUrl(path),

@@ -1,6 +1,16 @@
+import type { ServiceKey } from "@/lib/entities";
+
 export type CaseStudyCategory = "acquisition" | "seo" | "branding" | "studios" | "automation" | "technology";
 
-export type Metric = { label: string; value: string; context?: string };
+export type Metric = {
+  label: string;
+  value: string;
+  context?: string;
+  /** Where the figure can be checked, e.g. "Meta Ads Manager screenshot in the case study PDF". */
+  source?: string;
+  /** Honest caveat shown next to the figure (rounding, what is and is not visible in the evidence). */
+  qualification?: string;
+};
 
 export type ImageAsset = { url: string; alt: string; width?: number; height?: number };
 
@@ -67,6 +77,18 @@ export type CaseStudy = {
   outcome?: string;
   /** True while the entry is a framework awaiting real client data. Placeholders are noindexed. */
   placeholder?: boolean;
+  /** ISO date the study was first published on the site. */
+  datePublished?: string;
+  /** ISO date of the last material change to the study. */
+  dateModified?: string;
+  /** Service entities (src/lib/entities.ts) this work demonstrates; rendered as links. */
+  serviceKeys?: ServiceKey[];
+  /** Acquisition channels used, as stated in the case study. */
+  channels?: string[];
+  /** Reporting period of the figures, only when the evidence states it. */
+  period?: string;
+  /** Limitations and context a reader should know before relying on the numbers. */
+  limitations?: string[];
 };
 
 /** Vault library categories (labels, order and tints live in src/lib/resource-categories.ts). */
@@ -117,6 +139,14 @@ export type Resource = {
   tagline?: string;
   /** Up to four short value points shown beside the cover in the Featured Resource panel. */
   highlights?: string[];
+  /** Author of the resource. "founder" = Usama Abbas Dahri (named on the official covers). */
+  author?: "founder";
+  /** ISO date the resource was first published on the site. */
+  datePublished?: string;
+  /** ISO date of the last material change to the resource. */
+  dateModified?: string;
+  /** Service entities (src/lib/entities.ts) the resource supports; the first is linked on the landing page. */
+  relatedServices?: ServiceKey[];
 };
 
 export type Faq = { q: string; a: string };

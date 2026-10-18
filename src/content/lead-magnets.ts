@@ -5,6 +5,10 @@
  *
  * Official artwork lives in /public/lead-magnets/<slug>.webp (supplied by Madvert Labs, do not redesign).
  * Entries marked artworkPending show a branded CSS cover until their official artwork is supplied.
+ *
+ * author: "founder" is set only where the official cover names the author ("Usama Abbas, By Madvert Labs").
+ * datePublished / dateModified: when the entry (or its official cover) was added to / last changed in the repo.
+ * relatedServices: service entity keys from src/lib/entities.ts; the first one is linked on the landing page.
  */
 import type { Resource } from "@/types/content";
 
@@ -19,6 +23,10 @@ export const leadMagnets: Resource[] = [
   /* ───────────── Official, artwork supplied ───────────── */
   {
     slug: "build-that-offer",
+    author: "founder",
+    datePublished: "2026-10-13",
+    dateModified: "2026-10-15",
+    relatedServices: ["conversion"],
     title: "Build That Offer, Then Retire",
     kind: "Playbook",
     badge: "Free Playbook 001",
@@ -65,6 +73,10 @@ export const leadMagnets: Resource[] = [
   },
   {
     slug: "steal-these-hooks",
+    author: "founder",
+    datePublished: "2026-10-15",
+    dateModified: "2026-10-15",
+    relatedServices: ["studios", "meta-ads"],
     title: "Steal These Hooks. Stop Boring Your Audience.",
     kind: "Playbook",
     badge: "Free Playbook 008",
@@ -109,6 +121,9 @@ export const leadMagnets: Resource[] = [
   },
   {
     slug: "stop-the-scroll",
+    datePublished: "2026-10-15",
+    dateModified: "2026-10-15",
+    relatedServices: ["studios", "meta-ads"],
     title: "Stop the Scroll. Win the Sale.",
     kind: "Playbook",
     badge: "Free Playbook",
@@ -153,6 +168,10 @@ export const leadMagnets: Resource[] = [
   },
   {
     slug: "landing-pages-that-sell",
+    author: "founder",
+    datePublished: "2026-10-13",
+    dateModified: "2026-10-13",
+    relatedServices: ["conversion", "web-development"],
     title: "The Art of Building Landing Pages That Sell",
     kind: "Playbook",
     badge: "Free Playbook 007",
@@ -197,6 +216,10 @@ export const leadMagnets: Resource[] = [
   },
   {
     slug: "seo-ai-search-playbook",
+    author: "founder",
+    datePublished: "2026-10-13",
+    dateModified: "2026-10-13",
+    relatedServices: ["seo", "ai-seo-aeo"],
     title: "Get Found on Google. Get Discovered by AI.",
     kind: "Playbook",
     badge: "Free Playbook 006",
@@ -241,6 +264,10 @@ export const leadMagnets: Resource[] = [
   },
   {
     slug: "meta-ads-pre-launch-checklist",
+    author: "founder",
+    datePublished: "2026-10-13",
+    dateModified: "2026-10-13",
+    relatedServices: ["meta-ads"],
     title: "Ultimate Meta Ads Pre-Launch Checklist",
     kind: "Checklist",
     badge: "Free Checklist 005",
@@ -285,6 +312,10 @@ export const leadMagnets: Resource[] = [
   },
   {
     slug: "ai-content-automation-playbook",
+    author: "founder",
+    datePublished: "2026-10-13",
+    dateModified: "2026-10-13",
+    relatedServices: ["social-media-management", "studios"],
     title: "Never Run Out of Content Again",
     kind: "Playbook",
     badge: "Free Playbook 004",
@@ -329,6 +360,10 @@ export const leadMagnets: Resource[] = [
   },
   {
     slug: "automated-lead-engine",
+    author: "founder",
+    datePublished: "2026-10-13",
+    dateModified: "2026-10-13",
+    relatedServices: ["automation-revenue-systems", "ai-agents"],
     title: "Build Your Automated Lead Engine",
     kind: "Playbook",
     badge: "Free Playbook 003",
@@ -375,6 +410,9 @@ export const leadMagnets: Resource[] = [
   /* ───────────── Audits, checklists and portfolio (official artwork not supplied yet) ───────────── */
   {
     slug: "growth-systems-audit",
+    datePublished: "2026-10-13",
+    dateModified: "2026-10-13",
+    relatedServices: ["growth-systems"],
     title: "Growth Systems Audit",
     kind: "Audit",
     category: "leads",
@@ -405,6 +443,9 @@ export const leadMagnets: Resource[] = [
   },
   {
     slug: "brand-perception-checklist",
+    datePublished: "2026-10-13",
+    dateModified: "2026-10-13",
+    relatedServices: ["branding-marketing"],
     title: "Brand Perception Checklist",
     kind: "Checklist",
     category: "brand",
@@ -430,6 +471,9 @@ export const leadMagnets: Resource[] = [
   },
   {
     slug: "qualified-lead-generation-playbook",
+    datePublished: "2026-10-13",
+    dateModified: "2026-10-13",
+    relatedServices: ["client-acquisition", "meta-ads"],
     title: "Qualified Lead Generation Playbook",
     kind: "Playbook",
     category: "leads",
@@ -455,6 +499,9 @@ export const leadMagnets: Resource[] = [
   },
   {
     slug: "conversion-leak-checklist",
+    datePublished: "2026-10-13",
+    dateModified: "2026-10-13",
+    relatedServices: ["conversion"],
     title: "Conversion Leak Checklist",
     kind: "Checklist",
     category: "conversion",
@@ -480,6 +527,9 @@ export const leadMagnets: Resource[] = [
   },
   {
     slug: "revenue-leakage-audit",
+    datePublished: "2026-10-13",
+    dateModified: "2026-10-13",
+    relatedServices: ["automation-revenue-systems"],
     title: "Revenue Leakage Audit",
     kind: "Audit",
     category: "automation",
@@ -506,6 +556,9 @@ export const leadMagnets: Resource[] = [
   },
   {
     slug: "tech-opportunity-audit",
+    datePublished: "2026-10-13",
+    dateModified: "2026-10-13",
+    relatedServices: ["tech-product-development", "ai-agents"],
     title: "Tech Opportunity Audit",
     kind: "Audit",
     category: "automation",
@@ -532,6 +585,9 @@ export const leadMagnets: Resource[] = [
   },
   {
     slug: "madvert-studios-showreel",
+    datePublished: "2026-10-13",
+    dateModified: "2026-10-13",
+    relatedServices: ["studios"],
     title: "Madvert Studios Showreel",
     kind: "Portfolio",
     category: "ads",

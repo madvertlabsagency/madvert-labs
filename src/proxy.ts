@@ -1,4 +1,7 @@
-import { NextResponse, type NextRequest } from "next/server";
+import { NextResponse, type NextFetchEvent, type NextRequest } from "next/server";
+import { identifyCrawler } from "@/seo/crawlers";
+import { recordCrawl } from "@/seo/crawler-log";
+import { knownPublicPaths } from "@/seo/known-paths";
 
 /**
  * 1. Subdomain: when ONBOARDING_HOST is set (e.g. onboarding.madvertlabs.com), that host serves only
@@ -11,7 +14,23 @@ import { NextResponse, type NextRequest } from "next/server";
 const PORTAL = /^\/(onboarding|ops|offer-builder|offer)(\/|$)/;
 const SHARED = /^\/(api|_next|brand|images|icon|apple-icon|manifest|robots|favicon)/;
 
-export function proxy(request: NextRequest) {
+export function proxy(request: NextRequest, event: NextFetchEvent) {
+  const response = route(request);
+  const host = (request.headers.get("x-forwarded-host") ?? request.headers.get("host") ?? "").toLowerCase();
+  // Preview / staging deployments must never be indexed.
+  if (host.endsWith(".vercel.app")) response.headers.set("X-Robots-Tag", "noindex, nofollow");
+
+  const crawler = identifyCrawler(request.headers.get("user-agent"));
+  if (crawler && request.method === "GET") {
+    const path = request.nextUrl.pathname;
+    const redirect = response.headers.get("location") ? String(response.status) : null;
+    const status = redirect ?? (knownPublicPaths.has(path) || PORTAL.test(path) ? "200" : "unlisted (possible 404)");
+    event.waitUntil(recordCrawl({ crawler: crawler.name, category: crawler.category, path, status }));
+  }
+  return response;
+}
+
+function route(request: NextRequest) {
   const { pathname, search } = request.nextUrl;
   const host = (request.headers.get("x-forwarded-host") ?? request.headers.get("host") ?? "").toLowerCase().split(":")[0];
   // ONBOARDING_HOST wins; otherwise any "onboarding." host is treated as the portal host.
