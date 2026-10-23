@@ -1,0 +1,123 @@
+/* ───────────── Company facts and press pages (fp-*) ───────────── */
+.fp-dl {
+  padding: 4px clamp(18px, 3vw, 32px);
+}
+.fp-row {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 6px 32px;
+  padding: 20px 0;
+  border-top: 1px solid var(--line);
+  scroll-margin-top: 96px;
+}
+.fp-row:first-child {
+  border-top: 0;
+}
+@media (min-width: 860px) {
+  .fp-row {
+    grid-template-columns: 240px 1fr;
+  }
+}
+.fp-row dt {
+  font-family: var(--font-display);
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--ink-3);
+}
+.fp-row dd {
+  font-size: 15.5px;
+  line-height: 1.65;
+  color: var(--ink-2);
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+.fp-row dd p + p {
+  margin-top: 6px;
+}
+.fp-row strong {
+  color: var(--ink);
+}
+.fp-sub {
+  margin-top: 6px;
+  font-size: 14px;
+}
+.fp-list {
+  display: grid;
+  gap: 6px;
+}
+.fp-services {
+  display: grid;
+  gap: 12px;
+}
+.fp-services li {
+  display: grid;
+  gap: 2px;
+}
+.fp-services span {
+  font-size: 14.5px;
+  color: var(--ink-3);
+}
+.fp-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.fp-chip {
+  display: inline-flex;
+  border-radius: 999px;
+  border: 1px solid var(--line-strong);
+  background: var(--surface-glass);
+  padding: 5px 12px;
+  font-size: 13.5px;
+  color: var(--ink-2);
+  transition: border-color 0.2s;
+}
+a.fp-chip:hover {
+  border-color: var(--accent);
+}
+.fp-quote {
+  padding: clamp(20px, 3vw, 30px);
+}
+.fp-quote-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+.fp-count {
+  font-size: 12.5px;
+  color: var(--ink-3);
+}
+.fp-quote blockquote {
+  margin-top: 14px;
+  font-size: 15.5px;
+  line-height: 1.7;
+  color: var(--ink);
+}
+.fp-quote blockquote p + p {
+  margin-top: 10px;
+}
+.fp-tile {
+  display: grid;
+  place-items: center;
+  aspect-ratio: 16 / 9;
+  border-radius: 14px;
+  border: 1px solid var(--line);
+  padding: 18px;
+}
+.fp-tile-dark {
+  background: #0a0f1c;
+}
+.fp-tile-light {
+  background: #f7fcfd;
+}
+.fp-tile img {
+  max-height: 100%;
+  width: auto;
+  object-fit: contain;
+}
+.fp-swatch {
+  height: 72px;
+  border-radius: 12px;
+  border: 1px solid var(--line);
+}

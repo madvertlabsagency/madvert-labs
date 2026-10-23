@@ -152,6 +152,9 @@ export const footerNav = [
   { label: "Growth Glossary", href: "/glossary" },
   { label: "Cost per Qualified Lead Calculator", href: "/tools/cost-per-qualified-lead-calculator" },
   { label: "Digital Marketing Agency in Karachi", href: "/digital-marketing-agency-karachi" },
+  { label: "Industries", href: "/industries" },
+  { label: "Company Facts", href: "/about/facts" },
+  { label: "Press", href: "/press" },
 ];
 
 /**

@@ -1283,6 +1283,168 @@ export const articles: Article[] = [
       label: "Book Your Business Strategy Call",
     },
   },
+  {
+    slug: "how-to-choose-digital-marketing-agency-karachi",
+    title: "How to Choose a Digital Marketing Agency in Karachi (2026 Guide)",
+    metaTitle: "How to Choose a Digital Marketing Agency in Karachi (2026)",
+    description:
+      "A practical checklist for choosing a digital marketing agency in Karachi: proof to ask for, questions for the first call, contract terms and the red flags to avoid.",
+    eyebrow: "Buyer's Guide",
+    answer: [
+      "To choose a digital marketing agency in Karachi, check five things: published proof with real numbers and their limits, a clear diagnosis of your business before any proposal, reporting on qualified leads and sales rather than clicks, ownership of your ad accounts and data, and a verifiable office and team you can meet.",
+      "Avoid agencies that guarantee results, quote a price before understanding the business, or keep your ad accounts in their own name. A short paid pilot with agreed measures is a safer start than a long contract.",
+    ],
+    author: "founder",
+    datePublished: "2026-10-23",
+    dateModified: "2026-10-23",
+    sections: [
+      {
+        id: "decide-first",
+        label: "Before you search",
+        title: "Decide what you need before comparing agencies",
+        blocks: [
+          {
+            type: "p",
+            text: "Karachi has hundreds of agencies, freelancers and studios, and most of them describe themselves the same way. Comparing them is easier once the business knows which problem it is buying a solution for.",
+          },
+          {
+            type: "table",
+            caption: "Match the problem to the type of help",
+            rowHeader: "If the main problem is",
+            columns: ["Look for"],
+            rows: [
+              { label: "Not enough enquiries", cells: ["[Performance marketing](/services/performance-marketing) or [Meta Ads lead generation](/services/meta-ads) with proof in lead generation"] },
+              { label: "Plenty of leads, few sales", cells: ["Lead qualification, follow up and [CRM and automation](/services/automation-revenue-systems), not more ad spend"] },
+              { label: "People search but do not find you", cells: ["[SEO](/services/seo) and [AI SEO and AEO](/services/ai-seo-aeo) for Google, ChatGPT and Copilot"] },
+              { label: "The brand looks weaker than competitors", cells: ["[Branding and Marketing](/services/branding-marketing) and creative production"] },
+              { label: "Several of the above, and no in-house team", cells: ["[Full Stack Digital Marketing](/services/digital-marketing): one team accountable for the whole system"] },
+            ],
+          },
+        ],
+      },
+      {
+        id: "checklist",
+        label: "Checklist",
+        title: "Seven checks before you sign",
+        blocks: [
+          {
+            type: "checklist",
+            label: "Agency selection checklist",
+            items: [
+              { text: "Published case studies with real numbers, the spend behind them and what they do not show.", detail: "A screenshot of a cheap cost per lead without spend, dates or lead quality proves little. See how [Madvert Labs case studies](/case-studies) state their limits." },
+              { text: "A diagnosis before a proposal.", detail: "A good agency asks about your offer, margins, sales process and follow up before naming a budget or a channel." },
+              { text: "Measurement on qualified leads and sales, not clicks or reach.", detail: "Ask how they define a qualified lead. The [cost per qualified lead calculator](/tools/cost-per-qualified-lead-calculator) shows why it matters." },
+              { text: "You own the ad accounts, pixel, website and CRM data.", detail: "Accounts should sit in your Business Manager and Google Ads account, with the agency added as a partner." },
+              { text: "A named team and a real address you can visit.", detail: "Check the Google Business Profile, the founder's LinkedIn and whether the address matches across sites." },
+              { text: "Clear reporting rhythm and access.", detail: "Weekly or fortnightly reports, live dashboards and direct access to the person running the account." },
+              { text: "Honest answers about what will not work.", detail: "An agency that says no to part of your plan is usually more useful than one that agrees with everything." },
+            ],
+          },
+        ],
+      },
+      {
+        id: "questions",
+        label: "First call",
+        title: "Questions to ask on the first call",
+        blocks: [
+          {
+            type: "list",
+            ordered: true,
+            items: [
+              "Which of your published results is closest to my business, and what was the spend, the market and the time period?",
+              "How will you decide whether a lead is qualified, and who checks it?",
+              "What happens to a lead in the first five minutes after it arrives?",
+              "Which numbers will you report every week, and which one decides whether we continue?",
+              "Who will actually run my account, and can I speak to them directly?",
+              "What do you need from my team to make this work?",
+              "If we stop working together, what do I keep?",
+            ],
+          },
+        ],
+      },
+      {
+        id: "red-flags",
+        label: "Red flags",
+        title: "Red flags when hiring an agency in Karachi",
+        blocks: [
+          {
+            type: "list",
+            items: [
+              "**Guaranteed results**, such as a fixed number of leads or a promised return on ad spend. No agency controls the market, your price or your sales team.",
+              "**A price before a conversation.** Packages sold by number of posts or ads say little about outcomes.",
+              "**Ad accounts in the agency's name.** If the relationship ends, the history and audiences go with them.",
+              "**Results without context.** A cost per lead with no spend, date, market or lead quality cannot be compared.",
+              "**Long lock-in contracts** before any pilot has shown how the team works.",
+              "**Reporting on reach and likes only** when the goal is enquiries or sales.",
+            ],
+          },
+          {
+            type: "callout",
+            label: "A safer way to start",
+            text: [
+              "Agree a defined pilot, usually one offer and one or two channels, with the measures written down in advance: cost per qualified lead, speed of follow up and booked calls or sales. Decide on a longer engagement once the pilot has real numbers.",
+            ],
+          },
+        ],
+      },
+      {
+        id: "madvert",
+        label: "Disclosure",
+        title: "Where Madvert Labs fits",
+        blocks: [
+          {
+            type: "p",
+            text: "This guide is written by Madvert Labs, a digital marketing and growth systems company with an office in [Bahria Town Karachi](/digital-marketing-agency-karachi). Use the checklist on any agency, including this one. Madvert Labs publishes its [case studies](/case-studies) with spend and limitations, keeps ad accounts in the client's name and judges work by qualified leads and sales. It may not be the right fit for a business that only wants posting packages or the lowest monthly fee.",
+          },
+        ],
+      },
+    ],
+    proof: {
+      title: "What published proof looks like",
+      intro:
+        "These are examples of case studies that state the result, the spend and the market. For a Dubai real estate company, Madvert Labs generated 142 BANT-qualified investor leads at AED 4.17 CPL. Earthly Elementals recorded 162 website purchases at Rs 844.57 per purchase. Each figure describes one campaign only and is not a benchmark.",
+      items: [
+        { slug: "dubai-real-estate-nigeria", metric: "Cost Per Lead", note: "Qualification criteria and CRM delivery are described in full." },
+        { slug: "earthly-elementals", metric: "Cost Per Purchase", note: "Website purchases for a Pakistani health brand, with total spend shown." },
+        { slug: "cellsol-energy", metric: "Cost Per Lead", note: "A sample solar campaign in Pakistan, labelled as a sample." },
+      ],
+    },
+    faqs: [
+      {
+        q: "How much does a digital marketing agency in Karachi cost?",
+        a: "There is no standard price. Fees depend on scope (one channel or a full team), the work involved in creative and tracking, and the ad budget, which is paid separately to Meta or Google. Compare proposals on what is included and how results will be measured, not on the monthly fee alone.",
+      },
+      {
+        q: "Should I hire a freelancer or an agency?",
+        a: "A freelancer can suit one well defined task, such as running a single ad account. An agency suits a business that needs strategy, creative, ads, website and follow up to work together, or needs cover when one person is unavailable.",
+      },
+      {
+        q: "How long before digital marketing shows results?",
+        a: "Paid campaigns usually produce first data within the first weeks, and need further weeks of testing to improve cost and lead quality. SEO and AI search visibility build over months. Be cautious of anyone promising fixed results in a fixed time.",
+      },
+      {
+        q: "Is it better to choose an agency based in Karachi?",
+        a: "A local agency makes in-person meetings easier and understands local buyers, pricing and WhatsApp-led sales. Location matters less than proof, process and ownership of your accounts, so judge a Karachi agency by the same checklist as any other.",
+      },
+      {
+        q: "What should be in a digital marketing agency contract?",
+        a: "The scope of work, deliverables, reporting frequency, the measures that define success, who owns the ad accounts, pixel, content and data, notice period, and what happens to assets if the engagement ends.",
+      },
+    ],
+    related: [
+      { href: "/digital-marketing-agency-karachi", anchor: "Madvert Labs in Karachi", note: "Services, office address and how the Karachi team works." },
+      { href: "/case-studies", anchor: "Published case studies", note: "Real numbers, spend and limitations for each campaign." },
+      { href: "/about/facts", anchor: "Company facts", note: "Verified facts about Madvert Labs in one place." },
+      { href: "/tools/cost-per-qualified-lead-calculator", anchor: "Cost Per Qualified Lead Calculator", note: "Compare agencies on qualified leads, not raw leads." },
+      { href: "/insights/performance-marketing-vs-digital-marketing", anchor: "Performance marketing vs digital marketing", note: "Which kind of help a business actually needs." },
+    ],
+    cta: {
+      title: "Comparing Agencies?",
+      accent: "Put Us Through the Same Checklist.",
+      body: "Book a Business Strategy Call. Ask every question on this page and we will answer with published proof.",
+      label: "Book Your Business Strategy Call",
+    },
+  },
 ];
 
 export function getArticle(slug: string) {

@@ -17,13 +17,15 @@ const SHARED = /^\/(api|_next|brand|images|icon|apple-icon|manifest|robots|favic
 /** Detail routes whose valid slugs are all known at build time while content comes from local files. */
 const DETAIL = /^\/(insights|case-studies|resources)\/[^/]+\/?$/;
 const CMS_CONFIGURED = Boolean(process.env.NEXT_PUBLIC_SANITY_PROJECT_ID);
+/** Detail routes that always come from local files, CMS or not. */
+const LOCAL_DETAIL = /^\/industries\/[^/]+\/?$/;
 
 export function proxy(request: NextRequest, event: NextFetchEvent) {
   const path = request.nextUrl.pathname.replace(/\/$/, "") || "/";
   // Unknown slugs get a real 404 status (not a streamed "not found" page with 200).
   // Skipped when Sanity is configured, because CMS entries are not known here.
   const response =
-    !CMS_CONFIGURED && DETAIL.test(path) && !knownPublicPaths.has(path)
+    ((!CMS_CONFIGURED && DETAIL.test(path)) || LOCAL_DETAIL.test(path)) && !knownPublicPaths.has(path)
       ? NextResponse.rewrite(new URL("/_not-found-page", request.url), { status: 404 })
       : route(request);
   const host = (request.headers.get("x-forwarded-host") ?? request.headers.get("host") ?? "").toLowerCase();
