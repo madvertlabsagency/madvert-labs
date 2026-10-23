@@ -70,7 +70,7 @@ export async function POST(req: Request, { params }: Ctx) {
     const session = await requireOpsSession();
     const user = session.email;
     const actor = `team:${user}`;
-    const ADMIN_ONLY = ["settings", "guide-save", "guide-image", "template", "template-reset", "custom-question", "secret-reveal", "team-invite", "team-update", "team-reset", "team-delete"];
+    const ADMIN_ONLY = ["test-email", "settings", "guide-save", "guide-image", "template", "template-reset", "custom-question", "secret-reveal", "team-invite", "team-update", "team-reset", "team-delete"];
     if (ADMIN_ONLY.includes(action) && !roleAtLeast(session.role, "admin")) return json({ error: "Only admins can do this." }, 403);
 
     switch (action) {
@@ -364,6 +364,16 @@ export async function POST(req: Request, { params }: Ctx) {
         await db().remove("team_users", u.id);
         await audit({ actor, action: "team.removed", target: u.email });
         return json({ ok: true });
+      }
+
+      case "test-email": {
+        const { emailShell, sendEmailResult } = await import("@/integrations/email");
+        const r = await sendEmailResult({
+          to: user,
+          subject: "Madvert Operations · test email",
+          html: emailShell("Email is working", "<p>This test came from Madvert Operations. Client links, delegated tasks, team invites and reminders will be delivered the same way.</p>"),
+        });
+        return json(r.ok ? { ok: true, from: r.from, to: user } : { error: r.error, from: r.from }, r.ok ? 200 : 400);
       }
 
       case "crm": {

@@ -3,6 +3,9 @@ import { booking } from "@/lib/site";
 import type { CompanySettings } from "../types";
 import { db } from "./db";
 
+/** Kickoff calendar for onboarded clients (separate from the website's strategy-call calendar). */
+export const KICKOFF_CALENDAR = "https://api.madvertlabs.com/widget/booking/m2v95rY845IT0tQwdbEL";
+
 /** Settings → Company → Integrations. Stored in the database; environment variables provide the first defaults. */
 export function defaultSettings(): CompanySettings {
   const env = process.env;
@@ -16,7 +19,7 @@ export function defaultSettings(): CompanySettings {
       dnsAccessEmail: env.MADVERT_DNS_ACCESS_EMAIL ?? "info@madvertlabs.com",
       crmAccessEmail: env.MADVERT_CRM_ACCESS_EMAIL ?? "info@madvertlabs.com",
       shopifyCollaboratorCode: "",
-      bookingUrl: env.ONBOARDING_BOOKING_URL ?? booking.url,
+      bookingUrl: env.ONBOARDING_BOOKING_URL ?? KICKOFF_CALENDAR,
       supportEmail: env.MADVERT_SUPPORT_EMAIL ?? "hello@madvertlabs.com",
       supportWhatsApp: env.MADVERT_SUPPORT_WHATSAPP ?? "",
     },
@@ -35,7 +38,10 @@ export async function getSettings(): Promise<CompanySettings> {
   if (!saved) return base;
   const pick = <T extends object>(a: T, b?: Partial<T>) =>
     Object.fromEntries(Object.entries(a).map(([k, v]) => [k, (b as Record<string, unknown> | undefined)?.[k] || v])) as T;
-  return { ...saved, integrations: pick(base.integrations, saved.integrations), defaults: pick(base.defaults, saved.defaults) };
+  const merged = { ...saved, integrations: pick(base.integrations, saved.integrations), defaults: pick(base.defaults, saved.defaults) };
+  // Settings saved before the kickoff calendar existed still point at the website calendar.
+  if (merged.integrations.bookingUrl === booking.url) merged.integrations.bookingUrl = base.integrations.bookingUrl;
+  return merged;
 }
 
 /** What the client UI may see. Everything here is meant to be shared with clients. */

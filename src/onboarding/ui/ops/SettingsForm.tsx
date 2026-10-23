@@ -61,6 +61,7 @@ export function SettingsForm({ initial, config }: { initial: CompanySettings; co
         </Btn>
         <Msg msg={msg} />
       </div>
+      <TestEmail />
       <section className="ob-card ob-card-pad">
         <h2 className="ob-h3">Environment & external credentials</h2>
         <p className="mt-1 text-[13.5px] text-[var(--ob-ink-3)]">Set in Vercel → Project → Settings → Environment Variables. See README “Client Onboarding Portal”.</p>
@@ -77,5 +78,32 @@ export function SettingsForm({ initial, config }: { initial: CompanySettings; co
         </ul>
       </section>
     </div>
+  );
+}
+
+function TestEmail() {
+  const { busy, msg, run } = useBusy();
+  return (
+    <section className="ob-card ob-card-pad">
+      <h2 className="ob-h3">Email delivery</h2>
+      <p className="mt-1 text-[13.5px] text-[var(--ob-ink-3)]">
+        Sends a test to your own address through Resend. If it fails, the exact reason is shown (usually the sender domain in EMAIL_FROM is not verified in Resend yet).
+      </p>
+      <Btn
+        size="sm"
+        icon="mail"
+        className="mt-4"
+        disabled={busy}
+        onClick={async () => {
+          await run(async () => {
+            const r = await opsCall<{ from?: string; to?: string }>("test-email");
+            return r.error ? { ...r, error: `${r.error}${r.from ? ` (sender: ${r.from})` : ""}` } : r;
+          }, "Test email sent. Check your inbox (and spam).");
+        }}
+      >
+        {busy ? "Sending…" : "Send test email"}
+      </Btn>
+      <Msg msg={msg} />
+    </section>
   );
 }
