@@ -155,8 +155,8 @@ export const footerNav = [
 
 /** WhatsApp chat (floating widget and contact links). */
 export const whatsapp = {
-  number: "+92 335 3572711",
-  url: `https://wa.me/923353572711?text=${encodeURIComponent("Hi Madvert Labs, I would like to talk about growing my business.")}`,
+  number: "+92 322 2568703",
+  url: `https://wa.me/923222568703?text=${encodeURIComponent("Hi Madvert Labs, I would like to talk about growing my business.")}`,
 };
 
 /** The one booking calendar used everywhere (LeadConnector / GoHighLevel widget). */
