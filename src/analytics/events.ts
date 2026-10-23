@@ -13,6 +13,8 @@ export type AnalyticsEvent =
   | "case_study_open"
   | "resource_download"
   | "showreel_play"
+  | "vsl_play"
+  | "white_label_call_click"
   | "portfolio_open"
   | "whatsapp_click"
   | "email_click"
