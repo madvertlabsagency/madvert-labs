@@ -54,3 +54,6 @@ export const INDUSTRIES: { label: string; cases: string[] }[] = [
 ];
 
 export const BOOKING_CONTEXT = "white_label";
+
+/** Dedicated GHL calendar for white-label strategy calls. */
+export const WL_BOOKING_URL = "https://api.madvertlabs.com/widget/booking/fNMJtWiOc3I7xw96XDOS";
