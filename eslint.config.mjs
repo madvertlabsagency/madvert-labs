@@ -16,7 +16,7 @@ const eslintConfig = defineConfig([
     "motion/**",
     "motion-patches/**",
     "motion-vertical/**",
-    "testimonial/**", "testimonial2/**", "motion-explainer/**",
+    "testimonial/**", "testimonial2/**", "motion-explainer/**", "motion-vsl/**",
     ".open-next/**",
     ".wrangler/**",
     "cloudflare-env.d.ts",
