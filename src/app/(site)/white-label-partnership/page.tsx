@@ -8,7 +8,7 @@ import { MadvertBookingCalendar } from "@/components/booking/MadvertBookingCalen
 import { Cta } from "@/components/ui/Button";
 import { Eyebrow } from "@/components/ui/Section";
 import { GrowthRibbon } from "@/components/visuals/GrowthRibbon";
-import { BOOKING_CONTEXT, INDUSTRIES, META_CREDENTIAL, TRUST, WL_PHOTOS } from "@/content/white-label";
+import { BOOKING_CONTEXT, INDUSTRIES, TRUST, WL_PHOTOS } from "@/content/white-label";
 import { pageMetadata } from "@/lib/seo";
 import { FinalCta } from "@/sections/shared/FinalCta";
 import {
@@ -19,10 +19,10 @@ import {
   DeliveryCompare,
   ExplodedOrg,
   FlowDefs,
+  FunnelCards,
   HeroSystem,
   HiringTabs,
   JourneyRepair,
-  LeadPipeline,
   MarginEquation,
   ModelEngine,
   QualityCapacity,
@@ -32,7 +32,7 @@ import {
 } from "@/sections/white-label/Visuals";
 import { VslPlayer } from "@/sections/white-label/VslPlayer";
 
-const path = "/white-label";
+const path = "/white-label-partnership";
 const description =
   "White-label growth department for agencies: paid acquisition, lead generation, funnels, creative, tracking, CRM, automation and development delivered under your agency's brand.";
 
@@ -139,20 +139,20 @@ export default async function WhiteLabelPage() {
           <div className="mx-auto max-w-[900px] text-center">
             <Head id="wl-vsl" a="You Probably Don’t Need Help Getting the Next Client." b="You Need To Know Who Is Going To Deliver When You Close Them." />
           </div>
-          <div className="mt-12 grid grid-cols-1 items-center gap-10 lg:grid-cols-12">
-            <div data-reveal className="lg:col-span-9">
+          <div className="mt-12 grid grid-cols-1 items-center gap-12 lg:grid-cols-12">
+            <div data-reveal className="lg:col-span-5 lg:col-start-2">
               <VslPlayer />
             </div>
-            <div data-reveal style={d(120)} className="lg:col-span-3">
-              <VslSteps />
-            </div>
-          </div>
-          <div className="mx-auto mt-12 max-w-[640px] text-center">
-            <p data-reveal className="t-lead">
-              If sales is your strength, keep doing what you&rsquo;re good at. We&rsquo;ll give you the delivery capacity to keep saying yes.
-            </p>
-            <div data-reveal style={d(80)} className="mt-8">
-              <CallCta label="Let’s Talk Partnership" />
+            <div className="lg:col-span-5 lg:col-start-8">
+              <div data-reveal style={d(120)}>
+                <VslSteps />
+              </div>
+              <p data-reveal className="t-lead mt-10">
+                If sales is your strength, keep doing what you&rsquo;re good at. We&rsquo;ll give you the delivery capacity to keep saying yes.
+              </p>
+              <div data-reveal style={d(80)} className="mt-8">
+                <CallCta label="Let’s Talk Partnership" />
+              </div>
             </div>
           </div>
         </div>
@@ -185,6 +185,89 @@ export default async function WhiteLabelPage() {
           </div>
           <div data-reveal style={d(120)} className="lg:col-span-6">
             <ChaosCollapse />
+          </div>
+        </div>
+      </section>
+
+      {/* 3b — DOING IT YOURSELF VS DONE FOR YOU */}
+      <section className="section relative" aria-labelledby="wl-diy">
+        <div className="container-x">
+          <div className="mx-auto max-w-[900px] text-center">
+            <div data-reveal className="flex justify-center">
+              <Eyebrow>Do it yourself, or have it done for you</Eyebrow>
+            </div>
+            <div className="mt-6">
+              <Head id="wl-diy" a="Managing Delivery Yourself Is A Second Business." b="White-Label Lets You Stay In The First One." />
+            </div>
+            <p data-reveal className="t-lead mx-auto mt-6 max-w-[700px]">
+              Every service you sell needs someone to deliver it. Doing that in-house means you are not only selling anymore. You are hiring, training
+              and managing a team.
+            </p>
+          </div>
+          <div className="mt-12 grid grid-cols-1 gap-5 lg:grid-cols-2">
+            <div data-reveal className="panel p-6 sm:p-8">
+              <p className="t-label text-ink-3">Doing it yourself</p>
+              <h3 className="t-h3 mt-3">Build, train and manage the whole team.</h3>
+              <ul className="mt-6 space-y-3 text-[15px] text-ink-2">
+                {[
+                  "Hire a media buyer, a designer, a developer, a funnel builder and an automation specialist",
+                  "Train every new hire on your process, then train the replacement when they leave",
+                  "Keep learning every platform change yourself so you can check their work",
+                  "Brief, review and fix every deliverable before the client sees it",
+                  "Juggle five people, five tools and five timelines for every client",
+                ].map((x, i) => (
+                  <li key={x} data-reveal style={d(i * 60)} className="flex gap-3">
+                    <span className="mt-[11px] h-px w-3 shrink-0 bg-[color:var(--ink-3)]" aria-hidden="true" />
+                    {x}
+                  </li>
+                ))}
+              </ul>
+              <div className="mt-8 rounded-2xl border border-[#ff7a7a]/30 bg-[#ff7a7a]/[0.06] p-5">
+                <p className="t-label text-[#e06464]">And when delivery slips</p>
+                <ol className="mt-4 flex flex-wrap items-center gap-x-2 gap-y-2 text-[14px] font-medium text-ink">
+                  {["Work is late or wrong", "Bad reputation", "Bad reviews", "Clients don’t renew", "You need new clients again, just to stand still"].map(
+                    (x, i, arr) => (
+                      <li key={x} data-reveal style={d(150 + i * 180)} className="flex items-center gap-2">
+                        <span className="rounded-full border border-[#ff7a7a]/35 px-3 py-1.5">{x}</span>
+                        {i < arr.length - 1 ? (
+                          <span className="text-[#e06464]" aria-hidden="true">
+                            →
+                          </span>
+                        ) : null}
+                      </li>
+                    ),
+                  )}
+                </ol>
+              </div>
+            </div>
+            <div data-reveal style={d(120)} className="wl-stage p-6 sm:p-8">
+              <p className="wl-label text-[#00e5ff]">White-label with Madvert · done for you</p>
+              <h3 className="mt-3 font-display text-[clamp(22px,2.4vw,28px)] font-semibold leading-tight tracking-tight text-white">
+                You sell and onboard. We deliver.
+              </h3>
+              <ul className="mt-6 grid grid-cols-1 gap-x-6 gap-y-3 text-[15px] text-[#c9d4e3] sm:grid-cols-2">
+                {[
+                  "No hiring, no training, nothing to build first",
+                  "Focus on selling: close the client, onboard them, send us the scope",
+                  "An experienced team working from day one",
+                  "One point of contact instead of five freelancers",
+                  "Everything delivered under your agency’s brand",
+                  "Sell bigger scopes: funnels, CRM, automation and development",
+                  "Scale delivery up or down client by client",
+                  "A clear backend cost, so you know your margin",
+                  "Faster launches, because the team and systems already exist",
+                  "More of your time goes to sales and client relationships",
+                ].map((x, i) => (
+                  <li key={x} data-reveal style={d(i * 50)} className="flex gap-3">
+                    <span className="wl-dot mt-2" aria-hidden="true" />
+                    {x}
+                  </li>
+                ))}
+              </ul>
+              <p className="wl-muted mt-8 border-t border-white/10 pt-5 text-[14px]">
+                Better delivery gives you a far better chance of keeping the client, getting the review and earning the referral.
+              </p>
+            </div>
           </div>
         </div>
       </section>
@@ -291,23 +374,6 @@ export default async function WhiteLabelPage() {
                 And that matters to me because you should not outsource your clients to someone who is learning the fundamentals using your account.
               </p>
             </div>
-            {META_CREDENTIAL ? (
-              <figure data-reveal className="panel mt-10 p-4 sm:p-5">
-                {META_CREDENTIAL.image ? (
-                  <Image src={META_CREDENTIAL.image} alt={`${META_CREDENTIAL.title} certificate`} width={1400} height={1000} sizes="(min-width:1024px) 640px, 100vw" className="h-auto w-full rounded-xl" />
-                ) : null}
-                <figcaption className="mt-4 flex flex-wrap items-center justify-between gap-3">
-                  <span className="font-display text-[17px] font-semibold">{META_CREDENTIAL.title}</span>
-                  {META_CREDENTIAL.url ? (
-                    <a href={META_CREDENTIAL.url} target="_blank" rel="noopener noreferrer" className="t-small text-accent-text hover:underline">
-                      Verify credential
-                    </a>
-                  ) : (
-                    <span className="t-small">{META_CREDENTIAL.issuer}</span>
-                  )}
-                </figcaption>
-              </figure>
-            ) : null}
             <div data-reveal className="mt-12">
               <CraftTimeline />
             </div>
@@ -446,7 +512,7 @@ export default async function WhiteLabelPage() {
             </div>
           </div>
           <div data-reveal className="mt-12">
-            <LeadPipeline />
+            <FunnelCards />
           </div>
           <div className="mt-12">
             <h3 data-reveal className="t-label">Our lead generation system can include</h3>
@@ -476,31 +542,12 @@ export default async function WhiteLabelPage() {
 
       {/* 10 — PROOF */}
       <section className="section relative overflow-hidden" aria-labelledby="wl-proof">
-        <div className="container-x grid grid-cols-1 gap-10 lg:grid-cols-12">
-          <div className="lg:col-span-6">
-            <Head id="wl-proof" a="Don’t Take My Word For It." b="I’ll Open The Dashboards." />
-            <p data-reveal className="t-lead mt-7">
-              If we get on a call, I can screen-share and walk you through the type of work we&rsquo;ve actually done.
-            </p>
-            <p data-reveal className="mt-4 font-display text-[15px] font-semibold text-ink-2">
-              Campaigns. Funnels. Landing pages. CRM systems. Automation. Creative. Lead generation.
-            </p>
-          </div>
-          <div className="t-body space-y-4 text-ink-2 lg:col-span-6 lg:pt-4">
-            <p data-reveal>
-              You can also visit the{" "}
-              <Link href="/case-studies" className="text-accent-text underline-offset-4 hover:underline">
-                Madvert Labs case studies
-              </Link>{" "}
-              and look through work we have permission to make public.
-            </p>
-            <p data-reveal>
-              <span className="text-ink">Not everything we&rsquo;ve worked on is published.</span> Some client engagements are confidential, and some
-              clients simply did not give us permission to publicly share their account or results.
-            </p>
-            <p data-reveal>We respect that. But where we can show the work, we do.</p>
-            <div data-reveal className="flex flex-wrap items-center gap-5 pt-3">
-              <CallCta label="Show Me the Work" />
+        <div className="container-x">
+          <div className="mx-auto max-w-[820px] text-center">
+            <Head id="wl-proof" a="Don’t Take Our Word For It." />
+            <p data-reveal className="t-lead mx-auto mt-6">Let&rsquo;s open a call and see all the case studies live.</p>
+            <div data-reveal style={d(80)} className="mt-8 flex flex-wrap items-center justify-center gap-5">
+              <CallCta label="See the Case Studies Live" />
               <Cta href="/case-studies" variant="link" track="case_study_open" trackLabel="white_label_case_studies">
                 Browse public case studies
               </Cta>

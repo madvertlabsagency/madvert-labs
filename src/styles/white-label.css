@@ -105,6 +105,14 @@
 /* ── VSL slot ── */
 .wl-vsl { aspect-ratio: 16 / 9; border-radius: 26px; overflow: hidden; position: relative; background: #0a0f1c; border: 1px solid rgb(0 180 255 / 0.25); box-shadow: 0 50px 100px -50px rgb(0 120 200 / 0.55), 0 0 0 8px rgb(0 180 255 / 0.05); }
 .wl-vsl video { width: 100%; height: 100%; object-fit: cover; display: block; }
+.wl-vsl--vertical { aspect-ratio: 9 / 16; width: 100%; max-width: 400px; margin-inline: auto; }
+
+/* ── Funnel cards (one by one) ── */
+.wl-fcard { opacity: 0; transform: translateY(26px) scale(0.96); transition: opacity 0.7s, transform 0.8s cubic-bezier(0.2, 0.8, 0.2, 1.1), box-shadow 0.6s; transition-delay: calc(var(--i) * 0.35s); }
+[data-on="true"] .wl-fcard { opacity: 1; transform: none; }
+.wl-fcard[data-active="true"] { box-shadow: 0 0 0 1px rgb(0 229 255 / 0.7), 0 20px 50px -18px rgb(0 229 255 / 0.65); }
+.wl-farrow { opacity: 0; transition: opacity 0.5s; transition-delay: calc(var(--i) * 0.35s + 0.3s); }
+[data-on="true"] .wl-farrow { opacity: 1; }
 
 /* ── Chaos → one module ── */
 .wl-chaos { min-height: 440px; }

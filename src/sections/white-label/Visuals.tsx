@@ -3,7 +3,7 @@
 import Image from "next/image";
 import { useEffect, useRef, useState, type CSSProperties, type ReactNode } from "react";
 import { useReducedMotion } from "@/sections/acquisition/InView";
-import { BACKEND_MODULES, CAPABILITIES } from "@/content/white-label";
+import { BACKEND_MODULES, CAPABILITIES, FUNNEL_CARDS } from "@/content/white-label";
 
 const v = (o: Record<string, string | number>) => o as CSSProperties;
 
@@ -420,57 +420,29 @@ export function DeliveryCompare() {
   );
 }
 
-/* ───────────── 9. Lead pipeline: raw leads fade, qualified continue ───────────── */
-const PIPE = [
-  { t: "Ad creative", img: "/case-studies/dubai-real-estate-nigeria-1.webp" },
-  { t: "Landing page", img: "/case-studies/home-improvement-uae-2.webp" },
-  { t: "Qualification form", img: "/case-studies/dubai-interior-design-2.webp" },
-  { t: "CRM", img: null },
-  { t: "Follow-up", img: null },
-  { t: "Booked opportunity", img: null },
-];
-export function LeadPipeline() {
-  const { ref, on } = useSeen<HTMLDivElement>();
+/* ───────────── 9. Lead generation funnel: real cards arrive one by one ───────────── */
+export function FunnelCards() {
+  const { ref, on } = useSeen<HTMLDivElement>(true, 0.2);
+  // After the cards land, a highlight walks the funnel from ad to booked opportunity.
+  const active = usePhase(FUNNEL_CARDS.length, 1400, on, -1);
   return (
-    <div ref={ref}>
-      <Stage on={on} className="p-5 sm:p-8" label="Animation: leads move from ad creative through a landing page and qualification. Poor leads fade out; a qualified opportunity continues to CRM, follow-up and a booked call.">
-        <div className="grid grid-cols-3 gap-3 sm:grid-cols-6">
-          {PIPE.map((p, i) => (
-            <div key={p.t} className="text-center">
-              <div className={`wl-node relative mx-auto aspect-[4/5] w-full overflow-hidden ${i === PIPE.length - 1 ? "wl-node--strong" : ""}`}>
-                {p.img ? (
-                  <Image src={p.img} alt="" fill sizes="160px" className="object-cover object-top opacity-80" />
-                ) : (
-                  <div className="grid h-full place-items-center p-2">
-                    <div className="w-full space-y-1.5">
-                      {[0, 1, 2].map((r) => (
-                        <div key={r} className="flex items-center gap-1.5 rounded-md bg-white/[0.05] px-1.5 py-1">
-                          <span className="wl-dot" style={{ width: 5, height: 5, opacity: i === PIPE.length - 1 && r === 0 ? 1 : 0.35 }} />
-                          <span className="h-1 flex-1 rounded bg-white/15" />
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                )}
-              </div>
-              <p className="wl-label mt-2 !text-[9.5px] text-[#c9d4e3]">{p.t}</p>
+    <div ref={ref} data-on={on ? "true" : "false"}>
+      <ol className="grid grid-cols-2 gap-3 sm:grid-cols-3 sm:gap-4 xl:grid-cols-[1fr_auto_1fr_auto_1fr_auto_1fr_auto_1fr_auto_1fr] xl:items-center xl:gap-2" aria-label="Lead generation funnel">
+        {FUNNEL_CARDS.map((c, i) => (
+          <li key={c.key} className="contents">
+            <div className="wl-fcard overflow-hidden rounded-2xl" style={v({ "--i": i })} data-active={active === i ? "true" : "false"}>
+              <Image src={`/images/white-label/funnel-${c.key}.webp`} alt={c.alt} width={333} height={628} sizes="(min-width:1280px) 190px, (min-width:640px) 30vw, 46vw" className="h-auto w-full" />
             </div>
-          ))}
-        </div>
-        <div className="wl-pipe relative mt-6 h-6" aria-hidden="true">
-          <div className="absolute inset-x-0 top-1/2 h-px bg-white/15" />
-          {[0, 1.2, 2.4, 3.6, 4.8].map((d) => (
-            <span key={d} className="wl-lead wl-lead--raw" style={v({ "--d": `${d}s` })} />
-          ))}
-          <span className="wl-lead wl-lead--qualified" style={v({ "--d": "0.6s" })} />
-          <span className="wl-lead wl-lead--qualified" style={v({ "--d": "4.1s" })} />
-        </div>
-        <div className="wl-faint mt-3 flex justify-between text-[11px]">
-          <span>Raw leads</span>
-          <span>Unqualified leads drop out</span>
-          <span className="text-[#00e5ff]">Qualified opportunity</span>
-        </div>
-      </Stage>
+            {i < FUNNEL_CARDS.length - 1 ? (
+              <span className="wl-farrow hidden xl:block" style={v({ "--i": i })} aria-hidden="true">
+                <svg viewBox="0 0 16 24" width="14" height="22">
+                  <path d="M3 3l9 9-9 9" fill="none" stroke="#00e5ff" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round" style={{ filter: "drop-shadow(0 0 6px #00e5ff)" }} />
+                </svg>
+              </span>
+            ) : null}
+          </li>
+        ))}
+      </ol>
     </div>
   );
 }

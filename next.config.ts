@@ -33,6 +33,7 @@ const nextConfig: NextConfig = {
       { source: "/resources/seo-and-ai-search-guide", destination: "/resources/seo-ai-search-playbook", permanent: true },
       { source: "/resources/seo-ai-search-guide", destination: "/resources/seo-ai-search-playbook", permanent: true },
       { source: "/resources/madvert-studios-portfolio", destination: "/resources/madvert-studios-showreel", permanent: true },
+      { source: "/white-label", destination: "/white-label-partnership", permanent: true },
       // One canonical host: www → apex.
       { source: "/:path*", has: [{ type: "host", value: "www.madvertlabs.com" }], destination: "https://madvertlabs.com/:path*", permanent: true },
       // Short service URLs → the one canonical page for each service.

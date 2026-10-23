@@ -44,5 +44,5 @@ export const pageDates: Record<string, string> = {
   "/contact": "2026-10-13",
   "/challenge": "2026-10-07",
   "/privacy": "2026-10-07",
-  "/white-label": "2026-10-23",
+  "/white-label-partnership": "2026-10-23",
 };

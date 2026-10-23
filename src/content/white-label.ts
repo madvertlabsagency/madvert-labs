@@ -1,15 +1,20 @@
-import { credentials } from "@/sections/about/data";
+/** White-label partnership page (/white-label-partnership). Assets that must be real are configured here. */
 
-/**
- * White-label partnership page (/white-label). Assets that must be real are configured here.
- *
- * VSL: set `src` to the founder's recorded white-label video (e.g. "/video/white-label-vsl.mp4") and,
- * optionally, a poster frame. Until then the page shows a clearly labelled slot, never a stand-in video.
- */
-export const WL_VSL: { src: string | null; poster: string; durationLabel?: string } = {
-  src: null,
-  poster: "/images/usama-abbas-dahri-presenting.webp",
+/** Founder VSL (vertical 9:16, 720x1280). */
+export const WL_VSL = {
+  src: "/video/white-label-vsl-720.mp4",
+  poster: "/video/white-label-vsl-poster.webp",
 };
+
+/** The six-step lead generation funnel, as real Madvert work cards. */
+export const FUNNEL_CARDS = [
+  { key: "ad-creative", label: "Ad creative", alt: "Step 1: high-performing ad creative for a Dubai property campaign" },
+  { key: "landing-page", label: "Landing page", alt: "Step 2: conversion-optimised landing page for Dubai off-plan projects" },
+  { key: "qualification-form", label: "Qualification form", alt: "Step 3: smart qualification form asking country, budget, property type and timeline" },
+  { key: "crm", label: "CRM", alt: "Step 4: qualified leads delivered into the CRM with country and budget" },
+  { key: "follow-up", label: "Follow-up", alt: "Step 5: automated follow-up by email, WhatsApp, reminders and appointment booking" },
+  { key: "booked-opportunity", label: "Booked opportunity", alt: "Step 6: consultation booked with a qualified investor" },
+] as const;
 
 export const WL_PHOTOS = {
   /** Main founder portrait. */
@@ -18,14 +23,10 @@ export const WL_PHOTOS = {
   teaching: { url: "/images/usama-abbas-dahri-presenting.webp", alt: "Usama Abbas Dahri teaching a session on performance marketing", width: 960, height: 1280 },
 } as const;
 
-/** Meta certification: only claimed when a verified credential exists in src/sections/about/data.ts. */
-export const META_CREDENTIAL = credentials.find((c) => /meta/i.test(c.issuer) || /meta/i.test(c.title)) ?? null;
-
 export const TRUST = [
   "5+ Years in Digital Marketing",
   "US, UAE & Pakistan Experience",
   "Up to ~$30K/Month Ad Accounts Managed",
-  ...(META_CREDENTIAL ? ["Meta Certified"] : []),
   "100% White-Label Delivery",
 ];
 
