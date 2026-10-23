@@ -141,6 +141,12 @@ function BookKickoff({ go }: { go: (v: View) => void }) {
           {showCal ? (
             <div className="relative mt-6">
               <iframe src={url} title="Book your Madvert kickoff call" className="block min-h-[900px] w-full rounded-[18px] border-0 bg-white sm:min-h-[760px]" style={{ overflow: "hidden" }} />
+              <p className="mt-3 text-center text-[13.5px] text-[#9fb0c6]">
+                Calendar not loading?{" "}
+                <a href={url} target="_blank" rel="noopener noreferrer" className="font-semibold text-[#7fdcff] underline underline-offset-2">
+                  Open the kickoff calendar in a new tab
+                </a>
+              </p>
               <div className="mt-4 rounded-2xl bg-white/[0.06] p-4">
                 {!manual ? (
                   <button type="button" className="text-[14px] font-semibold text-[#7fdcff]" onClick={() => setManual(true)}>

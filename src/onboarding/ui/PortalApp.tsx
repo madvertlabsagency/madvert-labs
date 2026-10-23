@@ -10,6 +10,7 @@ import { AssetsStep } from "./AssetsStep";
 import { BusinessStep } from "./BusinessStep";
 import { KickoffStep } from "./KickoffStep";
 import { Art3D, Tile3D } from "./art3d";
+import { GuideLayer } from "./GuideLayer";
 import { Bar, Btn, GlowMark, Icon, Ring, SaveBadge, StatusPill, ThemeSwitch, Waves } from "./kit";
 import { OfferStep } from "./OfferStep";
 import { PortalProvider, usePortal } from "./store";
@@ -85,6 +86,7 @@ function Portal() {
         </>
       )}
       <Footer />
+      <GuideLayer view={view} go={go} />
     </div>
   );
 }
@@ -116,7 +118,7 @@ function Header({ view, go }: { view: View; go: (v: View) => void }) {
       </div>
       {/* Desktop stepper */}
       <div className="ob-wrap hidden pb-3 md:block">
-        <nav className="ob-stepper" aria-label="Onboarding steps">
+        <nav className="ob-stepper" data-tour="stepper" aria-label="Onboarding steps">
           {PHASES.map((p, i) => {
             const pr = progress.byKey[p.key];
             const st = view === p.key ? "current" : pr.status === "completed" ? "completed" : pr.status === "blocked" ? "blocked" : "idle";
@@ -138,7 +140,7 @@ function Header({ view, go }: { view: View; go: (v: View) => void }) {
         </nav>
       </div>
       {/* Mobile compact stepper */}
-      <div className="ob-wrap pb-3 md:hidden">
+      <div className="ob-wrap pb-3 md:hidden" data-tour="stepper">
         <button type="button" className="flex w-full items-center gap-3 text-left" onClick={() => setMenu((m) => !m)} aria-expanded={menu}>
           <span className="grid h-9 w-9 flex-none place-items-center rounded-full text-[12px] font-bold text-white" style={{ background: "var(--ob-grad)" }}>
             {current?.n ?? "•"}
@@ -349,12 +351,14 @@ function Home({ go }: { go: (v: View) => void }) {
       <section className="ob-card ob-card-pad ob-enter overflow-hidden">
         <div className="pointer-events-none absolute -right-20 -top-28 h-80 w-80 rounded-full opacity-50 blur-3xl" style={{ background: "radial-gradient(circle,#00d9ff,transparent 65%)" }} aria-hidden="true" />
         <div className="relative flex flex-col gap-8 md:flex-row md:items-center">
-          <Ring value={progress.overall} size={148} stroke={12}>
-            <span>
-              <span className="ob-display block text-[34px]">{progress.overall}%</span>
-              <span className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[var(--ob-ink-3)]">Complete</span>
-            </span>
-          </Ring>
+          <div data-tour="progress" className="self-start rounded-full">
+            <Ring value={progress.overall} size={148} stroke={12}>
+              <span>
+                <span className="ob-display block text-[34px]">{progress.overall}%</span>
+                <span className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[var(--ob-ink-3)]">Complete</span>
+              </span>
+            </Ring>
+          </div>
           <div className="flex-1">
             <p className="ob-eyebrow">Onboarding command center</p>
             <h1 className="ob-h1 mt-4">
@@ -369,14 +373,14 @@ function Home({ go }: { go: (v: View) => void }) {
             <span className="hidden md:block">
               <Art3D name={next.key} size={96} />
             </span>
-            <Btn size="lg" arrow onClick={() => go(next.key)}>
+            <Btn size="lg" arrow data-tour="next" onClick={() => go(next.key)}>
               {progress.byKey[next.key].status === "incomplete" ? `Start ${next.label}` : `Continue ${next.label}`}
             </Btn>
           </div>
         </div>
       </section>
 
-      <section className="grid gap-4 sm:grid-cols-2 xl:grid-cols-5">
+      <section data-tour="cards" className="grid gap-4 sm:grid-cols-2 xl:grid-cols-5">
         {PHASES.map((p, i) => {
           const pr = progress.byKey[p.key];
           const c = CARD_COPY[p.key];
@@ -420,7 +424,9 @@ function Home({ go }: { go: (v: View) => void }) {
       </section>
 
       <div className="grid gap-6 lg:grid-cols-[1.4fr_1fr]">
-        <MissingPanel items={missing} go={go} />
+        <div data-tour="missing">
+          <MissingPanel items={missing} go={go} />
+        </div>
         <section className="ob-navy p-6 sm:p-8">
           <p className="ob-eyebrow !text-[#7fdcff]">What happens next</p>
           <ol className="mt-6 grid gap-4">
