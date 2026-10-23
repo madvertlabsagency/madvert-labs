@@ -418,7 +418,7 @@ function Assistant({
         ? hit.a
         : () => ({
             from: "bot",
-            text: `Good question. ${o.accountManager.name} and the team can answer that directly.`,
+            text: `Good question. The Madvert team can answer that directly.`,
             actions: [
               { label: wa ? "Message us on WhatsApp" : "Email the team", run: contact, primary: true },
               { label: "Book a call", run: book },
@@ -491,7 +491,7 @@ function Assistant({
             <div className="min-w-0 flex-1">
               <p className="text-[14.5px] font-bold text-white">Madvert Guide</p>
               <p className="flex items-center gap-1.5 text-[12px] text-[#9fdcff]">
-                <span className="h-2 w-2 rounded-full bg-[#34d399]" /> Here to help · {o.accountManager.name}’s team
+                <span className="h-2 w-2 rounded-full bg-[#34d399]" /> Here to help · Madvert team
               </p>
             </div>
             <button type="button" className="grid h-8 w-8 place-items-center rounded-full text-white/80 hover:bg-white/10" aria-label="Close help" onClick={() => setOpen(false)}>
