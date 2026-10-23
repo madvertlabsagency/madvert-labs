@@ -1,0 +1,53 @@
+/* Karachi location page: static map-style card. Colours come from theme tokens only. */
+.loc-map {
+  background: var(--surface-2);
+  border-bottom: 1px solid var(--line);
+}
+.loc-map-ground {
+  fill: var(--surface-2);
+}
+.loc-map-block rect {
+  fill: var(--surface-glass-strong);
+  stroke: var(--line);
+  stroke-width: 1;
+}
+.loc-map-road path {
+  stroke: var(--line-strong);
+  stroke-width: 9;
+  fill: none;
+}
+.loc-map-main {
+  stroke: var(--accent-soft);
+  stroke-width: 14;
+  fill: none;
+}
+.loc-map-pulse {
+  fill: var(--accent-soft);
+}
+.loc-map-ring {
+  fill: none;
+  stroke: var(--accent);
+  stroke-width: 2;
+  opacity: 0.6;
+}
+.loc-map-pin {
+  fill: var(--accent);
+}
+.loc-map-tag {
+  position: absolute;
+  left: 14px;
+  bottom: 14px;
+  max-width: calc(100% - 28px);
+  border: 1px solid var(--line-strong);
+  border-radius: 999px;
+  background: var(--surface-card);
+  padding: 6px 12px;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--ink-2);
+  backdrop-filter: blur(8px);
+}
+.loc-quote {
+  border-left: 2px solid var(--accent);
+  padding-left: 18px;
+}

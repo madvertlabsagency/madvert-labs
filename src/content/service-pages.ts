@@ -59,9 +59,9 @@ export const servicePages: Record<string, ServicePageContent> = {
   /* ───────────────────────── Full Stack Digital Marketing ───────────────────────── */
   "digital-marketing": {
     key: "digital-marketing",
-    metaTitle: "Full Stack Digital Marketing: An Outsourced Marketing Team",
+    metaTitle: "Full Stack Digital Marketing Agency, Pakistan",
     metaDescription:
-      "Full Stack Digital Marketing from Madvert Labs: one outsourced marketing department for strategy, paid media, creative, website conversion, CRM, automation and analytics.",
+      "Madvert Labs is a full stack digital marketing agency and consultant in Pakistan: strategy, paid media, creative, web, CRM and analytics run as one team.",
     short: "Full Stack Digital Marketing",
     shortTitle: "Full Stack Digital Marketing",
     eyebrow: "Full Stack Digital Marketing",
@@ -69,7 +69,7 @@ export const servicePages: Record<string, ServicePageContent> = {
     h1Accent: "One Marketing Department, Not Six Vendors.",
     answer: [
       "The service is built for businesses that need marketing to behave like one department with one direction, rather than a group of agencies and freelancers each reporting their own numbers. It is the service behind the idea to [hire your marketing department](/#hire) on the Madvert Labs homepage.",
-      "Madvert Labs diagnoses what growth requires first, then staffs the work across the [growth system](/growth-systems) instead of selling a fixed package.",
+      "Madvert Labs diagnoses what growth requires first, then staffs the work across the [growth system](/growth-systems) instead of selling a fixed package. The team is based in [Karachi](/digital-marketing-agency-karachi) and works with established businesses across Pakistan and internationally.",
     ],
     glance: [
       { label: "Best for", value: "Established businesses without an in-house marketing team, or with a small team that needs specialist support." },
@@ -162,6 +162,10 @@ export const servicePages: Record<string, ServicePageContent> = {
         a: "Many agencies specialise in one channel, such as ads or social media. Full Stack Digital Marketing at Madvert Labs covers strategy, paid acquisition, creative, website conversion, CRM, automation and analytics as one team, so the work is planned and measured together rather than vendor by vendor.",
       },
       {
+        q: "Is Madvert Labs a full stack digital marketing agency or a consultant?",
+        a: "Madvert Labs works as a full stack digital marketing agency: the team plans the work and then runs it. Every engagement starts the way a consultant would start, with a diagnosis of the business and a growth plan before anything is recommended, and some businesses use Madvert Labs mainly for strategy and specialist skills alongside their own marketer.",
+      },
+      {
         q: "Can an outsourced marketing department replace an in-house team?",
         a: "It can. Some businesses use Madvert Labs as their whole marketing department. Others keep an in-house marketer and use Madvert Labs for the specialist skills and systems one person cannot cover alone.",
       },
@@ -201,19 +205,163 @@ export const servicePages: Record<string, ServicePageContent> = {
     audience: "Established businesses that want one outsourced marketing team",
   },
 
+  /* ───────────────────────── Performance Marketing ───────────────────────── */
+  "performance-marketing": {
+    key: "performance-marketing",
+    metaTitle: "Performance Marketing Agency in Pakistan",
+    metaDescription:
+      "Madvert Labs is a performance marketing agency in Karachi, Pakistan: Meta, Google and YouTube ads, landing pages, tracking and testing judged by lead quality.",
+    short: "performance marketing",
+    shortTitle: "Performance marketing",
+    eyebrow: "Performance Marketing",
+    h1: "Performance Marketing.",
+    h1Accent: "Paid Advertising Judged by Qualified Leads and Revenue.",
+    answer: [
+      "Performance Marketing is the paid advertising side of the [Client Acquisition](/services/client-acquisition) pillar. Madvert Labs plans the channel mix, builds the landing pages and tracking, tests creative and moves budget towards the campaigns that produce qualified leads, purchases and booked calls.",
+      "Madvert Labs works from its [office in Karachi](/digital-marketing-agency-karachi) with established businesses across Pakistan and with international clients. Every published Madvert Labs case study to date was run on Meta, so the proof on this page is Meta proof.",
+    ],
+    glance: [
+      { label: "Channels", value: "Meta (Facebook and Instagram), Google Search and Performance Max, YouTube, and TikTok where the audience is there." },
+      { label: "Built with", value: "Landing pages, Meta Pixel and Conversions API, GA4 and Google Tag Manager, and CRM delivery." },
+      { label: "Measured by", value: "Cost per qualified lead (CPQL), cost per purchase, booked calls and revenue by source." },
+      { label: "Engagement", value: "Scoped after a strategy call. The ad budget is separate from the cost of the work." },
+    ],
+    whoFor: {
+      title: "Who a performance marketing agency is for",
+      items: [
+        "Established businesses in Pakistan that already advertise and want paid media judged by sales outcomes, not reach.",
+        "E-commerce brands that need purchases tracked properly and creative tested on a schedule.",
+        "Service businesses whose leads are cheap but rarely turn into sales conversations.",
+        "Companies running Meta and Google separately, with no shared view of which channel actually produces customers.",
+      ],
+      notFor: [
+        "Businesses looking for boosted posts or follower growth only. [Social Media Management](/services/social-media-management) covers organic presence.",
+        "Offers that are not yet clear or priced. Offer work comes first, otherwise paid traffic only makes the problem more expensive.",
+      ],
+    },
+    problem: {
+      title: "Paid advertising fails quietly when nobody measures past the click",
+      paragraphs: [
+        "Most ad accounts report what the platform can see: impressions, clicks, cost per lead. Few report what the business needs to know: which campaigns produced qualified conversations, purchases and revenue.",
+        "When tracking is broken, the platform optimises towards the wrong people. When creative is not tested, campaigns fatigue and costs creep up. When the landing page and follow up are not built for the ad, good traffic is wasted after the click.",
+        "Performance Marketing at Madvert Labs treats the ad, the page, the tracking and the hand-off to sales as one system, and reports [cost per qualified lead](/glossary#cost-per-qualified-lead) alongside cost per lead so budget decisions follow real outcomes.",
+      ],
+    },
+    process: {
+      title: "How a performance marketing programme is run",
+      intro: "The same sequence applies whichever platforms are used: measurement is fixed before budget is scaled.",
+      steps: [
+        { name: "Audit and goals", text: "Review the offer, past campaigns, tracking, landing pages and follow up, then agree the target measures, such as CPQL, cost per purchase or booked calls." },
+        { name: "Channel plan", text: "Choose the channels for the buyer: [Meta Ads](/services/meta-ads) to create demand, [Google Ads](/services/google-ads) to capture people already searching, YouTube and TikTok where the audience and creative suit them." },
+        { name: "Tracking", text: "Set up and verify the Meta Pixel and Conversions API, GA4 and Google Tag Manager, Google Ads conversions and CRM delivery, so every platform optimises towards the same real events." },
+        { name: "Landing pages and offers", text: "Build or adjust landing pages, forms and qualifying questions that match the ad and filter for intent." },
+        { name: "Creative testing", text: "Produce several angles, hooks and formats with [Madvert Studios](/studios), launch them under a test plan and keep the winners in rotation." },
+        { name: "Optimise and report", text: "Shift budget towards the audiences, keywords and creatives that produce qualified outcomes, and report spend, CPL, CPQL and sales results in one view." },
+      ],
+    },
+    comparison: {
+      title: "Meta Ads, Google Ads or both",
+      intro: "Each platform reaches buyers at a different moment. Many businesses need both, planned together.",
+      caption: "Paid advertising channels compared",
+      rowHeader: "Consideration",
+      columns: ["Meta (Facebook and Instagram)", "Google Search and Performance Max", "YouTube"],
+      rows: [
+        { label: "Buyer moment", cells: ["Not searching yet; reached by location, interest or life stage", "Actively searching for the service or product", "Watching related content; open to a longer message"] },
+        { label: "Main job", cells: ["Create demand and generate leads or sales", "Capture existing demand", "Build familiarity and support other channels"] },
+        { label: "Creative need", cells: ["High: hooks and visuals decide results", "Moderate: keywords, ad copy and landing page", "High: video built for the first five seconds"] },
+        { label: "Key tracking", cells: ["Meta Pixel and Conversions API", "Google Ads conversions, GA4 and GTM", "Google Ads conversions and GA4"] },
+      ],
+      note: "TikTok sits closest to Meta: it creates demand among people who are not searching yet, and it depends heavily on short form video creative.",
+    },
+    included: [
+      "Paid media strategy, channel mix and budget allocation",
+      "[Meta Ads](/services/meta-ads) campaign management on Facebook and Instagram",
+      "[Google Ads](/services/google-ads) Search and Performance Max campaigns",
+      "YouTube and TikTok campaigns where they suit the audience",
+      "Landing page and lead form setup with qualifying questions",
+      "Meta Pixel, Conversions API, GA4 and Google Tag Manager setup and verification",
+      "Creative testing plans and ad creative through Madvert Studios",
+      "CPL, CPQL and revenue reporting, with CRM delivery of every lead",
+    ],
+    excluded: [
+      "The advertising budget itself, which is paid to the platforms and agreed separately.",
+      "Guaranteed costs per lead, return on ad spend or sales volumes. Results depend on the market, offer and budget.",
+      "Buying followers, engagement or lead lists.",
+      "Running the sales conversation. The business's own team closes the opportunities.",
+    ],
+    examples: {
+      title: "What performance marketing work can look like",
+      intro: "These are examples of deliverables, not promised results.",
+      items: [
+        { name: "A lead generation system for a service business", text: "Meta lead ads with qualifying questions, a Google Search campaign for high-intent keywords, CRM delivery and a weekly CPQL report." },
+        { name: "An e-commerce purchase campaign", text: "Purchase-optimised Meta campaigns, verified Pixel and Conversions API events, a tested product landing page and a monthly creative refresh." },
+        { name: "A tracking rebuild before scaling", text: "An audit of every pixel, tag and conversion, fixes in GA4 and Google Tag Manager, and a clean baseline before budget increases." },
+        { name: "A creative testing programme", text: "Several hooks and formats per month, tested under a fixed plan, with winners scaled and losing angles retired on data." },
+      ],
+    },
+    proof: {
+      title: "Real performance marketing results on Meta",
+      intro: "Every figure below is taken from the case study it belongs to, including its currency and context. These are results from specific campaigns, not market benchmarks.",
+      slugs: ["cellsol-energy", "tap-center-fitness", "earthly-elementals", "dubai-interior-design", "home-improvement-uae", "texas-solar"],
+    },
+    faqs: [
+      {
+        q: "What is a performance marketing agency?",
+        a: "A performance marketing agency plans and runs paid advertising that is judged by measurable outcomes such as qualified leads, purchases and revenue, rather than by reach or clicks. Madvert Labs is a performance marketing agency based in Karachi, Pakistan, working with Pakistani and international businesses.",
+      },
+      {
+        q: "Is performance marketing the same as paid advertising?",
+        a: "Performance marketing is paid advertising managed against business outcomes. It adds the tracking, landing pages, creative testing and reporting that connect ad spend to qualified leads and sales.",
+      },
+      {
+        q: "Which platforms do you run ads on?",
+        a: "Madvert Labs runs Meta (Facebook and Instagram) and Google Ads, including Search and Performance Max, and can run YouTube and TikTok campaigns where the audience and creative suit them. Every published Madvert Labs case study so far was run on Meta.",
+      },
+      {
+        q: "How do you measure performance?",
+        a: "By cost per qualified lead (CPQL), cost per purchase, booked calls and, where the data allows, revenue by source. Cost per lead and click-through rate are reported, but they are not treated as the goal. The [CPQL calculator](/tools/cost-per-qualified-lead-calculator) shows how CPQL is worked out.",
+      },
+      {
+        q: "How much budget do we need to start?",
+        a: "There is no single right figure. The budget must be enough to test more than one audience and creative and to give the platforms enough data, and it depends on the market and the value of a customer. Madvert Labs recommends a starting budget after reviewing the offer and the market.",
+      },
+      {
+        q: "Do you guarantee results?",
+        a: "No. Results depend on the market, the offer, the creative and the budget. The case studies on this page show what specific campaigns achieved, not a promised number.",
+      },
+    ],
+    related: [
+      { key: "meta-ads", anchor: "Meta Ads lead generation", note: "Facebook and Instagram campaigns built for sales conversations." },
+      { key: "google-ads", anchor: "Google Ads lead generation", note: "Search and Performance Max for buyers already looking." },
+      { key: "conversion", anchor: "Landing pages for paid traffic", note: "Pages and forms that turn the click into a qualified enquiry." },
+      { key: "studios", anchor: "Ad creative and video", note: "Static, motion and video ads produced for testing." },
+      { href: "/tools/cost-per-qualified-lead-calculator", anchor: "Cost per qualified lead calculator", note: "Work out CPL, CPQL and qualification rate from your own numbers." },
+      { href: "/glossary#cost-per-qualified-lead", anchor: "What cost per qualified lead means", note: "The measure paid campaigns are judged against." },
+      { href: "/glossary#meta-ads-vs-google-ads", anchor: "Meta Ads vs Google Ads", note: "A side by side comparison of the two main paid channels." },
+    ],
+    resources: ["meta-ads-pre-launch-checklist", "qualified-lead-generation-playbook", "steal-these-hooks"],
+    cta: {
+      title: "Spending on Ads Already?",
+      accent: "Find Out What Each Qualified Lead Really Costs.",
+      body: "We will look at the offer, the tracking, the creative and the follow up before recommending any change in spend.",
+      label: "Book a Performance Marketing Call",
+    },
+    audience: "Businesses running paid advertising for leads or sales",
+  },
+
   /* ───────────────────────── Meta Ads Lead Generation ───────────────────────── */
   "meta-ads": {
     key: "meta-ads",
-    metaTitle: "Meta Ads Lead Generation for Facebook and Instagram",
+    metaTitle: "Meta Ads Lead Generation Agency in Pakistan",
     metaDescription:
-      "Meta Ads Lead Generation from Madvert Labs: offer, creative, targeting, lead forms, tracking and qualification for Facebook and Instagram campaigns that create sales conversations.",
+      "Meta Ads lead generation agency in Karachi, Pakistan: offer, creative, targeting, lead forms, tracking and qualification for Facebook and Instagram campaigns.",
     short: "Meta Ads lead generation",
     shortTitle: "Meta Ads lead generation",
     eyebrow: "Meta Ads Lead Generation",
     h1: "Meta Ads Lead Generation.",
     h1Accent: "Built for Sales Conversations, Not Form Fills.",
     answer: [
-      "Madvert Labs treats the offer, the creative and the questions on the form as part of targeting, because Facebook and Instagram reward ads people actually respond to. The service sits inside the wider [Client Acquisition](/services/client-acquisition) pillar, and every published Madvert Labs case study listed below was built on Meta.",
+      "Madvert Labs treats the offer, the creative and the questions on the form as part of targeting, because Facebook and Instagram reward ads people actually respond to. The service sits inside the wider [Client Acquisition](/services/client-acquisition) pillar, and every published Madvert Labs case study listed below was built on Meta. Madvert Labs runs Meta campaigns from its [Karachi office](/digital-marketing-agency-karachi) for businesses in Pakistan and abroad, and Meta is one part of its wider [performance marketing](/services/performance-marketing) work.",
     ],
     glance: [
       { label: "Platforms", value: "Facebook, Instagram and other Meta placements." },
@@ -314,6 +462,7 @@ export const servicePages: Record<string, ServicePageContent> = {
     ],
     related: [
       { key: "client-acquisition", anchor: "The wider client acquisition system", note: "How paid social fits alongside search, SEO and AI search visibility." },
+      { key: "performance-marketing", anchor: "Performance marketing across platforms", note: "Meta, Google and YouTube planned and measured together." },
       { key: "google-ads", anchor: "Capture people already searching", note: "Search campaigns for buyers who know what they need." },
       { key: "studios", anchor: "Scroll-stopping ad creative", note: "Static, motion and video ads produced for performance." },
       { key: "conversion", anchor: "Landing pages for paid traffic", note: "Pages and forms that turn the click into a qualified enquiry." },
@@ -334,16 +483,16 @@ export const servicePages: Record<string, ServicePageContent> = {
   /* ───────────────────────── Google Ads Lead Generation ───────────────────────── */
   "google-ads": {
     key: "google-ads",
-    metaTitle: "Google Ads Lead Generation and Paid Search Management",
+    metaTitle: "Google Ads Agency in Karachi, Pakistan",
     metaDescription:
-      "Google Ads Lead Generation from Madvert Labs: search campaigns, keyword intent, landing pages and conversion tracking that turn people already searching into qualified enquiries.",
+      "Madvert Labs is a Google Ads agency in Karachi, Pakistan: search campaigns, keywords, landing pages and conversion tracking that turn searches into enquiries.",
     short: "Google Ads lead generation",
     shortTitle: "Google Ads lead generation",
     eyebrow: "Google Ads Lead Generation",
     h1: "Google Ads Lead Generation.",
     h1Accent: "Be There When They Are Already Looking.",
     answer: [
-      "Google Ads works best for services people actively search for, because the search itself shows intent. Madvert Labs runs it as part of [qualified client acquisition](/services/client-acquisition), connecting keywords, ad copy, landing pages and conversion tracking so budget follows the enquiries that become sales conversations.",
+      "Google Ads works best for services people actively search for, because the search itself shows intent. Madvert Labs runs it as part of [qualified client acquisition](/services/client-acquisition), connecting keywords, ad copy, landing pages and conversion tracking so budget follows the enquiries that become sales conversations. The Google Ads team works from the Madvert Labs [office in Karachi](/digital-marketing-agency-karachi) for businesses in Pakistan and internationally, and plans search alongside Meta under [performance marketing](/services/performance-marketing).",
     ],
     glance: [
       { label: "Campaigns", value: "Search campaigns first; other campaign types where the data supports them." },
@@ -451,16 +600,16 @@ export const servicePages: Record<string, ServicePageContent> = {
   /* ───────────────────────── SEO ───────────────────────── */
   seo: {
     key: "seo",
-    metaTitle: "SEO Services: Technical, Content and Local Search Optimisation",
+    metaTitle: "SEO Services in Karachi, Pakistan",
     metaDescription:
-      "SEO from Madvert Labs: technical health, useful service and location content, internal linking and authority building that help a business get found in Google and Bing.",
+      "SEO services from Madvert Labs in Karachi, Pakistan: technical SEO, service and location content, internal linking and authority building for Google and Bing.",
     short: "SEO",
     shortTitle: "SEO",
     eyebrow: "Search Engine Optimisation",
     h1: "Search Engine Optimisation (SEO).",
     h1Accent: "Organic Demand the Business Owns.",
     answer: [
-      "The work follows Google's and Bing's own guidance: pages that are easy to crawl, content written for people and signals that show the business is real and trustworthy. Paid campaigns stop when the budget stops, while organic visibility keeps working, which is why SEO sits alongside paid media inside [Client Acquisition](/services/client-acquisition).",
+      "The work follows Google's and Bing's own guidance: pages that are easy to crawl, content written for people and signals that show the business is real and trustworthy. Paid campaigns stop when the budget stops, while organic visibility keeps working, which is why SEO sits alongside paid media inside [Client Acquisition](/services/client-acquisition). Madvert Labs provides SEO services from its [Karachi office](/digital-marketing-agency-karachi) to businesses in Pakistan and abroad.",
     ],
     glance: [
       { label: "Covers", value: "Technical SEO, content, local SEO, internal linking and authority." },
@@ -567,16 +716,16 @@ export const servicePages: Record<string, ServicePageContent> = {
   /* ───────────────────────── AI SEO and AEO ───────────────────────── */
   "ai-seo-aeo": {
     key: "ai-seo-aeo",
-    metaTitle: "AI SEO and Answer Engine Optimisation (AEO) Services",
+    metaTitle: "AI SEO and AEO Services in Pakistan",
     metaDescription:
-      "AI SEO and AEO from Madvert Labs: crawlable pages, clear entity information and evidence-backed content that help AI Overviews, ChatGPT Search and Copilot understand a business.",
+      "AI SEO and AEO services from Madvert Labs in Pakistan: crawlable pages, clear entity data and evidence-backed content that AI search can understand and cite.",
     short: "AI SEO and AEO",
     shortTitle: "AI SEO and AEO",
     eyebrow: "AI SEO and Answer Engine Optimisation",
     h1: "AI SEO and Answer Engine Optimisation.",
     h1Accent: "Be Understood Before You Are Recommended.",
     answer: [
-      "AI search experiences still depend on pages they can crawl, index and trust, so this work builds on [SEO](/services/seo) rather than replacing it. No one can guarantee that an AI system will cite a particular business; Madvert Labs improves the conditions that make an accurate citation possible, as part of [Client Acquisition](/services/client-acquisition).",
+      "AI search experiences still depend on pages they can crawl, index and trust, so this work builds on [SEO](/services/seo) rather than replacing it. No one can guarantee that an AI system will cite a particular business; Madvert Labs improves the conditions that make an accurate citation possible, as part of [Client Acquisition](/services/client-acquisition). Madvert Labs offers AI SEO and AEO services from [Karachi](/digital-marketing-agency-karachi) to businesses in Pakistan and internationally.",
     ],
     glance: [
       { label: "Surfaces", value: "Google AI Overviews and AI Mode, ChatGPT Search and Microsoft Copilot." },
@@ -1056,9 +1205,9 @@ export const servicePages: Record<string, ServicePageContent> = {
   /* ───────────────────────── AI Agents ───────────────────────── */
   "ai-agents": {
     key: "ai-agents",
-    metaTitle: "AI Agents for Lead Response, Qualification and Booking",
+    metaTitle: "AI Lead Response Agents for WhatsApp and CRM",
     metaDescription:
-      "AI agents from Madvert Labs answer enquiries, qualify leads, book appointments and prepare reports inside tools such as WhatsApp and the CRM, with human review where it matters.",
+      "AI lead response agents from Madvert Labs reply on WhatsApp and website chat, qualify leads, book appointments and update the CRM, with human hand-off.",
     short: "AI agents",
     shortTitle: "AI agents",
     eyebrow: "AI Agents",
@@ -1121,15 +1270,19 @@ export const servicePages: Record<string, ServicePageContent> = {
       "Collecting more personal data than the job needs.",
     ],
     examples: {
-      title: "Examples of AI agents",
+      title: "Examples of AI agents, from lead response to reporting",
       items: [
-        { name: "A WhatsApp first-response agent", text: "Replies to new enquiries straight away, asks about requirement, location, budget and timeline, and books qualified leads into the calendar." },
+        { name: "A WhatsApp lead response agent", text: "Replies to new enquiries straight away, asks about requirement, location, budget and timeline, and books qualified leads into the calendar." },
         { name: "A website enquiry assistant", text: "Answers common questions about services and process from approved information, and passes complex questions to the team with the conversation attached." },
         { name: "A booking and reminder agent", text: "Confirms appointments, sends reminders and handles reschedule requests, updating the CRM automatically." },
         { name: "A weekly reporting agent", text: "Pulls figures from the ad platforms and the CRM each week and prepares a summary for the team to review before it is shared." },
       ],
     },
     faqs: [
+      {
+        q: "What is an AI lead response agent?",
+        a: "An AI lead response agent is an AI agent whose job is to reply to new enquiries straight away, on channels such as WhatsApp or website chat, ask the agreed qualifying questions, book the next step and hand the conversation to a person with the details attached. Lead response is often a sensible first agent, because a slow first reply lets a buyer's interest cool.",
+      },
       {
         q: "Will AI agents replace our sales team?",
         a: "No. AI agents respond instantly, qualify consistently and keep follow up moving, so the sales team spends its time on the conversations that matter.",

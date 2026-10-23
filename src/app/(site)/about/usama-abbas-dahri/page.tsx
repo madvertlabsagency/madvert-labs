@@ -98,10 +98,15 @@ export default async function FounderPage() {
               <p data-reveal style={{ ["--reveal-delay" as string]: 140 }} className="t-lead measure mt-6">
                 {founder.name} is the {founder.jobTitle} of {organization.name}, a digital marketing and growth systems company. {organization.slogan}
               </p>
-              <div data-reveal style={{ ["--reveal-delay" as string]: 200 }} className="mt-9">
+              <div data-reveal style={{ ["--reveal-delay" as string]: 200 }} className="mt-9 flex flex-wrap items-center gap-x-6 gap-y-4">
                 <Cta href={site.founderCta.href} size="lg" track="strategy_call_click" trackLabel="founder_profile_hero" className="!whitespace-normal">
                   {site.founderCta.label}
                 </Cta>
+                {founder.sameAs[0] ? (
+                  <a href={founder.sameAs[0]} target="_blank" rel="noopener noreferrer me" className="inline-flex min-h-[44px] items-center gap-2 font-medium text-accent-text hover:underline">
+                    Connect on LinkedIn <Arrow />
+                  </a>
+                ) : null}
               </div>
             </div>
             <div className="lg:col-span-5" data-reveal="fade">

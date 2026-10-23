@@ -151,6 +151,7 @@ export const footerNav = [
   { label: "Insights", href: "/insights" },
   { label: "Growth Glossary", href: "/glossary" },
   { label: "Cost per Qualified Lead Calculator", href: "/tools/cost-per-qualified-lead-calculator" },
+  { label: "Digital Marketing Agency in Karachi", href: "/digital-marketing-agency-karachi" },
 ];
 
 /**
@@ -169,7 +170,7 @@ export const office = {
   phoneE164: "+923222568703",
   mapsUrl: `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent("Madvert Labs, Building 93-A, Midway A Commercial, Bahria Town Karachi")}`,
   /** Google Business Profile share link (set NEXT_PUBLIC_GBP_URL to the profile's "Share" URL). */
-  gbpUrl: process.env.NEXT_PUBLIC_GBP_URL || undefined,
+  gbpUrl: process.env.NEXT_PUBLIC_GBP_URL || "https://share.google/mrNilKSbsMNCrB9Zu",
 };
 export const officeLines = [office.streetAddress, office.locality, `${office.city}, ${office.country}`];
 

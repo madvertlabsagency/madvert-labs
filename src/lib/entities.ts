@@ -41,11 +41,14 @@ export const founder = {
   jobTitle: "Founder & CEO",
   path: "/about/usama-abbas-dahri",
   image: "/images/usama-abbas-dahri.jpg",
-  /** Verified official profiles for the founder. Comma separated full URLs. */
-  sameAs: (process.env.NEXT_PUBLIC_FOUNDER_SAME_AS ?? "")
-    .split(",")
-    .map((s) => s.trim())
-    .filter((s) => /^https:\/\//.test(s)),
+  /** Verified official profiles for the founder (LinkedIn confirmed by the founder); env adds more. */
+  sameAs: [
+    "https://www.linkedin.com/in/usama-abbas-dahri-63a888357/",
+    ...(process.env.NEXT_PUBLIC_FOUNDER_SAME_AS ?? "")
+      .split(",")
+      .map((s) => s.trim())
+      .filter((s) => /^https:\/\//.test(s)),
+  ],
 } as const;
 
 export type ServiceEntity = {
@@ -68,6 +71,7 @@ export type ServiceKey =
   | "digital-marketing"
   | "branding-marketing"
   | "client-acquisition"
+  | "performance-marketing"
   | "meta-ads"
   | "google-ads"
   | "seo"
@@ -113,6 +117,15 @@ export const serviceEntities: ServiceEntity[] = [
     definition:
       "Client Acquisition at Madvert Labs builds qualified demand across paid social, paid search, SEO and AI search, and judges success by qualified opportunities rather than raw lead volume.",
     serviceType: "Lead generation and customer acquisition",
+  },
+  {
+    key: "performance-marketing",
+    name: "Performance Marketing",
+    path: "/services/performance-marketing",
+    definition:
+      "Performance Marketing at Madvert Labs is the planning, buying, tracking and optimisation of paid advertising on Meta, Google, YouTube and other platforms, measured by cost per qualified lead, purchases and revenue rather than clicks or reach.",
+    serviceType: "Performance marketing and paid advertising management",
+    parent: "client-acquisition",
   },
   {
     key: "meta-ads",
@@ -233,6 +246,8 @@ export const serviceAliases: Record<string, string> = {
   "/seo-ai-aeo": "/services/ai-seo-aeo",
   "/qualified-lead-generation": "/services/client-acquisition",
   "/lead-generation": "/services/client-acquisition",
+  "/performance-marketing": "/services/performance-marketing",
+  "/paid-advertising": "/services/performance-marketing",
   "/meta-ads": "/services/meta-ads",
   "/facebook-ads": "/services/meta-ads",
   "/google-ads": "/services/google-ads",
