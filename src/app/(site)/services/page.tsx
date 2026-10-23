@@ -72,7 +72,7 @@ export default async function ServicesPage() {
       <SpecialistServices
         title="Specialist services and guides"
         intro="Focused pages for individual channels and builds, plus a plain explanation of what a growth system is."
-        keys={["growth-systems", "digital-marketing", "meta-ads", "google-ads", "seo", "ai-seo-aeo", "social-media-management", "web-development", "ai-agents", "app-development"]}
+        keys={["growth-systems", "digital-marketing", "performance-marketing", "meta-ads", "google-ads", "seo", "ai-seo-aeo", "social-media-management", "web-development", "ai-agents", "app-development"]}
       />
 
       <Philosophy />

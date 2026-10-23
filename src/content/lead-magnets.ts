@@ -264,6 +264,7 @@ export const leadMagnets: Resource[] = [
   },
   {
     slug: "meta-ads-pre-launch-checklist",
+    seo: { title: "Meta Ads Checklist: Free Pre Launch Campaign Audit" },
     author: "founder",
     datePublished: "2026-10-13",
     dateModified: "2026-10-13",
@@ -527,6 +528,7 @@ export const leadMagnets: Resource[] = [
   },
   {
     slug: "revenue-leakage-audit",
+    seo: { title: "Revenue Leakage Audit: Free Lead Follow Up Check" },
     datePublished: "2026-10-13",
     dateModified: "2026-10-13",
     relatedServices: ["automation-revenue-systems"],

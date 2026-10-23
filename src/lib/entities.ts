@@ -4,8 +4,9 @@
  * names one of these should read the name, URL and description from here, so the business is
  * described the same way everywhere.
  *
- * Only verified facts belong in this file. No reviews, ratings, awards, client counts, office
- * addresses or founding years are stated, because none have been supplied and verified.
+ * Only verified facts belong in this file. No reviews, ratings, awards, client counts or founding
+ * years are stated, because none have been supplied and verified. The Karachi office address and
+ * phone live in site.ts (`office`) and match the verified Google Business Profile.
  */
 import { absoluteUrl, site } from "./site";
 
