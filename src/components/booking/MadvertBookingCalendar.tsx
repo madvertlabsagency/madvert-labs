@@ -22,11 +22,22 @@ const BOOKED = /(booking|appointment|event)[\s_-]*(complete|completed|success|co
  * Tracks calendar_open once per page view, and calendar_booking_complete when the widget reports it
  * (best effort: the widget's own confirmation is the source of truth for CRM).
  */
-export function MadvertBookingCalendar({ context, eager = false }: { context?: string; eager?: boolean }) {
+export function MadvertBookingCalendar({
+  context,
+  eager = false,
+  url = booking.url,
+  title = "Book a Business Strategy Call with Madvert Labs",
+}: {
+  context?: string;
+  eager?: boolean;
+  /** A different GHL booking widget for this page (defaults to the main calendar). */
+  url?: string;
+  title?: string;
+}) {
   const wrap = useRef<HTMLDivElement>(null);
   const [show, setShow] = useState(eager);
   const reactId = useId().replace(/[^a-zA-Z0-9]/g, "");
-  const widgetId = booking.url.split("/").pop() ?? "booking";
+  const widgetId = url.split("/").pop() ?? "booking";
   const iframeId = `${widgetId}_${reactId}`;
   const booked = useRef(false);
 
@@ -44,7 +55,7 @@ export function MadvertBookingCalendar({ context, eager = false }: { context?: s
     loadEmbedScript();
     track("calendar_open", { context, page: window.location.pathname });
     notifyEvent("calendar_opened", { context });
-    const host = new URL(booking.url).hostname;
+    const host = new URL(url).hostname;
     const onMessage = (e: MessageEvent) => {
       if (booked.current) return;
       let origin = "";
@@ -62,15 +73,15 @@ export function MadvertBookingCalendar({ context, eager = false }: { context?: s
     };
     window.addEventListener("message", onMessage);
     return () => window.removeEventListener("message", onMessage);
-  }, [show, context]);
+  }, [show, context, url]);
 
   return (
     <div ref={wrap} className="relative w-full">
       {show ? (
         <iframe
           id={iframeId}
-          src={booking.url}
-          title="Book a Business Strategy Call with Madvert Labs"
+          src={url}
+          title={title}
           className="block min-h-[960px] w-full rounded-[20px] border-0 bg-white sm:min-h-[820px]"
           style={{ width: "100%", border: "none", overflow: "hidden" }}
           loading="lazy"

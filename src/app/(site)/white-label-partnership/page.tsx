@@ -8,7 +8,7 @@ import { MadvertBookingCalendar } from "@/components/booking/MadvertBookingCalen
 import { Cta } from "@/components/ui/Button";
 import { Eyebrow } from "@/components/ui/Section";
 import { GrowthRibbon } from "@/components/visuals/GrowthRibbon";
-import { BOOKING_CONTEXT, INDUSTRIES, TRUST, WL_PHOTOS } from "@/content/white-label";
+import { BOOKING_CONTEXT, INDUSTRIES, TRUST, WL_BOOKING_URL, WL_PHOTOS } from "@/content/white-label";
 import { pageMetadata } from "@/lib/seo";
 import { FinalCta } from "@/sections/shared/FinalCta";
 import {
@@ -869,7 +869,7 @@ export default async function WhiteLabelPage() {
           <div className="lg:col-span-7">
             <p data-reveal className="t-label mb-3">Book a White-Label Strategy Call</p>
             <div className="booking-frame rounded-[28px] p-2 sm:p-3">
-              <MadvertBookingCalendar context={BOOKING_CONTEXT} />
+              <MadvertBookingCalendar context={BOOKING_CONTEXT} url={WL_BOOKING_URL} title="Book a White-Label Strategy Call with Madvert Labs" />
             </div>
             <p className="t-small mt-4">Bring a current client scope if you have one. We can look at something real.</p>
           </div>
