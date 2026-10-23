@@ -1,4 +1,6 @@
-import { office, officeLines, whatsapp } from "@/lib/site";
+import { office, whatsapp } from "@/lib/site";
+
+const addressLines = [office.streetAddress, office.locality, `${office.city}, ${office.region}, ${office.country}`];
 
 /**
  * A static, map-style card for the Karachi office (no iframe, no third-party requests).
@@ -44,12 +46,11 @@ export function OfficeMapCard({ headingId }: { headingId?: string }) {
           {office.name}, Karachi office
         </p>
         <p className="mt-3 text-[15.5px] leading-relaxed text-ink-2">
-          {officeLines.map((l) => (
+          {addressLines.map((l) => (
             <span key={l} className="block">
               {l}
             </span>
           ))}
-          <span className="block">{office.region}</span>
         </p>
         <p className="mt-3 text-[15.5px] text-ink-2">
           Phone and WhatsApp:{" "}

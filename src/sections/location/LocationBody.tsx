@@ -119,6 +119,12 @@ export function LocationProof() {
   );
 }
 
+const visitSteps = [
+  "Book a strategy call or send a WhatsApp message with a short note about the business.",
+  "Agree a time to meet at the office in Bahria Town Karachi, or choose a video call instead.",
+  "Bring the real numbers: ad spend, enquiries, sales and what has already been tried.",
+];
+
 export function LocationVisit() {
   return (
     <SpSection
@@ -127,8 +133,21 @@ export function LocationVisit() {
       title="Visit the Madvert Labs office in Karachi"
       intro={<p>The office is in Midway A Commercial, Bahria Town Karachi. Message on WhatsApp or book a strategy call to arrange a meeting at the office.</p>}
     >
-      <div className="max-w-[640px]">
-        <OfficeMapCard />
+      <div className="grid grid-cols-1 items-start gap-6 lg:grid-cols-12 lg:gap-10">
+        <div className="lg:col-span-7">
+          <OfficeMapCard />
+        </div>
+        <div className="panel p-6 sm:p-8 lg:col-span-5" data-reveal style={{ ["--reveal-delay" as string]: 80 }}>
+          <h3 className="t-h3">Arranging a meeting</h3>
+          <ol className="mt-6 space-y-5">
+            {visitSteps.map((t, i) => (
+              <li key={t} className="flex gap-4">
+                <span className="grid h-8 w-8 shrink-0 place-items-center rounded-full border border-line-strong font-display text-[13px] font-semibold text-accent-text">{i + 1}</span>
+                <span className="pt-1 text-[15.5px] leading-relaxed text-ink-2">{t}</span>
+              </li>
+            ))}
+          </ol>
+        </div>
       </div>
     </SpSection>
   );
