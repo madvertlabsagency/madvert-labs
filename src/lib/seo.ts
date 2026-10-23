@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { absoluteUrl, site } from "./site";
+import { absoluteUrl, office, site } from "./site";
 import { founder, organization } from "./entities";
 
 export function pageMetadata({
@@ -34,12 +34,12 @@ const PERSON_ID = `${site.url}/#founder`;
 
 export const schema = {
   /**
-   * Organization only: Madvert Labs is not marketed as a walk-in local business and no verified
-   * address has been supplied, so LocalBusiness / ProfessionalService types are deliberately not used.
+   * Organization + ProfessionalService: the Karachi office has a verified Google Business Profile,
+   * so the address and phone below are real and must stay identical to that profile.
    */
   organization: () => ({
     "@context": "https://schema.org",
-    "@type": "Organization",
+    "@type": ["Organization", "ProfessionalService"],
     "@id": ORG_ID,
     name: organization.name,
     alternateName: ["Madvert", organization.brandMark],
@@ -49,8 +49,18 @@ export const schema = {
     logo: { "@type": "ImageObject", url: organization.logo, width: 512, height: 512 },
     email: organization.email,
     founder: { "@id": PERSON_ID },
+    address: {
+      "@type": "PostalAddress",
+      streetAddress: office.streetAddress,
+      addressLocality: office.city,
+      addressRegion: office.region,
+      addressCountry: office.countryCode,
+    },
+    telephone: office.phoneE164,
+    image: absoluteUrl("/brand/app-icon-512.png"),
+    hasMap: office.gbpUrl ?? office.mapsUrl,
     areaServed: organization.areaServed,
-    sameAs: organization.sameAs.length ? organization.sameAs : undefined,
+    sameAs: [...organization.sameAs, ...(office.gbpUrl ? [office.gbpUrl] : [])].length ? [...organization.sameAs, ...(office.gbpUrl ? [office.gbpUrl] : [])] : undefined,
     knowsAbout: [
       "Digital marketing",
       "Growth systems",

@@ -3,6 +3,7 @@ import { Breadcrumbs } from "@/components/layout/Breadcrumbs";
 import { Eyebrow } from "@/components/ui/Section";
 import { pageMetadata } from "@/lib/seo";
 import { BookingSection } from "@/components/booking/BookingSection";
+import { office, officeLines, whatsapp } from "@/lib/site";
 import { ContactFlow } from "@/forms/ContactFlow";
 
 const description = "Tell Madvert Labs what is happening, what you have tried and what a great result looks like. Send a growth brief or book a business strategy call with Usama.";
@@ -56,6 +57,24 @@ export default function ContactPage() {
                   </li>
                 ))}
               </ol>
+              <address className="panel mt-10 block p-6 not-italic">
+                <p className="t-label">Visit the Karachi office</p>
+                <p className="mt-3 text-[15.5px] leading-relaxed text-ink-2">
+                  {officeLines.map((l) => (
+                    <span key={l} className="block">
+                      {l}
+                    </span>
+                  ))}
+                </p>
+                <div className="mt-4 flex flex-wrap gap-x-5 gap-y-2 text-[14.5px] font-semibold">
+                  <a href={office.mapsUrl} target="_blank" rel="noopener noreferrer" className="text-accent-text hover:underline">
+                    Open in Google Maps
+                  </a>
+                  <a href={whatsapp.url} target="_blank" rel="noopener noreferrer" className="text-accent-text hover:underline">
+                    WhatsApp {office.phone}
+                  </a>
+                </div>
+              </address>
             </div>
           </aside>
         </div>

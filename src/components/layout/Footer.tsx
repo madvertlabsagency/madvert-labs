@@ -2,7 +2,7 @@ import Link from "next/link";
 import { Logo } from "@/components/ui/Logo";
 import { Cta } from "@/components/ui/Button";
 import { GrowthRibbon } from "@/components/visuals/GrowthRibbon";
-import { footerNav, services, site } from "@/lib/site";
+import { footerNav, office, officeLines, services, site, whatsapp } from "@/lib/site";
 
 export function Footer() {
   return (
@@ -18,6 +18,19 @@ export function Footer() {
                 {site.primaryCta.label}
               </Cta>
             </div>
+            <address className="mt-10 not-italic text-[14.5px] leading-relaxed text-ink-2">
+              <p className="t-label mb-3">Karachi office</p>
+              <a href={office.mapsUrl} target="_blank" rel="noopener noreferrer" className="block hover:text-ink">
+                {officeLines.map((l) => (
+                  <span key={l} className="block">
+                    {l}
+                  </span>
+                ))}
+              </a>
+              <a href={whatsapp.url} target="_blank" rel="noopener noreferrer" className="mt-3 inline-block hover:text-ink">
+                WhatsApp {office.phone}
+              </a>
+            </address>
           </div>
           <nav aria-label="Footer" className="md:col-span-3 md:col-start-7">
             <p className="t-label">Madvert</p>

@@ -153,6 +153,26 @@ export const footerNav = [
   { label: "Cost per Qualified Lead Calculator", href: "/tools/cost-per-qualified-lead-calculator" },
 ];
 
+/**
+ * The Karachi office. Name, address and phone must match the Google Business Profile exactly,
+ * because search engines and AI answers cross check them (NAP consistency).
+ */
+export const office = {
+  name: "Madvert Labs",
+  streetAddress: "Building 93-A, 4th Floor, Midway A Commercial",
+  locality: "Bahria Town Karachi",
+  city: "Karachi",
+  region: "Sindh",
+  country: "Pakistan",
+  countryCode: "PK",
+  phone: "+92 322 2568703",
+  phoneE164: "+923222568703",
+  mapsUrl: `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent("Madvert Labs, Building 93-A, Midway A Commercial, Bahria Town Karachi")}`,
+  /** Google Business Profile share link (set NEXT_PUBLIC_GBP_URL to the profile's "Share" URL). */
+  gbpUrl: process.env.NEXT_PUBLIC_GBP_URL || undefined,
+};
+export const officeLines = [office.streetAddress, office.locality, `${office.city}, ${office.country}`];
+
 /** WhatsApp chat (floating widget and contact links). */
 export const whatsapp = {
   number: "+92 322 2568703",
