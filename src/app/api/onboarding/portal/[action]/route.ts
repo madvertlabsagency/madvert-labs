@@ -22,7 +22,7 @@ import {
   storeSecret,
   updateAccess,
 } from "@/onboarding/server/repo";
-import { deleteObject, headObject, keyPrefix, putLocal, safeName, storageDriver } from "@/onboarding/server/storage";
+import { deleteObject, headObject, keyPrefix, blobToken, putLocal, safeName, storageDriver } from "@/onboarding/server/storage";
 import { clientState, delegateState } from "@/onboarding/server/views";
 import { clientIp, rateLimit } from "@/integrations/rate-limit";
 import { inputFromWorkshop } from "@/onboarding/offer/generate";
@@ -72,6 +72,7 @@ export async function POST(req: Request, { params }: Ctx) {
       const result = await handleUpload({
         body: b,
         request: req,
+        token: blobToken(),
         onBeforeGenerateToken: async (pathname, payload) => {
           const category = (JSON.parse(payload ?? "{}") as { category?: string }).category ?? "";
           const cat = ASSET_CATEGORY_BY_KEY[category];

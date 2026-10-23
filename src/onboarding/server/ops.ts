@@ -28,7 +28,7 @@ export async function configStatus() {
   const s = await getSettings();
   return [
     { label: "Database", ok: dbDriver() === "postgres", note: dbDriver() === "file" ? "Local JSON file (development only). Set DATABASE_URL." : dbDriver() === "postgres" ? "Postgres" : "Set DATABASE_URL" },
-    { label: "File storage", ok: storageDriver() === "vercel-blob", note: storageDriver() === "local" ? "Local disk (development only). Set BLOB_READ_WRITE_TOKEN." : storageDriver() === "vercel-blob" ? "Vercel Blob (private)" : "Set BLOB_READ_WRITE_TOKEN" },
+    { label: "File storage", ok: storageDriver() === "vercel-blob", note: storageDriver() === "local" ? "Local disk (development only). Connect a private Blob store." : storageDriver() === "vercel-blob" ? "Vercel Blob (private)" : "Connect a private Blob store with prefix ONBOARDING_BLOB" },
     { label: "Credential vault", ok: vaultConfigured(), note: vaultConfigured() ? "AES-256-GCM" : "Set ONBOARDING_ENCRYPTION_KEY (32 bytes)" },
     { label: "Email (Resend)", ok: Boolean(process.env.RESEND_API_KEY && process.env.EMAIL_FROM), note: "Links, delegated tasks, reminders" },
     { label: "Google Drive workspace", ok: driveConfigured(), note: driveConfigured() ? "Folders created automatically" : "Service account not configured. Internal folders only." },

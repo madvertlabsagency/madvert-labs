@@ -234,7 +234,7 @@ Default guides cover Meta partner access and portfolio creation, Google Ads, GA4
 | First owner account | `OPS_ADMIN_PASSWORD` + `OPS_ADMIN_EMAILS` (used once, then team accounts) |
 | Create client in CRM | `GHL_ACCESS_TOKEN`, `GHL_LOCATION_ID` (+ optional `ONBOARDING_GHL_PIPELINE_ID`, `ONBOARDING_GHL_STAGE_ID`, `GHL_APP_BASE`) |
 | Subdomain | `ONBOARDING_HOST`, `ONBOARDING_BASE_URL`, domain added in Vercel |
-| File uploads in production | Vercel Blob store → `BLOB_READ_WRITE_TOKEN` |
+| File uploads in production | Private Vercel Blob store connected with prefix `ONBOARDING_BLOB` → `ONBOARDING_BLOB_READ_WRITE_TOKEN` (or `BLOB_READ_WRITE_TOKEN`) |
 | Emails (link, delegated tasks, reminders) | `RESEND_API_KEY`, `EMAIL_FROM` (verified domain) |
 | Google Drive client folders | Service account (`GOOGLE_SERVICE_ACCOUNT_EMAIL`, `GOOGLE_SERVICE_ACCOUNT_PRIVATE_KEY`), parent folder in a Shared Drive shared with it as Content manager (`GOOGLE_DRIVE_PARENT_FOLDER_ID`), Drive API enabled |
 | Exact kickoff times | GoHighLevel workflow "Appointment booked" → Webhook to `/api/onboarding/webhooks/booking` with header `x-webhook-secret: ONBOARDING_BOOKING_WEBHOOK_SECRET` (otherwise the widget's booking message or the client's own confirmation is used) |

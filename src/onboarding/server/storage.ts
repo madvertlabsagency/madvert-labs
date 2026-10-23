@@ -7,7 +7,7 @@ import { sign, safeEqual } from "./crypto";
 /**
  * Private file storage for onboarding uploads.
  *
- * - `vercel-blob` (BLOB_READ_WRITE_TOKEN set): files are uploaded straight from the browser to a
+ * - `vercel-blob` (ONBOARDING_BLOB_READ_WRITE_TOKEN or BLOB_READ_WRITE_TOKEN set): files are uploaded straight from the browser to a
  *   PRIVATE Vercel Blob store (no 4.5 MB function body limit) and read back server side only.
  * - `local` (development): files are written under ONBOARDING_DATA_DIR/uploads.
  *
@@ -17,8 +17,11 @@ import { sign, safeEqual } from "./crypto";
 
 export type StorageDriver = "local" | "vercel-blob" | "unconfigured";
 
+/** A dedicated private store (Vercel prefix "ONBOARDING_BLOB") wins over the project's default store. */
+export const blobToken = () => process.env.ONBOARDING_BLOB_READ_WRITE_TOKEN || process.env.BLOB_READ_WRITE_TOKEN || undefined;
+
 export function storageDriver(): StorageDriver {
-  if (process.env.BLOB_READ_WRITE_TOKEN) return "vercel-blob";
+  if (blobToken()) return "vercel-blob";
   return process.env.VERCEL ? "unconfigured" : "local";
 }
 
@@ -51,7 +54,7 @@ export async function readObject(key: string, driver: "local" | "vercel-blob"): 
     }
   }
   const { get } = await import("@vercel/blob");
-  const res = await get(key, { access: "private" });
+  const res = await get(key, { access: "private", token: blobToken() });
   if (!res || !res.stream) return null;
   return { body: res.stream as ReadableStream, size: res.blob?.size ?? undefined };
 }
@@ -61,7 +64,7 @@ export async function deleteObject(key: string, driver: "local" | "vercel-blob")
     if (driver === "local") await fs.rm(path.join(root(), key), { force: true });
     else {
       const { del } = await import("@vercel/blob");
-      await del(key);
+      await del(key, { token: blobToken() });
     }
   } catch (e) {
     console.error("[storage] delete failed", e);
@@ -71,7 +74,7 @@ export async function deleteObject(key: string, driver: "local" | "vercel-blob")
 export async function headObject(key: string): Promise<{ size: number; contentType: string } | null> {
   try {
     const { head } = await import("@vercel/blob");
-    const h = await head(key);
+    const h = await head(key, { token: blobToken() });
     return { size: h.size, contentType: h.contentType };
   } catch {
     return null;
