@@ -11,7 +11,7 @@ const W = JSON.parse(process.argv[2]);
 const res = [];
 for (const [s, e] of W) {
   const seg = all.slice(Math.round(s * 16000), Math.round(e * 16000));
-  const out = await asr(seg, { language: "urdu", task: process.env.TASK||"transcribe", return_timestamps: "word", no_repeat_ngram_size: 3 });
+  const out = await asr(seg, { language: process.env.LANG_ASR || "urdu", task: process.env.TASK||"transcribe", return_timestamps: "word", no_repeat_ngram_size: 3 });
   for (const c of out.chunks) res.push({ w: c.text.trim(), s: +(s + c.timestamp[0]).toFixed(2), e: +(s + (c.timestamp[1] ?? c.timestamp[0] + 0.3)).toFixed(2) });
   console.log(`[${s}-${e}]`, out.text);
 }
