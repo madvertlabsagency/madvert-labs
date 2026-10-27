@@ -42,10 +42,12 @@ export const topicClusters: TopicCluster[] = [
   {
     id: "qualified-leads",
     name: "Qualified lead generation",
-    topics: ["qualified lead generation", "what is a qualified lead", "cost per qualified lead", "qualified RFQ", "lead qualification"],
+    topics: ["qualified lead generation", "B2B lead generation", "what is a qualified lead", "cost per qualified lead", "qualified RFQ", "lead qualification", "why facebook leads don't convert"],
     intent: "Commercial and informational: businesses tired of cheap leads that never buy.",
     pages: [
       { href: "/services/client-acquisition", anchor: "Qualified lead generation and client acquisition", role: "primary" },
+      { href: "/services/b2b-lead-generation", anchor: "B2B lead generation", role: "primary" },
+      { href: "/insights/why-facebook-leads-dont-convert", anchor: "Why Facebook leads don't convert", role: "article" },
       { href: "/glossary/qualified-lead", anchor: "What is a qualified lead?", role: "definition" },
       { href: "/glossary/qualified-rfq", anchor: "What is a qualified RFQ?", role: "definition" },
       { href: "/glossary/lead-qualification-system", anchor: "What is a lead qualification system?", role: "definition" },
@@ -62,12 +64,15 @@ export const topicClusters: TopicCluster[] = [
   {
     id: "paid-acquisition",
     name: "Meta Ads, Google Ads and paid acquisition",
-    topics: ["meta ads lead generation", "facebook ads agency", "google ads agency", "performance marketing agency", "meta ads cost pakistan"],
+    topics: ["meta ads lead generation", "facebook ads agency", "google ads agency", "PPC agency", "performance marketing agency", "meta ads cost pakistan", "meta ads vs google ads", "lead forms vs landing pages"],
     intent: "Commercial: businesses hiring someone to run paid advertising for leads or sales.",
     pages: [
       { href: "/services/meta-ads", anchor: "Meta Ads lead generation", role: "primary" },
       { href: "/services/google-ads", anchor: "Google Ads lead generation", role: "primary" },
       { href: "/services/performance-marketing", anchor: "Performance marketing", role: "primary" },
+      { href: "/insights/meta-ads-vs-google-ads-lead-generation", anchor: "Meta Ads vs Google Ads for lead generation", role: "comparison" },
+      { href: "/insights/why-facebook-leads-dont-convert", anchor: "Why Facebook leads don't convert", role: "article" },
+      { href: "/insights/facebook-lead-forms-vs-landing-pages", anchor: "Facebook lead forms vs landing pages", role: "comparison" },
       { href: "/insights/meta-ads-lead-generation-pakistan", anchor: "Meta Ads lead generation in Pakistan", role: "article" },
       { href: "/insights/meta-ads-cost-pakistan", anchor: "How much Meta Ads cost in Pakistan", role: "article" },
       { href: "/resources/meta-ads-pre-launch-checklist", anchor: "Meta Ads pre-launch checklist", role: "resource" },
@@ -82,11 +87,12 @@ export const topicClusters: TopicCluster[] = [
   {
     id: "seo-aeo",
     name: "SEO, AI SEO and answer engine optimisation",
-    topics: ["seo services", "ai seo", "answer engine optimisation", "aeo", "chatgpt visibility"],
+    topics: ["seo services", "ai seo", "answer engine optimisation", "aeo", "generative engine optimisation", "geo", "seo vs aeo vs geo", "chatgpt visibility"],
     intent: "Commercial and informational: being found on Google, Bing and AI answers.",
     pages: [
       { href: "/services/ai-seo-aeo", anchor: "AI SEO and AEO services", role: "primary" },
       { href: "/services/seo", anchor: "SEO services", role: "primary" },
+      { href: "/insights/seo-vs-aeo-vs-geo", anchor: "SEO vs AEO vs GEO", role: "comparison" },
       { href: "/glossary/ai-seo", anchor: "What is AI SEO?", role: "definition" },
       { href: "/glossary/aeo", anchor: "What is AEO?", role: "definition" },
       { href: "/insights/what-is-aeo", anchor: "AEO explained for businesses in Pakistan", role: "article" },
@@ -96,11 +102,12 @@ export const topicClusters: TopicCluster[] = [
   {
     id: "crm-automation",
     name: "CRM, revenue response and automation",
-    topics: ["crm automation", "marketing automation", "whatsapp lead follow up", "ai lead response agent", "revenue response system"],
+    topics: ["crm automation", "crm implementation", "marketing automation", "whatsapp lead follow up", "how to automate lead follow up", "lead response time", "ai lead response agent", "revenue response system"],
     intent: "Commercial: businesses losing leads after they arrive.",
     pages: [
       { href: "/services/automation-revenue-systems", anchor: "CRM and marketing automation", role: "primary" },
       { href: "/services/ai-agents", anchor: "AI lead response agents", role: "primary" },
+      { href: "/insights/how-to-automate-lead-follow-up", anchor: "How to automate lead follow-up", role: "article" },
       { href: "/glossary/revenue-response-system", anchor: "What is a revenue response system?", role: "definition" },
       { href: "/glossary/lead-qualification-system", anchor: "What is a lead qualification system?", role: "definition" },
       { href: "/resources/revenue-leakage-audit", anchor: "Revenue Leakage Audit", role: "resource" },
@@ -130,6 +137,7 @@ export const topicClusters: TopicCluster[] = [
     pages: [
       { href: "/services/conversion", anchor: "Landing pages, funnels and CRO", role: "primary" },
       { href: "/services/web-development", anchor: "Web development", role: "primary" },
+      { href: "/insights/facebook-lead-forms-vs-landing-pages", anchor: "Lead forms vs landing pages", role: "comparison" },
       { href: "/resources/landing-pages-that-sell", anchor: "Landing Pages That Sell", role: "resource" },
       { href: "/resources/conversion-leak-checklist", anchor: "Conversion Leak Checklist", role: "resource" },
       { href: "/case-studies/agency-lead-generation", anchor: "99 agency leads at $4 CPL", role: "proof" },

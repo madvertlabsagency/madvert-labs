@@ -26,13 +26,20 @@ export const organization = {
   areaServed: [{ "@type": "Country", name: "Pakistan" }, "Worldwide"] as (string | { "@type": "Country"; name: string })[],
   email: process.env.NEXT_PUBLIC_CONTACT_EMAIL || undefined,
   /**
-   * Verified official profiles only (company LinkedIn, Instagram, YouTube…).
-   * Set NEXT_PUBLIC_SAME_AS as a comma separated list of full URLs. Nothing is invented here.
+   * Verified official profiles only. LinkedIn and Instagram are confirmed; add more (YouTube,
+   * Clutch…) as a comma separated list of full URLs in NEXT_PUBLIC_SAME_AS. Nothing is invented here.
    */
-  sameAs: (process.env.NEXT_PUBLIC_SAME_AS ?? "")
-    .split(",")
-    .map((s) => s.trim())
-    .filter((s) => /^https:\/\//.test(s)),
+  sameAs: [
+    ...new Set([
+      // Official company profiles confirmed by the owner.
+      "https://www.linkedin.com/company/madvert-labs/",
+      "https://www.instagram.com/madvertlabsofficial/",
+      ...(process.env.NEXT_PUBLIC_SAME_AS ?? "")
+        .split(",")
+        .map((s) => s.trim())
+        .filter((s) => /^https:\/\//.test(s)),
+    ]),
+  ],
 } as const;
 
 export const founder = {
@@ -73,6 +80,7 @@ export type ServiceKey =
   | "branding-marketing"
   | "client-acquisition"
   | "performance-marketing"
+  | "b2b-lead-generation"
   | "meta-ads"
   | "google-ads"
   | "seo"
@@ -126,6 +134,15 @@ export const serviceEntities: ServiceEntity[] = [
     definition:
       "Performance Marketing at Madvert Labs is the planning, buying, tracking and optimisation of paid advertising on Meta, Google, YouTube and other platforms, measured by cost per qualified lead, purchases and revenue rather than clicks or reach.",
     serviceType: "Performance marketing and paid advertising management",
+    parent: "client-acquisition",
+  },
+  {
+    key: "b2b-lead-generation",
+    name: "B2B Lead Generation",
+    path: "/services/b2b-lead-generation",
+    definition:
+      "B2B Lead Generation at Madvert Labs finds and qualifies business buyers for companies that sell to other companies, using paid social, paid search, landing pages and CRM follow up, and measures success by qualified meetings and RFQs rather than form fills.",
+    serviceType: "B2B lead generation",
     parent: "client-acquisition",
   },
   {
@@ -247,6 +264,7 @@ export const serviceAliases: Record<string, string> = {
   "/seo-ai-aeo": "/services/ai-seo-aeo",
   "/qualified-lead-generation": "/services/client-acquisition",
   "/lead-generation": "/services/client-acquisition",
+  "/b2b-lead-generation": "/services/b2b-lead-generation",
   "/performance-marketing": "/services/performance-marketing",
   "/paid-advertising": "/services/performance-marketing",
   "/meta-ads": "/services/meta-ads",

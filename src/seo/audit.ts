@@ -74,7 +74,7 @@ function schemaTypes(html: string, issues: AuditIssue[], path: string) {
         const t = d?.["@type"];
         types.push(Array.isArray(t) ? t.join("+") : String(t));
         if (!d?.["@context"]) issues.push({ severity: "error", code: "schema-context", message: `JSON-LD ${String(t)} has no @context`, path });
-        if (/AggregateRating|Review/.test(JSON.stringify(d))) issues.push({ severity: "error", code: "schema-review", message: "Review or rating markup found: only allowed with genuine, eligible reviews", path });
+        if (/"@type":\s*"(AggregateRating|Review)"|"(aggregateRating|review)":/.test(JSON.stringify(d))) issues.push({ severity: "error", code: "schema-review", message: "Review or rating markup found: only allowed with genuine, eligible reviews", path });
       }
     } catch {
       issues.push({ severity: "error", code: "schema-invalid", message: "A JSON-LD block is not valid JSON", path });

@@ -1,3 +1,4 @@
+import { AppointmentCta } from "@/components/booking/AppointmentCta";
 import { TopicLinks } from "@/components/seo/TopicLinks";
 import type { Metadata } from "next";
 import { getFaqs } from "@/cms";
@@ -115,6 +116,9 @@ export default async function AutomationPage() {
         faqs={faqs}
       />
 
+      <div className="container-x">
+        <AppointmentCta context="service_automation" />
+      </div>
       <TopicLinks path={path} />
       <FinalCta
         title="Your Marketing Worked Hard to Create the Lead."

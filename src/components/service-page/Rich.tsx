@@ -11,9 +11,15 @@ export function Rich({ text }: { text: string }) {
     const i = m.index ?? 0;
     if (i > last) out.push(text.slice(last, i));
     out.push(
-      <Link key={i} href={m[2]} className="sp-inline-link">
-        {m[1]}
-      </Link>,
+      /^https?:\/\//.test(m[2]) ? (
+        <a key={i} href={m[2]} className="sp-inline-link" target="_blank" rel="noopener noreferrer">
+          {m[1]}
+        </a>
+      ) : (
+        <Link key={i} href={m[2]} className="sp-inline-link">
+          {m[1]}
+        </Link>
+      ),
     );
     last = i + m[0].length;
   }

@@ -12,6 +12,8 @@
  * - dateModified changes only when a reader would notice the change.
  */
 
+import { october2026Articles } from "./articles-2026-10";
+
 export type ArticleBlock =
   | { type: "p"; text: string }
   | { type: "h3"; text: string; id?: string }
@@ -64,6 +66,8 @@ export type Article = {
   sections: ArticleSection[];
   proof?: { title: string; intro?: string; items: { slug: string; metric?: string; note?: string }[] };
   faqs: { q: string; a: string }[];
+  /** External sources the article relies on, shown as a visible list and as schema `citation`. */
+  sources?: { title: string; publisher: string; url: string }[];
   related: { href: string; anchor: string; note: string }[];
   cta: { title: string; accent?: string; body: string; label: string };
 };
@@ -400,7 +404,7 @@ const allArticles: Article[] = [
       title: "Want Leads Your Sales Team",
       accent: "Is Glad to Call?",
       body: "Bring your current lead numbers to a Business Strategy Call. Madvert Labs will look at how leads are captured, qualified and followed up, and where the system is leaking.",
-      label: "Book Your Business Strategy Call",
+      label: "Book a Free Strategy Call",
     },
   },
   {
@@ -643,7 +647,7 @@ const allArticles: Article[] = [
       title: "Getting Meta Leads",
       accent: "That Never Buy?",
       body: "Bring your current Meta results to a Business Strategy Call. Madvert Labs will review the offer, the form, the follow-up and the tracking, and show where qualified leads are being lost.",
-      label: "Book Your Business Strategy Call",
+      label: "Book a Free Strategy Call",
     },
   },
   {
@@ -855,7 +859,7 @@ const allArticles: Article[] = [
       title: "Not Sure What Your Meta Budget",
       accent: "Should Be?",
       body: "Bring your margins and current results to a Business Strategy Call. Madvert Labs will work out an affordable CPQL with you and a test plan that can answer the question.",
-      label: "Book Your Business Strategy Call",
+      label: "Book a Free Strategy Call",
     },
   },
   {
@@ -1080,7 +1084,7 @@ const allArticles: Article[] = [
       title: "Want AI Search to Describe",
       accent: "Your Business Accurately?",
       body: "Book a Business Strategy Call. Madvert Labs will review how your business appears in search and AI answers, and what to fix first.",
-      label: "Book Your Business Strategy Call",
+      label: "Book a Free Strategy Call",
     },
   },
   {
@@ -1285,7 +1289,7 @@ const allArticles: Article[] = [
       title: "Not Sure Which Kind of Marketing",
       accent: "Your Business Needs?",
       body: "Book a Business Strategy Call. Madvert Labs will look at your offer, channels, website and follow-up, and recommend where to start.",
-      label: "Book Your Business Strategy Call",
+      label: "Book a Free Strategy Call",
     },
   },
   {
@@ -1447,13 +1451,13 @@ const allArticles: Article[] = [
       title: "Comparing Agencies?",
       accent: "Put Us Through the Same Checklist.",
       body: "Book a Business Strategy Call. Ask every question on this page and we will answer with published proof.",
-      label: "Book Your Business Strategy Call",
+      label: "Book a Free Strategy Call",
     },
   },
 ];
 
 /** Published articles only. Every route, list, sitemap and feed reads from this. */
-export const articles: Article[] = allArticles.filter((a) => a.status !== "draft");
+export const articles: Article[] = [...allArticles, ...october2026Articles].filter((a) => a.status !== "draft");
 
 export function getArticle(slug: string) {
   return articles.find((a) => a.slug === slug);

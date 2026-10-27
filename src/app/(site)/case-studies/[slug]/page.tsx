@@ -237,7 +237,7 @@ export default async function CaseStudyPage({
                 data-track="strategy_call_click"
                 data-track-label={`case_hero_${s.slug}`}
               >
-                Book a Strategy Call <Arrow />
+                Book a Free Strategy Call <Arrow />
               </a>
               {s.pdfUrl ? (
                 <a

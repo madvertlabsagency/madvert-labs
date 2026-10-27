@@ -31,9 +31,9 @@ export const site = {
     role: "Founder, Madvert Labs",
   },
   // "#book" scrolls to the page's booking section, or opens the booking modal when the page has none.
-  primaryCta: { label: "Book Your Business Strategy Call", href: "#book" },
+  primaryCta: { label: "Book a Free Strategy Call", href: "#book" },
   founderCta: { label: "Book a Business Strategy Call with Usama", href: "#book" },
-  shortCta: { label: "Book a Strategy Call", href: "#book" },
+  shortCta: { label: "Book a Free Strategy Call", href: "#book" },
   auditCta: { label: "Start With a Free Growth Systems Audit", href: "/resources/growth-systems-audit" },
 } as const;
 
@@ -152,6 +152,12 @@ export const footerNav = [
   { label: "About Us", href: "/about" },
   { label: "Founder: Usama Abbas Dahri", href: "/about/usama-abbas-dahri" },
   { label: "Contact Us", href: "/contact" },
+];
+
+/** Official company profiles, linked in the footer (the same URLs are in Organization sameAs). */
+export const socialProfiles = [
+  { label: "LinkedIn", href: "https://www.linkedin.com/company/madvert-labs/" },
+  { label: "Instagram", href: "https://www.instagram.com/madvertlabsofficial/" },
 ];
 
 /** Offers for specific audiences, kept separate from the core services. */

@@ -1,3 +1,4 @@
+import { AppointmentCta } from "@/components/booking/AppointmentCta";
 import { TopicLinks } from "@/components/seo/TopicLinks";
 import type { Metadata } from "next";
 import Image from "next/image";
@@ -158,6 +159,9 @@ export default async function StudiosPage() {
         faqs={faqs}
       />
 
+      <div className="container-x">
+        <AppointmentCta context="studios" />
+      </div>
       <TopicLinks path={path} />
       <FinalCta title="Make the Next Scroll" accent="Stop Here." primary={{ label: "Start a Creative Project", href: "#book" }} track="service_cta_click" />
       <BookingSection eyebrow="Need This Built for Your Business?" context="studios" />

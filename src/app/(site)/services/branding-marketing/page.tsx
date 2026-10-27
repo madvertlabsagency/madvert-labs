@@ -1,3 +1,4 @@
+import { AppointmentCta } from "@/components/booking/AppointmentCta";
 import { TopicLinks } from "@/components/seo/TopicLinks";
 import type { Metadata } from "next";
 import { getFaqs } from "@/cms";
@@ -187,6 +188,9 @@ export default async function BrandingPage() {
         faqs={faqs}
       />
 
+      <div className="container-x">
+        <AppointmentCta context="service_branding" />
+      </div>
       <TopicLinks path={path} />
       <FinalCta
         title="Build a Brand Your Marketing Can"

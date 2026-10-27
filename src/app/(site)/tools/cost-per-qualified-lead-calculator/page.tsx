@@ -200,7 +200,7 @@ const page: Article = {
     title: "Want a Lower Cost Per",
     accent: "Qualified Lead?",
     body: "Bring your CPL, CPQL and close-rate numbers to a Business Strategy Call. Madvert Labs will look at the offer, targeting, qualification and follow-up behind them.",
-    label: "Book Your Business Strategy Call",
+    label: "Book a Free Strategy Call",
   },
 };
 

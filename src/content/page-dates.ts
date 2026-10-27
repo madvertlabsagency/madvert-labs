@@ -16,6 +16,7 @@ export const pageDates: Record<string, string> = {
   "/services/tech-product-development": "2026-10-18",
   "/services/digital-marketing": "2026-10-23",
   "/services/performance-marketing": "2026-10-23",
+  "/services/b2b-lead-generation": "2026-10-27",
   "/services/meta-ads": "2026-10-23",
   "/services/google-ads": "2026-10-23",
   "/services/seo": "2026-10-23",

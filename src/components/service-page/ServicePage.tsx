@@ -1,5 +1,6 @@
 import { TopicLinks } from "@/components/seo/TopicLinks";
 import Link from "next/link";
+import { AppointmentCta } from "@/components/booking/AppointmentCta";
 import { BookingSection } from "@/components/booking/BookingSection";
 import { ComparisonTable } from "@/components/facts/ComparisonTable";
 import { DefinitionBlock } from "@/components/facts/DefinitionBlock";
@@ -160,6 +161,7 @@ export function ServicePage({ content: c }: { content: ServicePageContent }) {
 
       <SpSection id="how-it-works" label="How it works" title={c.process.title} intro={c.process.intro ? <p><Rich text={c.process.intro} /></p> : undefined}>
         <ProcessSteps steps={c.process.steps.map((s) => ({ name: s.name, text: <p><Rich text={s.text} /></p> }))} />
+        <AppointmentCta context={`service_${c.key}`} title={`Want ${c.short} built for your business?`} />
       </SpSection>
 
       {c.comparison ? (

@@ -27,8 +27,8 @@ export function PerceptionAudit() {
               ))}
             </ul>
             <div data-reveal style={{ ["--reveal-delay" as string]: 190 }} className="mt-9 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
-              <Cta href="#book" size="lg" track="strategy_call_click" trackLabel="Book a Strategy Call">
-                Book a Strategy Call
+              <Cta href="#book" size="lg" track="strategy_call_click" trackLabel="Book a Free Strategy Call">
+                Book a Free Strategy Call
               </Cta>
               <Cta href="#book" size="lg" variant="secondary" track="strategy_call_click" trackLabel="Book a Meeting">
                 Book a Meeting

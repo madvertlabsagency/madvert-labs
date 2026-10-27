@@ -48,7 +48,7 @@ export function LocationHero({ updated }: { updated: string }) {
             </div>
             <div data-reveal style={{ ["--reveal-delay" as string]: 200 }} className="mt-10 flex flex-col items-start gap-4 sm:flex-row sm:items-center">
               <Cta href="#book" size="lg" track="strategy_call_click" trackLabel="karachi_hero">
-                Book a Strategy Call
+                Book a Free Strategy Call
               </Cta>
               <a
                 href={whatsapp.url}

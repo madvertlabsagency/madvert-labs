@@ -7,6 +7,7 @@ One search intent, one primary URL. The live version is `src/content/topic-map.t
 | A. Full stack / external growth department | full stack digital marketing agency; outsourced marketing department; external growth department | `/services/digital-marketing` | `/glossary/external-growth-department`, `/glossary/full-stack-digital-marketing`, `/growth-systems`, `/glossary/growth-system`, `/insights/performance-marketing-vs-digital-marketing`, `/insights/how-to-choose-digital-marketing-agency-karachi`, `/digital-marketing-agency-karachi`, Earthly Elementals and Dubai interior design case studies |
 | A | what is a growth system | `/growth-systems` | `/glossary/growth-system` (short definition), `/resources/growth-systems-audit` |
 | A | digital marketing agency Karachi | `/digital-marketing-agency-karachi` | `/insights/how-to-choose-digital-marketing-agency-karachi` |
+| B. Qualified lead generation | B2B lead generation; B2B lead generation agency | `/services/b2b-lead-generation` | B2B case studies, `/glossary/qualified-rfq`, `/custom-patches` |
 | B. Qualified lead generation | qualified lead generation; lead generation agency | `/services/client-acquisition` | `/glossary/qualified-lead`, `/glossary/lead-qualification-system`, `/insights/lead-generation-vs-qualified-lead-generation`, `/tools/cost-per-qualified-lead-calculator`, `/industries/*`, Dubai real estate case study, Qualified Lead Generation Playbook |
 | B | what is a qualified lead | `/glossary/qualified-lead` | `/services/client-acquisition` |
 | B | CPL vs CPQL; cost per qualified lead | `/tools/cost-per-qualified-lead-calculator` | `/glossary#cost-per-qualified-lead`, `/insights/lead-generation-vs-qualified-lead-generation` |
@@ -19,6 +20,9 @@ One search intent, one primary URL. The live version is `src/content/topic-map.t
 | D. SEO / AI SEO / AEO | AI SEO services; AEO services; ChatGPT visibility | `/services/ai-seo-aeo` | `/glossary/ai-seo`, `/glossary/aeo`, `/insights/what-is-aeo`, SEO and AI Search Playbook |
 | D | SEO services Karachi / Pakistan | `/services/seo` | `/services/ai-seo-aeo` |
 | D | what is AEO (long guide) | `/insights/what-is-aeo` | `/glossary/aeo` (short definition, links to the guide) |
+| D | SEO vs AEO vs GEO; what is GEO | `/insights/seo-vs-aeo-vs-geo` | `/services/ai-seo-aeo` |
+| C | Meta Ads vs Google Ads; lead forms vs landing pages; why Facebook leads don't convert | `/insights/meta-ads-vs-google-ads-lead-generation`, `/insights/facebook-lead-forms-vs-landing-pages`, `/insights/why-facebook-leads-dont-convert` | `/services/meta-ads`, `/services/google-ads` |
+| E | how to automate lead follow-up; lead response time | `/insights/how-to-automate-lead-follow-up` | `/services/automation-revenue-systems` |
 | E. CRM / revenue response | CRM and marketing automation; WhatsApp follow up | `/services/automation-revenue-systems` | `/glossary/revenue-response-system`, `/glossary/lead-qualification-system`, Revenue Leakage Audit, Automated Lead Engine |
 | E | AI lead response agent | `/services/ai-agents` | `/glossary/revenue-response-system` |
 | F. Creative / branding | branding agency; brand strategy | `/services/branding-marketing` | Brand Perception Checklist, Build That Offer |
@@ -45,9 +49,10 @@ Write each as an article in `src/content/articles.ts` with `status: "draft"`. Dr
 | CPL vs CPQL | Comparison | B | Could live as a section of the calculator page instead of a new URL |
 | What Makes a Lead Qualified? | Long guide | B | Only if it goes deeper than `/glossary/qualified-lead`; otherwise expand the glossary page |
 | Agency vs In-House Marketing Team | Comparison | A | A short table already exists on `/glossary#agency-vs-in-house-vs-external-growth-department` |
-| Meta Ads vs Google Ads | Comparison | C | |
 | Digital Marketing Agency vs External Growth Department | Comparison | A | |
 | SEO vs Paid Ads | Comparison | C / D | |
+
+Published in batch 1 (27 October 2026): `/services/b2b-lead-generation`, `/insights/seo-vs-aeo-vs-geo`, `/insights/why-facebook-leads-dont-convert`, `/insights/facebook-lead-forms-vs-landing-pages`, `/insights/meta-ads-vs-google-ads-lead-generation`, `/insights/how-to-automate-lead-follow-up`. Full keyword list: `docs/seo/keyword-master.csv`.
 | Why Most Meta Lead Problems Are CRM Problems | Founder POV | E | |
 | What an External Growth Department Does Week to Week | Founder POV | A | |
 | The Offer Is the Real Campaign | Founder POV | F | Link to Build That Offer |

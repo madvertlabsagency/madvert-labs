@@ -1,3 +1,4 @@
+import { AppointmentCta } from "@/components/booking/AppointmentCta";
 import { TopicLinks } from "@/components/seo/TopicLinks";
 import type { Metadata } from "next";
 import { getFaqs } from "@/cms";
@@ -131,6 +132,9 @@ export default async function AcquisitionPage() {
         faqs={faqs}
       />
 
+      <div className="container-x">
+        <AppointmentCta context="service_client-acquisition" />
+      </div>
       <TopicLinks path={path} />
       <FinalCta title="Stop Optimising for Leads" accent="Your Sales Team Does Not Want." primary={{ label: "Book an Acquisition Strategy Call", href: site.primaryCta.href }} />
       <BookingSection eyebrow="Need This Built for Your Business?" context="services:client-acquisition" />

@@ -12,9 +12,15 @@ export function RichText({ text }: { text: string }) {
     if (i > last) out.push(text.slice(last, i));
     if (m[1]) {
       out.push(
-        <Link key={i} href={m[2]} className="sp-inline-link">
-          {m[1]}
-        </Link>,
+        /^https?:\/\//.test(m[2]) ? (
+          <a key={i} href={m[2]} className="sp-inline-link" target="_blank" rel="noopener noreferrer">
+            {m[1]}
+          </a>
+        ) : (
+          <Link key={i} href={m[2]} className="sp-inline-link">
+            {m[1]}
+          </Link>
+        ),
       );
     } else {
       out.push(<strong key={i}>{m[3]}</strong>);

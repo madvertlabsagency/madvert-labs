@@ -480,6 +480,137 @@ export const servicePages: Record<string, ServicePageContent> = {
     audience: "Businesses generating leads through Facebook and Instagram",
   },
 
+  /* ───────────────────────── B2B Lead Generation ───────────────────────── */
+  "b2b-lead-generation": {
+    key: "b2b-lead-generation",
+    metaTitle: "B2B Lead Generation Agency: Qualified Meetings",
+    metaDescription:
+      "B2B lead generation from Madvert Labs: offers, Meta and Google campaigns, qualification funnels and CRM follow up that turn business buyers into qualified meetings.",
+    short: "B2B lead generation",
+    shortTitle: "B2B lead generation",
+    eyebrow: "B2B Lead Generation",
+    h1: "B2B Lead Generation.",
+    h1Accent: "Qualified Meetings With Business Buyers, Not Contact Lists.",
+    answer: [
+      "Business buyers take longer to decide, involve more people and ask harder questions than consumers. Madvert Labs builds B2B lead generation as a system: an offer a decision maker cares about, campaigns that reach the right companies, a qualification funnel that screens before the calendar, and [CRM follow up](/services/automation-revenue-systems) that keeps longer sales cycles moving. It sits inside the wider [qualified lead generation](/services/client-acquisition) pillar and works for service firms, agencies, manufacturers and suppliers in Pakistan and internationally.",
+    ],
+    glance: [
+      { label: "Built for", value: "Companies that sell to other businesses: professional services, agencies, manufacturers, exporters and B2B suppliers." },
+      { label: "Channels", value: "Meta Ads, Google Ads and landing pages, with CRM, email and WhatsApp follow up." },
+      { label: "Measured by", value: "Qualified meetings, accepted RFQs and pipeline, not raw form fills." },
+    ],
+    whoFor: {
+      title: "Who B2B lead generation is for",
+      items: [
+        "Service firms such as bookkeeping, consulting, agencies and software businesses that sell to business owners or managers.",
+        "Manufacturers, exporters and suppliers that need serious requests for quotation (RFQs) rather than price checks.",
+        "B2B companies selling into the USA, UK, UAE or other markets from Pakistan, or the other way round.",
+        "Teams with someone ready to take discovery calls or prepare quotes when qualified enquiries arrive.",
+      ],
+      notFor: [
+        "Businesses looking to buy contact lists or run mass cold email. Madvert Labs builds inbound demand and qualification, not list rental.",
+        "Offers that are not yet clear about who they are for and what problem they solve. That needs [offer and positioning work](/services/branding-marketing) first.",
+      ],
+    },
+    problem: {
+      title: "Why B2B lead generation usually disappoints",
+      paragraphs: [
+        "Most B2B campaigns are judged on cost per lead, so they fill the CRM with students, job seekers, competitors and owners of companies far too small to buy. The sales team stops trusting marketing, and good leads get the same slow response as bad ones.",
+        "The other common failure is a mismatch between the offer and the buyer. A decision maker rarely responds to “contact us for a quote”. They respond to an offer that names their problem, shows proof and makes the next step feel low risk.",
+        "B2B Lead Generation at Madvert Labs fixes both: the offer and the qualifying questions decide who gets through, and every lead is judged by whether it became a qualified conversation.",
+      ],
+    },
+    process: {
+      title: "How a B2B lead generation system is built",
+      steps: [
+        { name: "Ideal customer and offer", text: "Define the companies and roles worth reaching, what they care about, and an offer a decision maker would act on, such as an audit, a consultation or a sample." },
+        { name: "Channels", text: "Reach buyers where they are: [Meta Ads](/services/meta-ads) with role, interest and market targeting, and [Google Ads](/services/google-ads) for people already searching for the service or product." },
+        { name: "Landing page or application flow", text: "Send traffic to a page or multi-step application written for the buyer, with proof and a clear next step. See [landing pages and CRO](/services/conversion)." },
+        { name: "Qualification", text: "Ask the questions that matter before anyone books: company type and size, role, need, budget range and timeline, or for RFQs the specification, quantity and delivery location." },
+        { name: "Booking and CRM", text: "Qualified buyers book directly into the calendar; everyone else enters a nurture sequence. Every answer is stored in the CRM with the source campaign." },
+        { name: "Reporting on pipeline", text: "Report qualified meetings, accepted RFQs and outcomes by campaign, so budget moves towards what creates pipeline rather than what creates the cheapest form fill." },
+      ],
+    },
+    comparison: {
+      title: "B2B lead generation vs buying lead lists",
+      caption: "Inbound B2B lead generation compared with bought contact lists",
+      rowHeader: "Factor",
+      columns: ["Inbound B2B lead generation", "Bought lead lists"],
+      highlight: 0,
+      rows: [
+        { label: "Buyer intent", cells: ["The buyer responded to an offer and answered qualifying questions", "None until someone makes contact"] },
+        { label: "Data", cells: ["First-party answers stored in your CRM", "Third-party data of unknown age and accuracy"] },
+        { label: "Brand effect", cells: ["Builds familiarity through ads and content", "Unsolicited outreach can hurt the brand"] },
+        { label: "Compliance", cells: ["Consent given at the point of enquiry", "Depends on how the list was collected"] },
+      ],
+    },
+    included: [
+      "Ideal customer profile and offer positioning",
+      "Meta Ads and Google Ads campaign strategy and setup",
+      "Ad copy, creative direction and multi-market targeting",
+      "Landing page or multi-step application flow",
+      "Qualifying questions, lead routing and calendar booking",
+      "CRM pipeline setup and nurture sequences for leads not ready yet",
+      "Conversion tracking and pipeline reporting",
+    ],
+    excluded: [
+      "The advertising budget itself, which is agreed separately.",
+      "Bought contact lists, scraped data or mass cold email.",
+      "A guaranteed number of meetings or RFQs. Results depend on the market, the offer and the budget.",
+    ],
+    examples: {
+      title: "Examples of B2B lead generation builds",
+      items: [
+        { name: "A qualification funnel for a professional services firm", text: "Video creative and a clear offer, then qualification questions that filter for serious business owners, then appointments booked directly into the client's calendar." },
+        { name: "A multi-market application funnel for an agency", text: "One offer and Meta campaign structure reaching prospects in several countries, with a landing page and application flow that screens before the call." },
+        { name: "An RFQ engine for a manufacturer", text: "Campaigns and a quote request flow that capture product, specification, quantity and delivery details, so only quotable requests reach the estimating team. See the [custom patch RFQ partnership](/custom-patches)." },
+      ],
+    },
+    proof: {
+      title: "Real B2B lead generation results",
+      intro: "Both case studies below are for businesses that sell services to other businesses. Every figure is taken from the case study it belongs to.",
+      slugs: ["bookkeeping-appointments", "agency-lead-generation"],
+    },
+    faqs: [
+      {
+        q: "Does Meta Ads work for B2B lead generation?",
+        a: "It can, when the offer is written for a decision maker and the form or application qualifies before the call. Meta reaches business owners and managers by interest, behaviour and market rather than job title alone, so qualification does more of the filtering. Both B2B case studies on this page were built on Meta.",
+      },
+      {
+        q: "Is Google Ads or Meta Ads better for B2B?",
+        a: "Google Ads captures buyers already searching for the service or product, which suits urgent or well-understood needs. Meta Ads creates demand among buyers who are not searching yet. Many B2B companies use both. The [Meta Ads vs Google Ads comparison](/insights/meta-ads-vs-google-ads-lead-generation) explains when each fits.",
+      },
+      {
+        q: "What is a qualified B2B lead?",
+        a: "A qualified B2B lead is a business enquiry that meets criteria agreed in advance, such as the right company type and size, a decision maker or influencer, a real need, a budget range and a timeline. For manufacturers, a [qualified RFQ](/glossary/qualified-rfq) also includes the specification, quantity and delivery location.",
+      },
+      {
+        q: "How long does B2B lead generation take to work?",
+        a: "Campaigns usually produce first enquiries within the first weeks, but B2B sales cycles are longer, so judging success needs enough time for meetings to turn into proposals and deals. Madvert Labs reports qualified meetings and pipeline as they happen rather than waiting for closed revenue alone.",
+      },
+      {
+        q: "Do you work with B2B companies outside Pakistan?",
+        a: "Yes. Madvert Labs is based in Karachi and runs B2B campaigns for companies in Pakistan and for international markets. The published agency case study generated qualified applications from prospects in the USA, UK, Canada and Australia.",
+      },
+    ],
+    related: [
+      { key: "client-acquisition", anchor: "Qualified lead generation", note: "The wider acquisition system B2B campaigns sit inside." },
+      { key: "meta-ads", anchor: "Meta Ads lead generation", note: "How campaigns are built for sales conversations." },
+      { key: "google-ads", anchor: "Google Ads for buyers already searching", note: "Capture B2B demand that already exists." },
+      { key: "automation-revenue-systems", anchor: "CRM and follow up for longer sales cycles", note: "Pipelines, nurture and booking after the enquiry." },
+      { href: "/glossary/qualified-rfq", anchor: "What is a qualified RFQ?", note: "The standard for manufacturer and supplier enquiries." },
+      { href: "/white-label-partnership", anchor: "White label lead generation for agencies", note: "The same system delivered under an agency's brand." },
+    ],
+    resources: ["qualified-lead-generation-playbook", "automated-lead-engine", "build-that-offer"],
+    cta: {
+      title: "Selling to Businesses?",
+      accent: "Let Us Build the Pipeline Behind It.",
+      body: "We will look at your offer, your buyers and your sales process before recommending channels or budget.",
+      label: "Book a Free Strategy Call",
+    },
+    audience: "Companies that sell to other businesses",
+  },
+
   /* ───────────────────────── Google Ads Lead Generation ───────────────────────── */
   "google-ads": {
     key: "google-ads",

@@ -2,6 +2,7 @@ import { TopicLinks } from "@/components/seo/TopicLinks";
 import Link from "next/link";
 import type { ReactNode } from "react";
 import { fallbackCaseStudies } from "@/cms/fallback";
+import { AppointmentCta } from "@/components/booking/AppointmentCta";
 import { BookingSection } from "@/components/booking/BookingSection";
 import { Checklist } from "@/components/facts/Checklist";
 import { ComparisonTable } from "@/components/facts/ComparisonTable";
@@ -128,6 +129,7 @@ export function ArticleTemplate({
     ...a.sections.map((s) => ({ id: s.id, label: s.label })),
     ...(proofStudies.length ? [{ id: "proof", label: "Proof" }] : []),
     ...(faqItems.length ? [{ id: "faqs", label: "FAQs" }] : []),
+    ...(a.sources?.length ? [{ id: "sources", label: "Sources" }] : []),
     ...(a.related.length ? [{ id: "related", label: "Related resources" }] : []),
   ];
   const role = `${founder.jobTitle}, ${organization.name}`;
@@ -202,6 +204,8 @@ export function ArticleTemplate({
                     <Block key={j} b={b} />
                   ))}
                 </div>
+                {/* One contextual booking prompt mid-article (after the second section, or the first in short articles). */}
+                {a.sections.length > 1 && i === Math.min(1, a.sections.length - 2) ? <AppointmentCta context={`article_${a.slug}`} /> : null}
               </section>
             ))}
 
@@ -238,6 +242,25 @@ export function ArticleTemplate({
                   Frequently asked questions
                 </h2>
                 <FAQ items={faqItems} withSchema className="mt-8" />
+              </section>
+            ) : null}
+
+            {a.sources?.length ? (
+              <section id="sources" className="mt-16 scroll-mt-28 border-t border-line pt-14" aria-labelledby="sources-title">
+                <p className="t-label">Sources</p>
+                <h2 id="sources-title" className="t-h3 mt-4">
+                  Sources and further reading
+                </h2>
+                <ul className="mt-6 space-y-3 text-[15.5px] leading-relaxed text-ink-2">
+                  {a.sources.map((src) => (
+                    <li key={src.url}>
+                      <a href={src.url} target="_blank" rel="noopener noreferrer" className="sp-inline-link">
+                        {src.title}
+                      </a>
+                      , {src.publisher}
+                    </li>
+                  ))}
+                </ul>
               </section>
             ) : null}
 
@@ -297,6 +320,7 @@ export function ArticleTemplate({
             mainEntityOfPage: { "@type": "WebPage", "@id": url },
             url,
             inLanguage: "en",
+            citation: a.sources?.length ? a.sources.map((src) => ({ "@type": "CreativeWork", name: src.title, url: src.url, publisher: { "@type": "Organization", name: src.publisher } })) : undefined,
           }}
         />
       ) : null}

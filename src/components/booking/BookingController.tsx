@@ -61,7 +61,7 @@ export function BookingController() {
         <div className="flex items-center justify-between gap-4 border-b border-line px-5 py-4 sm:px-7">
           <div>
             <p className="t-eyebrow !text-[11px]">Partner Up with MADVERT Labs</p>
-            <p className="mt-1 font-display text-[18px] font-semibold">Book Your Business Strategy Call</p>
+            <p className="mt-1 font-display text-[18px] font-semibold">Book a Free Strategy Call</p>
           </div>
           <button ref={closeRef} type="button" onClick={() => setOpen(false)} className="grid h-10 w-10 place-items-center rounded-full border border-line text-ink" aria-label="Close booking">
             <svg viewBox="0 0 16 16" width="14" height="14" aria-hidden="true">

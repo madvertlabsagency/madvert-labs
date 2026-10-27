@@ -1,3 +1,4 @@
+import { AppointmentCta } from "@/components/booking/AppointmentCta";
 import { TopicLinks } from "@/components/seo/TopicLinks";
 import type { Metadata } from "next";
 import { getFaqs } from "@/cms";
@@ -106,6 +107,9 @@ export default async function ConversionPage() {
         faqs={faqs}
       />
 
+      <div className="container-x">
+        <AppointmentCta context="service_conversion" />
+      </div>
       <TopicLinks path={path} />
       <FinalCta title="Same Traffic. Better Journey." accent="Different Economics." primary={{ label: "Book a Conversion Review", href: site.primaryCta.href }} />
       <BookingSection eyebrow="Need This Built for Your Business?" context="services:conversion" />

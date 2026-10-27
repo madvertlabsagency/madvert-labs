@@ -1,3 +1,4 @@
+import { AppointmentCta } from "@/components/booking/AppointmentCta";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { getFaqs } from "@/cms";
@@ -72,7 +73,7 @@ export default async function ServicesPage() {
       <SpecialistServices
         title="Specialist services and guides"
         intro="Focused pages for individual channels and builds, plus a plain explanation of what a growth system is."
-        keys={["growth-systems", "digital-marketing", "performance-marketing", "meta-ads", "google-ads", "seo", "ai-seo-aeo", "social-media-management", "web-development", "ai-agents", "app-development"]}
+        keys={["growth-systems", "digital-marketing", "performance-marketing", "b2b-lead-generation", "meta-ads", "google-ads", "seo", "ai-seo-aeo", "social-media-management", "web-development", "ai-agents", "app-development"]}
       />
 
       <Philosophy />
@@ -97,6 +98,9 @@ export default async function ServicesPage() {
         faqs={faqs}
       />
 
+      <div className="container-x">
+        <AppointmentCta context="services_hub" />
+      </div>
       <FinalCta title="Bring Us the Business Problem." accent="We Will Start There." primary={site.founderCta} secondary={{ label: site.auditCta.label, href: site.auditCta.href }} />
       <BookingSection eyebrow="Ready When You Are" context="services" />
     </>

@@ -2,7 +2,7 @@ import Link from "next/link";
 import { Logo } from "@/components/ui/Logo";
 import { Cta } from "@/components/ui/Button";
 import { GrowthRibbon } from "@/components/visuals/GrowthRibbon";
-import { footerNav, legalNav, office, officeLines, partnerNav, services, site, whatsapp } from "@/lib/site";
+import { footerNav, legalNav, office, officeLines, partnerNav, services, site, socialProfiles, whatsapp } from "@/lib/site";
 
 export function Footer() {
   return (
@@ -34,6 +34,13 @@ export function Footer() {
               <a href={whatsapp.url} target="_blank" rel="noopener noreferrer" className="mt-3 inline-block hover:text-ink">
                 WhatsApp {office.phone}
               </a>
+              <span className="mt-3 flex flex-wrap gap-x-5 gap-y-1">
+                {socialProfiles.map((p) => (
+                  <a key={p.href} href={p.href} target="_blank" rel="me noopener noreferrer" className="hover:text-ink">
+                    {p.label}
+                  </a>
+                ))}
+              </span>
             </address>
           </div>
           <nav aria-label="Footer" className="md:col-span-3 md:col-start-7">
