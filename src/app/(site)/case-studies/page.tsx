@@ -1,8 +1,9 @@
+import { JsonLd } from "@/components/seo/JsonLd";
 import type { Metadata } from "next";
 import { getCaseStudies } from "@/cms";
 import { Breadcrumbs } from "@/components/layout/Breadcrumbs";
 import { Eyebrow } from "@/components/ui/Section";
-import { pageMetadata } from "@/lib/seo";
+import { pageMetadata, schema } from "@/lib/seo";
 import { site } from "@/lib/site";
 import { CaseFilters } from "@/sections/cases/CaseFilters";
 import { FinalCta } from "@/sections/shared/FinalCta";
@@ -12,7 +13,7 @@ import { BookingSection } from "@/components/booking/BookingSection";
 
 const description = "Real problems. Real decisions. Real work. Real outcomes. Madvert Labs case studies across acquisition, SEO, branding, studios, automation and technology.";
 
-export const metadata: Metadata = pageMetadata({ title: "Case Studies", description, path: "/case-studies" });
+export const metadata: Metadata = pageMetadata({ title: "Case Studies: Verified Lead Generation Results", description, path: "/case-studies" });
 
 export default async function CaseStudiesPage() {
   const studies = await getCaseStudies();
@@ -53,6 +54,7 @@ export default async function CaseStudiesPage() {
       </section>
       <FinalCta title="Want Us to Look at" accent="Your Growth System?" primary={{ label: "Book a Business Strategy Call", href: site.primaryCta.href }} />
       <BookingSection eyebrow="Ready When You Are" context="case-studies" />
+      <JsonLd data={{ ...schema.webPage("Madvert Labs Case Studies", description, "/case-studies"), "@type": "CollectionPage" }} />
     </>
   );
 }

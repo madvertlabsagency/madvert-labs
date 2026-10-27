@@ -18,7 +18,7 @@ const SHARED = /^\/(api|_next|brand|images|icon|apple-icon|manifest|robots|favic
 const DETAIL = /^\/(insights|case-studies|resources)\/[^/]+\/?$/;
 const CMS_CONFIGURED = Boolean(process.env.NEXT_PUBLIC_SANITY_PROJECT_ID);
 /** Detail routes that always come from local files, CMS or not. */
-const LOCAL_DETAIL = /^\/industries\/[^/]+\/?$/;
+const LOCAL_DETAIL = /^\/(industries|glossary)\/[^/]+\/?$/;
 
 export function proxy(request: NextRequest, event: NextFetchEvent) {
   const path = request.nextUrl.pathname.replace(/\/$/, "") || "/";

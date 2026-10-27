@@ -19,7 +19,7 @@ function canonicalOrigin(env?: string) {
 export const site = {
   name: "Madvert Labs",
   legalName: "Madvert Labs",
-  descriptor: "Digital Marketing and Growth Systems",
+  descriptor: "Digital Marketing & Growth Systems",
   tagline: "Beyond Advertising. We Build Growth Systems.",
   belief: "Growth Is a System. Not a Campaign.",
   promise: "One Growth Partner for Everything Between Attention and Revenue.",
@@ -138,23 +138,34 @@ export const mainNav = [
   { label: "Contact Us", href: "/contact" },
 ] as const;
 
+/**
+ * Footer: identity, core navigation and partnerships only. Topic pages (glossary, calculator,
+ * articles, industries) are reached through contextual links on the pages that need them.
+ */
 export const footerNav = [
-  { label: "Home", href: "/" },
   { label: "What We Do", href: "/services" },
   { label: "Case Studies", href: "/case-studies" },
+  { label: "Industries", href: "/industries" },
   { label: "Madvert Studios", href: "/studios" },
   { label: "Madvert Vault", href: "/resources" },
-  { label: "About Us", href: "/about" },
-  { label: "Contact Us", href: "/contact" },
-  { label: "Challenge Madvert", href: "/challenge" },
-  { label: "What Is a Growth System?", href: "/growth-systems" },
   { label: "Insights", href: "/insights" },
-  { label: "Growth Glossary", href: "/glossary" },
-  { label: "Cost per Qualified Lead Calculator", href: "/tools/cost-per-qualified-lead-calculator" },
-  { label: "Digital Marketing Agency in Karachi", href: "/digital-marketing-agency-karachi" },
-  { label: "Industries", href: "/industries" },
+  { label: "About Us", href: "/about" },
+  { label: "Founder: Usama Abbas Dahri", href: "/about/usama-abbas-dahri" },
+  { label: "Contact Us", href: "/contact" },
+];
+
+/** Offers for specific audiences, kept separate from the core services. */
+export const partnerNav = [
+  { label: "White Label for Agencies", href: "/white-label-partnership" },
+  { label: "Custom Patch RFQs", href: "/custom-patches" },
+];
+
+/** Small reference links in the footer's bottom bar. */
+export const legalNav = [
+  { label: "Privacy", href: "/privacy" },
   { label: "Company Facts", href: "/about/facts" },
   { label: "Press", href: "/press" },
+  { label: "Glossary", href: "/glossary" },
 ];
 
 /**

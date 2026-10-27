@@ -172,7 +172,7 @@ export function JourneyScreen({ index, active }: { index: number; active: boolea
               );
             })}
           </div>
-          <Option label="Not Sure — help me choose" />
+          <Option label="Not Sure? Help me choose" />
         </div>
       );
     case 3:
@@ -184,7 +184,7 @@ export function JourneyScreen({ index, active }: { index: number; active: boolea
               <Option key={q} label={q} selected={a && q === "500–999"} className="!py-2.5 !text-[0.74rem]" />
             ))}
           </div>
-          <p className="text-[0.6rem] text-[#6b7686] dark:text-white/50">Exact quantity: {a ? <b className="text-[#0a101c] dark:text-white">500 pieces</b> : "—"}</p>
+          <p className="text-[0.6rem] text-[#6b7686] dark:text-white/50">Exact quantity: {a ? <b className="text-[#0a101c] dark:text-white">500 pieces</b> : "–"}</p>
         </div>
       );
     case 4:
@@ -195,7 +195,7 @@ export function JourneyScreen({ index, active }: { index: number; active: boolea
             {["Width", "Height"].map((d) => (
               <div key={d} className="rounded-lg border border-black/10 px-2.5 py-2 dark:border-white/10">
                 <p className="text-[0.54rem] font-semibold uppercase tracking-wide text-[#6b7686] dark:text-white/50">{d}</p>
-                <p className="text-[0.82rem] font-bold text-[#0a101c] dark:text-white">{a ? "3.5 in" : "—"}</p>
+                <p className="text-[0.82rem] font-bold text-[#0a101c] dark:text-white">{a ? "3.5 in" : "–"}</p>
               </div>
             ))}
           </div>
@@ -308,7 +308,7 @@ export function JourneyScreen({ index, active }: { index: number; active: boolea
           <p className="text-center font-mono text-[1.6rem] font-light text-[#0a101c] dark:text-white">9:41</p>
           {[
             [SquareKanban, "CRM", "New RFQ added to pipeline"],
-            [Mail, "Email", "New qualified RFQ — 500 patches"],
+            [Mail, "Email", "New qualified RFQ: 500 patches"],
             [MessageSquare, "SMS", "Apex Apparel Co. · View in CRM"],
             [MessageCircle, "WhatsApp", "Artwork uploaded · Los Angeles"],
             [Bell, "Push", "New qualified RFQ"],

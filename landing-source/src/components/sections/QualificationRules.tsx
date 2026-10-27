@@ -60,7 +60,7 @@ export function QualificationRules() {
               </Reveal>
               <Reveal delay={0.15}>
                 <p className="mt-5 max-w-md text-[0.95rem] leading-relaxed text-muted">
-                  Criteria are agreed with you <strong className="text-fg">in writing</strong> before a single campaign goes live — so
+                  Criteria are agreed with you <strong className="text-fg">in writing</strong> before a single campaign goes live, so
                   both sides are working to the same definition.
                 </p>
               </Reveal>

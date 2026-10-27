@@ -1,3 +1,4 @@
+import { TopicLinks } from "@/components/seo/TopicLinks";
 import type { Metadata } from "next";
 import { getFaqs } from "@/cms";
 import { JsonLd } from "@/components/seo/JsonLd";
@@ -16,7 +17,7 @@ const path = "/services/conversion";
 const description =
   "Websites, landing pages, CRO and offers that turn attention into action. Madvert Labs fixes the conversion journey before you buy more traffic.";
 
-export const metadata: Metadata = pageMetadata({ title: "Conversion", description, path });
+export const metadata: Metadata = pageMetadata({ title: "Landing Pages, Funnels and CRO", description, path });
 
 export default async function ConversionPage() {
   const faqs = await getFaqs("conversion");
@@ -105,6 +106,7 @@ export default async function ConversionPage() {
         faqs={faqs}
       />
 
+      <TopicLinks path={path} />
       <FinalCta title="Same Traffic. Better Journey." accent="Different Economics." primary={{ label: "Book a Conversion Review", href: site.primaryCta.href }} />
       <BookingSection eyebrow="Need This Built for Your Business?" context="services:conversion" />
 

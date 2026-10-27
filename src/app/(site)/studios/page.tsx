@@ -1,3 +1,4 @@
+import { TopicLinks } from "@/components/seo/TopicLinks";
 import type { Metadata } from "next";
 import Image from "next/image";
 import { getFaqs, getPortfolio, getSiteSettings } from "@/cms";
@@ -15,9 +16,9 @@ import type { PortfolioProject } from "@/types/content";
 
 const path = "/studios";
 const description =
-  "Madvert Studios: static ads, motion, explainers, cinematic films, talking head content, AI commercials and real production for brands that want to stop the scroll.";
+  "Madvert Studios makes static ads, motion graphics, explainers, brand films, talking head videos and AI commercials designed to stop the scroll and sell.";
 
-export const metadata: Metadata = pageMetadata({ title: "Madvert Studios", description, path });
+export const metadata: Metadata = pageMetadata({ title: "Madvert Studios: Ad Creative and Video Production", description, path });
 
 const formats = [
   { key: "Static", title: "A Static Ad Has One Frame to Make the Argument." },
@@ -157,6 +158,7 @@ export default async function StudiosPage() {
         faqs={faqs}
       />
 
+      <TopicLinks path={path} />
       <FinalCta title="Make the Next Scroll" accent="Stop Here." primary={{ label: "Start a Creative Project", href: "#book" }} track="service_cta_click" />
       <BookingSection eyebrow="Need This Built for Your Business?" context="studios" />
 

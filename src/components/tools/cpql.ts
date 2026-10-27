@@ -2,7 +2,7 @@
  * Cost per qualified lead maths. Pure, decimal-safe and framework-free so it can be unit tested
  * with plain Node. Money is held as integer minor units (BigInt, 2 decimal places) and rates as
  * integer hundredths of a percent, so displayed values never show floating-point drift. Every
- * division rounds half-up to 2 decimal places. A figure that would divide by zero is `null` ("—").
+ * division rounds half-up to 2 decimal places. A figure that would divide by zero is `null` ("n/a").
  */
 
 // BigInt literals need ES2020; the project targets ES2017, so constants are built once here.
@@ -72,14 +72,14 @@ export function formatMinor(minor: bigint): string {
 }
 
 export function formatMoney(minor: bigint | null, currency: Currency): string {
-  if (minor === null) return "—";
+  if (minor === null) return "n/a";
   const c = currencies.find((x) => x.code === currency) ?? currencies[0];
   return `${c.prefix}${formatMinor(minor)}`;
 }
 
 /** Hundredths of a percent -> "33.33%". */
 export function formatRate(bp: bigint | null): string {
-  if (bp === null) return "—";
+  if (bp === null) return "n/a";
   return `${formatMinor(bp)}%`;
 }
 

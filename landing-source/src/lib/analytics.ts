@@ -54,6 +54,14 @@ const META_STANDARD: Partial<Record<AnalyticsEvent, string>> = {
   application_crm_success: "Lead",
 };
 
+/**
+ * GA4 names that differ from the internal event name. `custom_patch_inquiry` is the organic and paid
+ * conversion for this page: one per application GoHighLevel confirmed, matching the main site's naming.
+ */
+const GA4_NAMES: Partial<Record<AnalyticsEvent, string>> = {
+  application_crm_success: "custom_patch_inquiry",
+};
+
 /** Events that should only fire once per page session. */
 const ONCE: ReadonlySet<AnalyticsEvent> = new Set<AnalyticsEvent>([
   "PageView",
@@ -77,6 +85,8 @@ export function track(event: AnalyticsEvent, props: Props = {}, opts: { eventId?
   try {
     window.dataLayer = window.dataLayer || [];
     window.dataLayer.push({ event: `ml_${event}`, ...props });
+    const ga4Name = GA4_NAMES[event];
+    if (ga4Name) window.dataLayer.push({ event: ga4Name, ...props });
 
     // PageView for the pixel/GA is handled by their own init snippets.
     if (event !== "PageView") {
@@ -86,7 +96,7 @@ export function track(event: AnalyticsEvent, props: Props = {}, opts: { eventId?
         if (std) window.fbq("track", std, props, ...extra);
         else window.fbq("trackCustom", event, props, ...extra);
       }
-      if (window.gtag) window.gtag("event", event, props);
+      if (window.gtag) window.gtag("event", GA4_NAMES[event] ?? event, props);
     }
     if (process.env.NODE_ENV !== "production") console.debug("[analytics]", event, props);
   } catch {

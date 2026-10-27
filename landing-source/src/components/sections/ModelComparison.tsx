@@ -50,7 +50,7 @@ export function ModelComparison() {
             </h2>
           </Reveal>
           <Reveal delay={0.1}>
-            <p className="lead mx-auto mt-5">Three common ways patch businesses generate new opportunities. Typical models shown — individual teams and agencies vary.</p>
+            <p className="lead mx-auto mt-5">Three common ways patch businesses generate new opportunities. Typical models shown; individual teams and agencies vary.</p>
           </Reveal>
         </div>
 

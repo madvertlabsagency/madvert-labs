@@ -1,3 +1,4 @@
+import { TopicLinks } from "@/components/seo/TopicLinks";
 import type { Metadata } from "next";
 import { getFaqs } from "@/cms";
 import { JsonLd } from "@/components/seo/JsonLd";
@@ -21,10 +22,10 @@ import "@/styles/branding.css";
 
 const path = "/services/branding-marketing";
 const description =
-  "Brand strategy, identity, social media, digital PR, influencer marketing and 360 degree execution. Madvert Labs shapes how your business looks, sounds and shows up everywhere.";
+  "Brand strategy, identity, social media, digital PR and creative from Madvert Labs, so your business looks, sounds and shows up like the company it really is.";
 
 export const metadata: Metadata = pageMetadata({
-  title: "Branding and Marketing",
+  title: "Branding, Creative and Brand Strategy",
   description,
   path,
 });
@@ -186,6 +187,7 @@ export default async function BrandingPage() {
         faqs={faqs}
       />
 
+      <TopicLinks path={path} />
       <FinalCta
         title="Build a Brand Your Marketing Can"
         accent="Actually Be Proud Of."

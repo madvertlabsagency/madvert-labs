@@ -33,7 +33,7 @@ export const pageDates: Record<string, string> = {
   "/about/facts": "2026-10-23",
   "/press": "2026-10-23",
   "/growth-systems": "2026-10-18",
-  "/glossary": "2026-10-18",
+  "/glossary": "2026-10-27",
   "/insights": "2026-10-18",
   "/tools/cost-per-qualified-lead-calculator": "2026-10-18",
   "/studios": "2026-10-15",
@@ -45,4 +45,6 @@ export const pageDates: Record<string, string> = {
   "/challenge": "2026-10-07",
   "/privacy": "2026-10-07",
   "/white-label-partnership": "2026-10-23",
+  // Static export served from public/custom-patches (source: landing-source/).
+  "/custom-patches": "2026-10-18",
 };

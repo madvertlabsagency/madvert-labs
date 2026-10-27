@@ -1,5 +1,6 @@
 import { fallbackCaseStudies } from "@/cms/fallback";
 import { articlePath, articles } from "@/content/articles";
+import { glossaryPagePath, glossaryPages } from "@/content/glossary-pages";
 import { industryPages } from "@/content/industries";
 import { founder, organization, serviceEntities } from "@/lib/entities";
 import { absoluteUrl, office } from "@/lib/site";
@@ -8,6 +9,8 @@ import { approvedDescriptions, fullAddress } from "@/sections/facts/data";
 /**
  * /llms.txt: a plain markdown summary of the site for AI assistants (llmstxt.org format).
  * Built from the same entity and content files as the pages, so it never says anything the site doesn't.
+ * Optional and not a ranking factor: crawlable HTML, the sitemap, robots.txt, internal links and
+ * structured data are what search and answer engines actually rely on.
  */
 
 export function GET() {
@@ -31,6 +34,9 @@ export function GET() {
     "",
     "## Case studies",
     ...studies.map((s) => `- [${s.title}](${absoluteUrl(`/case-studies/${s.slug}`)})`),
+    "",
+    "## Definitions",
+    ...Object.entries(glossaryPages).map(([id, p]) => `- [${p.question}](${absoluteUrl(glossaryPagePath(id))})`),
     "",
     "## Guides",
     ...articles.map((a) => `- [${a.title}](${absoluteUrl(articlePath(a))}): ${a.description}`),

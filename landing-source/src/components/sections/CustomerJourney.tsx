@@ -8,8 +8,8 @@ import { JourneyScreen, PhoneShell } from "./JourneyScreens";
 
 const STEPS = [
   { t: "Customer sees your ad", d: "Madvert Labs runs Meta campaigns around your brand." },
-  { t: "Customer opens your branded funnel", d: "The experience looks like your business — not Madvert Labs." },
-  { t: "Customer selects patch type", d: "Embroidered, PVC, chenille, woven, leather, printed — or “not sure”." },
+  { t: "Customer opens your branded funnel", d: "The experience looks like your business, not Madvert Labs." },
+  { t: "Customer selects patch type", d: "Embroidered, PVC, chenille, woven, leather, printed or “not sure”." },
   { t: "Customer selects quantity", d: "From 25–49 up to 1,000+ pieces, so order value is visible upfront." },
   { t: "Customer adds size + backing", d: "Width, height and backing: iron on, velcro, sew on, adhesive or other." },
   { t: "Customer uploads artwork", d: "Drag-and-drop logos, artwork or reference files before quotation." },
@@ -36,7 +36,7 @@ export function CustomerJourney() {
           </Reveal>
           <Reveal delay={0.1}>
             <p className="lead mx-auto mt-6 max-w-2xl">
-              Every stage is built, run and connected by Madvert Labs — so the buyer moves from interest to a complete quote request
+              Every stage is built, run and connected by Madvert Labs, so the buyer moves from interest to a complete quote request
               without friction, and your team only steps in to quote.
             </p>
           </Reveal>

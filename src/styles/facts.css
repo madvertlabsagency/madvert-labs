@@ -332,3 +332,12 @@
     font-size: 14.5px;
   }
 }
+
+/* AEO answer block (AnswerBlock.tsx) */
+.fx-answer-block {
+  scroll-margin-top: 96px;
+}
+.fx-answer-evidence {
+  border-top: 1px solid var(--line);
+  padding-top: 14px;
+}

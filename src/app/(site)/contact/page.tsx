@@ -1,14 +1,16 @@
+import { JsonLd } from "@/components/seo/JsonLd";
+import Link from "next/link";
 import type { Metadata } from "next";
 import { Breadcrumbs } from "@/components/layout/Breadcrumbs";
 import { Eyebrow } from "@/components/ui/Section";
-import { pageMetadata } from "@/lib/seo";
+import { pageMetadata, schema } from "@/lib/seo";
 import { BookingSection } from "@/components/booking/BookingSection";
 import { office, officeLines, whatsapp } from "@/lib/site";
 import { ContactFlow } from "@/forms/ContactFlow";
 
 const description = "Tell Madvert Labs what is happening, what you have tried and what a great result looks like. Send a growth brief or book a business strategy call with Usama.";
 
-export const metadata: Metadata = pageMetadata({ title: "Contact Us", description, path: "/contact" });
+export const metadata: Metadata = pageMetadata({ title: "Contact Us: Book a Strategy Call", description, path: "/contact" });
 
 const next = [
   "We review your business before the conversation.",
@@ -57,6 +59,17 @@ export default function ContactPage() {
                   </li>
                 ))}
               </ol>
+              <p className="mt-8 text-[15px] leading-relaxed text-ink-2">
+                Have a growth problem nobody has managed to fix?{" "}
+                <Link href="/challenge" className="sp-inline-link">
+                  Challenge Madvert with it
+                </Link>
+                . Agencies that need delivery can read about the{" "}
+                <Link href="/white-label-partnership" className="sp-inline-link">
+                  white label partnership
+                </Link>
+                .
+              </p>
               <address className="panel mt-10 block p-6 not-italic">
                 <p className="t-label">Visit the Karachi office</p>
                 <p className="mt-3 text-[15.5px] leading-relaxed text-ink-2">
@@ -95,6 +108,7 @@ export default function ContactPage() {
           </p>
         </div>
       </section>
+      <JsonLd data={{ ...schema.webPage("Contact Madvert Labs", description, "/contact"), "@type": "ContactPage" }} />
     </>
   );
 }

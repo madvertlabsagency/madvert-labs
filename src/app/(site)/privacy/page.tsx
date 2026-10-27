@@ -3,8 +3,8 @@ import { Breadcrumbs } from "@/components/layout/Breadcrumbs";
 import { pageMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = pageMetadata({
-  title: "Privacy",
-  description: "How Madvert Labs collects and uses information submitted through this website.",
+  title: "Privacy Policy",
+  description: "How Madvert Labs collects, uses, stores and protects the information you submit through this website, forms and booking tools, and how to contact us about it.",
   path: "/privacy",
 });
 

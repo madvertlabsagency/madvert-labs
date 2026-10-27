@@ -1,3 +1,4 @@
+import { TopicLinks } from "@/components/seo/TopicLinks";
 import Link from "next/link";
 import { BookingSection } from "@/components/booking/BookingSection";
 import { ComparisonTable } from "@/components/facts/ComparisonTable";
@@ -248,6 +249,7 @@ export function ServicePage({ content: c }: { content: ServicePageContent }) {
       <FinalCta title={c.cta.title} accent={c.cta.accent} primary={{ label: c.cta.label, href: "#book" }}>
         {c.cta.body ?? null}
       </FinalCta>
+      <TopicLinks path={entity.path} />
       <BookingSection eyebrow="Next Step" context={`services:${c.key}`} />
 
       <JsonLd

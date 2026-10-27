@@ -61,7 +61,7 @@ export function CRMPreview() {
           </div>
           <Reveal delay={0.1} className="lg:col-span-5">
             <p className="lead">
-              Each accepted RFQ becomes a contact and an opportunity, with stage tracking from first contact to won — and the
+              Each accepted RFQ becomes a contact and an opportunity, with stage tracking from first contact to won, and the
               artwork one click away.
             </p>
           </Reveal>
@@ -147,7 +147,7 @@ function Dashboard({ onReplay }: { onReplay: () => void }) {
               </div>
             ))}
           </div>
-          <p className="mt-2 text-[0.7rem] text-subtle">Sample figures for illustration only — not Madvert Labs results.</p>
+          <p className="mt-2 text-[0.7rem] text-subtle">Sample figures for illustration only, not Madvert Labs results.</p>
 
           {/* Kanban */}
           <div ref={scroller} className="no-scrollbar -mx-4 mt-4 overflow-x-auto px-4 pb-1 sm:-mx-5 sm:px-5">

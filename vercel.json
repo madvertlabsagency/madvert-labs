@@ -9,6 +9,10 @@
     {
       "path": "/api/indexnow/sync",
       "schedule": "30 5 * * *"
+    },
+    {
+      "path": "/api/seo/audit",
+      "schedule": "10 4 * * 1"
     }
   ]
 }

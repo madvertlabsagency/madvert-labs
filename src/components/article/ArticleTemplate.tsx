@@ -1,3 +1,4 @@
+import { TopicLinks } from "@/components/seo/TopicLinks";
 import Link from "next/link";
 import type { ReactNode } from "react";
 import { fallbackCaseStudies } from "@/cms/fallback";
@@ -279,6 +280,7 @@ export function ArticleTemplate({
         </div>
       </article>
 
+      <TopicLinks path={path} />
       <BookingSection context={bookingContext ?? `article_${a.slug}`} />
 
       {schema === "article" ? (

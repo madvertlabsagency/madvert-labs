@@ -95,7 +95,7 @@ export function CpqlCalculator() {
       title="Calculate your cost per qualified lead"
       description={
         <p>
-          Enter the numbers for one campaign or one period. Results update as you type; nothing is sent or stored. A result shows “—” when it
+          Enter the numbers for one campaign or one period. Results update as you type; nothing is sent or stored. A result shows “n/a” when it
           cannot be calculated, for example when a divisor is zero or missing.
         </p>
       }

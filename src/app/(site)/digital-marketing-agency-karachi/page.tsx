@@ -1,3 +1,4 @@
+import { TopicLinks } from "@/components/seo/TopicLinks";
 import type { Metadata } from "next";
 import { BookingSection } from "@/components/booking/BookingSection";
 import { JsonLd } from "@/components/seo/JsonLd";
@@ -25,6 +26,7 @@ export default function KarachiPage() {
       <LocationProof />
       <LocationVisit />
       <LocationFaq />
+      <TopicLinks path={karachiPath} />
       <BookingSection
         eyebrow="Next Step"
         body="Book a business strategy call at the Karachi office or online. We will look at the business, the current system and the next most valuable move."

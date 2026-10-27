@@ -1,3 +1,4 @@
+import { TopicLinks } from "@/components/seo/TopicLinks";
 import type { Metadata } from "next";
 import { getFaqs } from "@/cms";
 import { JsonLd } from "@/components/seo/JsonLd";
@@ -18,7 +19,7 @@ const path = "/services/automation-revenue-systems";
 const description =
   "CRM, AI agents, WhatsApp automation, follow up, booking and revenue tracking. Madvert Labs builds revenue systems that keep every opportunity moving.";
 
-export const metadata: Metadata = pageMetadata({ title: "Automation and Revenue Systems", description, path });
+export const metadata: Metadata = pageMetadata({ title: "CRM and Marketing Automation", description, path });
 
 export default async function AutomationPage() {
   const faqs = await getFaqs("automation-revenue-systems");
@@ -114,6 +115,7 @@ export default async function AutomationPage() {
         faqs={faqs}
       />
 
+      <TopicLinks path={path} />
       <FinalCta
         title="Your Marketing Worked Hard to Create the Lead."
         accent="Do Not Let the Follow Up Waste It."

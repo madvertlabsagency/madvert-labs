@@ -22,7 +22,7 @@ export function Hero() {
       <div className="container-x relative grid grid-cols-1 items-center gap-14 lg:grid-cols-12 lg:gap-8">
         <div className="lg:col-span-7 xl:col-span-6">
           <div data-reveal>
-            <Eyebrow>Digital Marketing and Growth Systems</Eyebrow>
+            <Eyebrow>Digital Marketing &amp; Growth Systems</Eyebrow>
           </div>
           <h1 id="hero-title" data-reveal style={{ ["--reveal-delay" as string]: 80 }} className="t-display mt-7 !text-[clamp(38px,4.6vw,66px)]">
             Your Business Does Not Need More Marketing. <span className="t-grad">It Needs a Growth System That Actually Works.</span>

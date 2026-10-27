@@ -69,9 +69,9 @@ export function Exclusivity() {
 function FlowDiagram() {
   const { ref, step } = useSequence(5, { interval: 550 });
   const nodes = [
-    { icon: Cpu, title: "Madvert Labs acquisition engine", note: "Behind the scenes — never customer-facing", tone: "engine" },
+    { icon: Cpu, title: "Madvert Labs acquisition engine", note: "Behind the scenes, never customer-facing", tone: "engine" },
     { icon: Store, title: "One client brand", note: "Your name, your funnel, your domain", tone: "brand" },
-    { icon: SquareKanban, title: "The client’s pipeline", note: "Every RFQ lands with you — and only you", tone: "pipe" },
+    { icon: SquareKanban, title: "The client’s pipeline", note: "Every RFQ lands with you, and only you", tone: "pipe" },
   ];
   return (
     <div ref={ref} className="relative mx-auto max-w-md">

@@ -1,6 +1,6 @@
 # /custom-patches landing page (source)
 
-Editable source of www.madvertlabs.com/custom-patches, the Patches Partnership funnel.
+Editable source of madvertlabs.com/custom-patches, the Patches Partnership funnel.
 Next.js 16 · React 19 · TypeScript · Tailwind CSS 4 · Framer Motion.
 
 The page is built as a static export and copied into this repo's `public/custom-patches/`,

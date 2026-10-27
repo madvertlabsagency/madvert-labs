@@ -1,3 +1,4 @@
+import { TopicLinks } from "@/components/seo/TopicLinks";
 import type { Metadata } from "next";
 import { getFaqs } from "@/cms";
 import { JsonLd } from "@/components/seo/JsonLd";
@@ -15,9 +16,9 @@ import { SpecialistServices } from "@/components/service-page/SpecialistServices
 
 const path = "/services/client-acquisition";
 const description =
-  "Qualified customer acquisition across paid media, SEO, local SEO, AEO and AI search visibility. Madvert Labs builds demand your sales team actually wants to call.";
+  "Qualified lead generation across Meta Ads, Google Ads, SEO and AI search. Madvert Labs builds demand your sales team actually wants to call, measured by CPQL.";
 
-export const metadata: Metadata = pageMetadata({ title: "Client Acquisition", description, path });
+export const metadata: Metadata = pageMetadata({ title: "Qualified Lead Generation and Client Acquisition", description, path });
 
 export default async function AcquisitionPage() {
   const faqs = await getFaqs("client-acquisition");
@@ -130,6 +131,7 @@ export default async function AcquisitionPage() {
         faqs={faqs}
       />
 
+      <TopicLinks path={path} />
       <FinalCta title="Stop Optimising for Leads" accent="Your Sales Team Does Not Want." primary={{ label: "Book an Acquisition Strategy Call", href: site.primaryCta.href }} />
       <BookingSection eyebrow="Need This Built for Your Business?" context="services:client-acquisition" />
 

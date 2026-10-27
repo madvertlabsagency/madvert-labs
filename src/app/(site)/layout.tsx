@@ -21,7 +21,7 @@ const body = Inter({ subsets: ["latin"], variable: "--font-body", display: "swap
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
   title: {
-    default: `${site.name} | ${site.descriptor}`,
+    default: `${site.descriptor} | ${site.name}`,
     template: `%s | ${site.name}`,
   },
   description:

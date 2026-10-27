@@ -18,15 +18,33 @@ export function pageMetadata({
   type?: "website" | "article" | "profile";
 }): Metadata {
   const url = absoluteUrl(path);
-  const images = image ? [{ url: image }] : undefined;
+  const ogImage = image ?? ogImageUrl(title, path);
+  const images = [{ url: ogImage, width: image ? undefined : 1200, height: image ? undefined : 630, alt: title }];
   return {
     title,
     description,
     alternates: { canonical: url },
     robots: noindex ? { index: false, follow: true } : undefined,
     openGraph: { title, description, url, siteName: site.name, type, images, locale: "en_US" },
-    twitter: { card: "summary_large_image", title, description, images: image ? [image] : undefined },
+    twitter: { card: "summary_large_image", title, description, images: [ogImage] },
   };
+}
+
+const OG_LABELS: [RegExp, string][] = [
+  [/^\/services\//, "Services"],
+  [/^\/case-studies\//, "Case Study"],
+  [/^\/insights\//, "Insights"],
+  [/^\/resources\//, "Madvert Vault"],
+  [/^\/industries/, "Industries"],
+  [/^\/glossary/, "Glossary"],
+  [/^\/(about|press)/, "About"],
+];
+
+/** Branded /og card for pages without their own image (see src/app/og/route.tsx). */
+export function ogImageUrl(title: string, path: string) {
+  const label = OG_LABELS.find(([re]) => re.test(path))?.[1] ?? site.name;
+  const clean = title.replace(/\s*\|\s*Madvert Labs$/, "");
+  return `/og?${new URLSearchParams({ title: clean, label }).toString()}`;
 }
 
 const ORG_ID = `${site.url}/#organization`;

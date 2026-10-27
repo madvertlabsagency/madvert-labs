@@ -2,6 +2,7 @@ import type { MetadataRoute } from "next";
 import { getCaseStudies, getResources } from "@/cms";
 import { pageDates } from "@/content/page-dates";
 import { articlePath, articles } from "@/content/articles";
+import { glossaryPagePath, glossaryPages } from "@/content/glossary-pages";
 import { absoluteUrl } from "@/lib/site";
 
 /**
@@ -15,6 +16,7 @@ export async function sitemapEntries(): Promise<{ url: string; lastModified?: st
   return [
     ...Object.entries(pageDates).map(([path, date]) => ({ url: absoluteUrl(path), lastModified: date })),
     ...articles.map((a) => ({ url: absoluteUrl(articlePath(a)), lastModified: a.dateModified })),
+    ...Object.entries(glossaryPages).map(([id, p]) => ({ url: absoluteUrl(glossaryPagePath(id)), lastModified: p.updated })),
     ...studies
       .filter((s) => !s.placeholder)
       .map((s) => ({ url: absoluteUrl(`/case-studies/${s.slug}`), lastModified: s.dateModified ?? s.publishedAt })),

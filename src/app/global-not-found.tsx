@@ -3,6 +3,7 @@ import { Inter, Sora } from "next/font/google";
 import "./globals.css";
 import { Cta } from "@/components/ui/Button";
 import { MadvertMark } from "@/components/ui/MadvertMark";
+import { NotFoundLinks } from "@/components/layout/NotFoundLinks";
 import { themeBootScript } from "@/lib/theme";
 
 const heading = Sora({ subsets: ["latin"], variable: "--font-heading", display: "swap", weight: ["400", "500", "600", "700"] });
@@ -22,7 +23,7 @@ export default function GlobalNotFound() {
           <div className="bg-blueprint pointer-events-none absolute inset-0" aria-hidden="true" />
           <div className="container-x relative text-center">
             <MadvertMark className="mx-auto h-12 w-auto text-ink" />
-            <p className="t-label mt-10">404</p>
+            <p className="t-label mt-10">404 · Page not found</p>
             <h1 className="t-h1 mt-4">
               This route leaks. <span className="t-grad">Let us get you back on track.</span>
             </h1>
@@ -32,6 +33,7 @@ export default function GlobalNotFound() {
                 Talk to Us
               </Cta>
             </div>
+            <NotFoundLinks />
           </div>
         </section>
       </body>

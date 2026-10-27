@@ -40,6 +40,11 @@ export type ArticleSection = {
 
 export type Article = {
   slug: string;
+  /**
+   * "draft" keeps an article out of every route, the sitemap, IndexNow, /llms.txt and the insights
+   * index until its content is approved. Use it for comparison pages and founder POV pieces in progress.
+   */
+  status?: "draft" | "published";
   /** Canonical path; defaults to /insights/<slug>. */
   path?: string;
   /** Visible H1. */
@@ -65,13 +70,13 @@ export type Article = {
 
 export const CPQL_CALCULATOR_PATH = "/tools/cost-per-qualified-lead-calculator";
 
-export const articles: Article[] = [
+const allArticles: Article[] = [
   {
     slug: "lead-generation-vs-qualified-lead-generation",
     title: "Lead Generation vs Qualified Lead Generation",
-    metaTitle: "Lead Generation vs Qualified Lead Generation: The Difference",
+    metaTitle: "Lead Generation vs Qualified Lead Generation",
     description:
-      "Lead generation produces enquiries; qualified lead generation produces enquiries that meet written buying criteria. How they differ, how to measure CPQL and when each fits.",
+      "Lead generation produces enquiries; qualified lead generation produces enquiries that meet written buying criteria. How they differ and how to measure CPQL.",
     eyebrow: "Client Acquisition Insight",
     answer: [
       "Lead generation is the work of producing enquiries: form fills, calls and WhatsApp messages from people who may be interested in a product or service. Qualified lead generation produces enquiries that already meet written buying criteria, such as budget, need, authority and timing, so a sales team spends its time on people who can actually buy.",
@@ -401,7 +406,7 @@ export const articles: Article[] = [
   {
     slug: "meta-ads-lead-generation-pakistan",
     title: "Meta Ads Lead Generation in Pakistan: How to Get Leads That Actually Buy",
-    metaTitle: "Meta Ads Lead Generation in Pakistan: Leads That Buy",
+    metaTitle: "Meta Ads Lead Generation in Pakistan",
     description:
       "How Pakistani businesses get Meta leads that buy: lead forms vs website funnels, qualifying questions, fast WhatsApp follow-up, Urdu and English creative, CAPI.",
     eyebrow: "Meta Ads Insight",
@@ -644,7 +649,7 @@ export const articles: Article[] = [
   {
     slug: "meta-ads-cost-pakistan",
     title: "How Much Do Meta Ads Cost in Pakistan?",
-    metaTitle: "How Much Do Meta Ads Cost in Pakistan? CPM, CPL, Budget",
+    metaTitle: "Meta Ads Cost in Pakistan: CPM, CPL and Budget",
     description:
       "Meta Ads in Pakistan have no fixed price. What drives CPM and cost per lead, how to set a test budget with simple formulas, and why CPQL matters more than CPL.",
     eyebrow: "Meta Ads Insight",
@@ -1081,7 +1086,7 @@ export const articles: Article[] = [
   {
     slug: "performance-marketing-vs-digital-marketing",
     title: "Performance Marketing vs Digital Marketing: What Is the Difference?",
-    metaTitle: "Performance Marketing vs Digital Marketing: Key Differences",
+    metaTitle: "Performance Marketing vs Digital Marketing",
     description:
       "Digital marketing covers every online channel; performance marketing is the part paid for and judged by measurable results. When each one fits a business.",
     eyebrow: "Growth Strategy Insight",
@@ -1286,9 +1291,9 @@ export const articles: Article[] = [
   {
     slug: "how-to-choose-digital-marketing-agency-karachi",
     title: "How to Choose a Digital Marketing Agency in Karachi (2026 Guide)",
-    metaTitle: "How to Choose a Digital Marketing Agency in Karachi (2026)",
+    metaTitle: "How to Choose a Digital Marketing Agency in Karachi",
     description:
-      "A practical checklist for choosing a digital marketing agency in Karachi: proof to ask for, questions for the first call, contract terms and the red flags to avoid.",
+      "A practical checklist for choosing a digital marketing agency in Karachi: proof to ask for, first call questions, contract terms and red flags to avoid.",
     eyebrow: "Buyer's Guide",
     answer: [
       "To choose a digital marketing agency in Karachi, check five things: published proof with real numbers and their limits, a clear diagnosis of your business before any proposal, reporting on qualified leads and sales rather than clicks, ownership of your ad accounts and data, and a verifiable office and team you can meet.",
@@ -1446,6 +1451,9 @@ export const articles: Article[] = [
     },
   },
 ];
+
+/** Published articles only. Every route, list, sitemap and feed reads from this. */
+export const articles: Article[] = allArticles.filter((a) => a.status !== "draft");
 
 export function getArticle(slug: string) {
   return articles.find((a) => a.slug === slug);

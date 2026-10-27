@@ -19,7 +19,7 @@ export const metadata: Metadata = {
     siteName: SITE.name,
     title: SITE.title,
     description: SITE.description,
-    images: [{ url: `${SITE.url}/brand/og.jpg`, width: 1200, height: 675, alt: "Madvert Labs — Digital Marketing & Growth Systems" }],
+    images: [{ url: `${SITE.url}/brand/og.jpg`, width: 1200, height: 675, alt: "Madvert Labs, Digital Marketing & Growth Systems" }],
   },
   twitter: {
     card: "summary_large_image",
@@ -39,14 +39,42 @@ export const viewport: Viewport = {
   ],
 };
 
+const ORIGIN = new URL(SITE.url).origin;
+
 const jsonLd = {
   "@context": "https://schema.org",
   "@graph": [
-    { "@type": "Organization", name: SITE.name, url: SITE.url, logo: `${SITE.url}/icon.png`, slogan: SITE.tagline },
+    // Same @id as the main site's Organization, so search engines see one entity, not two.
+    {
+      "@type": "Organization",
+      "@id": `${ORIGIN}/#organization`,
+      name: SITE.name,
+      url: ORIGIN,
+      logo: `${ORIGIN}/brand/app-icon-512.png`,
+      slogan: "Beyond Advertising. We Build Growth Systems.",
+    },
+    {
+      "@type": "WebPage",
+      "@id": `${SITE.url}#webpage`,
+      url: SITE.url,
+      name: SITE.title,
+      description: SITE.description,
+      isPartOf: { "@id": `${ORIGIN}/#website` },
+      about: { "@id": `${SITE.url}#service` },
+    },
+    {
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        { "@type": "ListItem", position: 1, name: "Home", item: ORIGIN },
+        { "@type": "ListItem", position: 2, name: "Custom Patch RFQs", item: SITE.url },
+      ],
+    },
     {
       "@type": "Service",
+      "@id": `${SITE.url}#service`,
       name: SITE.offer,
-      provider: { "@type": "Organization", name: SITE.name },
+      url: SITE.url,
+      provider: { "@id": `${ORIGIN}/#organization` },
       serviceType: "Customer acquisition for custom patch and embroidery manufacturers",
       areaServed: { "@type": "Country", name: "United States" },
       description: SITE.description,

@@ -5,11 +5,12 @@ import { useEffect } from "react";
 import { track } from "@/lib/analytics";
 import { captureAttribution } from "@/lib/attribution";
 
-const GA4 = process.env.NEXT_PUBLIC_GA4_ID;
-const GTM = process.env.NEXT_PUBLIC_GTM_ID;
+// Same container and property as the main site (one GTM and one GA4 load per page, as there).
+const GA4 = process.env.NEXT_PUBLIC_GA4_ID ?? "G-MNM7Y974JB";
+const GTM = process.env.NEXT_PUBLIC_GTM_ID ?? "GTM-MDFSNH4H";
 const ID_RE = /^[A-Za-z0-9-]+$/;
 
-/** Loads GTM / GA4 when their IDs are configured. The Meta Pixel base code is in the root layout <head>. */
+/** Loads GTM and GA4 (IDs default to the main site's). The Meta Pixel base code is in the root layout <head>. */
 export function Analytics() {
   useEffect(() => {
     captureAttribution();

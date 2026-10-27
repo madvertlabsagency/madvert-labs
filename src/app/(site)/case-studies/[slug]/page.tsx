@@ -1,3 +1,4 @@
+import { TopicLinks } from "@/components/seo/TopicLinks";
 import type { Metadata } from "next";
 import Image from "next/image";
 import { notFound } from "next/navigation";
@@ -622,6 +623,7 @@ export default async function CaseStudyPage({
         </div>
       </section>
 
+      <TopicLinks path={`/case-studies/${s.slug}`} />
       <BookingSection eyebrow="Ready When You Are" context="case-study" />
       <JsonLd data={jsonLd} />
     </article>

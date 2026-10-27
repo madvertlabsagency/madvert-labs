@@ -71,7 +71,7 @@ export function Navbar() {
         <AnnouncementBar />
       </div>
       <nav className="container-x flex h-[68px] items-center justify-between gap-4" aria-label="Primary">
-        <a href="#top" className="shrink-0" aria-label="Madvert Labs — back to top" onClick={() => setOpen(false)}>
+        <a href="#top" className="shrink-0" aria-label="Madvert Labs, back to top" onClick={() => setOpen(false)}>
           <Logo className="h-[26px] w-auto sm:h-7" />
         </a>
 

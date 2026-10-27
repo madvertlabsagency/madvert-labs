@@ -8,6 +8,7 @@ import { Breadcrumbs } from "@/components/layout/Breadcrumbs";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { Arrow } from "@/components/ui/Button";
 import { Eyebrow } from "@/components/ui/Section";
+import { glossaryPagePath, glossaryPages } from "@/content/glossary-pages";
 import { glossaryComparisons, glossaryTerms } from "@/content/glossary";
 import { organization } from "@/lib/entities";
 import { pageMetadata } from "@/lib/seo";
@@ -18,10 +19,10 @@ import "@/styles/facts.css";
 const path = "/glossary";
 const title = "Growth and Marketing Glossary";
 const description =
-  "Plain definitions of growth system, qualified lead, qualified RFQ, CPQL, speed-to-lead, lead scoring, AI SEO and AEO, with honest comparisons, from Madvert Labs.";
+  "Plain definitions of growth system, qualified lead, qualified RFQ, CPQL, speed to lead, lead scoring, AI SEO and AEO, with honest comparisons from Madvert Labs.";
 const dateModified = "2026-10-18";
 
-export const metadata: Metadata = pageMetadata({ title: "Glossary: Growth Systems, Qualified Leads, AI SEO and AEO", description, path });
+export const metadata: Metadata = pageMetadata({ title: "Growth Glossary: Qualified Leads, AI SEO and AEO", description, path });
 
 /** The words the definition opens with that name the term ("A growth system", "Cost per qualified lead"). */
 function leadingTerm(term: string, definition: string) {
@@ -92,6 +93,13 @@ export default function GlossaryPage() {
                 />
                 <p className="mt-4 text-[15.5px] leading-relaxed text-ink-2">{t.context}</p>
                 <ul className="mt-auto flex flex-wrap gap-x-6 gap-y-2 pt-6 text-[14.5px]" aria-label={`Related to ${t.term}`}>
+                  {glossaryPages[t.id] ? (
+                    <li>
+                      <Link href={glossaryPagePath(t.id)} className="group/btn inline-flex items-center gap-2 font-semibold text-accent-text">
+                        {glossaryPages[t.id].question.replace(/\?$/, "")}: full definition <Arrow />
+                      </Link>
+                    </li>
+                  ) : null}
                   {t.related.map((r) => (
                     <li key={r.href}>
                       <Link href={r.href} className="group/btn inline-flex items-center gap-2 font-semibold text-accent-text">

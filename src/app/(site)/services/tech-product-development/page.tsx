@@ -1,3 +1,4 @@
+import { TopicLinks } from "@/components/seo/TopicLinks";
 import type { Metadata } from "next";
 import { getFaqs } from "@/cms";
 import { JsonLd } from "@/components/seo/JsonLd";
@@ -13,9 +14,9 @@ import { SpecialistServices } from "@/components/service-page/SpecialistServices
 
 const path = "/services/tech-product-development";
 const description =
-  "Web apps, mobile apps, dashboards, calculators, portals, internal tools, integrations and AI tools. When growth needs technology, Madvert Labs designs and builds the tool.";
+  "Custom software, web and mobile apps, dashboards, portals, integrations and AI tools from Madvert Labs, built when growth needs a tool that does not exist yet.";
 
-export const metadata: Metadata = pageMetadata({ title: "Tech and Product Development", description, path });
+export const metadata: Metadata = pageMetadata({ title: "Custom Software and AI Systems Development", description, path });
 
 export default async function TechPage() {
   const faqs = await getFaqs("tech-product-development");
@@ -74,6 +75,7 @@ export default async function TechPage() {
         faqs={faqs}
       />
 
+      <TopicLinks path={path} />
       <FinalCta
         title="Show Us the Bottleneck."
         accent="We Will Tell You Whether It Needs Marketing, Automation or Code."

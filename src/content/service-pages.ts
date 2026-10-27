@@ -847,7 +847,7 @@ export const servicePages: Record<string, ServicePageContent> = {
     key: "social-media-management",
     metaTitle: "Social Media Management for Established Businesses",
     metaDescription:
-      "Social Media Management from Madvert Labs: content strategy, calendars, creative production, publishing, community management and reviews that keep a brand consistent.",
+      "Social Media Management from Madvert Labs: content strategy, calendars, creative, publishing and community management that keep your brand consistent.",
     short: "social media management",
     shortTitle: "Social media management",
     eyebrow: "Social Media Management",
@@ -959,9 +959,9 @@ export const servicePages: Record<string, ServicePageContent> = {
   /* ───────────────────────── Web Development ───────────────────────── */
   "web-development": {
     key: "web-development",
-    metaTitle: "Web Development: Fast Marketing Websites and Landing Pages",
+    metaTitle: "Web Development: Marketing Websites and Landing Pages",
     metaDescription:
-      "Web Development from Madvert Labs: fast marketing websites, landing pages and web apps built for conversion and connected to analytics, CRM and lead routing from day one.",
+      "Web Development from Madvert Labs: fast marketing websites, landing pages and web apps built to convert and connected to analytics and CRM from day one.",
     short: "web development",
     shortTitle: "Web development",
     eyebrow: "Web Development",
@@ -1079,9 +1079,9 @@ export const servicePages: Record<string, ServicePageContent> = {
   /* ───────────────────────── App Development ───────────────────────── */
   "app-development": {
     key: "app-development",
-    metaTitle: "App Development: Mobile Apps, Web Apps and Client Portals",
+    metaTitle: "App Development: Mobile and Web Apps",
     metaDescription:
-      "App Development from Madvert Labs: mobile and web applications, client portals and internal apps, designed and built with the backend, integrations and analytics they need.",
+      "App Development from Madvert Labs: mobile and web apps, client portals and internal tools, built with the backend, integrations and analytics they need.",
     short: "app development",
     shortTitle: "App development",
     eyebrow: "App Development",

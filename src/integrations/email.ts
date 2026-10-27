@@ -53,5 +53,5 @@ export function emailShell(title: string, body: string) {
 <tr><td style="padding:32px 32px 8px;font-size:12px;letter-spacing:.2em;color:#3fd4ff">MADVERT LABS</td></tr>
 <tr><td style="padding:8px 32px 0;font-size:22px;font-weight:700;color:#fff">${esc(title)}</td></tr>
 <tr><td style="padding:16px 32px 32px;font-size:15px;line-height:1.6;color:#a9b6c9">${body}</td></tr>
-</table><p style="font-size:12px;color:#5d6b80;margin-top:16px">Madvert Labs · Digital Marketing and Growth Systems</p></td></tr></table></body></html>`;
+</table><p style="font-size:12px;color:#5d6b80;margin-top:16px">Madvert Labs · Digital Marketing &amp; Growth Systems</p></td></tr></table></body></html>`;
 }

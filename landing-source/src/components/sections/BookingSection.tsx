@@ -13,7 +13,7 @@ import { GhlCalendar } from "./GhlCalendar";
 
 type Status = { kind: "idle" } | { kind: "submitting" } | { kind: "error"; message: string };
 
-const FAIL_MESSAGE = "We couldn’t save your application just yet. Your information is still here — please try again.";
+const FAIL_MESSAGE = "We couldn’t save your application just yet. Your information is still here, so please try again.";
 
 export function BookingSection({ instance = "book-call" }: { instance?: BookingInstance }) {
   const { calendarIn } = useBooking();
@@ -80,7 +80,7 @@ export function BookingSection({ instance = "book-call" }: { instance?: BookingI
                     <Check className="h-3.5 w-3.5" strokeWidth={3} aria-hidden /> Application received
                   </p>
                   <h3 className="display mt-4 text-[clamp(1.35rem,3.2vw,2.1rem)]">
-                    One Last Step — <span className="text-grad">Book Your Discovery Call</span>
+                    One Last Step: <span className="text-grad">Book Your Discovery Call</span>
                   </h3>
                   <p className="mx-auto mt-3 max-w-xl text-[0.95rem] leading-relaxed text-muted">
                     Choose a time that works for you to complete your Patches Partnership application.
@@ -91,7 +91,7 @@ export function BookingSection({ instance = "book-call" }: { instance?: BookingI
             ) : elsewhere ? (
               // The calendar is already open in the other booking section; don't load it twice.
               <m.div key="elsewhere" className="card p-6 text-center shadow-md sm:p-8" initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
-                <p className="text-lg font-bold">You&rsquo;re one step away — pick a time for your call.</p>
+                <p className="text-lg font-bold">You&rsquo;re one step away. Pick a time for your call.</p>
                 <button
                   type="button"
                   className="btn btn-primary mt-5"

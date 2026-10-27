@@ -45,6 +45,7 @@ export const COLLECTIONS = [
   // Marketing site: search visibility bookkeeping (not onboarding data).
   "indexnow_state",
   "crawler_hits",
+  "seo_audits",
 ] as const;
 export type Collection = (typeof COLLECTIONS)[number];
 

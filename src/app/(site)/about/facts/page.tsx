@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { BookingSection } from "@/components/booking/BookingSection";
+import { AnswerBlock } from "@/components/facts/AnswerBlock";
+import { plain } from "@/components/service-page/Rich";
 import { Breadcrumbs } from "@/components/layout/Breadcrumbs";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { Arrow } from "@/components/ui/Button";
@@ -11,6 +13,7 @@ import { pageMetadata, schema } from "@/lib/seo";
 import { site } from "@/lib/site";
 import { FactSheet } from "@/sections/facts/FactSheet";
 import { QuoteText } from "@/sections/facts/QuoteText";
+import { companyAnswers } from "@/sections/facts/answers";
 import { approvedDescriptions } from "@/sections/facts/data";
 import "@/styles/service-page.css";
 import "@/styles/facts-page.css";
@@ -58,6 +61,20 @@ export default function FactsPage() {
       <section className="pb-16 md:pb-24" aria-label="Company facts">
         <div className="container-x">
           <FactSheet updated={updated} />
+        </div>
+      </section>
+
+      <section className="section-tight !pt-0" aria-labelledby="answers-title">
+        <div className="container-x">
+          <h2 id="answers-title" className="t-h1 max-w-[860px]">
+            Questions About <span className="t-grad">{organization.name}</span>
+          </h2>
+          <div className="mt-10 grid grid-cols-1 gap-5 lg:grid-cols-2">
+            {companyAnswers.map((a) => (
+              <AnswerBlock key={a.id} {...a} />
+            ))}
+          </div>
+          <JsonLd data={schema.faq(companyAnswers.map((a) => ({ q: a.question, a: plain(a.answer) })))} />
         </div>
       </section>
 

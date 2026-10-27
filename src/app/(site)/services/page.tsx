@@ -18,7 +18,7 @@ import { SpecialistServices } from "@/components/service-page/SpecialistServices
 const description =
   "Branding, client acquisition, conversion, creative production, automation and technology, connected into one growth system. See how Madvert Labs works.";
 
-export const metadata: Metadata = pageMetadata({ title: "What We Do", description, path: "/services" });
+export const metadata: Metadata = pageMetadata({ title: "Digital Marketing Services: What We Do", description, path: "/services" });
 
 export default async function ServicesPage() {
   const faqs = await getFaqs("home");

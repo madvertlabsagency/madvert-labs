@@ -1,5 +1,6 @@
 /**
- * Glossary hub content (/glossary). One page with anchors; no thin per-term pages.
+ * Glossary hub content (/glossary), one anchor per term. The most important terms also get a full
+ * definition page (/glossary/<id>) when glossary-pages.ts has real content for them; no thin pages.
  *
  * Rules: each definition is self-contained (names the term, 1–2 sentences) so it can be quoted on
  * its own. Context paragraphs give Madvert Labs' practical view without invented statistics.

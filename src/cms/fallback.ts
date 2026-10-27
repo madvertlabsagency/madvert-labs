@@ -33,6 +33,7 @@ export const founderPhoto = {
 export const fallbackCaseStudies: CaseStudy[] = [
   {
     slug: "home-improvement-uae",
+    seo: { title: "Home Improvement Lead Generation in UAE at $3.10 CPL", description: "Home improvement lead generation case study: about 100 qualified homeowner leads in the UAE at $3.10 CPL on $288.47 of Meta Ads spend, through a sharper offer." },
     title: "100 Home Improvement Leads in UAE at $3.10 CPL",
     industry: "Home Improvement",
     market: "UAE",
@@ -156,6 +157,7 @@ export const fallbackCaseStudies: CaseStudy[] = [
   },
   {
     slug: "agency-lead-generation",
+    seo: { title: "99 Agency Leads at $4 CPL in Four Countries", description: "Agency lead generation case study: 99 qualified website applications across the USA, UK, Canada and Australia at $4.10 each on $406.25 of Meta Ads spend." },
     title: "99 Agency Leads at $4 CPL Across USA, UK, Canada & Australia",
     industry: "Agency Lead Generation",
     market: "USA, UK, Canada & Australia",
@@ -251,6 +253,7 @@ export const fallbackCaseStudies: CaseStudy[] = [
   },
   {
     slug: "texas-solar",
+    seo: { description: "Texas solar lead generation case study: 136 website applications at $13.72 and 36 Meta leads at $15.09 for a solar company in July 2025, with the full spend shown." },
     title: "Texas Solar Campaign: Direct Appointments at $15 CPL",
     industry: "Solar / Home Services",
     market: "Texas, USA",
@@ -361,6 +364,7 @@ export const fallbackCaseStudies: CaseStudy[] = [
   },
   {
     slug: "tap-center-fitness",
+    seo: { title: "Fitness Meta Ads at 8-9% CTR: 145 Leads", description: "Fitness lead generation case study: 145 Meta leads at PKR 29.41 and an 8-9% CTR for TAP Center, using strong offers and clean lead ads without a funnel." },
     title: "8-9% CTR Fitness Ad Campaign: High-Intent Leads Without Funnels",
     client: "TAP Center",
     industry: "Fitness / Sports / Wellness",
@@ -455,6 +459,7 @@ export const fallbackCaseStudies: CaseStudy[] = [
   },
   {
     slug: "cellsol-energy",
+    seo: { title: "Solar Lead Generation: 200+ Qualified Leads a Day", description: "Solar lead generation case study: 200+ qualified leads a day at about Rs. 10 CPL for Cellsol Energy in Pakistan, after which the client expanded its sales team." },
     title: "Scaled Solar Brand to 200+ Qualified Leads/Day at Rs. 10 CPL",
     client: "Cellsol Energy",
     industry: "Solar / Renewable Energy",
@@ -563,6 +568,7 @@ export const fallbackCaseStudies: CaseStudy[] = [
   },
   {
     slug: "bookkeeping-appointments",
+    seo: { title: "Bookkeeping Appointment Generation Case Study" },
     title: "Qualified Bookkeeping Appointments From International Traffic",
     industry: "Financial Services / Bookkeeping",
     market: "International (Pakistan-based company)",
@@ -648,6 +654,7 @@ export const fallbackCaseStudies: CaseStudy[] = [
   },
   {
     slug: "dubai-real-estate-nigeria",
+    seo: { title: "Dubai Real Estate: 142 Qualified Investor Leads", description: "Real estate lead generation case study: 142 BANT-qualified Nigerian investor leads for a Dubai real estate company at AED 4.17 CPL on AED 591.58 of spend." },
     title:
       "Dubai Real Estate Investor Campaign: 142 BANT-Qualified Investor Leads from Nigeria at AED 4.17 CPL",
     industry: "Real Estate",
@@ -730,6 +737,7 @@ export const fallbackCaseStudies: CaseStudy[] = [
   },
   {
     slug: "dubai-interior-design",
+    seo: { title: "111 Interior Design Inquiries in Dubai at AED 93" },
     title: "111 Qualified Interior Design Inquiries at AED 93 Per Inquiry",
     client: "Casa Elegance Interiors",
     industry: "Luxury Interior Design",
@@ -814,6 +822,7 @@ export const fallbackCaseStudies: CaseStudy[] = [
   },
   {
     slug: "earthly-elementals",
+    seo: { title: "Health Brand: 162 Purchases at Rs 844.57 Each" },
     title: "Private Label Health Brand: 162 Website Purchases at Rs 844.57 Per Purchase",
     client: "Earthly Elementals PK",
     industry: "Health & Wellness (Private Label E-commerce)",

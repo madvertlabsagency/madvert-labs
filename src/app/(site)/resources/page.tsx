@@ -1,15 +1,16 @@
+import { JsonLd } from "@/components/seo/JsonLd";
 import type { Metadata } from "next";
 import { getResources } from "@/cms";
 import { BookingSection } from "@/components/booking/BookingSection";
 import { Breadcrumbs } from "@/components/layout/Breadcrumbs";
 import { Eyebrow } from "@/components/ui/Section";
-import { pageMetadata } from "@/lib/seo";
+import { pageMetadata, schema } from "@/lib/seo";
 import { ResourceList } from "@/sections/cases/ResourceList";
 
 const description =
-  "The Madvert Vault: free playbooks, checklists and growth resources for business owners, on offers, hooks, video ads, landing pages, SEO and AI search, Meta ads, lead engines and automation.";
+  "Free Madvert Vault playbooks and checklists for business owners: offers, hooks, video ads, landing pages, SEO and AI search, Meta Ads, lead engines and CRM.";
 
-export const metadata: Metadata = pageMetadata({ title: "Madvert Vault", description, path: "/resources" });
+export const metadata: Metadata = pageMetadata({ title: "Madvert Vault: Free Growth Playbooks", description, path: "/resources" });
 
 export default async function ResourcesPage() {
   const resources = await getResources();
@@ -41,6 +42,7 @@ export default async function ResourcesPage() {
         body="Book a Business Strategy Call and we will look at where the ideas in the Vault apply to your business."
         context="resources"
       />
+      <JsonLd data={{ ...schema.webPage("Madvert Vault", description, "/resources"), "@type": "CollectionPage" }} />
     </>
   );
 }

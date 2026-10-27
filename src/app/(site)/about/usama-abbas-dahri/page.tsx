@@ -30,7 +30,8 @@ const portrait = {
   width: 800,
   height: 1000,
 };
-const description = `${founder.name} is the Founder & CEO of ${organization.name}, a digital marketing and growth systems company. Usama leads business strategy calls and is the author of several free Madvert Vault playbooks and checklists.`;
+const description =
+  "Usama Abbas Dahri is the Founder & CEO of Madvert Labs, a digital marketing and growth systems company in Karachi, and author of Madvert Vault playbooks.";
 
 export const metadata: Metadata = pageMetadata({
   title: `${founder.name}, ${founder.jobTitle} of ${organization.name}`,

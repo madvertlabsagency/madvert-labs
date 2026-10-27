@@ -23,6 +23,7 @@ export const leadMagnets: Resource[] = [
   /* ───────────── Official, artwork supplied ───────────── */
   {
     slug: "build-that-offer",
+    seo: { title: "Build That Offer: Free Offer Creation Playbook", description: "A free Madvert Vault playbook for turning a service into an offer that is easy to understand, hard to ignore and simple to buy. Free from the Madvert Vault." },
     author: "founder",
     datePublished: "2026-10-13",
     dateModified: "2026-10-15",
@@ -73,6 +74,7 @@ export const leadMagnets: Resource[] = [
   },
   {
     slug: "steal-these-hooks",
+    seo: { title: "Steal These Hooks: Free Ad Hook Playbook", description: "A free Madvert Vault playbook of ad and content hooks: write openings that stop the scroll and pull the right people into your message. Free from the Madvert Vault." },
     author: "founder",
     datePublished: "2026-10-15",
     dateModified: "2026-10-15",
@@ -121,6 +123,7 @@ export const leadMagnets: Resource[] = [
   },
   {
     slug: "stop-the-scroll",
+    seo: { title: "Stop the Scroll: Free Video Ad Playbook", description: "A free Madvert Vault playbook for planning and producing video ads that stop the scroll and move the right viewer to act." },
     datePublished: "2026-10-15",
     dateModified: "2026-10-15",
     relatedServices: ["studios", "meta-ads"],
@@ -168,6 +171,7 @@ export const leadMagnets: Resource[] = [
   },
   {
     slug: "landing-pages-that-sell",
+    seo: { title: "Landing Pages That Sell: Free Playbook", description: "A free Madvert Vault playbook for landing pages that turn more of the visitors you already pay for into leads, customers and sales." },
     author: "founder",
     datePublished: "2026-10-13",
     dateModified: "2026-10-13",
@@ -216,6 +220,7 @@ export const leadMagnets: Resource[] = [
   },
   {
     slug: "seo-ai-search-playbook",
+    seo: { title: "SEO and AI Search Playbook: Free Guide", description: "A free Madvert Vault playbook for making your business more discoverable across Google, Google Maps and AI search." },
     author: "founder",
     datePublished: "2026-10-13",
     dateModified: "2026-10-13",
@@ -264,7 +269,7 @@ export const leadMagnets: Resource[] = [
   },
   {
     slug: "meta-ads-pre-launch-checklist",
-    seo: { title: "Meta Ads Checklist: Free Pre Launch Campaign Audit" },
+    seo: { title: "Meta Ads Checklist: Free Pre Launch Campaign Audit", description: "A free Meta Ads checklist to run before you spend: offer, tracking, creative and lead follow up ready, so campaigns launch without expensive gaps." },
     author: "founder",
     datePublished: "2026-10-13",
     dateModified: "2026-10-13",
@@ -313,6 +318,7 @@ export const leadMagnets: Resource[] = [
   },
   {
     slug: "ai-content-automation-playbook",
+    seo: { title: "AI Content Automation Playbook: Free Guide", description: "A free Madvert Vault playbook for planning, creating, repurposing and distributing content consistently with AI and automation." },
     author: "founder",
     datePublished: "2026-10-13",
     dateModified: "2026-10-13",
@@ -361,6 +367,7 @@ export const leadMagnets: Resource[] = [
   },
   {
     slug: "automated-lead-engine",
+    seo: { title: "Automated Lead Engine: Free Lead Generation Guide", description: "A free Madvert Vault guide to the system that attracts, qualifies and books leads for a service business." },
     author: "founder",
     datePublished: "2026-10-13",
     dateModified: "2026-10-13",
@@ -411,6 +418,7 @@ export const leadMagnets: Resource[] = [
   /* ───────────── Audits, checklists and portfolio (official artwork not supplied yet) ───────────── */
   {
     slug: "growth-systems-audit",
+    seo: { description: "A free growth systems audit from the Madvert Vault: see where your marketing, conversion, follow up and data are quietly losing money." },
     datePublished: "2026-10-13",
     dateModified: "2026-10-13",
     relatedServices: ["growth-systems"],
@@ -444,6 +452,7 @@ export const leadMagnets: Resource[] = [
   },
   {
     slug: "brand-perception-checklist",
+    seo: { description: "A free brand perception checklist: find what makes your business look smaller online than it really is, as a new customer sees it." },
     datePublished: "2026-10-13",
     dateModified: "2026-10-13",
     relatedServices: ["branding-marketing"],
@@ -472,6 +481,7 @@ export const leadMagnets: Resource[] = [
   },
   {
     slug: "qualified-lead-generation-playbook",
+    seo: { description: "A free qualified lead generation playbook from the Madvert Vault to attract the leads your sales team actually wants to call." },
     datePublished: "2026-10-13",
     dateModified: "2026-10-13",
     relatedServices: ["client-acquisition", "meta-ads"],
@@ -500,6 +510,7 @@ export const leadMagnets: Resource[] = [
   },
   {
     slug: "conversion-leak-checklist",
+    seo: { description: "A free conversion leak checklist: spot the friction on your website and landing pages that turns paid clicks into lost visitors." },
     datePublished: "2026-10-13",
     dateModified: "2026-10-13",
     relatedServices: ["conversion"],
@@ -528,7 +539,7 @@ export const leadMagnets: Resource[] = [
   },
   {
     slug: "revenue-leakage-audit",
-    seo: { title: "Revenue Leakage Audit: Free Lead Follow Up Check" },
+    seo: { title: "Revenue Leakage Audit: Free Lead Follow Up Check", description: "A free revenue leakage audit: find the revenue lost between enquiry and closed deal, before you spend more on getting new leads." },
     datePublished: "2026-10-13",
     dateModified: "2026-10-13",
     relatedServices: ["automation-revenue-systems"],
@@ -558,6 +569,7 @@ export const leadMagnets: Resource[] = [
   },
   {
     slug: "tech-opportunity-audit",
+    seo: { description: "A free tech opportunity audit: find what in your business should be built, automated or connected to save time and grow." },
     datePublished: "2026-10-13",
     dateModified: "2026-10-13",
     relatedServices: ["tech-product-development", "ai-agents"],

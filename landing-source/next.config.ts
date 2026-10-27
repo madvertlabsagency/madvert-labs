@@ -4,7 +4,7 @@ import type { NextConfig } from "next";
  * Two build modes:
  *
  * - default (`npm run build`): a normal Next.js server build with the /api/apply route.
- * - `npm run build:custom-patches`: a static export for www.madvertlabs.com/custom-patches.
+ * - `npm run build:custom-patches`: a static export for madvertlabs.com/custom-patches.
  *   `basePath` makes Next emit every script, chunk-loader, font and CSS URL under
  *   /custom-patches, so the output can be dropped into the main site's
  *   public/custom-patches/ folder without hand-editing generated bundles.

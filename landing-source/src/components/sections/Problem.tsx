@@ -107,7 +107,7 @@ function CapacityGauge() {
             <span className="text-muted">demand is planned around the capacity you actually have.</span>
           </span>
         ) : (
-          <span className="text-muted">Idle machines and a quiet inbox — the gap most manufacturers live with.</span>
+          <span className="text-muted">Idle machines and a quiet inbox: the gap most manufacturers live with.</span>
         )}
       </m.div>
     </div>

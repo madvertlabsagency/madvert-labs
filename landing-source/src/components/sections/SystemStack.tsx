@@ -104,7 +104,7 @@ export function SystemStack() {
           </div>
           <Reveal delay={0.1} className="lg:col-span-5">
             <p className="lead">
-              Four connected layers — built, run and improved by Madvert Labs. Open any layer to see exactly what&rsquo;s inside.
+              Four connected layers, built, run and improved by Madvert Labs. Open any layer to see exactly what&rsquo;s inside.
             </p>
           </Reveal>
         </div>

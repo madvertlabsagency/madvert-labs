@@ -1,3 +1,4 @@
+import { TopicLinks } from "@/components/seo/TopicLinks";
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
@@ -9,7 +10,8 @@ import { Cta } from "@/components/ui/Button";
 import { Eyebrow } from "@/components/ui/Section";
 import { GrowthRibbon } from "@/components/visuals/GrowthRibbon";
 import { BOOKING_CONTEXT, INDUSTRIES, TRUST, WL_BOOKING_URL, WL_PHOTOS } from "@/content/white-label";
-import { pageMetadata } from "@/lib/seo";
+import { JsonLd } from "@/components/seo/JsonLd";
+import { pageMetadata, schema } from "@/lib/seo";
 import { FinalCta } from "@/sections/shared/FinalCta";
 import {
   CapabilityList,
@@ -34,9 +36,9 @@ import { VslPlayer } from "@/sections/white-label/VslPlayer";
 
 const path = "/white-label-partnership";
 const description =
-  "White-label growth department for agencies: paid acquisition, lead generation, funnels, creative, tracking, CRM, automation and development delivered under your agency's brand.";
+  "White label digital marketing for agency owners who can sell but need fulfillment: Meta Ads, lead generation, funnels, creative, CRM and automation under your brand.";
 
-export const metadata: Metadata = pageMetadata({ title: "White-Label Growth Department for Agencies", description, path });
+export const metadata: Metadata = pageMetadata({ title: "White Label Digital Marketing and Agency Fulfillment", description, path });
 
 const CALL = { label: "Book a White-Label Strategy Call", href: "#book" };
 const TRACK = "white_label_call_click";
@@ -877,6 +879,7 @@ export default async function WhiteLabelPage() {
       </section>
 
       {/* 20 — FINAL CLOSE */}
+      <TopicLinks path={path} />
       <FinalCta
         title="You Don’t Need To Become Great At Every Part Of Delivery."
         accent="You Need A Backend You Can Trust Enough To Keep Selling."
@@ -891,6 +894,16 @@ export default async function WhiteLabelPage() {
         </p>
       </FinalCta>
       <FlowDefs />
+      <JsonLd data={schema.webPage("White Label Digital Marketing and Agency Fulfillment", description, path)} />
+      <JsonLd
+        data={schema.service({
+          name: "White label digital marketing for agencies",
+          description,
+          path,
+          serviceType: "White label digital marketing and agency fulfillment",
+          audience: "Marketing agencies and agency owners",
+        })}
+      />
     </>
   );
 }

@@ -1,3 +1,4 @@
+import { TopicLinks } from "@/components/seo/TopicLinks";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { BookingSection } from "@/components/booking/BookingSection";
@@ -45,6 +46,7 @@ export default async function IndustryPageRoute({ params }: { params: Promise<{ 
       <IndustryProof page={page} />
       <IndustryFaq page={page} />
       <IndustryRelated page={page} />
+      <TopicLinks path={page.path} />
       <BookingSection eyebrow="Next Step" title={page.cta.title} accent={page.cta.accent} body={page.cta.body} context={`industry:${page.slug}`} />
       <JsonLd data={{ ...schema.webPage(page.metaTitle, page.metaDescription, page.path), dateModified: updated }} />
       <JsonLd

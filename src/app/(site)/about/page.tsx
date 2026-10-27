@@ -24,9 +24,9 @@ import { industryChips } from "@/sections/about/data";
 import { FinalCta } from "@/sections/shared/FinalCta";
 import "@/styles/about.css";
 
-const description = `${organization.name} is an external growth department for established businesses, founded by ${founder.name}. We connect marketing, conversion, CRM, automation and technology into one growth system.`;
+const description = `${organization.name} is an external growth department for established businesses, founded by ${founder.name}, connecting marketing, conversion, CRM and technology.`;
 
-export const metadata: Metadata = pageMetadata({ title: "About Us", description, path: "/about" });
+export const metadata: Metadata = pageMetadata({ title: "About Us: Your External Growth Department", description, path: "/about" });
 
 export default async function AboutPage() {
   const [studies, resources, testimonials] = await Promise.all([getCaseStudies(), getResources(), getTestimonials()]);

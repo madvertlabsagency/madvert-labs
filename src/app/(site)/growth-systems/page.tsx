@@ -1,3 +1,4 @@
+import { TopicLinks } from "@/components/seo/TopicLinks";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { BookingSection } from "@/components/booking/BookingSection";
@@ -25,7 +26,7 @@ const entity = getServiceEntity("growth-systems");
 const path = entity.path;
 const title = "What Is a Growth System?";
 const description =
-  "A growth system connects brand, demand generation, conversion, follow up, data and technology into one measured system. What it includes, how it differs from separate vendors and how to build one.";
+  "A growth system connects brand, demand, conversion, follow up, data and technology into one measured system. What it includes and how Madvert Labs builds one.";
 
 /** Visible on the page and mirrored in the Article schema. Update dateModified when the copy changes. */
 const datePublished = "2026-10-18";
@@ -33,7 +34,7 @@ const dateModified = "2026-10-18";
 const formatDate = (d: string) =>
   new Date(`${d}T12:00:00Z`).toLocaleDateString("en-GB", { day: "numeric", month: "long", year: "numeric", timeZone: "UTC" });
 
-export const metadata: Metadata = pageMetadata({ title: "What Is a Growth System? Definition, Components and Examples", description, path, type: "article" });
+export const metadata: Metadata = pageMetadata({ title: "What Is a Growth System? Definition and Examples", description, path, type: "article" });
 
 const components: { name: string; text: string; key?: ServiceKey }[] = [
   { name: "Brand", text: "How the business looks, sounds and communicates. Brand decides whether attention turns into trust before anyone speaks to sales.", key: "branding-marketing" },
@@ -292,6 +293,7 @@ export default function GrowthSystemsPage() {
         </SpSection>
       </article>
 
+      <TopicLinks path={path} />
       <FinalCta title="Growth Is a System." accent="Let Us Look at Yours." primary={{ label: site.founderCta.label, href: "#book" }} secondary={{ label: site.auditCta.label, href: site.auditCta.href }} />
       <BookingSection eyebrow="Next Step" context="growth-systems" />
 

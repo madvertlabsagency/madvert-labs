@@ -21,11 +21,11 @@ import { IntroVideo } from "@/sections/home/IntroVideo";
 import { INTRO_TRANSCRIPT, INTRO_VIDEO } from "@/content/intro-video";
 
 const description =
-  "Madvert Labs connects branding, customer acquisition, conversion, creative, automation and technology into one intelligent growth system built around your business.";
+  "Madvert Labs is your external growth department: paid acquisition, SEO and AEO, branding, conversion, CRM, automation and technology connected in one growth system.";
 
 export const metadata: Metadata = {
-  ...pageMetadata({ title: `${site.name} | ${site.descriptor}`, description, path: "/" }),
-  title: { absolute: `${site.name} | ${site.descriptor}` },
+  ...pageMetadata({ title: `${site.descriptor} | ${site.name}`, description, path: "/" }),
+  title: { absolute: `${site.descriptor} | ${site.name}` },
 };
 
 export default async function HomePage() {

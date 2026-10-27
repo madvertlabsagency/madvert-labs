@@ -1,5 +1,8 @@
 # Search and AI search visibility
 
+> Current crawler, canonical, Cloudflare and IndexNow reference: `docs/SEO-AEO-CRAWLER-SETUP.md`.
+> Topic → primary URL map: `docs/SEO-TOPIC-MAP.md`. Live controls: `/ops/seo`.
+
 How madvertlabs.com is made discoverable and citation-ready for Google Search (including AI
 Overviews and AI Mode), Bing and Microsoft Copilot, ChatGPT Search and other AI search
 experiences. Everything here follows the engines' own guidance; there are no AI-only pages,
@@ -49,13 +52,14 @@ Submissions only happen on the production deployment.
 `src/lib/entities.ts` is the single source for the organisation, founder and service names, URLs
 and definitions. `src/lib/seo.ts` builds JSON-LD from it:
 
-- Every page: Organization (no LocalBusiness — no verified address), WebSite, Person (founder).
+- Every page: Organization + ProfessionalService (verified Karachi office from the Google Business Profile), WebSite, Person (founder).
 - Homepage: WebPage + VideoObject (with the film's caption transcript).
 - Service pages: Service + BreadcrumbList (+ FAQPage only where the FAQ is visible).
 - Case studies: Article; resources: CreativeWork with author and dates; founder page: ProfilePage.
 
-Nothing is fabricated: no reviews, ratings, awards, offices, client counts or years. `sameAs` is
-empty until verified profile URLs are added to `NEXT_PUBLIC_SAME_AS` / `NEXT_PUBLIC_FOUNDER_SAME_AS`.
+Nothing is fabricated: no reviews, ratings, awards, client counts or years. `sameAs` holds the
+Google Business Profile and the founder's LinkedIn; add more verified profile URLs with
+`NEXT_PUBLIC_SAME_AS` / `NEXT_PUBLIC_FOUNDER_SAME_AS`.
 Validate with https://search.google.com/test/rich-results and https://validator.schema.org.
 
 ## Crawler observability — Operations → Crawlers

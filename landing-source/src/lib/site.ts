@@ -5,10 +5,10 @@ export const SITE = {
   tagline: "Digital Marketing & Growth Systems",
   offer: "The Patch Capacity Partnership",
   /** Canonical URL of this landing page (it lives under a sub-path of the main site). */
-  url: process.env.NEXT_PUBLIC_SITE_URL || "https://www.madvertlabs.com/custom-patches",
+  url: process.env.NEXT_PUBLIC_SITE_URL || "https://madvertlabs.com/custom-patches",
   title: "Pre-Qualified Custom Patch RFQs | Madvert Labs",
   description:
-    "A performance-based customer acquisition partnership for established custom patch and embroidery manufacturers selling into the U.S. Founding beta pricing starts at $15 per accepted qualified RFQ, with ad spend included.",
+    "Performance-based customer acquisition for established U.S. custom patch and embroidery manufacturers: qualified RFQs from $15 each, with ad spend included.",
   price: 15,
 } as const;
 
