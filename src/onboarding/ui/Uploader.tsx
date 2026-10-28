@@ -13,6 +13,8 @@ let seq = 0;
 const kindOf = (mime?: string | null, name = "") =>
   mime?.startsWith("image/") ? "image" : mime?.startsWith("video/") ? "video" : /\.pdf$/i.test(name) ? "PDF" : /\.zip$/i.test(name) ? "ZIP" : (name.split(".").pop() ?? "FILE").toUpperCase().slice(0, 4);
 
+
+const uniqueName = (safe: string) => `${Date.now().toString(36)}${Math.random().toString(36).slice(2, 6)}-${safe}`;
 export function Uploader({ section, single = false }: { section: AssetSection; single?: boolean }) {
   const { state, call, upload, authHeader } = usePortal();
   const [over, setOver] = useState(false);
@@ -36,10 +38,13 @@ export function Uploader({ section, single = false }: { section: AssetSection; s
     let res: { ok?: boolean; error?: string };
     if (mode === "vercel-blob") {
       try {
-        const { upload: blobUpload } = await import("@vercel/blob/client");
+        const { upload: tokenUpload, uploadPresigned } = await import("@vercel/blob/client");
+        const blobUpload = state.upload.presigned ? uploadPresigned : tokenUpload;
         const folder = section.categories.find((c) => c.key === cat)?.folder ?? "07 Raw Assets";
         const safe = file.name.replace(/[^\w.\- ]+/g, "").replace(/\s+/g, "-") || "file";
-        const blob = await blobUpload(`${state.upload.prefix}${folder}/${safe}`, file, {
+        // Presigned uploads cannot add a random suffix, so the name gets a short unique prefix instead.
+        const name = state.upload.presigned ? uniqueName(safe) : safe;
+        const blob = await blobUpload(`${state.upload.prefix}${folder}/${name}`, file, {
           access: "private",
           handleUploadUrl: "/api/onboarding/portal/upload-token",
           clientPayload: JSON.stringify({ category: cat }),

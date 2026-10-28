@@ -6,7 +6,7 @@ import { vaultConfigured } from "./crypto";
 import { getGuides, resolveGuides } from "./guides";
 import { progressInput, type OnboardingContext } from "./repo";
 import { getSettings, publicIntegrations } from "./settings";
-import { keyPrefix, signedFileUrl, storageDriver } from "./storage";
+import { blobStoreId, keyPrefix, signedFileUrl, storageDriver } from "./storage";
 
 /**
  * The state sent to the client portal. Internal notes, strategy notes, credential values,
@@ -77,7 +77,7 @@ export async function clientState(ctx: OnboardingContext) {
     guides,
     progress: computeProgress(input),
     missing: missingItems(input),
-    upload: { mode: storageDriver(), prefix: keyPrefix(o.id) },
+    upload: { mode: storageDriver(), presigned: Boolean(blobStoreId()), prefix: keyPrefix(o.id) },
     vaultEnabled: vaultConfigured(),
     emailEnabled: Boolean(process.env.RESEND_API_KEY && process.env.EMAIL_FROM),
   };
