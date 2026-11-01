@@ -2,7 +2,7 @@
 
 import { useCallback, useState, type FormEvent } from "react";
 import { TextArea, TextField, Turnstile, useFormMeta } from "@/forms/Fields";
-import { SURVEYS, WOULD_BUY, type SurveyId } from "@/survey/surveys";
+import { PAYMENT_OPTIONS, PILOT_SIZE, SURVEYS, type SurveyId } from "@/survey/surveys";
 
 type Errors = Record<string, string[] | undefined>;
 
@@ -35,8 +35,10 @@ export function FeedbackForm({ survey }: { survey: SurveyId }) {
           liked: get("liked"),
           unclear: get("unclear"),
           change: get("change"),
-          wouldBuy: get("wouldBuy"),
-          wouldBuyWhy: get("wouldBuyWhy"),
+          pilotSize: get("pilotSize"),
+          pilotFeedback: get("pilotFeedback"),
+          payment: get("payment"),
+          paymentNote: get("paymentNote"),
           price: get("price"),
           suggestions: get("suggestions"),
           website_confirm: get("website_confirm"),
@@ -96,28 +98,27 @@ export function FeedbackForm({ survey }: { survey: SurveyId }) {
       <TextArea name="unclear" label="B. What is unclear, unattractive, or needs improvement?" rows={3} required error={err("unclear")} />
       <TextArea name="change" label="C. What would you change?" rows={3} required error={err("change")} />
 
-      <fieldset>
-        <legend className="mb-3 text-[14px] font-medium text-ink">{cfg.wouldBuy}</legend>
-        <div className="flex flex-wrap gap-3">
-          {WOULD_BUY.map((o) => (
-            <label key={o} className="flex cursor-pointer items-center gap-2.5 rounded-full border border-line-strong px-5 py-2.5 text-[15px] has-[:checked]:border-[color:var(--accent)] has-[:checked]:bg-[rgb(0_180_255/0.1)]">
-              <input type="radio" name="wouldBuy" value={o} required className="accent-[#00b4ff]" />
-              {o}
-            </label>
-          ))}
-        </div>
-        {err("wouldBuy") ? (
-          <p role="alert" className="mt-2 text-[13px] text-danger">
-            {err("wouldBuy")}
-          </p>
-        ) : null}
-        <div className="mt-4">
-          <TextArea name="wouldBuyWhy" label="Why, or what would make it a yes?" rows={2} optional error={err("wouldBuyWhy")} />
-        </div>
-      </fieldset>
 
       <TextField name="price" label={cfg.price} hint={cfg.priceHint} required error={err("price")} />
-      <TextArea name="suggestions" label="Any other suggestions?" rows={3} optional error={err("suggestions")} />
+      <Choice
+        name="pilotSize"
+        legend="E. Our pilot campaign is 40 qualified RFQs. What do you think of that size?"
+        options={PILOT_SIZE}
+        error={err("pilotSize")}
+      />
+      <TextArea name="pilotFeedback" label="What should the pilot look like, and why?" rows={2} optional error={err("pilotFeedback")} />
+
+      <Choice name="payment" legend="F. Which payment option would you prefer?" options={PAYMENT_OPTIONS} error={err("payment")} />
+      <TextArea name="paymentNote" label="Any payment concerns, or another option you would prefer?" rows={2} optional error={err("paymentNote")} />
+
+      <TextArea
+        name="suggestions"
+        label="G. What additions would make this product better for you?"
+        hint="For example extra details on each RFQ, faster delivery, specific regions or product types."
+        rows={3}
+        required
+        error={err("suggestions")}
+      />
 
       <Turnstile onToken={onToken} />
       {error ? (
@@ -133,5 +134,29 @@ export function FeedbackForm({ survey }: { survey: SurveyId }) {
         {status === "sending" ? "Sending…" : "Send feedback"}
       </button>
     </form>
+  );
+}
+
+function Choice({ name, legend, options, error }: { name: string; legend: string; options: readonly string[]; error?: string }) {
+  return (
+    <fieldset>
+      <legend className="mb-3 text-[14px] font-medium text-ink">{legend}</legend>
+      <div className="flex flex-col gap-2.5 sm:flex-row sm:flex-wrap">
+        {options.map((o) => (
+          <label
+            key={o}
+            className="flex cursor-pointer items-center gap-2.5 rounded-full border border-line-strong px-5 py-2.5 text-[15px] has-[:checked]:border-[color:var(--accent)] has-[:checked]:bg-[rgb(0_180_255/0.1)]"
+          >
+            <input type="radio" name={name} value={o} required className="accent-[#00b4ff]" />
+            {o}
+          </label>
+        ))}
+      </div>
+      {error ? (
+        <p role="alert" className="mt-2 text-[13px] text-danger">
+          {error}
+        </p>
+      ) : null}
+    </fieldset>
   );
 }

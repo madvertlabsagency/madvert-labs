@@ -4,7 +4,7 @@ import { requireOpsPage } from "@/onboarding/server/ops";
 import { OpsShell } from "@/onboarding/ui/ops/OpsKit";
 import { dbDriver } from "@/onboarding/server/db";
 import { listSurveyResponses } from "@/survey/results";
-import { SURVEYS, SURVEY_COLUMNS, SURVEY_IDS, WOULD_BUY, type SurveyId } from "@/survey/surveys";
+import { PAYMENT_OPTIONS, PILOT_SIZE, SURVEYS, SURVEY_COLUMNS, SURVEY_IDS, type SurveyId } from "@/survey/surveys";
 
 export const metadata: Metadata = { title: "Surveys · Operations" };
 
@@ -17,7 +17,10 @@ export default async function OpsSurveys({ searchParams }: { searchParams: Promi
   const cfg = SURVEYS[survey];
   const rows = await listSurveyResponses(survey);
   const fmt = (iso: string) => new Date(iso).toLocaleString("en-GB", { dateStyle: "medium", timeStyle: "short", timeZone: "Asia/Karachi" });
-  const counts = WOULD_BUY.map((o) => [o, rows.filter((r) => r.wouldBuy === o).length] as const);
+  const counts = [
+    ...PILOT_SIZE.map((o) => [`Pilot: ${o}`, rows.filter((r) => r.pilotSize === o).length] as const),
+    ...PAYMENT_OPTIONS.map((o) => [`Payment: ${o}`, rows.filter((r) => r.payment === o).length] as const),
+  ];
 
   return (
     <OpsShell user={user}>
@@ -47,7 +50,7 @@ export default async function OpsSurveys({ searchParams }: { searchParams: Promi
           <span className="rounded-full border border-[var(--ob-line)] px-4 py-2">{rows.length} responses</span>
           {counts.map(([o, n]) => (
             <span key={o} className="rounded-full border border-[var(--ob-line)] px-4 py-2">
-              Would use: {o} · {n}
+              {o} · {n}
             </span>
           ))}
         </div>

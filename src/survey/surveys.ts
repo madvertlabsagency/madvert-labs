@@ -6,15 +6,21 @@ export const SURVEYS = {
     product: "Pre-Qualified Custom Patch RFQs",
     productUrl: "/custom-patches",
     formPath: "/custom-patches/feedback",
-    wouldBuy: "D. Would you actually buy qualified RFQs from us?",
-    price: "E. What price per qualified RFQ would you consider reasonable?",
+    price: "D. What price per qualified RFQ would you consider reasonable?",
     priceHint: "Our founding beta price is $15 per accepted RFQ, ad spend included. Tell us honestly what feels fair.",
   },
 } as const;
 export type SurveyId = keyof typeof SURVEYS;
 export const SURVEY_IDS = Object.keys(SURVEYS) as [SurveyId, ...SurveyId[]];
 
-export const WOULD_BUY = ["Yes", "Maybe", "No"] as const;
+/** Pilot campaign size: the current pilot is 40 qualified RFQs. */
+export const PILOT_SIZE = ["Fewer than 40", "40 is right", "More than 40"] as const;
+
+export const PAYMENT_OPTIONS = [
+  "Card on file, charged as each RFQ is delivered",
+  "Pay in advance",
+  "Bi-weekly payments",
+] as const;
 
 const text = (max: number) => z.string().trim().max(max, `Please keep this under ${max} characters.`);
 const answer = text(3000).min(2, "Please write a short answer.");
@@ -27,10 +33,12 @@ export const surveySchema = z.object({
   liked: answer,
   unclear: answer,
   change: answer,
-  wouldBuy: z.enum(WOULD_BUY, { message: "Please pick one." }),
-  wouldBuyWhy: text(1500).optional().default(""),
   price: text(500).min(1, "Please share a price you would consider reasonable."),
-  suggestions: text(3000).optional().default(""),
+  pilotSize: z.enum(PILOT_SIZE, { message: "Please pick one." }),
+  pilotFeedback: text(1500).optional().default(""),
+  payment: z.enum(PAYMENT_OPTIONS, { message: "Please pick one." }),
+  paymentNote: text(1500).optional().default(""),
+  suggestions: answer,
   website_confirm: z.string().optional(),
   startedAt: z.number(),
   turnstileToken: z.string().optional(),
@@ -51,8 +59,10 @@ export const SURVEY_COLUMNS: { key: keyof SurveyResponse; label: string }[] = [
   { key: "liked", label: "What they liked" },
   { key: "unclear", label: "What was unclear" },
   { key: "change", label: "What they would change" },
-  { key: "wouldBuy", label: "Would they buy/use" },
-  { key: "wouldBuyWhy", label: "Why (buy/use)" },
   { key: "price", label: "Price response" },
-  { key: "suggestions", label: "Any suggestions" },
+  { key: "pilotSize", label: "Pilot size (40 RFQs)" },
+  { key: "pilotFeedback", label: "Pilot feedback" },
+  { key: "payment", label: "Preferred payment" },
+  { key: "paymentNote", label: "Payment notes" },
+  { key: "suggestions", label: "Additions / suggestions" },
 ];
