@@ -4,15 +4,18 @@ import { requireOpsPage } from "@/onboarding/server/ops";
 import { OpsShell } from "@/onboarding/ui/ops/OpsKit";
 import { dbDriver } from "@/onboarding/server/db";
 import { listSurveyResponses } from "@/survey/results";
-import { SURVEY_COLUMNS, WOULD_BUY } from "@/survey/white-label";
+import { SURVEYS, SURVEY_COLUMNS, SURVEY_IDS, WOULD_BUY, type SurveyId } from "@/survey/surveys";
 
 export const metadata: Metadata = { title: "Surveys · Operations" };
 
-/** White-label partnership feedback: one row per customer, columns as in the survey brief. */
-export default async function OpsSurveys() {
+/** Product feedback: one row per customer, columns as in the survey brief. */
+export default async function OpsSurveys({ searchParams }: { searchParams: Promise<{ survey?: string }> }) {
   await connection();
   const user = await requireOpsPage();
-  const rows = await listSurveyResponses();
+  const param = (await searchParams).survey ?? "";
+  const survey: SurveyId = param in SURVEYS ? (param as SurveyId) : SURVEY_IDS[0];
+  const cfg = SURVEYS[survey];
+  const rows = await listSurveyResponses(survey);
   const fmt = (iso: string) => new Date(iso).toLocaleString("en-GB", { dateStyle: "medium", timeStyle: "short", timeZone: "Asia/Karachi" });
   const counts = WOULD_BUY.map((o) => [o, rows.filter((r) => r.wouldBuy === o).length] as const);
 
@@ -21,14 +24,17 @@ export default async function OpsSurveys() {
       <div className="ob-wrap !max-w-[1600px] py-10">
         <div className="flex flex-wrap items-end justify-between gap-4">
           <div>
-            <h1 className="text-[28px] font-bold tracking-tight">White-label feedback</h1>
+            <h1 className="text-[28px] font-bold tracking-tight">{cfg.product}: feedback</h1>
             <p className="mt-2 text-[14px] text-[var(--ob-ink-2)]">
-              Answers from <a className="underline" href="/white-label-partnership/feedback" target="_blank" rel="noopener">/white-label-partnership/feedback</a>. Times in
-              Pakistan time.
+              Answers from{" "}
+              <a className="underline" href={cfg.formPath} target="_blank" rel="noopener">
+                madvertlabs.com{cfg.formPath}
+              </a>
+              . Times in Pakistan time.
             </p>
           </div>
           {rows.length ? (
-            <a href="/ops/surveys/export" className="rounded-full bg-[linear-gradient(100deg,#00b4ff,#00e5ff)] px-5 py-2.5 text-[14px] font-semibold text-[#0a0f1c]">
+            <a href={`/ops/surveys/export?survey=${survey}`} className="rounded-full bg-[linear-gradient(100deg,#00b4ff,#00e5ff)] px-5 py-2.5 text-[14px] font-semibold text-[#0a0f1c]">
               Download CSV
             </a>
           ) : null}

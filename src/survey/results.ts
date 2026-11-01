@@ -1,10 +1,10 @@
 import "server-only";
 import { db, dbDriver } from "@/onboarding/server/db";
-import { SURVEY_COLUMNS, type SurveyResponse } from "./white-label";
+import { SURVEY_COLUMNS, type SurveyId, type SurveyResponse } from "./surveys";
 
-export async function listSurveyResponses(): Promise<SurveyResponse[]> {
+export async function listSurveyResponses(survey: SurveyId): Promise<SurveyResponse[]> {
   if (dbDriver() === "unconfigured") return [];
-  const rows = await db().find<SurveyResponse>("survey_responses");
+  const rows = await db().find<SurveyResponse>("survey_responses", { survey });
   return rows.sort((a, b) => b.submittedAt.localeCompare(a.submittedAt));
 }
 

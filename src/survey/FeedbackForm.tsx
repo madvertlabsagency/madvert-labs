@@ -2,12 +2,13 @@
 
 import { useCallback, useState, type FormEvent } from "react";
 import { TextArea, TextField, Turnstile, useFormMeta } from "@/forms/Fields";
-import { WOULD_BUY } from "@/survey/white-label";
+import { SURVEYS, WOULD_BUY, type SurveyId } from "@/survey/surveys";
 
 type Errors = Record<string, string[] | undefined>;
 
-/** White-label product feedback survey. Answers are stored server-side and read in Operations → Surveys. */
-export function FeedbackForm() {
+/** Product feedback survey. Answers are stored server-side and read in Operations → Surveys. */
+export function FeedbackForm({ survey }: { survey: SurveyId }) {
+  const cfg = SURVEYS[survey];
   const { startedAtRef } = useFormMeta();
   const [status, setStatus] = useState<"idle" | "sending" | "done">("idle");
   const [error, setError] = useState("");
@@ -27,6 +28,7 @@ export function FeedbackForm() {
         method: "POST",
         headers: { "content-type": "application/json" },
         body: JSON.stringify({
+          survey,
           name: get("name"),
           business: get("business"),
           contact: get("contact"),
@@ -61,7 +63,7 @@ export function FeedbackForm() {
     return (
       <div className="panel p-8 text-center sm:p-12" role="status">
         <p className="t-h2">Thank you. Your feedback is in.</p>
-        <p className="t-lead mx-auto mt-4 max-w-[520px]">This genuinely helps us improve the partnership. JazakAllah khair for taking the time.</p>
+        <p className="t-lead mx-auto mt-4 max-w-[520px]">This genuinely helps us improve the product. JazakAllah khair for taking the time.</p>
       </div>
     );
   }
@@ -95,7 +97,7 @@ export function FeedbackForm() {
       <TextArea name="change" label="C. What would you change?" rows={3} required error={err("change")} />
 
       <fieldset>
-        <legend className="mb-3 text-[14px] font-medium text-ink">D. Would you actually use this white-label partnership?</legend>
+        <legend className="mb-3 text-[14px] font-medium text-ink">{cfg.wouldBuy}</legend>
         <div className="flex flex-wrap gap-3">
           {WOULD_BUY.map((o) => (
             <label key={o} className="flex cursor-pointer items-center gap-2.5 rounded-full border border-line-strong px-5 py-2.5 text-[15px] has-[:checked]:border-[color:var(--accent)] has-[:checked]:bg-[rgb(0_180_255/0.1)]">
@@ -114,7 +116,7 @@ export function FeedbackForm() {
         </div>
       </fieldset>
 
-      <TextField name="price" label="E. What price would you consider reasonable?" hint="For example a monthly fee per client, or per service." required error={err("price")} />
+      <TextField name="price" label={cfg.price} hint={cfg.priceHint} required error={err("price")} />
       <TextArea name="suggestions" label="Any other suggestions?" rows={3} optional error={err("suggestions")} />
 
       <Turnstile onToken={onToken} />
