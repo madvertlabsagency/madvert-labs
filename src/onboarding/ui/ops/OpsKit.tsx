@@ -19,6 +19,7 @@ const NAV = [
   { href: "/ops/team", label: "Team", icon: "user", admin: true },
   { href: "/ops/seo", label: "SEO", icon: "eye", admin: true },
   { href: "/ops/crawlers", label: "Crawlers", icon: "eye", admin: true },
+  { href: "/ops/surveys", label: "Surveys", icon: "edit", admin: false },
   { href: "/ops/settings", label: "Settings", icon: "shield", admin: true },
 ];
 

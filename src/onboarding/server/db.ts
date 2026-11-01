@@ -46,6 +46,8 @@ export const COLLECTIONS = [
   "indexnow_state",
   "crawler_hits",
   "seo_audits",
+  // Product feedback surveys (public form, read in Operations).
+  "survey_responses",
 ] as const;
 export type Collection = (typeof COLLECTIONS)[number];
 
