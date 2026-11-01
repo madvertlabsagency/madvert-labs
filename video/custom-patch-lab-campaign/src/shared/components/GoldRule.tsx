@@ -1,6 +1,6 @@
 import React from 'react';
 import {useCurrentFrame} from 'remotion';
-import {GOLD_LINE} from '../brand';
+import {useTheme} from '../theme';
 import {easeIn, prog} from '../motion';
 
 /** Hairline gold accent that draws out from the centre, with a glint travelling across it. */
@@ -12,6 +12,7 @@ export const GoldRule: React.FC<{
   thickness?: number;
 }> = ({at, width, top, exitAt, thickness = 3}) => {
   const frame = useCurrentFrame();
+  const theme = useTheme();
   const p = prog(frame, at, 20);
   const q = exitAt === undefined ? 0 : prog(frame, exitAt, 8, easeIn);
   const glint = prog(frame, at + 6, 26);
@@ -24,8 +25,8 @@ export const GoldRule: React.FC<{
         width,
         height: thickness,
         transform: `scaleX(${p * (1 - q)})`,
-        background: GOLD_LINE,
-        boxShadow: '0 0 14px rgba(244,185,66,0.55)',
+        background: theme.rule,
+        boxShadow: `0 0 14px ${theme.ruleGlow}`,
         overflow: 'hidden',
       }}
     >

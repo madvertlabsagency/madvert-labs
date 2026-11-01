@@ -2,19 +2,17 @@ import React from 'react';
 import {AbsoluteFill, random, useCurrentFrame} from 'remotion';
 import {C} from '../brand';
 import {easeInOut, mix, prog} from '../motion';
+import {useTheme} from '../theme';
 
 /** Deep navy → teal field from the USP / outro styleframes, with a soft top light. */
-export const NavyField: React.FC = () => (
-  <AbsoluteFill
-    style={{
-      background: `radial-gradient(85% 45% at 50% 22%, rgba(18,92,108,0.85) 0%, rgba(10,58,72,0.6) 40%, rgba(8,46,59,0) 75%),
-        radial-gradient(120% 70% at 50% 100%, rgba(15,124,138,0.18) 0%, rgba(8,46,59,0) 60%),
-        linear-gradient(180deg, ${C.navy} 0%, #072a35 55%, ${C.navyDeep} 100%)`,
-    }}
-  >
-    <AbsoluteFill style={{background: 'radial-gradient(130% 80% at 50% 45%, rgba(0,0,0,0) 60%, rgba(2,14,19,0.55) 100%)'}} />
-  </AbsoluteFill>
-);
+export const NavyField: React.FC = () => {
+  const theme = useTheme();
+  return (
+    <AbsoluteFill style={{background: theme.field}}>
+      <AbsoluteFill style={{background: theme.fieldVignette}} />
+    </AbsoluteFill>
+  );
+};
 
 /**
  * Blueprint grid with red registration marks — the "lab" layer of the
@@ -30,6 +28,7 @@ export const BlueprintGrid: React.FC<{
   opacity?: number;
 }> = ({at, top, height, left = 60, width = 960, cell = 60, opacity = 1}) => {
   const frame = useCurrentFrame();
+  const theme = useTheme();
   const p = prog(frame, at, 28, easeInOut);
   const cols = Math.floor(width / cell);
   const rows = Math.floor(height / cell);
@@ -55,7 +54,7 @@ export const BlueprintGrid: React.FC<{
           <rect x={left} y={top} width={width} height={height} fill="url(#gridFade)" />
         </mask>
       </defs>
-      <g mask={`url(#gridMask-${top}-${height})`} stroke="#8FB7BE" strokeWidth={1} opacity={0.22}>
+      <g mask={`url(#gridMask-${top}-${height})`} stroke={theme.gridLine} strokeWidth={1} opacity={0.22}>
         {Array.from({length: cols + 1}, (_, i) => {
           const x = left + i * cell;
           const half = (height / 2) * p;
@@ -75,16 +74,16 @@ export const BlueprintGrid: React.FC<{
         const len = 150 * q;
         return (
           <g key={i} opacity={q}>
-            <line x1={x} x2={x} y1={y - len} y2={y + len} stroke={C.red} strokeWidth={1.5} opacity={0.55} />
-            <line x1={x - len} x2={x + len} y1={y} y2={y} stroke={C.red} strokeWidth={1.5} opacity={0.55} />
+            <line x1={x} x2={x} y1={y - len} y2={y + len} stroke={theme.mark} strokeWidth={1.5} opacity={0.55} />
+            <line x1={x - len} x2={x + len} y1={y} y2={y} stroke={theme.mark} strokeWidth={1.5} opacity={0.55} />
             <rect
               x={x - 5}
               y={y - 5}
               width={10}
               height={10}
-              fill={C.red}
+              fill={theme.mark}
               transform={`rotate(45 ${x} ${y}) scale(1)`}
-              style={{filter: 'drop-shadow(0 0 6px rgba(230,57,70,0.8))'}}
+              style={{filter: `drop-shadow(0 0 6px ${theme.markGlow})`}}
             />
           </g>
         );
@@ -105,6 +104,7 @@ export const SpeedStreaks: React.FC<{
   opacity?: number;
 }> = ({seed, at, bands, speed = 14, opacity = 1}) => {
   const frame = useCurrentFrame();
+  const theme = useTheme();
   const t = frame - at;
   const fadeIn = prog(frame, at, 10);
   return (
@@ -129,8 +129,8 @@ export const SpeedStreaks: React.FC<{
                 height: h,
                 borderRadius: h,
                 background: cream
-                  ? 'linear-gradient(90deg, rgba(255,249,243,0), rgba(255,249,243,0.85), rgba(255,249,243,0))'
-                  : 'linear-gradient(90deg, rgba(15,124,138,0), rgba(120,200,210,0.6), rgba(15,124,138,0))',
+                  ? theme.streakA
+                  : theme.streakB,
                 filter: `blur(${mix(1.5, 5, r('b'))}px)`,
                 opacity: mix(0.35, 0.9, r('a')),
               }}

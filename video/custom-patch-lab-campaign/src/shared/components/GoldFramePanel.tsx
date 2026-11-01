@@ -1,6 +1,7 @@
 import React from 'react';
 import {useCurrentFrame} from 'remotion';
 import {easeInOut, easeIn, prog} from '../motion';
+import {useTheme} from '../theme';
 
 /**
  * Rounded navy panel with a thin gold border that draws itself on (stroke
@@ -17,6 +18,7 @@ export const GoldFramePanel: React.FC<{
   children: React.ReactNode;
 }> = ({at, top, width, height, radius = 34, exitAt, children}) => {
   const frame = useCurrentFrame();
+  const theme = useTheme();
   const fill = prog(frame, at, 14);
   const draw = prog(frame, at + 2, 24, easeInOut);
   const glow = prog(frame, at + 20, 30);
@@ -39,7 +41,7 @@ export const GoldFramePanel: React.FC<{
           position: 'absolute',
           inset: 0,
           borderRadius: radius,
-          background: 'linear-gradient(180deg, rgba(10,52,65,0.94), rgba(5,32,42,0.96))',
+          background: theme.panelFill,
           boxShadow: `0 30px 70px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,236,190,0.18)`,
           opacity: fill,
         }}
@@ -47,9 +49,9 @@ export const GoldFramePanel: React.FC<{
       <svg width={width} height={height} style={{position: 'absolute', inset: 0, overflow: 'visible'}}>
         <defs>
           <linearGradient id={`gf-${at}`} x1="0" y1="0" x2="1" y2="1">
-            <stop offset="0%" stopColor="#FFE29A" />
-            <stop offset="50%" stopColor="#F4B942" />
-            <stop offset="100%" stopColor="#D98A2B" />
+            <stop offset="0%" stopColor={theme.panelStroke[0]} />
+            <stop offset="50%" stopColor={theme.panelStroke[1]} />
+            <stop offset="100%" stopColor={theme.panelStroke[2]} />
           </linearGradient>
         </defs>
         <rect
@@ -63,7 +65,7 @@ export const GoldFramePanel: React.FC<{
           strokeWidth={3}
           strokeDasharray={perim}
           strokeDashoffset={perim * (1 - draw)}
-          style={{filter: `drop-shadow(0 0 ${4 + 8 * glow}px rgba(244,185,66,${0.35 + 0.25 * glow}))`}}
+          style={{filter: `drop-shadow(0 0 ${4 + 8 * glow}px rgba(${theme.panelGlowRgb},${0.35 + 0.25 * glow}))`}}
         />
       </svg>
       {/* top + bottom glints like the styleframe panel edges */}
@@ -76,7 +78,7 @@ export const GoldFramePanel: React.FC<{
             left: width * 0.2,
             width: width * 0.6,
             height: 4,
-            background: 'radial-gradient(closest-side, rgba(255,226,154,0.95), rgba(255,226,154,0))',
+            background: `radial-gradient(closest-side, ${theme.panelGlint}, rgba(255,226,154,0))`,
             opacity: glow * 0.9,
           }}
         />

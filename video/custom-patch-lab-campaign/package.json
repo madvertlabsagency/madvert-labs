@@ -20,7 +20,8 @@
     "render:reel01:preview": "remotion render CustomPatchLabReel01 out/CustomPatchLab_Reel01_Preview.mp4 --scale=0.5 --crf=23",
     "render:reel01:final": "remotion render CustomPatchLabReel01 out/CustomPatchLab_Reel01_Final.mp4 --codec=h264 --crf=18 --color-space=bt709 --audio-codec=aac --audio-bitrate=256k && remotion render CustomPatchLabReel01NoCaptions out/CustomPatchLab_Reel01_Final_NoCaptions.mp4 --codec=h264 --crf=18 --color-space=bt709 --audio-codec=aac --audio-bitrate=256k && remotion still CustomPatchLabReel01 out/CustomPatchLab_Reel01_Cover.png --frame=539 --image-format=png",
     "render:reel02:final": "remotion render CustomPatchLabReel02 out/CustomPatchLab_Reel02_Final.mp4 --codec=h264 --crf=18 --color-space=bt709 --audio-codec=aac --audio-bitrate=256k && remotion still CustomPatchLabReel02 out/CustomPatchLab_Reel02_Cover.png --frame=659 --image-format=png",
-    "render:reel03:final": "remotion render CustomPatchLabReel03 out/CustomPatchLab_Reel03_ChooseYourFighter.mp4 --codec=h264 --crf=18 --color-space=bt709 --audio-codec=aac --audio-bitrate=256k && remotion still CustomPatchLabReel03Cover out/CustomPatchLab_Reel03_Cover.png --image-format=png"
+    "render:reel03:final": "remotion render CustomPatchLabReel03 out/CustomPatchLab_Reel03_ChooseYourFighter.mp4 --codec=h264 --crf=18 --color-space=bt709 --audio-codec=aac --audio-bitrate=256k && remotion still CustomPatchLabReel03Cover out/CustomPatchLab_Reel03_Cover.png --image-format=png",
+    "render:billys01:final": "remotion render BillysAd01Lion out/BillysCustomPatches_Ad01_Lion_1080x1920.mp4 --codec=h264 --crf=17 --color-space=bt709 --audio-codec=aac --audio-bitrate=256k"
   },
   "dependencies": {
     "@remotion/cli": "4.0.534",

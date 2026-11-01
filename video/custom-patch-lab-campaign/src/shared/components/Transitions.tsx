@@ -1,9 +1,12 @@
 import React from 'react';
 import {AbsoluteFill} from 'remotion';
 import {mix} from '../motion';
+import {useTheme} from '../theme';
 
 /** Bright cream bars riding the leading edge of a left→right light-streak wipe. */
-export const WipeStreaks: React.FC<{edge: number; strength: number}> = ({edge, strength}) => (
+export const WipeStreaks: React.FC<{edge: number; strength: number}> = ({edge, strength}) => {
+  const theme = useTheme();
+  return (
   <AbsoluteFill style={{pointerEvents: 'none', mixBlendMode: 'screen'}}>
     <div
       style={{
@@ -12,7 +15,7 @@ export const WipeStreaks: React.FC<{edge: number; strength: number}> = ({edge, s
         bottom: 0,
         left: edge - 120,
         width: 160,
-        background: 'linear-gradient(90deg, rgba(255,240,210,0), rgba(255,240,210,0.55), rgba(255,240,210,0))',
+        background: theme.wipeGlow,
         opacity: strength,
         filter: 'blur(18px)',
       }}
@@ -27,7 +30,7 @@ export const WipeStreaks: React.FC<{edge: number; strength: number}> = ({edge, s
           width: 460 + (i % 2) * 200,
           height: 6 + (i % 3) * 4,
           borderRadius: 8,
-          background: 'linear-gradient(90deg, rgba(255,249,243,0), rgba(255,249,243,0.95))',
+          background: theme.wipeBar,
           filter: 'blur(3px)',
           opacity: strength * (0.55 + (i % 2) * 0.4),
         }}
@@ -35,9 +38,11 @@ export const WipeStreaks: React.FC<{edge: number; strength: number}> = ({edge, s
     ))}
   </AbsoluteFill>
 );
+};
 
 /** Reveals children behind a diagonal edge sweeping up from the bottom-right, traced in gold. */
 export const DiagonalReveal: React.FC<{p: number; children: React.ReactNode; stitch?: boolean}> = ({p, children, stitch}) => {
+  const theme = useTheme();
   const d = mix(-0.05, 1.15, p);
   const x0 = 1080 - d * 2600;
   const y0 = 1920 - d * 3400;
@@ -56,11 +61,11 @@ export const DiagonalReveal: React.FC<{p: number; children: React.ReactNode; sti
             y1={a.y}
             x2={b.x}
             y2={b.y}
-            stroke="#F4B942"
+            stroke={theme.edge}
             strokeWidth={stitch ? 4 : 5}
             strokeDasharray={stitch ? '16 9' : undefined}
             strokeLinecap={stitch ? 'round' : undefined}
-            style={{filter: 'drop-shadow(0 0 12px rgba(244,185,66,0.9))'}}
+            style={{filter: `drop-shadow(0 0 12px ${theme.edgeGlow})`}}
           />
         </svg>
       )}

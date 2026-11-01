@@ -1,8 +1,9 @@
 import React from 'react';
 import {spring, useCurrentFrame, useVideoConfig} from 'remotion';
-import {C, DISPLAY_AXES, FONT_BODY, FONT_CONDENSED, FONT_DISPLAY, FONT_SANS, GOLD_GRADIENT, ORANGE_GRADIENT} from '../brand';
+import {FONT_BODY, FONT_CONDENSED, FONT_SANS, ORANGE_GRADIENT} from '../brand';
 import {easeIn, mix, prog} from '../motion';
 import {MotionBlur} from './MotionBlur';
+import {useTheme} from '../theme';
 
 export type Word = {text: string; gold?: boolean; orange?: boolean};
 
@@ -43,6 +44,7 @@ const EXIT = 9;
 export const KineticText: React.FC<Props> = ({id, lines, exitAt, exit = 'up', style}) => {
   const frame = useCurrentFrame();
   const {fps} = useVideoConfig();
+  const theme = useTheme();
   return (
     <div
       style={{
@@ -69,13 +71,13 @@ export const KineticText: React.FC<Props> = ({id, lines, exitAt, exit = 'up', st
               display: 'flex',
               gap: `0 ${line.size * 0.26}px`,
               justifyContent: 'center',
-              fontFamily: display ? FONT_DISPLAY : font === 'condensed' ? FONT_CONDENSED : font === 'body' ? FONT_BODY : FONT_SANS,
-              fontVariationSettings: display ? DISPLAY_AXES : undefined,
-              fontWeight: line.weight ?? (display ? 760 : 700),
+              fontFamily: display ? theme.displayFont : font === 'condensed' ? FONT_CONDENSED : font === 'body' ? FONT_BODY : FONT_SANS,
+              fontVariationSettings: display ? theme.displayAxes : undefined,
+              fontWeight: line.weight ?? (display ? theme.displayWeight : 700),
               fontSize: line.size,
               lineHeight: line.lineHeight ?? 1.0,
               letterSpacing: `${mix(tr0, tr1, t)}em`,
-              color: C.text,
+              color: theme.text,
               whiteSpace: 'nowrap',
               transform: line.impact
                 ? `scale(${mix(1.38, 1, spring({frame: frame - line.at, fps, config: {damping: 11, stiffness: 170, mass: 0.8}}))})`
@@ -108,7 +110,7 @@ export const KineticText: React.FC<Props> = ({id, lines, exitAt, exit = 'up', st
                       filter: blur > 0.3 ? `url(#${fid})` : undefined,
                       ...(w.gold || w.orange
                         ? {
-                            backgroundImage: w.orange ? ORANGE_GRADIENT : GOLD_GRADIENT,
+                            backgroundImage: w.orange ? ORANGE_GRADIENT : theme.accent,
                             WebkitBackgroundClip: 'text',
                             backgroundClip: 'text',
                             color: 'transparent',

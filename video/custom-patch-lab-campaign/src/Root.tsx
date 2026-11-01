@@ -16,8 +16,10 @@ import edlR2 from './reel02/edl.json';
 import {Reel03, Reel03Cover} from './reel03/Reel03';
 import edlR3 from './reel03/edl.json';
 import {Still} from 'remotion';
+import {BillysAd01} from './billys/BillysAd01';
 
 export const RemotionRoot: React.FC = () => (
+  <>
   <Folder name="Custom-Patch-Lab-Campaign">
     <Composition id="CustomPatchLabAd01" component={Ad01} durationInFrames={edl01.durationInFrames} fps={edl01.fps} width={1080} height={1920} />
     <Composition id="CustomPatchLabAd02" component={Ad02} durationInFrames={edl02.durationInFrames} fps={edl02.fps} width={1080} height={1920} />
@@ -29,4 +31,8 @@ export const RemotionRoot: React.FC = () => (
     <Composition id="CustomPatchLabReel03" component={Reel03} durationInFrames={edlR3.durationInFrames} fps={edlR3.fps} width={1080} height={1920} />
     <Still id="CustomPatchLabReel03Cover" component={Reel03Cover} width={1080} height={1920} />
   </Folder>
+  <Folder name="Billys-Custom-Patches">
+    <Composition id="BillysAd01Lion" component={BillysAd01} durationInFrames={edl01.durationInFrames} fps={edl01.fps} width={1080} height={1920} />
+  </Folder>
+  </>
 );

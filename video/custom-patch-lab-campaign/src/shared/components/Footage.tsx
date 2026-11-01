@@ -2,6 +2,7 @@ import React from 'react';
 import {AbsoluteFill, OffthreadVideo, staticFile, useCurrentFrame, useVideoConfig} from 'remotion';
 import {C} from '../brand';
 import {easeInOut, mix, prog} from '../motion';
+import {useTheme} from '../theme';
 
 type Props = {
   /** Conformed segment path inside public/, e.g. segments/ad02/s1.mp4 (exact length, 30 fps). */
@@ -39,9 +40,10 @@ export const Footage: React.FC<Props> = ({
 }) => {
   const frame = useCurrentFrame();
   const {durationInFrames} = useVideoConfig();
+  const theme = useTheme();
   const d = mix(drift[0], drift[1], prog(frame, 0, durationInFrames, easeInOut));
   return (
-    <AbsoluteFill style={{overflow: 'hidden', background: C.navyDeep, ...fx}}>
+    <AbsoluteFill style={{overflow: 'hidden', background: theme.base, ...fx}}>
       <AbsoluteFill style={{filter: fxFilter}}>
         <AbsoluteFill
           style={{
@@ -53,21 +55,21 @@ export const Footage: React.FC<Props> = ({
           <OffthreadVideo muted src={staticFile(src)} style={{width: '100%', height: '100%'}} />
         </AbsoluteFill>
         {/* split-tone: cool teal-navy into the shadows, warmth stays in the thread colours */}
-        <AbsoluteFill style={{background: 'linear-gradient(180deg, rgba(15,124,138,0.16), rgba(8,46,59,0.22))', mixBlendMode: 'soft-light'}} />
+        <AbsoluteFill style={{background: theme.tint, mixBlendMode: 'soft-light'}} />
         <AbsoluteFill
-          style={{background: 'radial-gradient(120% 75% at 50% 46%, rgba(0,0,0,0) 55%, rgba(3,20,27,0.62) 100%)'}}
+          style={{background: theme.vignette}}
         />
         {shadeTop > 0 && (
           <AbsoluteFill
             style={{
-              background: `linear-gradient(180deg, rgba(4,26,34,${0.86 * shadeTop}) 0%, rgba(4,26,34,${0.55 * shadeTop}) 22%, rgba(4,26,34,0) 42%)`,
+              background: `linear-gradient(180deg, rgba(${theme.shadeRgb},${0.86 * shadeTop}) 0%, rgba(${theme.shadeRgb},${0.55 * shadeTop}) 22%, rgba(${theme.shadeRgb},0) 42%)`,
             }}
           />
         )}
         {shadeBottom > 0 && (
           <AbsoluteFill
             style={{
-              background: `linear-gradient(0deg, rgba(4,26,34,${0.9 * shadeBottom}) 0%, rgba(4,26,34,${0.62 * shadeBottom}) 26%, rgba(4,26,34,0) 48%)`,
+              background: `linear-gradient(0deg, rgba(${theme.shadeRgb},${0.9 * shadeBottom}) 0%, rgba(${theme.shadeRgb},${0.62 * shadeBottom}) 26%, rgba(${theme.shadeRgb},0) 48%)`,
             }}
           />
         )}
