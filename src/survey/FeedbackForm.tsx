@@ -99,7 +99,7 @@ export function FeedbackForm({ survey }: { survey: SurveyId }) {
       <TextArea name="change" label="C. What would you change?" rows={3} required error={err("change")} />
 
 
-      <TextField name="price" label={cfg.price} hint={cfg.priceHint} required error={err("price")} />
+      <TextField name="price" label={cfg.price} required error={err("price")} />
       <Choice
         name="pilotSize"
         legend="E. Our pilot campaign is 40 qualified RFQs. What do you think of that size?"
