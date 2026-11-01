@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { BookingSection } from "@/components/booking/BookingSection";
+import { ComparisonTable } from "@/components/facts/ComparisonTable";
 import { DirectAnswer } from "@/components/facts/DirectAnswer";
 import { ProcessSteps } from "@/components/facts/ProcessSteps";
 import { Breadcrumbs } from "@/components/layout/Breadcrumbs";
@@ -79,6 +80,28 @@ export default async function GlossaryTermPage({ params }: { params: Promise<{ t
           ))}
         </div>
       </SpSection>
+
+      {page.sections?.map((sec) => (
+        <SpSection key={sec.id} id={sec.id} label={sec.label} title={sec.title}>
+          <div className="max-w-[780px] space-y-4 text-[16.5px] leading-relaxed text-ink-2">
+            {sec.paragraphs.map((p) => (
+              <p key={p}>
+                <Rich text={p} />
+              </p>
+            ))}
+          </div>
+          {sec.table ? (
+            <div className="mt-8 max-w-[960px]">
+              <ComparisonTable
+                caption={sec.table.caption}
+                rowHeader={sec.table.rowHeader}
+                columns={sec.table.columns}
+                rows={sec.table.rows.map((r) => ({ label: r.label, cells: r.cells }))}
+              />
+            </div>
+          ) : null}
+        </SpSection>
+      ))}
 
       <SpSection id="example" label="Example" title="An example">
         <figure className="panel max-w-[860px] p-6 sm:p-8">

@@ -13,6 +13,7 @@
  */
 
 import { october2026Articles } from "./articles-2026-10";
+import { november2026Articles } from "./articles-2026-11";
 
 export type ArticleBlock =
   | { type: "p"; text: string }
@@ -653,7 +654,7 @@ const allArticles: Article[] = [
   {
     slug: "meta-ads-cost-pakistan",
     title: "How Much Do Meta Ads Cost in Pakistan?",
-    metaTitle: "Meta Ads Cost in Pakistan: CPM, CPL and Budget",
+    metaTitle: "Facebook and Instagram Ads Cost in Pakistan",
     description:
       "Meta Ads in Pakistan have no fixed price. What drives CPM and cost per lead, how to set a test budget with simple formulas, and why CPQL matters more than CPL.",
     eyebrow: "Meta Ads Insight",
@@ -1457,7 +1458,7 @@ const allArticles: Article[] = [
 ];
 
 /** Published articles only. Every route, list, sitemap and feed reads from this. */
-export const articles: Article[] = [...allArticles, ...october2026Articles].filter((a) => a.status !== "draft");
+export const articles: Article[] = [...allArticles, ...october2026Articles, ...november2026Articles].filter((a) => a.status !== "draft");
 
 export function getArticle(slug: string) {
   return articles.find((a) => a.slug === slug);

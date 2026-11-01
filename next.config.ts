@@ -1,4 +1,5 @@
 import type { NextConfig } from "next";
+import { readdirSync } from "node:fs";
 import { serviceAliases } from "./src/lib/entities";
 
 const securityHeaders = [
@@ -14,6 +15,16 @@ const securityHeaders = [
 const funnelProxies = [
   { path: "/markhorpatches", origin: (process.env.MARKHOR_FUNNEL_URL ?? "https://markhor-funnel.vercel.app").replace(/\/$/, "") },
 ];
+
+/**
+ * Case study PDFs point search engines to their HTML page (HTTP Link rel=canonical), so the full,
+ * crawlable case study ranks instead of the PDF.
+ */
+const SITE_URL = (process.env.NEXT_PUBLIC_SITE_URL || "https://madvertlabs.com").replace(/\/$/, "");
+const caseStudyPdfHeaders = readdirSync("public/case-studies", { withFileTypes: true })
+  .filter((f) => f.isFile() && f.name.endsWith(".pdf"))
+  .map((f) => f.name.slice(0, -4))
+  .map((slug) => ({ source: `/case-studies/${slug}.pdf`, headers: [{ key: "Link", value: `<${SITE_URL}/case-studies/${slug}>; rel="canonical"` }] }));
 
 const nextConfig: NextConfig = {
   cacheComponents: true,
@@ -67,6 +78,7 @@ const nextConfig: NextConfig = {
         ],
       },
       { source: "/(onboarding|ops|offer-builder)", headers: [{ key: "X-Robots-Tag", value: "noindex, nofollow" }] },
+      ...caseStudyPdfHeaders,
       // API responses are never search results.
       { source: "/api/:path*", headers: [{ key: "X-Robots-Tag", value: "noindex, nofollow" }] },
     ];

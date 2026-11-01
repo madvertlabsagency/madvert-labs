@@ -13,6 +13,7 @@ const GOOGLE_HELPFUL = { title: "Creating helpful, reliable, people-first conten
 const OPENAI_BOTS = { title: "Overview of OpenAI crawlers", publisher: "OpenAI", url: "https://developers.openai.com/docs/bots" };
 const GEO_PAPER = { title: "GEO: Generative Engine Optimization (Aggarwal et al., KDD 2024)", publisher: "arXiv", url: "https://arxiv.org/abs/2311.09735" };
 const HBR_LEADS = { title: "The Short Life of Online Sales Leads (Oldroyd, McElheran and Elkington, 2011)", publisher: "Harvard Business Review", url: "https://hbr.org/2011/03/the-short-life-of-online-sales-leads" };
+const GOOGLE_AI_GUIDE = { title: "Optimizing your website for generative AI features on Google Search", publisher: "Google Search Central", url: "https://developers.google.com/search/docs/fundamentals/ai-optimization-guide" };
 const META_CAPI = { title: "Conversions API: get started", publisher: "Meta for Developers", url: "https://developers.facebook.com/docs/marketing-api/conversions-api/get-started/" };
 
 export const october2026Articles: Article[] = [
@@ -30,7 +31,7 @@ export const october2026Articles: Article[] = [
     ],
     author: "founder",
     datePublished: PUBLISHED,
-    dateModified: PUBLISHED,
+    dateModified: "2026-11-01",
     sections: [
       {
         id: "definitions",
@@ -76,6 +77,33 @@ export const october2026Articles: Article[] = [
               { label: "How it is measured", cells: ["Rankings, clicks, conversions", "Answer appearances, snippet ownership", "Prompt tests, citations, AI referral traffic"] },
             ],
             note: "The categories overlap heavily. Most work that helps one helps the other two.",
+          },
+        ],
+      },
+      {
+        id: "aeo-vs-geo",
+        label: "AEO vs GEO",
+        title: "AEO vs GEO: what is actually different?",
+        blocks: [
+          {
+            type: "p",
+            text: "AEO and GEO are often used as synonyms, and the work overlaps heavily. The useful difference is the unit of work. **AEO works on the answer**: one question, one clear, quotable answer on a page that can be extracted. **GEO works on the business**: how often and how accurately AI-generated answers mention and cite it across many questions, which also depends on what other websites, reviews and profiles say about it.",
+          },
+          {
+            type: "table",
+            caption: "AEO vs GEO",
+            rowHeader: "Factor",
+            columns: ["AEO", "GEO"],
+            rows: [
+              { label: "Focus", cells: ["A specific question and its answer", "The business's presence across AI-generated answers"] },
+              { label: "Main work", cells: ["Question headings, direct answers, tables, visible FAQs", "Entity consistency, evidence, reviews, independent mentions"] },
+              { label: "Done mostly", cells: ["On your own pages", "On your pages and across the web"] },
+              { label: "Typical check", cells: ["Is our answer the one shown for this question?", "Does ChatGPT or Gemini mention us, and describe us correctly?"] },
+            ],
+          },
+          {
+            type: "p",
+            text: "Two more terms appear in the same conversations. **AIO** usually means AI optimisation in general (and sometimes refers to Google's AI Overviews). **SGE**, Search Generative Experience, was Google's experimental name for what became AI Overviews. Google's own [guide to optimising for generative AI features](https://developers.google.com/search/docs/fundamentals/ai-optimization-guide) treats all of this as SEO, with useful, original content as the most important factor.",
           },
         ],
       },
@@ -153,8 +181,12 @@ export const october2026Articles: Article[] = [
         a: "No. AEO builds on SEO. AI search experiences draw on crawled and indexed pages, so a site with weak SEO usually has weak AEO too. AEO adds emphasis on direct answers, structure and evidence.",
       },
       {
-        q: "Is GEO the same as AEO?",
-        a: "They overlap. AEO focuses on structuring content so an answer can be extracted; GEO focuses on how a business is mentioned and cited across AI-generated answers, which also depends on reviews, mentions and consistent facts on other websites. Many people use the terms interchangeably.",
+        q: "What is the difference between AEO and GEO?",
+        a: "AEO structures a page so that one question gets a clear, extractable answer. GEO is about how often and how accurately a business appears across AI-generated answers, which also depends on reviews, mentions and consistent facts on other websites. The work overlaps, and many people use the terms interchangeably.",
+      },
+      {
+        q: "Is GEO better than SEO?",
+        a: "No. GEO is not a replacement for SEO. Google's guidance on generative AI features treats optimising for them as SEO, and ChatGPT Search depends on pages its crawler can reach. GEO adds focus on entity consistency, evidence and mentions on top of a sound SEO foundation.",
       },
       {
         q: "Do I need special schema for AI Overviews?",
@@ -169,7 +201,7 @@ export const october2026Articles: Article[] = [
         a: "Technical fixes can be picked up as soon as pages are recrawled, but visibility in AI answers usually builds over months as content, reviews and mentions accumulate. No one can promise a timeline.",
       },
     ],
-    sources: [GOOGLE_AI_FEATURES, GOOGLE_HELPFUL, OPENAI_BOTS, GEO_PAPER],
+    sources: [GOOGLE_AI_GUIDE, GOOGLE_AI_FEATURES, GOOGLE_HELPFUL, OPENAI_BOTS, GEO_PAPER],
     related: [
       { href: "/services/ai-seo-aeo", anchor: "AI SEO and AEO services", note: "How Madvert Labs makes a business easier for AI search to find and cite." },
       { href: "/insights/what-is-aeo", anchor: "What is AEO? The full guide", note: "Five layers of AEO, with a worked example." },

@@ -20,6 +20,8 @@ export type GlossaryPage = {
   example: { text: string; href?: string; anchor?: string };
   commonMistake: string;
   framework?: { name: string; text: string; href: string };
+  /** Extra short sections rendered after "Why it matters", e.g. when a term has more than one meaning. */
+  sections?: { id: string; label: string; title: string; paragraphs: string[]; table?: { caption: string; rowHeader: string; columns: string[]; rows: { label: string; cells: string[] }[] } }[];
   services: ServiceKey[];
   reading: { href: string; anchor: string; note: string }[];
   /** Last material change (ISO date); feeds sitemap lastmod and dateModified. */
@@ -256,9 +258,9 @@ export const glossaryPages: Record<string, GlossaryPage> = {
 
   "ai-seo": {
     question: "What Is AI SEO?",
-    metaTitle: "What Is AI SEO? Definition and How It Works",
+    metaTitle: "What Is AI SEO? Meaning, How It Works, Examples",
     metaDescription:
-      "AI SEO makes a business easier for Google AI Overviews, ChatGPT Search and Microsoft Copilot to find, understand and cite. How it works and the common mistake.",
+      "AI SEO means optimising for AI search (AI Overviews, ChatGPT, Copilot) and also using AI tools to do SEO. Both meanings explained, with how each works.",
     howItWorks: {
       steps: [
         { name: "Crawl access", text: "Search and AI search crawlers such as Googlebot, Bingbot and OAI-SearchBot can reach every public page, which is indexed in Google and Bing." },
@@ -281,9 +283,33 @@ export const glossaryPages: Record<string, GlossaryPage> = {
     services: ["ai-seo-aeo", "seo"],
     reading: [
       { href: "/insights/what-is-aeo", anchor: "What is AEO?", note: "Answer engine optimisation explained." },
+      { href: "/insights/how-to-use-ai-for-seo", anchor: "How to use AI for SEO without hurting rankings", note: "The second meaning of AI SEO, step by step." },
+      { href: "/insights/seo-vs-aeo-vs-geo", anchor: "SEO vs AEO vs GEO", note: "How the three overlap and differ." },
       { href: "/resources/seo-ai-search-playbook", anchor: "SEO and AI Search Playbook", note: "Free playbook from the Madvert Vault." },
     ],
-    updated: "2026-10-27",
+    sections: [
+      {
+        id: "two-meanings",
+        label: "Two meanings",
+        title: "AI SEO has two meanings",
+        paragraphs: [
+          "People use \u201cAI SEO\u201d for two different things. The first is the meaning on this page: optimising a website so AI search experiences, such as Google AI Overviews and AI Mode, ChatGPT Search and Microsoft Copilot, can find, understand and cite it. The second is using AI tools to do SEO work faster, such as keyword research, content outlines, technical audits and internal linking suggestions.",
+          "Both are legitimate and they work well together. Google's guidance says generative AI can help research a topic and structure original content, but that generating many pages without adding value for users can break its spam policy on scaled content abuse. AI tools speed up the work; people still decide what is true, useful and worth publishing.",
+        ],
+        table: {
+          caption: "The two meanings of AI SEO",
+          rowHeader: "Factor",
+          columns: ["SEO for AI search", "Using AI tools for SEO"],
+          rows: [
+            { label: "Goal", cells: ["Be found, understood and cited by AI search experiences", "Do research, writing support and audits faster"] },
+            { label: "Typical work", cells: ["Crawl access, entity consistency, direct answers, evidence", "Keyword clustering, outlines, first drafts, audit checks, schema drafts"] },
+            { label: "Main risk", cells: ["Blocking the crawlers AI search uses", "Publishing unchecked or mass-produced pages"] },
+            { label: "Where Madvert Labs fits", cells: ["[AI SEO and AEO services](/services/ai-seo-aeo)", "Used inside the work, always reviewed by a person"] },
+          ],
+        },
+      },
+    ],
+    updated: "2026-11-01",
   },
 
   aeo: {

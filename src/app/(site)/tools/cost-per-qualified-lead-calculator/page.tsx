@@ -17,7 +17,7 @@ const page: Article = {
   slug: "cost-per-qualified-lead-calculator",
   path,
   title: "Cost Per Qualified Lead Calculator",
-  metaTitle: "Cost Per Qualified Lead (CPQL) Calculator",
+  metaTitle: "CPL and CPQL Calculator: Cost Per Qualified Lead",
   description:
     "Free cost per qualified lead calculator: enter ad spend, leads, qualified leads and closed deals to get CPL, CPQL, qualification rate and cost per closed deal.",
   eyebrow: "Free Tool",

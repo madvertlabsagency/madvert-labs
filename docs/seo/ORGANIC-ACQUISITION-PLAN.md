@@ -187,3 +187,24 @@ Limitations:
 4. An Arabic language reviewer, before any Saudi or UAE Arabic content.
 5. Pricing approach for "How much does Meta Ads management cost?".
 6. Owner review of the five articles. They carry the founder's byline.
+
+---
+
+## Search Console findings and batch 2 (1 November 2026)
+
+Data: Search Console export, 14 to 30 October 2026. 36 clicks and about 810 impressions. 34 of the 36 clicks came from Pakistan, mostly brand searches ("madvert", position 3.5).
+
+| Finding | Action in batch 2 |
+|---|---|
+| "ai seo" is the top query by impressions (156, plus "what is ai seo" 63 and "seo ai" 31). Google shows `/glossary/ai-seo` at about position 77 | The page now covers both meanings (SEO for AI search, and using AI tools for SEO) with a comparison table. New title and description. New article `/insights/how-to-use-ai-for-seo` for the second meaning |
+| Many "aeo vs geo", "geo vs seo" and "difference between aeo and geo" queries reach `/insights/seo-vs-aeo-vs-geo` (position about 72) | Added an "AEO vs GEO" section, AIO and SGE explained, Google's May 2026 AI optimization guide cited, and FAQs matching the queries |
+| "instagram ads cost in pakistan" at position 9 | Meta Ads cost article retitled "Facebook and Instagram Ads Cost in Pakistan" |
+| "cost per lead calculator", "cpl calculator", "cpql" | Calculator retitled "CPL and CPQL Calculator" |
+| Generic "real estate lead generation services / companies" queries (mostly outside Pakistan) | Industry page title broadened to "Real Estate Lead Generation Services" |
+| "dubai interior design case studies" ranks the **PDF** at position 16 | Case study retitled "Dubai Interior Design Case Study". All case study PDFs now send `Link: rel="canonical"` to their HTML page |
+| www and non-www URLs both receive impressions | The code redirects www to the apex (308). **Owner check:** open `https://www.madvertlabs.com/about`; it must land on `https://madvertlabs.com/about`. If not, set the apex as primary in Vercel → Domains |
+| International impressions (US 220, UK 103, UAE 54) at positions 50 to 75 | No action yet; these improve with authority (reviews, profiles, mentions) and time |
+| The GoHighLevel booking widget URL (`api.madvertlabs.com/widget/booking/...`) shows in search | Outside the website code; harmless, can be removed in Search Console → Removals if unwanted |
+
+New articles (batch 2): How to Optimize Your Website for ChatGPT Search; How to Appear in Google AI Overviews and AI Mode; How to Use AI for SEO Without Hurting Your Rankings; WhatsApp Lead Generation Funnels.
+Sources: OpenAI publishers FAQ and crawler overview, Google's AI features page, AI optimization guide, generative AI content guidance and helpful content guidance, Meta's WhatsApp messaging and Conversions API documentation.

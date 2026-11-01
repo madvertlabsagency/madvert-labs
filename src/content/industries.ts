@@ -79,7 +79,7 @@ export const industryPages: IndustryPage[] = [
     motif: "real-estate",
     name: "Real Estate",
     short: "real estate",
-    metaTitle: "Real Estate Lead Generation Agency, Dubai",
+    metaTitle: "Real Estate Lead Generation Services",
     metaDescription:
       "Real estate lead generation by Madvert Labs: investor offers, Meta Ads, BANT qualifying questions and CRM delivery, with a real Dubai investor case study.",
     eyebrow: "Industries · Real Estate",

@@ -737,7 +737,7 @@ export const fallbackCaseStudies: CaseStudy[] = [
   },
   {
     slug: "dubai-interior-design",
-    seo: { title: "111 Interior Design Inquiries in Dubai at AED 93" },
+    seo: { title: "Dubai Interior Design Case Study: 111 Inquiries" },
     title: "111 Qualified Interior Design Inquiries at AED 93 Per Inquiry",
     client: "Casa Elegance Interiors",
     industry: "Luxury Interior Design",

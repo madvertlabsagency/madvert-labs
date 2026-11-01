@@ -1,7 +1,10 @@
 /**
  * A real, accessible comparison table: <caption>, column headers with scope="col" and row headers
  * with scope="row". Scrolls horizontally inside its own wrapper on narrow screens, never the page.
+ * Cells may contain [anchor](/path) links.
  */
+import { Rich } from "@/components/service-page/Rich";
+
 export function ComparisonTable({
   caption,
   rowHeader,
@@ -43,7 +46,7 @@ export function ComparisonTable({
                 <th scope="row">{r.label}</th>
                 {r.cells.map((cell, i) => (
                   <td key={i} className={highlight === i ? "is-highlight" : undefined}>
-                    {cell}
+                    <Rich text={cell} />
                   </td>
                 ))}
               </tr>
