@@ -3,13 +3,13 @@ import { z } from "zod";
 import { db, dbDriver } from "@/onboarding/server/db";
 import { clientIp, rateLimit } from "@/integrations/rate-limit";
 import { spamCheck } from "@/integrations/spam";
-import { SURVEY_ID, surveySchema, type SurveyResponse } from "@/survey/white-label";
+import { surveySchema, type SurveyResponse } from "@/survey/surveys";
 
 function fail(status: number, error: string, fields?: Record<string, string[]>) {
   return NextResponse.json({ ok: false, error, fields }, { status });
 }
 
-/** Stores one white-label product feedback response. Read in Operations → Surveys. */
+/** Stores one product feedback response. Read in Operations → Surveys. */
 export async function POST(req: Request) {
   const ip = clientIp(req);
   const limit = await rateLimit(`survey:${ip}`, 6, 600);
@@ -36,7 +36,7 @@ export async function POST(req: Request) {
     return fail(503, "We could not save your answers right now. Please try again later.");
   }
 
-  const response: SurveyResponse = { ...answers, id: crypto.randomUUID(), survey: SURVEY_ID, submittedAt: new Date().toISOString() };
+  const response: SurveyResponse = { ...answers, id: crypto.randomUUID(), submittedAt: new Date().toISOString() };
   try {
     await db().put("survey_responses", response);
   } catch (e) {

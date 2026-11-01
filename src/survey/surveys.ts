@@ -1,8 +1,18 @@
 import { z } from "zod";
 
-/** Product feedback survey for the white-label partnership page. Shared by the form, the API and Operations. */
-export const SURVEY_ID = "white-label-partnership";
-export const SURVEY_PRODUCT_URL = "/white-label-partnership";
+/** Product feedback surveys. Shared by the public form, the API and Operations → Surveys. */
+export const SURVEYS = {
+  "custom-patches": {
+    product: "Pre-Qualified Custom Patch RFQs",
+    productUrl: "/custom-patches",
+    formPath: "/custom-patches/feedback",
+    wouldBuy: "D. Would you actually buy qualified RFQs from us?",
+    price: "E. What price per qualified RFQ would you consider reasonable?",
+    priceHint: "Our founding beta price is $15 per accepted RFQ, ad spend included. Tell us honestly what feels fair.",
+  },
+} as const;
+export type SurveyId = keyof typeof SURVEYS;
+export const SURVEY_IDS = Object.keys(SURVEYS) as [SurveyId, ...SurveyId[]];
 
 export const WOULD_BUY = ["Yes", "Maybe", "No"] as const;
 
@@ -10,6 +20,7 @@ const text = (max: number) => z.string().trim().max(max, `Please keep this under
 const answer = text(3000).min(2, "Please write a short answer.");
 
 export const surveySchema = z.object({
+  survey: z.enum(SURVEY_IDS),
   name: text(120).min(2, "Please enter your name."),
   business: text(160).optional().default(""),
   contact: text(160).optional().default(""),
@@ -28,7 +39,6 @@ export type SurveyInput = z.infer<typeof surveySchema>;
 
 export type SurveyResponse = Omit<SurveyInput, "website_confirm" | "startedAt" | "turnstileToken"> & {
   id: string;
-  survey: string;
   submittedAt: string;
 };
 
