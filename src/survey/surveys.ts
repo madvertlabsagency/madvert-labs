@@ -7,7 +7,6 @@ export const SURVEYS = {
     productUrl: "/custom-patches",
     formPath: "/custom-patches/feedback",
     price: "D. What price per qualified RFQ would you consider reasonable?",
-    priceHint: "Our founding beta price is $15 per accepted RFQ, ad spend included. Tell us honestly what feels fair.",
   },
 } as const;
 export type SurveyId = keyof typeof SURVEYS;
