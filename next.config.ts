@@ -10,6 +10,11 @@ const securityHeaders = [
   { key: "Permissions-Policy", value: "camera=(), microphone=(), geolocation=()" },
 ];
 
+/** Funnel path on madvertlabs.com → the funnel's own deployment (repo madvertlabsagency/markhorpatches). */
+const funnelProxies = [
+  { path: "/markhorpatches", origin: (process.env.MARKHOR_FUNNEL_URL ?? "https://markhor-funnel.vercel.app").replace(/\/$/, "") },
+];
+
 const nextConfig: NextConfig = {
   cacheComponents: true,
   partialPrefetching: true,
@@ -21,9 +26,18 @@ const nextConfig: NextConfig = {
     qualities: [40, 75, 85],
     remotePatterns: [{ protocol: "https", hostname: "cdn.sanity.io" }],
   },
-  // The /custom-patches landing page is a static export in public/custom-patches (source: landing-source/).
   async rewrites() {
-    return [{ source: "/custom-patches", destination: "/custom-patches/index.html" }];
+    return {
+      // Client funnels deployed as their own Vercel projects, served under a path on this domain.
+      // Each funnel is built with the same basePath, so its pages, assets and API routes all live
+      // under that path on both domains.
+      beforeFiles: funnelProxies.flatMap(({ path, origin }) => [
+        { source: path, destination: `${origin}${path}` },
+        { source: `${path}/:rest*`, destination: `${origin}${path}/:rest*` },
+      ]),
+      // The /custom-patches landing page is a static export in public/custom-patches (source: landing-source/).
+      afterFiles: [{ source: "/custom-patches", destination: "/custom-patches/index.html" }],
+    };
   },
   async redirects() {
     return [

@@ -9,7 +9,7 @@ import { audit } from "@/onboarding/server/events";
 import { body, handle, json, sameOrigin } from "@/onboarding/server/http";
 import { addNote, afterChange, createOnboarding, loadContext, recordBooking, regenerateLink, revokeLink, saveOfferLists, updateAccess } from "@/onboarding/server/repo";
 import { getSettings } from "@/onboarding/server/settings";
-import { blobToken, putLocal, safeName, storageDriver } from "@/onboarding/server/storage";
+import { blobAuth, putLocal, safeName, storageDriver } from "@/onboarding/server/storage";
 import { clientIp, rateLimit } from "@/integrations/rate-limit";
 
 type Ctx = { params: Promise<{ action: string }> };
@@ -237,7 +237,7 @@ export async function POST(req: Request, { params }: Ctx) {
         if (driver === "local") await putLocal(key, Buffer.from(await file.arrayBuffer()));
         else if (driver === "vercel-blob") {
           const { put } = await import("@vercel/blob");
-          await put(key, file, { access: "private", contentType: file.type, addRandomSuffix: false, token: blobToken() });
+          await put(key, file, { access: "private", contentType: file.type, addRandomSuffix: false, ...blobAuth() });
         } else return json({ error: "File storage is not configured (ONBOARDING_BLOB_READ_WRITE_TOKEN).", configurationRequired: true }, 503);
         const { DEFAULT_GUIDES } = await import("@/onboarding/guides/defaults");
         const prev = (await db().get<GuideStep>("guides", id)) ?? DEFAULT_GUIDES.find((g) => g.id === id);

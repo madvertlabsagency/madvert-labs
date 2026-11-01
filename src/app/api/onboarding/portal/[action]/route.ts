@@ -1,4 +1,5 @@
-import { handleUpload, type HandleUploadBody } from "@vercel/blob/client";
+import { issueSignedToken } from "@vercel/blob";
+import { handleUpload, handleUploadPresigned, type HandleUploadBody, type HandleUploadPresignedBody } from "@vercel/blob/client";
 import { ACCESS_BY_KEY } from "@/onboarding/template/access";
 import { ALLOWED_EXT, ASSET_CATEGORY_BY_KEY, MAX_FILE_BYTES } from "@/onboarding/template/assets";
 import type { AccessStatus, ClientAsset, DelegatedTask } from "@/onboarding/types";
@@ -22,7 +23,7 @@ import {
   storeSecret,
   updateAccess,
 } from "@/onboarding/server/repo";
-import { deleteObject, headObject, keyPrefix, blobToken, putLocal, safeName, storageDriver } from "@/onboarding/server/storage";
+import { deleteObject, headObject, keyPrefix, blobStoreId, blobToken, putLocal, safeName, storageDriver } from "@/onboarding/server/storage";
 import { clientState, delegateState } from "@/onboarding/server/views";
 import { clientIp, rateLimit } from "@/integrations/rate-limit";
 import { inputFromWorkshop } from "@/onboarding/offer/generate";
@@ -68,21 +69,37 @@ export async function POST(req: Request, { params }: Ctx) {
     // Vercel Blob client uploads: token generation for a direct browser → private blob upload.
     if (action === "upload-token") {
       const actor = await portalActor(req);
-      const b = await body<HandleUploadBody>(req);
-      const result = await handleUpload({
-        body: b,
-        request: req,
-        token: blobToken(),
-        onBeforeGenerateToken: async (pathname, payload) => {
-          const category = (JSON.parse(payload ?? "{}") as { category?: string }).category ?? "";
-          const cat = ASSET_CATEGORY_BY_KEY[category];
-          if (!cat) throw new Error("Unknown category");
-          assertScope(actor, `asset:${cat.section}`);
-          if (!pathname.startsWith(keyPrefix(actor.onboarding.id)) || pathname.includes("..")) throw new Error("Invalid upload path");
-          if (!ALLOWED_EXT.test(pathname)) throw new Error("File type not allowed");
-          return { maximumSizeInBytes: MAX_FILE_BYTES, addRandomSuffix: true, validUntil: Date.now() + 3600_000 };
-        },
-      });
+      const b = await body<HandleUploadBody & HandleUploadPresignedBody>(req);
+      const check = (pathname: string, payload: string | null) => {
+        const category = (JSON.parse(payload ?? "{}") as { category?: string }).category ?? "";
+        const cat = ASSET_CATEGORY_BY_KEY[category];
+        if (!cat) throw new Error("Unknown category");
+        assertScope(actor, `asset:${cat.section}`);
+        if (!pathname.startsWith(keyPrefix(actor.onboarding.id)) || pathname.includes("..")) throw new Error("Invalid upload path");
+        if (!ALLOWED_EXT.test(pathname)) throw new Error("File type not allowed");
+      };
+      const storeId = blobStoreId();
+      // OIDC-only store: presigned PUT scoped to this one pathname (the client adds a random prefix).
+      const result = storeId
+        ? await handleUploadPresigned({
+            body: b,
+            request: req,
+            getSignedToken: async (pathname, payload) => {
+              check(pathname, payload);
+              const validUntil = Date.now() + 3600_000;
+              const token = await issueSignedToken({ storeId, pathname, operations: ["put"], maximumSizeInBytes: MAX_FILE_BYTES, validUntil });
+              return { token, urlOptions: { maximumSizeInBytes: MAX_FILE_BYTES, validUntil, addRandomSuffix: false, allowOverwrite: false } };
+            },
+          })
+        : await handleUpload({
+            body: b,
+            request: req,
+            token: blobToken(),
+            onBeforeGenerateToken: async (pathname, payload) => {
+              check(pathname, payload);
+              return { maximumSizeInBytes: MAX_FILE_BYTES, addRandomSuffix: true, validUntil: Date.now() + 3600_000 };
+            },
+          });
       return json(result);
     }
 
