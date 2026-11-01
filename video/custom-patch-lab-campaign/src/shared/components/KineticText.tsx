@@ -1,6 +1,6 @@
 import React from 'react';
 import {spring, useCurrentFrame, useVideoConfig} from 'remotion';
-import {FONT_BODY, FONT_CONDENSED, FONT_SANS, ORANGE_GRADIENT} from '../brand';
+import {FONT_BODY, FONT_SANS, ORANGE_GRADIENT} from '../brand';
 import {easeIn, mix, prog} from '../motion';
 import {MotionBlur} from './MotionBlur';
 import {useTheme} from '../theme';
@@ -71,7 +71,7 @@ export const KineticText: React.FC<Props> = ({id, lines, exitAt, exit = 'up', st
               display: 'flex',
               gap: `0 ${line.size * 0.26}px`,
               justifyContent: 'center',
-              fontFamily: display ? theme.displayFont : font === 'condensed' ? FONT_CONDENSED : font === 'body' ? FONT_BODY : FONT_SANS,
+              fontFamily: display ? theme.displayFont : font === 'condensed' ? theme.condensedFont : font === 'body' ? FONT_BODY : FONT_SANS,
               fontVariationSettings: display ? theme.displayAxes : undefined,
               fontWeight: line.weight ?? (display ? theme.displayWeight : 700),
               fontSize: line.size,

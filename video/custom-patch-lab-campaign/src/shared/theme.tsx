@@ -1,5 +1,5 @@
 import React, {createContext, useContext} from 'react';
-import {C, DISPLAY_AXES, FONT_DISPLAY, GOLD_GRADIENT, GOLD_LINE} from './brand';
+import {C, DISPLAY_AXES, FONT_CONDENSED, FONT_DISPLAY, GOLD_GRADIENT, GOLD_LINE} from './brand';
 
 /**
  * Visual theme for the shared motion components. The default is the Custom
@@ -12,6 +12,14 @@ export type Theme = {
   displayFont: string;
   displayAxes?: string;
   displayWeight: number;
+  /** 'condensed' headline font (Ads 02–03 style) and benefit-badge type. */
+  condensedFont: string;
+  /** Benefit-badge medallion fills and the solid accent bar. */
+  iconA: string;
+  iconB: string;
+  bar: string;
+  /** Highlight colour for key words in word captions. */
+  key: string;
   /** Gradient used for accent words (text clip). */
   accent: string;
   /** Horizontal accent rule gradient + its glow colour. */
@@ -46,6 +54,11 @@ export const CPL_THEME: Theme = {
   displayFont: FONT_DISPLAY,
   displayAxes: DISPLAY_AXES,
   displayWeight: 760,
+  condensedFont: FONT_CONDENSED,
+  iconA: `linear-gradient(160deg, ${C.teal}, #0A5560)`,
+  iconB: `linear-gradient(160deg, ${C.orange}, #C9471F)`,
+  bar: `linear-gradient(180deg, #FF7A45, ${C.orange} 55%, #D9501F)`,
+  key: C.mustard,
   accent: GOLD_GRADIENT,
   rule: GOLD_LINE,
   ruleGlow: 'rgba(244,185,66,0.55)',

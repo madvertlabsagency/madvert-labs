@@ -1,0 +1,24 @@
+{
+ "fps": 30,
+ "durationInFrames": 1100,
+ "voOffsetFrames": 3,
+ "bpm": 100,
+ "cuts": [110, 166, 216, 284, 389, 465, 530, 630, 733, 830, 896],
+ "note": "Billys tiger ad: the Custom Patch Lab Ad 03 edit re-timed to the Billys voiceover (34.7 s). Same footage (assets/source/ad03/footage).",
+ "shots": [
+  { "id": "s01",  "source": "clip-a-hands-tiger-patch.mp4",     "from": 0,   "frames": 115, "srcIn": 1.8, "srcOut": 4.1,  "interp": true },
+  { "id": "s02",  "source": "clip-c-needle-macro-pullback.mp4", "from": 105, "frames": 61,  "srcIn": 0.3, "srcOut": 2.33, "interp": false },
+  { "id": "s03",  "source": "clip-b-machine-stitching-hoop.mp4","from": 166, "frames": 50,  "srcIn": 1.0, "srcOut": 2.74, "interp": false },
+  { "id": "s04",  "source": "clip-a-hands-tiger-patch.mp4",     "from": 216, "frames": 73,  "srcIn": 5.3, "srcOut": 6.6,  "interp": true },
+  { "id": "s05",  "source": "clip-a-hands-tiger-patch.mp4",     "from": 279, "frames": 110, "srcIn": 6.6, "srcOut": 8.0,  "interp": true, "pingpong": 2 },
+  { "id": "s05k", "source": "clip-a-hands-tiger-patch.mp4",     "from": 279, "frames": 110, "srcIn": 6.6, "srcOut": 8.0,  "interp": true, "pingpong": 2, "look": "sketch" },
+  { "id": "s06",  "source": "clip-a-hands-tiger-patch.mp4",     "from": 389, "frames": 76,  "srcIn": 4.0, "srcOut": 5.3,  "interp": true },
+  { "id": "s07",  "source": "clip-c-needle-macro-pullback.mp4", "from": 465, "frames": 70,  "srcIn": 2.0, "srcOut": 4.6,  "interp": true },
+  { "id": "s08",  "source": "clip-b-machine-stitching-hoop.mp4","from": 525, "frames": 113, "srcIn": 4.4, "srcOut": 8.0,  "interp": true },
+  { "id": "s09",  "source": "clip-c-needle-macro-pullback.mp4", "from": 630, "frames": 108, "srcIn": 4.6, "srcOut": 8.0,  "interp": true },
+  { "id": "s10",  "source": "clip-b-machine-stitching-hoop.mp4","from": 733, "frames": 102, "srcIn": 0.0, "srcOut": 1.0,  "interp": false, "pingpong": 3 },
+  { "id": "s11",  "source": "clip-a-hands-tiger-patch.mp4",     "from": 830, "frames": 71,  "srcIn": 6.6, "srcOut": 8.0,  "interp": true },
+  { "id": "s11k", "source": "clip-a-hands-tiger-patch.mp4",     "from": 830, "frames": 71,  "srcIn": 6.6, "srcOut": 8.0,  "interp": true, "look": "sketch" },
+  { "id": "s12",  "source": "clip-a-hands-tiger-patch.mp4",     "from": 896, "frames": 204, "srcIn": 1.8, "srcOut": 5.3,  "interp": true, "pingpong": 2 }
+ ]
+}

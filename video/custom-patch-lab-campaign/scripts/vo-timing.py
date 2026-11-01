@@ -66,7 +66,7 @@ def syllables(word):
 
 
 SPOKEN = {'24': 'twenty four', 'usa-based': 'u s a based', 'us-to-us': 'u s to u s', "we'll": "we'll", "let's": "let's",
-          "we're": "we're", 'mockup': 'mock up', '$0': 'zero'}
+          "we're": "we're", 'mockup': 'mock up', '$0': 'zero', "billy's": 'billys', 'pvc': 'p v c'}
 
 
 def spoken_tokens(word):

@@ -1,0 +1,18 @@
+{
+  "fps": 30,
+  "durationInFrames": 630,
+  "voOffsetFrames": 12,
+  "bpm": 100,
+  "cuts": [114, 168, 210, 270, 384, 444],
+  "note": "Billys eagle ad: the Custom Patch Lab Ad 02 edit re-timed to the Billys voiceover (17.2 s). Same footage (assets/source/ad02/footage).",
+  "shots": [
+    { "id": "a1", "source": "clip-a-designer-sketch-to-patch.mp4", "from": 0,   "frames": 114, "srcIn": 0.0,  "srcOut": 2.53, "interp": true },
+    { "id": "a2", "source": "clip-a-designer-sketch-to-patch.mp4", "from": 78,  "frames": 36,  "srcIn": 5.6,  "srcOut": 7.04, "interp": true },
+    { "id": "b1", "source": "clip-b-machine-then-inspection.mp4",  "from": 114, "frames": 59,  "srcIn": 0.0,  "srcOut": 0.46, "interp": false, "pingpong": 4 },
+    { "id": "b2", "source": "clip-a-designer-sketch-to-patch.mp4", "from": 163, "frames": 52,  "srcIn": 2.5,  "srcOut": 4.76, "interp": true },
+    { "id": "b3", "source": "clip-b-machine-then-inspection.mp4",  "from": 205, "frames": 65,  "srcIn": 0.55, "srcOut": 3.25, "interp": false },
+    { "id": "c",  "source": "clip-c-gloved-inspection.mp4",        "from": 270, "frames": 119, "srcIn": 3.0,  "srcOut": 6.79, "interp": true },
+    { "id": "d",  "source": "clip-d-jacket-and-cap.mp4",           "from": 379, "frames": 69,  "srcIn": 4.5,  "srcOut": 7.68, "interp": true },
+    { "id": "e",  "source": "clip-b-machine-then-inspection.mp4",  "from": 440, "frames": 190, "srcIn": 0.0,  "srcOut": 0.46, "interp": false, "pingpong": 9 }
+  ]
+}

@@ -1,8 +1,9 @@
 import React from 'react';
 import {useCurrentFrame} from 'remotion';
-import {C, FONT_CONDENSED, FONT_SANS, GOLD_GRADIENT} from '../brand';
+import {C, FONT_CONDENSED, FONT_SANS} from '../brand';
 import {easeIn, easeInOut, easeOut, mix, prog} from '../motion';
 import {MotionBlur} from './MotionBlur';
+import {useTheme} from '../theme';
 
 /**
  * Premium benefit badge: navy capsule with a gold hairline that draws on, an
@@ -19,6 +20,7 @@ export const BenefitBadge: React.FC<{
   rest: string;
 }> = ({id, at, exitAt, top, icon, lead, rest}) => {
   const frame = useCurrentFrame();
+  const theme = useTheme();
   const open = prog(frame, at, 16);
   const draw = prog(frame, at + 2, 20, easeInOut);
   const iconIn = prog(frame, at + 3, 14);
@@ -81,7 +83,7 @@ export const BenefitBadge: React.FC<{
           width: 106,
           height: 106,
           borderRadius: '50%',
-          background: icon === 'check' ? `linear-gradient(160deg, ${C.orange}, #C9471F)` : `linear-gradient(160deg, ${C.teal}, #0A5560)`,
+          background: icon === 'check' ? theme.iconB : theme.iconA,
           boxShadow: 'inset 0 2px 0 rgba(255,255,255,0.25), 0 8px 20px rgba(0,0,0,0.45)',
           border: '2px dashed rgba(255,226,154,0.75)',
           transform: `scale(${mix(0.4, 1, iconIn)}) rotate(${mix(-40, 0, iconIn)}deg)`,
@@ -116,7 +118,7 @@ export const BenefitBadge: React.FC<{
           alignItems: 'center',
           justifyContent: 'center',
           overflow: 'hidden',
-          fontFamily: FONT_CONDENSED,
+          fontFamily: theme.condensedFont,
           fontWeight: 700,
           fontSize: 62,
           letterSpacing: `${mix(0.1, 0.03, textIn)}em`,
@@ -124,10 +126,10 @@ export const BenefitBadge: React.FC<{
           clipPath: `inset(0 ${(1 - textIn) * 100}% 0 0)`,
         }}
       >
-        <span style={{backgroundImage: GOLD_GRADIENT, WebkitBackgroundClip: 'text', backgroundClip: 'text', color: 'transparent', marginRight: '0.28em'}}>
+        <span style={{backgroundImage: theme.accent, WebkitBackgroundClip: 'text', backgroundClip: 'text', color: 'transparent', marginRight: '0.28em'}}>
           {lead}
         </span>
-        <span style={{color: C.text}}>{rest}</span>
+        <span style={{color: theme.text}}>{rest}</span>
       </div>
     </div>
   );
@@ -141,6 +143,7 @@ export type TimedWord = {w: string; start: number};
  */
 export const WordCaption: React.FC<{words: TimedWord[]; top: number; exitAt?: number}> = ({words, top, exitAt}) => {
   const frame = useCurrentFrame();
+  const theme = useTheme();
   const q = exitAt === undefined ? 0 : prog(frame, exitAt, 8, easeIn);
   return (
     <div
@@ -173,7 +176,7 @@ export const WordCaption: React.FC<{words: TimedWord[]; top: number; exitAt?: nu
               display: 'inline-block',
               transform: `translateY(${(1 - p) * 18}px)`,
               opacity: mix(0, 1, p) * mix(0.45, 1, lit),
-              color: isKey ? C.mustard : C.text,
+              color: isKey ? theme.key : theme.text,
             }}
           >
             {w.w}
@@ -236,6 +239,7 @@ export const AccentBar: React.FC<{at: number; top: number; width: number; height
   exitAt,
 }) => {
   const frame = useCurrentFrame();
+  const theme = useTheme();
   const p = prog(frame, at, 12, easeOut);
   const q = exitAt === undefined ? 0 : prog(frame, exitAt, 8, easeIn);
   return (
@@ -246,7 +250,7 @@ export const AccentBar: React.FC<{at: number; top: number; width: number; height
         left: 540 - width / 2,
         width,
         height,
-        background: `linear-gradient(180deg, #FF7A45, ${C.orange} 55%, #D9501F)`,
+        background: theme.bar,
         boxShadow: '0 10px 24px rgba(0,0,0,0.45)',
         transformOrigin: q > 0 ? 'right center' : 'left center',
         transform: `scaleX(${p * (1 - q)})`,

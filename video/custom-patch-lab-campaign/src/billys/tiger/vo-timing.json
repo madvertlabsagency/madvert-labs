@@ -1,0 +1,602 @@
+{
+ "source": "assets/source/billys/audio/vo-tiger.mp3",
+ "duration": 34.691,
+ "phrases": [
+  {
+   "text": "Got a logo?",
+   "start": 0.06,
+   "end": 0.75,
+   "method": "forced-alignment",
+   "words": [
+    {
+     "w": "Got",
+     "start": 0.06,
+     "end": 0.26
+    },
+    {
+     "w": "a",
+     "start": 0.26,
+     "end": 0.29
+    },
+    {
+     "w": "logo?",
+     "start": 0.29,
+     "end": 0.75
+    }
+   ]
+  },
+  {
+   "text": "Let's turn it into something amazing.",
+   "start": 1.13,
+   "end": 3.2,
+   "method": "forced-alignment",
+   "words": [
+    {
+     "w": "Let's",
+     "start": 1.13,
+     "end": 1.37
+    },
+    {
+     "w": "turn",
+     "start": 1.37,
+     "end": 1.58
+    },
+    {
+     "w": "it",
+     "start": 1.58,
+     "end": 1.68
+    },
+    {
+     "w": "into",
+     "start": 1.68,
+     "end": 1.88
+    },
+    {
+     "w": "something",
+     "start": 1.88,
+     "end": 2.37
+    },
+    {
+     "w": "amazing.",
+     "start": 2.37,
+     "end": 3.2
+    }
+   ]
+  },
+  {
+   "text": "At Billy's Custom Patches,",
+   "start": 3.68,
+   "end": 5.1,
+   "method": "syllable-estimate",
+   "words": [
+    {
+     "w": "At",
+     "start": 3.68,
+     "end": 3.85
+    },
+    {
+     "w": "Billy's",
+     "start": 3.85,
+     "end": 4.19
+    },
+    {
+     "w": "Custom",
+     "start": 4.19,
+     "end": 4.6
+    },
+    {
+     "w": "Patches,",
+     "start": 4.6,
+     "end": 5.1
+    }
+   ]
+  },
+  {
+   "text": "we create premium custom patches that make your brand stand out.",
+   "start": 5.27,
+   "end": 9.06,
+   "method": "forced-alignment",
+   "words": [
+    {
+     "w": "we",
+     "start": 5.27,
+     "end": 5.39
+    },
+    {
+     "w": "create",
+     "start": 5.39,
+     "end": 5.77
+    },
+    {
+     "w": "premium",
+     "start": 5.77,
+     "end": 6.34
+    },
+    {
+     "w": "custom",
+     "start": 6.34,
+     "end": 6.8
+    },
+    {
+     "w": "patches",
+     "start": 6.8,
+     "end": 7.29
+    },
+    {
+     "w": "that",
+     "start": 7.29,
+     "end": 7.43
+    },
+    {
+     "w": "make",
+     "start": 7.43,
+     "end": 7.65
+    },
+    {
+     "w": "your",
+     "start": 7.65,
+     "end": 7.9
+    },
+    {
+     "w": "brand",
+     "start": 7.9,
+     "end": 8.28
+    },
+    {
+     "w": "stand",
+     "start": 8.28,
+     "end": 8.78
+    },
+    {
+     "w": "out.",
+     "start": 8.78,
+     "end": 9.06
+    }
+   ]
+  },
+  {
+   "text": "No design?",
+   "start": 9.56,
+   "end": 10.18,
+   "method": "forced-alignment",
+   "words": [
+    {
+     "w": "No",
+     "start": 9.56,
+     "end": 9.72
+    },
+    {
+     "w": "design?",
+     "start": 9.72,
+     "end": 10.18
+    }
+   ]
+  },
+  {
+   "text": "No problem!",
+   "start": 10.49,
+   "end": 11.13,
+   "method": "forced-alignment",
+   "words": [
+    {
+     "w": "No",
+     "start": 10.49,
+     "end": 10.7
+    },
+    {
+     "w": "problem!",
+     "start": 10.7,
+     "end": 11.13
+    }
+   ]
+  },
+  {
+   "text": "We'll create one for you.",
+   "start": 11.46,
+   "end": 12.57,
+   "method": "syllable-estimate",
+   "words": [
+    {
+     "w": "We'll",
+     "start": 11.46,
+     "end": 11.64
+    },
+    {
+     "w": "create",
+     "start": 11.64,
+     "end": 11.98
+    },
+    {
+     "w": "one",
+     "start": 11.98,
+     "end": 12.18
+    },
+    {
+     "w": "for",
+     "start": 12.18,
+     "end": 12.25
+    },
+    {
+     "w": "you.",
+     "start": 12.25,
+     "end": 12.57
+    }
+   ]
+  },
+  {
+   "text": "Choose embroidered,",
+   "start": 13.07,
+   "end": 13.95,
+   "method": "forced-alignment",
+   "words": [
+    {
+     "w": "Choose",
+     "start": 13.07,
+     "end": 13.33
+    },
+    {
+     "w": "embroidered,",
+     "start": 13.33,
+     "end": 13.95
+    }
+   ]
+  },
+  {
+   "text": "chenille,",
+   "start": 14.11,
+   "end": 14.65,
+   "method": "syllable-estimate",
+   "words": [
+    {
+     "w": "chenille,",
+     "start": 14.11,
+     "end": 14.65
+    }
+   ]
+  },
+  {
+   "text": "PVC,",
+   "start": 14.85,
+   "end": 15.57,
+   "method": "forced-alignment",
+   "words": [
+    {
+     "w": "PVC,",
+     "start": 14.85,
+     "end": 15.57
+    }
+   ]
+  },
+  {
+   "text": "woven, or printed patches.",
+   "start": 15.71,
+   "end": 17.36,
+   "method": "forced-alignment",
+   "words": [
+    {
+     "w": "woven,",
+     "start": 15.71,
+     "end": 16.16
+    },
+    {
+     "w": "or",
+     "start": 16.16,
+     "end": 16.4
+    },
+    {
+     "w": "printed",
+     "start": 16.4,
+     "end": 16.82
+    },
+    {
+     "w": "patches.",
+     "start": 16.82,
+     "end": 17.36
+    }
+   ]
+  },
+  {
+   "text": "Every patch is made with premium quality,",
+   "start": 17.78,
+   "end": 20.02,
+   "method": "forced-alignment",
+   "words": [
+    {
+     "w": "Every",
+     "start": 17.78,
+     "end": 18.05
+    },
+    {
+     "w": "patch",
+     "start": 18.05,
+     "end": 18.4
+    },
+    {
+     "w": "is",
+     "start": 18.4,
+     "end": 18.53
+    },
+    {
+     "w": "made",
+     "start": 18.53,
+     "end": 18.77
+    },
+    {
+     "w": "with",
+     "start": 18.77,
+     "end": 18.96
+    },
+    {
+     "w": "premium",
+     "start": 18.96,
+     "end": 19.52
+    },
+    {
+     "w": "quality,",
+     "start": 19.52,
+     "end": 20.02
+    }
+   ]
+  },
+  {
+   "text": "and a fast turnaround,",
+   "start": 20.15,
+   "end": 21.22,
+   "method": "forced-alignment",
+   "words": [
+    {
+     "w": "and",
+     "start": 20.15,
+     "end": 20.37
+    },
+    {
+     "w": "a",
+     "start": 20.37,
+     "end": 20.4
+    },
+    {
+     "w": "fast",
+     "start": 20.4,
+     "end": 20.77
+    },
+    {
+     "w": "turnaround,",
+     "start": 20.77,
+     "end": 21.22
+    }
+   ]
+  },
+  {
+   "text": "built for businesses,",
+   "start": 21.56,
+   "end": 22.62,
+   "method": "forced-alignment",
+   "words": [
+    {
+     "w": "built",
+     "start": 21.56,
+     "end": 21.8
+    },
+    {
+     "w": "for",
+     "start": 21.8,
+     "end": 21.94
+    },
+    {
+     "w": "businesses,",
+     "start": 21.94,
+     "end": 22.62
+    }
+   ]
+  },
+  {
+   "text": "teams",
+   "start": 22.8,
+   "end": 23.27,
+   "method": "forced-alignment",
+   "words": [
+    {
+     "w": "teams",
+     "start": 22.8,
+     "end": 23.27
+    }
+   ]
+  },
+  {
+   "text": "and brands.",
+   "start": 23.39,
+   "end": 24.04,
+   "method": "forced-alignment",
+   "words": [
+    {
+     "w": "and",
+     "start": 23.39,
+     "end": 23.5
+    },
+    {
+     "w": "brands.",
+     "start": 23.5,
+     "end": 24.04
+    }
+   ]
+  },
+  {
+   "text": "From hats to jackets,",
+   "start": 24.49,
+   "end": 25.71,
+   "method": "forced-alignment",
+   "words": [
+    {
+     "w": "From",
+     "start": 24.49,
+     "end": 24.64
+    },
+    {
+     "w": "hats",
+     "start": 24.64,
+     "end": 25.0
+    },
+    {
+     "w": "to",
+     "start": 25.0,
+     "end": 25.11
+    },
+    {
+     "w": "jackets,",
+     "start": 25.11,
+     "end": 25.71
+    }
+   ]
+  },
+  {
+   "text": "uniforms to clothing brands,",
+   "start": 25.91,
+   "end": 27.41,
+   "method": "forced-alignment",
+   "words": [
+    {
+     "w": "uniforms",
+     "start": 25.91,
+     "end": 26.5
+    },
+    {
+     "w": "to",
+     "start": 26.5,
+     "end": 26.59
+    },
+    {
+     "w": "clothing",
+     "start": 26.59,
+     "end": 26.99
+    },
+    {
+     "w": "brands,",
+     "start": 26.99,
+     "end": 27.41
+    }
+   ]
+  },
+  {
+   "text": "we bring your ideas to life.",
+   "start": 27.7,
+   "end": 29.57,
+   "method": "forced-alignment",
+   "words": [
+    {
+     "w": "we",
+     "start": 27.7,
+     "end": 27.89
+    },
+    {
+     "w": "bring",
+     "start": 27.89,
+     "end": 28.21
+    },
+    {
+     "w": "your",
+     "start": 28.21,
+     "end": 28.48
+    },
+    {
+     "w": "ideas",
+     "start": 28.48,
+     "end": 28.99
+    },
+    {
+     "w": "to",
+     "start": 28.99,
+     "end": 29.09
+    },
+    {
+     "w": "life.",
+     "start": 29.09,
+     "end": 29.57
+    }
+   ]
+  },
+  {
+   "text": "Stop settling for ordinary.",
+   "start": 30.04,
+   "end": 31.6,
+   "method": "forced-alignment",
+   "words": [
+    {
+     "w": "Stop",
+     "start": 30.04,
+     "end": 30.35
+    },
+    {
+     "w": "settling",
+     "start": 30.35,
+     "end": 30.79
+    },
+    {
+     "w": "for",
+     "start": 30.79,
+     "end": 31.0
+    },
+    {
+     "w": "ordinary.",
+     "start": 31.0,
+     "end": 31.6
+    }
+   ]
+  },
+  {
+   "text": "Get your quote today",
+   "start": 31.93,
+   "end": 32.88,
+   "method": "forced-alignment",
+   "words": [
+    {
+     "w": "Get",
+     "start": 31.93,
+     "end": 32.06
+    },
+    {
+     "w": "your",
+     "start": 32.06,
+     "end": 32.21
+    },
+    {
+     "w": "quote",
+     "start": 32.21,
+     "end": 32.49
+    },
+    {
+     "w": "today",
+     "start": 32.49,
+     "end": 32.88
+    }
+   ]
+  },
+  {
+   "text": "at Billy's Custom Patches.",
+   "start": 33.02,
+   "end": 34.47,
+   "method": "syllable-estimate",
+   "words": [
+    {
+     "w": "at",
+     "start": 33.02,
+     "end": 33.21
+    },
+    {
+     "w": "Billy's",
+     "start": 33.21,
+     "end": 33.57
+    },
+    {
+     "w": "Custom",
+     "start": 33.57,
+     "end": 33.98
+    },
+    {
+     "w": "Patches.",
+     "start": 33.98,
+     "end": 34.47
+    }
+   ]
+  }
+ ]
+}
