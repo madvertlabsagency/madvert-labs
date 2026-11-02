@@ -28,3 +28,4 @@ im = Image.open('assets/source/billys/brand/bcp-logo.png').convert('RGB')
 ys, xs = np.nonzero(np.asarray(im).astype(int).min(2) < 235)
 im.crop((xs.min() - 14, ys.min() - 14, xs.max() + 15, ys.max() + 15)).save('public/brand/billys-logo.png')
 PY
+python3 -I scripts/mask-circle-logo.py assets/source/epcf/brand/epcf-logo.jpg public/brand/epcf-logo.png

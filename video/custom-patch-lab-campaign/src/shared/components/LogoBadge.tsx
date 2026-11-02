@@ -8,7 +8,13 @@ import {MotionBlur} from './MotionBlur';
 const RATIO = 894 / 880;
 
 /** Official circular Custom Patch Lab logo: spring-in, gold ripple ring, light sweep. */
-export const LogoBadge: React.FC<{at: number; size: number; top: number}> = ({at, size, top}) => {
+export const LogoBadge: React.FC<{at: number; size: number; top: number; src?: string; ratio?: number}> = ({
+  at,
+  size,
+  top,
+  src = 'brand/cpl-logo.png',
+  ratio = RATIO,
+}) => {
   const frame = useCurrentFrame();
   const {fps} = useVideoConfig();
   const s = spring({frame: frame - at, fps, config: {damping: 14, stiffness: 120, mass: 0.9}});
@@ -16,7 +22,7 @@ export const LogoBadge: React.FC<{at: number; size: number; top: number}> = ({at
   const blur = (1 - prog(frame, at, 14)) * 12;
   const ripple = prog(frame, at + 2, 26, easeOut);
   const sweep = prog(frame, at + 48, 22);
-  const h = size * RATIO;
+  const h = size * ratio;
   return (
     <div
       style={{
@@ -61,7 +67,7 @@ export const LogoBadge: React.FC<{at: number; size: number; top: number}> = ({at
           boxShadow: '0 26px 60px rgba(0,0,0,0.55), 0 0 0 4px rgba(244,185,66,0.35)',
         }}
       >
-        <Img src={staticFile('brand/cpl-logo.png')} style={{width: '100%', height: '100%', display: 'block'}} />
+        <Img src={staticFile(src)} style={{width: '100%', height: '100%', display: 'block'}} />
         <div
           style={{
             position: 'absolute',
