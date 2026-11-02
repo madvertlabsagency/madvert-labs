@@ -1,0 +1,154 @@
+{
+ "fps": 30,
+ "durationInFrames": 1150,
+ "voOffsetFrames": 3,
+ "bpm": 100,
+ "cuts": [
+  110,
+  184,
+  232,
+  302,
+  408,
+  484,
+  545,
+  645,
+  767,
+  860,
+  925
+ ],
+ "note": "EPCF tiger ad: the Custom Patch Lab Ad 03 edit re-timed to the EPCF voiceover (36.2 s). Footage: assets/source/ad03/footage.",
+ "shots": [
+  {
+   "id": "s01",
+   "source": "clip-a-hands-tiger-patch.mp4",
+   "from": 0,
+   "frames": 115,
+   "srcIn": 1.8,
+   "srcOut": 4.1,
+   "interp": true
+  },
+  {
+   "id": "s02",
+   "source": "clip-c-needle-macro-pullback.mp4",
+   "from": 105,
+   "frames": 79,
+   "srcIn": 0.3,
+   "srcOut": 2.33,
+   "interp": false
+  },
+  {
+   "id": "s03",
+   "source": "clip-b-machine-stitching-hoop.mp4",
+   "from": 184,
+   "frames": 48,
+   "srcIn": 1.0,
+   "srcOut": 2.74,
+   "interp": false
+  },
+  {
+   "id": "s04",
+   "source": "clip-a-hands-tiger-patch.mp4",
+   "from": 232,
+   "frames": 75,
+   "srcIn": 5.3,
+   "srcOut": 6.6,
+   "interp": true
+  },
+  {
+   "id": "s05",
+   "source": "clip-a-hands-tiger-patch.mp4",
+   "from": 297,
+   "frames": 111,
+   "srcIn": 6.6,
+   "srcOut": 8.0,
+   "interp": true,
+   "pingpong": 2
+  },
+  {
+   "id": "s05k",
+   "source": "clip-a-hands-tiger-patch.mp4",
+   "from": 297,
+   "frames": 111,
+   "srcIn": 6.6,
+   "srcOut": 8.0,
+   "interp": true,
+   "pingpong": 2,
+   "look": "sketch"
+  },
+  {
+   "id": "s06",
+   "source": "clip-a-hands-tiger-patch.mp4",
+   "from": 408,
+   "frames": 76,
+   "srcIn": 4.0,
+   "srcOut": 5.3,
+   "interp": true
+  },
+  {
+   "id": "s07",
+   "source": "clip-c-needle-macro-pullback.mp4",
+   "from": 484,
+   "frames": 66,
+   "srcIn": 2.0,
+   "srcOut": 4.6,
+   "interp": true
+  },
+  {
+   "id": "s08",
+   "source": "clip-b-machine-stitching-hoop.mp4",
+   "from": 540,
+   "frames": 113,
+   "srcIn": 4.4,
+   "srcOut": 8.0,
+   "interp": true
+  },
+  {
+   "id": "s09",
+   "source": "clip-c-needle-macro-pullback.mp4",
+   "from": 645,
+   "frames": 127,
+   "srcIn": 4.6,
+   "srcOut": 8.0,
+   "interp": true
+  },
+  {
+   "id": "s10",
+   "source": "clip-b-machine-stitching-hoop.mp4",
+   "from": 767,
+   "frames": 98,
+   "srcIn": 0.0,
+   "srcOut": 1.0,
+   "interp": false,
+   "pingpong": 3
+  },
+  {
+   "id": "s11",
+   "source": "clip-a-hands-tiger-patch.mp4",
+   "from": 860,
+   "frames": 70,
+   "srcIn": 6.6,
+   "srcOut": 8.0,
+   "interp": true
+  },
+  {
+   "id": "s11k",
+   "source": "clip-a-hands-tiger-patch.mp4",
+   "from": 860,
+   "frames": 70,
+   "srcIn": 6.6,
+   "srcOut": 8.0,
+   "interp": true,
+   "look": "sketch"
+  },
+  {
+   "id": "s12",
+   "source": "clip-a-hands-tiger-patch.mp4",
+   "from": 925,
+   "frames": 225,
+   "srcIn": 1.8,
+   "srcOut": 5.3,
+   "interp": true,
+   "pingpong": 2
+  }
+ ]
+}

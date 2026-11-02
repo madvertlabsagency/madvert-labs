@@ -1,0 +1,285 @@
+{
+ "source": "assets/source/epcf/audio/vo-eagle.mp3",
+ "duration": 17.554,
+ "phrases": [
+  {
+   "text": "Got a logo?",
+   "start": 0.07,
+   "end": 0.74,
+   "method": "forced-alignment",
+   "words": [
+    {
+     "w": "Got",
+     "start": 0.07,
+     "end": 0.26
+    },
+    {
+     "w": "a",
+     "start": 0.26,
+     "end": 0.29
+    },
+    {
+     "w": "logo?",
+     "start": 0.29,
+     "end": 0.74
+    }
+   ]
+  },
+  {
+   "text": "Let's turn it into something premium.",
+   "start": 1.12,
+   "end": 3.04,
+   "method": "forced-alignment",
+   "words": [
+    {
+     "w": "Let's",
+     "start": 1.12,
+     "end": 1.36
+    },
+    {
+     "w": "turn",
+     "start": 1.36,
+     "end": 1.61
+    },
+    {
+     "w": "it",
+     "start": 1.61,
+     "end": 1.71
+    },
+    {
+     "w": "into",
+     "start": 1.71,
+     "end": 1.9
+    },
+    {
+     "w": "something",
+     "start": 1.9,
+     "end": 2.41
+    },
+    {
+     "w": "premium.",
+     "start": 2.41,
+     "end": 3.04
+    }
+   ]
+  },
+  {
+   "text": "From detailed embroidery to bold custom patches,",
+   "start": 3.48,
+   "end": 6.39,
+   "method": "forced-alignment",
+   "words": [
+    {
+     "w": "From",
+     "start": 3.48,
+     "end": 3.66
+    },
+    {
+     "w": "detailed",
+     "start": 3.66,
+     "end": 4.15
+    },
+    {
+     "w": "embroidery",
+     "start": 4.15,
+     "end": 4.8
+    },
+    {
+     "w": "to",
+     "start": 4.8,
+     "end": 4.93
+    },
+    {
+     "w": "bold",
+     "start": 4.93,
+     "end": 5.39
+    },
+    {
+     "w": "custom",
+     "start": 5.39,
+     "end": 5.84
+    },
+    {
+     "w": "patches,",
+     "start": 5.84,
+     "end": 6.39
+    }
+   ]
+  },
+  {
+   "text": "we help bring your artwork to life.",
+   "start": 6.71,
+   "end": 8.69,
+   "method": "forced-alignment",
+   "words": [
+    {
+     "w": "we",
+     "start": 6.71,
+     "end": 6.87
+    },
+    {
+     "w": "help",
+     "start": 6.87,
+     "end": 7.1
+    },
+    {
+     "w": "bring",
+     "start": 7.1,
+     "end": 7.33
+    },
+    {
+     "w": "your",
+     "start": 7.33,
+     "end": 7.64
+    },
+    {
+     "w": "artwork",
+     "start": 7.64,
+     "end": 8.1
+    },
+    {
+     "w": "to",
+     "start": 8.1,
+     "end": 8.22
+    },
+    {
+     "w": "life.",
+     "start": 8.22,
+     "end": 8.69
+    }
+   ]
+  },
+  {
+   "text": "Every patch type.",
+   "start": 9.13,
+   "end": 10.1,
+   "method": "forced-alignment",
+   "words": [
+    {
+     "w": "Every",
+     "start": 9.13,
+     "end": 9.43
+    },
+    {
+     "w": "patch",
+     "start": 9.43,
+     "end": 9.78
+    },
+    {
+     "w": "type.",
+     "start": 9.78,
+     "end": 10.1
+    }
+   ]
+  },
+  {
+   "text": "Satisfaction guaranteed.",
+   "start": 10.39,
+   "end": 12.03,
+   "method": "forced-alignment",
+   "words": [
+    {
+     "w": "Satisfaction",
+     "start": 10.39,
+     "end": 11.26
+    },
+    {
+     "w": "guaranteed.",
+     "start": 11.26,
+     "end": 12.03
+    }
+   ]
+  },
+  {
+   "text": "Ready to make your brand stand out?",
+   "start": 12.6,
+   "end": 14.25,
+   "method": "forced-alignment",
+   "words": [
+    {
+     "w": "Ready",
+     "start": 12.6,
+     "end": 12.8
+    },
+    {
+     "w": "to",
+     "start": 12.8,
+     "end": 12.87
+    },
+    {
+     "w": "make",
+     "start": 12.87,
+     "end": 13.08
+    },
+    {
+     "w": "your",
+     "start": 13.08,
+     "end": 13.29
+    },
+    {
+     "w": "brand",
+     "start": 13.29,
+     "end": 13.64
+    },
+    {
+     "w": "stand",
+     "start": 13.64,
+     "end": 14.0
+    },
+    {
+     "w": "out?",
+     "start": 14.0,
+     "end": 14.25
+    }
+   ]
+  },
+  {
+   "text": "Get your quote at Excellence Punch Custom Factory.",
+   "start": 14.61,
+   "end": 17.33,
+   "method": "forced-alignment",
+   "words": [
+    {
+     "w": "Get",
+     "start": 14.61,
+     "end": 14.78
+    },
+    {
+     "w": "your",
+     "start": 14.78,
+     "end": 14.98
+    },
+    {
+     "w": "quote",
+     "start": 14.98,
+     "end": 15.36
+    },
+    {
+     "w": "at",
+     "start": 15.36,
+     "end": 15.57
+    },
+    {
+     "w": "Excellence",
+     "start": 15.57,
+     "end": 16.08
+    },
+    {
+     "w": "Punch",
+     "start": 16.08,
+     "end": 16.41
+    },
+    {
+     "w": "Custom",
+     "start": 16.41,
+     "end": 16.81
+    },
+    {
+     "w": "Factory.",
+     "start": 16.81,
+     "end": 17.33
+    }
+   ]
+  }
+ ]
+}

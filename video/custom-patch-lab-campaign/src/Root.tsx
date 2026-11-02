@@ -21,6 +21,10 @@ import {BillysEagle} from './billys/eagle/BillysEagle';
 import edlBE from './billys/eagle/edl.json';
 import {BillysTiger} from './billys/tiger/BillysTiger';
 import {EpcfAd01} from './epcf/EpcfAd01';
+import {EpcfEagle} from './epcf/eagle/EpcfEagle';
+import edlEE from './epcf/eagle/edl.json';
+import {EpcfTiger} from './epcf/tiger/EpcfTiger';
+import edlET from './epcf/tiger/edl.json';
 import edlBT from './billys/tiger/edl.json';
 
 export const RemotionRoot: React.FC = () => (
@@ -43,6 +47,8 @@ export const RemotionRoot: React.FC = () => (
   </Folder>
   <Folder name="EPCF-Excellence-Punch">
     <Composition id="EpcfAd01Lion" component={EpcfAd01} durationInFrames={edl01.durationInFrames} fps={edl01.fps} width={1080} height={1920} />
+    <Composition id="EpcfAd02Eagle" component={EpcfEagle} durationInFrames={edlEE.durationInFrames} fps={edlEE.fps} width={1080} height={1920} />
+    <Composition id="EpcfAd03Tiger" component={EpcfTiger} durationInFrames={edlET.durationInFrames} fps={edlET.fps} width={1080} height={1920} />
   </Folder>
   </>
 );

@@ -25,7 +25,8 @@ export const EPCF_THEME: Theme = {
   displayFont: FONT_SERIF,
   displayAxes: undefined,
   displayWeight: 700,
-  condensedFont: FONT_SERIF,
+  // VO ads (eagle/tiger) use the condensed headline layouts; Cinzel is too wide for them.
+  condensedFont: 'Oswald, "Arial Narrow", sans-serif',
   accent: `linear-gradient(180deg, ${E.goldLight} 0%, ${E.gold} 50%, ${E.goldDark} 100%)`,
   rule: `linear-gradient(90deg, rgba(212,175,55,0) 0%, ${E.gold} 18%, ${E.goldLight} 50%, ${E.gold} 82%, rgba(212,175,55,0) 100%)`,
   ruleGlow: 'rgba(212,175,55,0.55)',
