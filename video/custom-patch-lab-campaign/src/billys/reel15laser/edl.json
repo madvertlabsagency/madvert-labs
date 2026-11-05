@@ -1,0 +1,15 @@
+{
+  "fps": 30,
+  "durationInFrames": 450,
+  "cuts": [45, 90, 135, 180, 222, 270, 360],
+  "note": "Billys 15 s laser-cutting reel. One Google Flow clip (assets/source/billys/reel15laser/footage/laser-cut.mp4, 10 s): laser cut 0-5.958 s (one internal cut at 5.958), then one continuous move: hand lifts the patch off the bed (6.0-7.5) and pans onto the navy cap (7.9-10). Laser shots run at real speed; the lift and cap shots are gently slowed with motion interpolation. 360-450 is the end card over a freeze of d1's last frame (cap, hand out of frame).",
+  "shots": [
+    { "id": "a1", "source": "laser-cut.mp4", "from": 0,   "frames": 45, "srcIn": 0.0,  "srcOut": 1.45, "interp": false },
+    { "id": "a2", "source": "laser-cut.mp4", "from": 45,  "frames": 45, "srcIn": 1.55, "srcOut": 3.0,  "interp": false },
+    { "id": "b1", "source": "laser-cut.mp4", "from": 90,  "frames": 45, "srcIn": 3.1,  "srcOut": 4.5,  "interp": false },
+    { "id": "b2", "source": "laser-cut.mp4", "from": 135, "frames": 45, "srcIn": 4.55, "srcOut": 5.9,  "interp": false },
+    { "id": "c1", "source": "laser-cut.mp4", "from": 180, "frames": 42, "srcIn": 6.02, "srcOut": 6.9,  "interp": true },
+    { "id": "c2", "source": "laser-cut.mp4", "from": 222, "frames": 48, "srcIn": 6.9,  "srcOut": 7.85, "interp": true },
+    { "id": "d1", "source": "laser-cut.mp4", "from": 270, "frames": 90, "srcIn": 7.95, "srcOut": 9.98, "interp": true }
+  ]
+}
