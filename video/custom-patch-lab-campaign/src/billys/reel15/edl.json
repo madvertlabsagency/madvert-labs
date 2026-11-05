@@ -1,0 +1,15 @@
+{
+  "fps": 30,
+  "durationInFrames": 450,
+  "cuts": [48, 90, 135, 180, 225, 270, 360],
+  "note": "Billys 15 s cinematic reel. One Google Flow clip (assets/source/billys/reel15/footage/tiger-stitch.mp4, 10 s, 7 internal shots cut at 1.458/2.958/4.417/5.958/7.417/8.958 s). Ranges stay 2+ frames inside each internal cut. Needle shots are not motion-interpolated (fast reciprocation warps). 360-450 is the end card over a freeze of s7's last frame.",
+  "shots": [
+    { "id": "s1", "source": "tiger-stitch.mp4", "from": 0,   "frames": 48, "srcIn": 0.0,  "srcOut": 1.40, "interp": false },
+    { "id": "s2", "source": "tiger-stitch.mp4", "from": 48,  "frames": 42, "srcIn": 4.50, "srcOut": 5.88, "interp": false },
+    { "id": "s3", "source": "tiger-stitch.mp4", "from": 90,  "frames": 45, "srcIn": 1.52, "srcOut": 2.90, "interp": false },
+    { "id": "s4", "source": "tiger-stitch.mp4", "from": 135, "frames": 45, "srcIn": 3.02, "srcOut": 4.36, "interp": false },
+    { "id": "s5", "source": "tiger-stitch.mp4", "from": 180, "frames": 45, "srcIn": 6.02, "srcOut": 7.36, "interp": false },
+    { "id": "s6", "source": "tiger-stitch.mp4", "from": 225, "frames": 45, "srcIn": 7.48, "srcOut": 8.90, "interp": false },
+    { "id": "s7", "source": "tiger-stitch.mp4", "from": 270, "frames": 90, "srcIn": 9.02, "srcOut": 9.98, "interp": false, "pingpong": 3 }
+  ]
+}

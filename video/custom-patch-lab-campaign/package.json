@@ -26,7 +26,8 @@
     "render:billys03:final": "remotion render BillysAd03Tiger out/BillysCustomPatches_Ad03_Tiger_1080x1920.mp4 --codec=h264 --crf=17 --color-space=bt709 --audio-codec=aac --audio-bitrate=256k",
     "render:epcf01:final": "remotion render EpcfAd01Lion out/EPCF_Ad01_Lion_1080x1920.mp4 --codec=h264 --crf=17 --color-space=bt709 --audio-codec=aac --audio-bitrate=256k",
     "render:epcf02:final": "remotion render EpcfAd02Eagle out/EPCF_Ad02_Eagle_1080x1920.mp4 --codec=h264 --crf=17 --color-space=bt709 --audio-codec=aac --audio-bitrate=256k",
-    "render:epcf03:final": "remotion render EpcfAd03Tiger out/EPCF_Ad03_Tiger_1080x1920.mp4 --codec=h264 --crf=17 --color-space=bt709 --audio-codec=aac --audio-bitrate=256k"
+    "render:epcf03:final": "remotion render EpcfAd03Tiger out/EPCF_Ad03_Tiger_1080x1920.mp4 --codec=h264 --crf=17 --color-space=bt709 --audio-codec=aac --audio-bitrate=256k",
+    "render:billysreel15:final": "remotion render BillysReel15 out/BillysCustomPatches_Reel15s_1080x1920.mp4 --codec=h264 --crf=17 --color-space=bt709 --audio-codec=aac --audio-bitrate=256k"
   },
   "dependencies": {
     "@remotion/cli": "4.0.534",
