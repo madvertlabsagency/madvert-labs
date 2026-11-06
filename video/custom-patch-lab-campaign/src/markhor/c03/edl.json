@@ -1,0 +1,276 @@
+{
+ "fps": 30,
+ "durationInFrames": 309,
+ "title": "One Design, Many Styles",
+ "studio": true,
+ "cuts": [
+  42,
+  84,
+  126,
+  134,
+  142,
+  150,
+  158,
+  166,
+  174,
+  234
+ ],
+ "shots": [
+  {
+   "id": "emb",
+   "source": "m23.mp4",
+   "srcIn": 0.0,
+   "srcOut": 1.42,
+   "frames": 42,
+   "interp": false,
+   "trans": "cut",
+   "drift": [
+    1.0,
+    1.04
+   ],
+   "from": 0
+  },
+  {
+   "id": "pvc",
+   "source": "m23.mp4",
+   "srcIn": 1.5,
+   "srcOut": 2.92,
+   "frames": 42,
+   "interp": false,
+   "trans": "punch",
+   "from": 42
+  },
+  {
+   "id": "lea",
+   "source": "m23.mp4",
+   "srcIn": 4.5,
+   "srcOut": 5.88,
+   "frames": 42,
+   "interp": false,
+   "trans": "punch",
+   "from": 84
+  },
+  {
+   "id": "q1",
+   "source": "m23.mp4",
+   "srcIn": 0.5,
+   "srcOut": 0.77,
+   "frames": 8,
+   "interp": false,
+   "trans": "cut",
+   "from": 126
+  },
+  {
+   "id": "q2",
+   "source": "m23.mp4",
+   "srcIn": 2.0,
+   "srcOut": 2.27,
+   "frames": 8,
+   "interp": false,
+   "trans": "cut",
+   "from": 134
+  },
+  {
+   "id": "q3",
+   "source": "m23.mp4",
+   "srcIn": 5.0,
+   "srcOut": 5.27,
+   "frames": 8,
+   "interp": false,
+   "trans": "cut",
+   "from": 142
+  },
+  {
+   "id": "q4",
+   "source": "m23.mp4",
+   "srcIn": 3.5,
+   "srcOut": 3.77,
+   "frames": 8,
+   "interp": false,
+   "trans": "cut",
+   "from": 150
+  },
+  {
+   "id": "q5",
+   "source": "m23.mp4",
+   "srcIn": 2.5,
+   "srcOut": 2.77,
+   "frames": 8,
+   "interp": false,
+   "trans": "cut",
+   "from": 158
+  },
+  {
+   "id": "q6",
+   "source": "m23.mp4",
+   "srcIn": 5.5,
+   "srcOut": 5.77,
+   "frames": 8,
+   "interp": false,
+   "trans": "cut",
+   "from": 166
+  },
+  {
+   "id": "grid",
+   "source": "m23.mp4",
+   "srcIn": 5.96,
+   "srcOut": 7.98,
+   "frames": 60,
+   "interp": false,
+   "trans": "impact",
+   "drift": [
+    1.08,
+    1.0
+   ],
+   "from": 174
+  }
+ ],
+ "text": [
+  {
+   "type": "headline",
+   "from_": 0,
+   "to": 126,
+   "top": 250,
+   "size": 128,
+   "sizes": null,
+   "dark": true,
+   "lines": [
+    [
+     {
+      "t": "ONE",
+      "at": 2,
+      "hi": false
+     }
+    ],
+    [
+     {
+      "t": "DESIGN.",
+      "at": 8,
+      "hi": true
+     }
+    ]
+   ],
+   "from": 0
+  },
+  {
+   "type": "label",
+   "from_": 14,
+   "to": 42,
+   "text": "EMBROIDERED",
+   "dark": true,
+   "from": 14
+  },
+  {
+   "type": "label",
+   "from_": 42,
+   "to": 84,
+   "text": "PVC",
+   "dark": true,
+   "from": 42
+  },
+  {
+   "type": "label",
+   "from_": 84,
+   "to": 126,
+   "text": "LEATHER",
+   "dark": true,
+   "from": 84
+  },
+  {
+   "type": "headline",
+   "from_": 126,
+   "to": 174,
+   "top": 250,
+   "size": 96,
+   "sizes": null,
+   "dark": true,
+   "lines": [
+    [
+     {
+      "t": "ENDLESS",
+      "at": 126,
+      "hi": false
+     }
+    ],
+    [
+     {
+      "t": "POSSIBILITIES.",
+      "at": 134,
+      "hi": true
+     }
+    ]
+   ],
+   "from": 126
+  },
+  {
+   "type": "headline",
+   "from_": 174,
+   "to": 234,
+   "top": 250,
+   "size": 120,
+   "sizes": null,
+   "dark": true,
+   "lines": [
+    [
+     {
+      "t": "MAKE",
+      "at": 178,
+      "hi": false
+     },
+     {
+      "t": "IT",
+      "at": 182,
+      "hi": false
+     }
+    ],
+    [
+     {
+      "t": "YOURS.",
+      "at": 188,
+      "hi": true
+     }
+    ]
+   ],
+   "from": 174
+  }
+ ],
+ "card": {
+  "headline": [
+   [
+    "ONE",
+    0
+   ],
+   [
+    "DESIGN.",
+    3
+   ],
+   [
+    "ANY",
+    8
+   ],
+   [
+    "STYLE.",
+    11,
+    true
+   ]
+  ],
+  "cta": "CREATE YOUR CUSTOM PATCH",
+  "variant": "cyan",
+  "enter": "wipe",
+  "from": 234
+ },
+ "sound": {
+  "bed": "room",
+  "fast": [
+   126,
+   134,
+   142,
+   150,
+   158,
+   166
+  ],
+  "drops": [
+   174
+  ]
+ }
+}

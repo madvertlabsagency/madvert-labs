@@ -40,6 +40,7 @@ import {HyperReel03} from './markhor/h3/HyperReel03';
 import edlHY3 from './markhor/h3/edl.json';
 import {HyperReel04} from './markhor/h4/HyperReel04';
 import edlHY4 from './markhor/h4/edl.json';
+import {COMMERCIALS} from './markhor/commercials';
 import {BillysReel15} from './billys/reel15/BillysReel15';
 import edlBR15 from './billys/reel15/edl.json';
 import {BillysReelLaser} from './billys/reel15laser/BillysReelLaser';
@@ -75,6 +76,11 @@ export const RemotionRoot: React.FC = () => (
     <Composition id="MarkhorHyper01" component={HyperReel01} durationInFrames={edlHY1.durationInFrames} fps={edlHY1.fps} width={1080} height={1920} />
     <Composition id="MarkhorHyper03" component={HyperReel03} durationInFrames={edlHY3.durationInFrames} fps={edlHY3.fps} width={1080} height={1920} />
     <Composition id="MarkhorHyper04" component={HyperReel04} durationInFrames={edlHY4.durationInFrames} fps={edlHY4.fps} width={1080} height={1920} />
+  </Folder>
+  <Folder name="Markhor-Commercials">
+    {COMMERCIALS.map((c) => (
+      <Composition key={c.id} id={c.id} component={c.Comp} durationInFrames={c.spec.durationInFrames} fps={30} width={1080} height={1920} />
+    ))}
   </Folder>
   <Folder name="EPCF-Excellence-Punch">
     <Composition id="EpcfAd01Lion" component={EpcfAd01} durationInFrames={edl01.durationInFrames} fps={edl01.fps} width={1080} height={1920} />

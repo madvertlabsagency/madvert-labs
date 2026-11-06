@@ -1,0 +1,230 @@
+{
+ "fps": 30,
+ "durationInFrames": 322,
+ "title": "Built for Your Brand",
+ "studio": false,
+ "cuts": [
+  42,
+  60,
+  103,
+  143,
+  185,
+  247
+ ],
+ "shots": [
+  {
+   "id": "polo",
+   "source": "m25.mp4",
+   "srcIn": 0.0,
+   "srcOut": 1.4,
+   "frames": 42,
+   "interp": false,
+   "trans": "cut",
+   "drift": [
+    1.0,
+    1.06
+   ],
+   "from": 0
+  },
+  {
+   "id": "work",
+   "source": "m14.mp4",
+   "srcIn": 0.36,
+   "srcOut": 0.92,
+   "frames": 18,
+   "interp": false,
+   "trans": "punch",
+   "from": 42
+  },
+  {
+   "id": "cap",
+   "source": "m25.mp4",
+   "srcIn": 2.96,
+   "srcOut": 4.4,
+   "frames": 43,
+   "interp": false,
+   "trans": "slide",
+   "from": 60
+  },
+  {
+   "id": "tote",
+   "source": "m25.mp4",
+   "srcIn": 4.5,
+   "srcOut": 5.84,
+   "frames": 40,
+   "interp": false,
+   "trans": "slide",
+   "from": 103
+  },
+  {
+   "id": "cafe",
+   "source": "m19.mp4",
+   "srcIn": 6.0,
+   "srcOut": 7.4,
+   "frames": 42,
+   "interp": false,
+   "trans": "slide",
+   "drift": [
+    1.06,
+    1.0
+   ],
+   "from": 143,
+   "scale": 1.35,
+   "origin": {
+    "x": 1000,
+    "y": 1100
+   }
+  },
+  {
+   "id": "lineup",
+   "source": "m22.mp4",
+   "srcIn": 6.04,
+   "srcOut": 7.98,
+   "frames": 62,
+   "interp": true,
+   "trans": "impact",
+   "drift": [
+    1.1,
+    1.0
+   ],
+   "from": 185
+  }
+ ],
+ "text": [
+  {
+   "type": "headline",
+   "from_": 0,
+   "to": 60,
+   "top": 250,
+   "size": 116,
+   "sizes": null,
+   "dark": false,
+   "lines": [
+    [
+     {
+      "t": "BUILT",
+      "at": 2,
+      "hi": false
+     },
+     {
+      "t": "FOR",
+      "at": 6,
+      "hi": false
+     }
+    ],
+    [
+     {
+      "t": "YOUR",
+      "at": 12,
+      "hi": false
+     },
+     {
+      "t": "BRAND.",
+      "at": 16,
+      "hi": true
+     }
+    ]
+   ],
+   "from": 0
+  },
+  {
+   "type": "label",
+   "from_": 42,
+   "to": 60,
+   "text": "WORKWEAR",
+   "dark": false,
+   "from": 42
+  },
+  {
+   "type": "label",
+   "from_": 60,
+   "to": 103,
+   "text": "CAPS",
+   "dark": false,
+   "from": 60
+  },
+  {
+   "type": "label",
+   "from_": 103,
+   "to": 143,
+   "text": "TOTES",
+   "dark": false,
+   "from": 103
+  },
+  {
+   "type": "label",
+   "from_": 143,
+   "to": 185,
+   "text": "MERCH",
+   "dark": false,
+   "from": 143
+  },
+  {
+   "type": "headline",
+   "from_": 185,
+   "to": 247,
+   "top": 250,
+   "size": 116,
+   "sizes": null,
+   "dark": true,
+   "lines": [
+    [
+     {
+      "t": "ONE",
+      "at": 189,
+      "hi": false
+     }
+    ],
+    [
+     {
+      "t": "IDENTITY.",
+      "at": 195,
+      "hi": true
+     }
+    ]
+   ],
+   "from": 185
+  },
+  {
+   "type": "sub",
+   "from_": 200,
+   "to": 247,
+   "text": "For teams, companies and clubs.",
+   "top": 600,
+   "dark": true,
+   "size": 42,
+   "from": 200
+  }
+ ],
+ "card": {
+  "headline": [
+   [
+    "YOUR",
+    0
+   ],
+   [
+    "TEAM.",
+    3
+   ],
+   [
+    "YOUR",
+    8
+   ],
+   [
+    "PATCH.",
+    11,
+    true
+   ]
+  ],
+  "cta": "GET YOUR CUSTOM QUOTE",
+  "variant": "navy",
+  "enter": "wipe",
+  "from": 247
+ },
+ "sound": {
+  "bed": "room",
+  "drops": [
+   185
+  ]
+ }
+}

@@ -1,0 +1,309 @@
+{
+ "fps": 30,
+ "durationInFrames": 331,
+ "title": "Patch Everywhere",
+ "studio": false,
+ "cuts": [
+  30,
+  60,
+  90,
+  120,
+  150,
+  158,
+  166,
+  174,
+  182,
+  190,
+  198,
+  256
+ ],
+ "shots": [
+  {
+   "id": "cap",
+   "source": "m22.mp4",
+   "srcIn": 0.2,
+   "srcOut": 1.2,
+   "frames": 30,
+   "interp": false,
+   "trans": "cut",
+   "drift": [
+    1.04,
+    1.0
+   ],
+   "from": 0
+  },
+  {
+   "id": "jacket",
+   "source": "m22.mp4",
+   "srcIn": 1.6,
+   "srcOut": 2.6,
+   "frames": 30,
+   "interp": false,
+   "trans": "punch",
+   "from": 30
+  },
+  {
+   "id": "tote",
+   "source": "m22.mp4",
+   "srcIn": 3.1,
+   "srcOut": 4.1,
+   "frames": 30,
+   "interp": false,
+   "trans": "punch",
+   "from": 60
+  },
+  {
+   "id": "bag",
+   "source": "m22.mp4",
+   "srcIn": 4.55,
+   "srcOut": 5.55,
+   "frames": 30,
+   "interp": false,
+   "trans": "punch",
+   "from": 90
+  },
+  {
+   "id": "polo",
+   "source": "m25.mp4",
+   "srcIn": 0.0,
+   "srcOut": 1.0,
+   "frames": 30,
+   "interp": false,
+   "trans": "punch",
+   "from": 120
+  },
+  {
+   "id": "r1",
+   "source": "m22.mp4",
+   "srcIn": 0.6,
+   "srcOut": 0.87,
+   "frames": 8,
+   "interp": false,
+   "trans": "cut",
+   "from": 150
+  },
+  {
+   "id": "r2",
+   "source": "m22.mp4",
+   "srcIn": 2.0,
+   "srcOut": 2.27,
+   "frames": 8,
+   "interp": false,
+   "trans": "cut",
+   "from": 158
+  },
+  {
+   "id": "r3",
+   "source": "m22.mp4",
+   "srcIn": 3.6,
+   "srcOut": 3.87,
+   "frames": 8,
+   "interp": false,
+   "trans": "cut",
+   "from": 166
+  },
+  {
+   "id": "r4",
+   "source": "m22.mp4",
+   "srcIn": 5.2,
+   "srcOut": 5.47,
+   "frames": 8,
+   "interp": false,
+   "trans": "cut",
+   "from": 174
+  },
+  {
+   "id": "r5",
+   "source": "m25.mp4",
+   "srcIn": 3.2,
+   "srcOut": 3.47,
+   "frames": 8,
+   "interp": false,
+   "trans": "cut",
+   "from": 182
+  },
+  {
+   "id": "r6",
+   "source": "m19.mp4",
+   "srcIn": 6.6,
+   "srcOut": 6.87,
+   "frames": 8,
+   "interp": false,
+   "trans": "cut",
+   "from": 190,
+   "scale": 1.35,
+   "origin": {
+    "x": 1000,
+    "y": 1100
+   }
+  },
+  {
+   "id": "lineup",
+   "source": "m22.mp4",
+   "srcIn": 6.04,
+   "srcOut": 7.98,
+   "frames": 58,
+   "interp": false,
+   "trans": "impact",
+   "drift": [
+    1.1,
+    1.0
+   ],
+   "from": 198
+  }
+ ],
+ "text": [
+  {
+   "type": "headline",
+   "from_": 0,
+   "to": 58,
+   "top": 250,
+   "size": 120,
+   "sizes": null,
+   "dark": false,
+   "lines": [
+    [
+     {
+      "t": "YOUR",
+      "at": 0,
+      "hi": false
+     },
+     {
+      "t": "LOGO.",
+      "at": 6,
+      "hi": false
+     }
+    ],
+    [
+     {
+      "t": "EVERYWHERE.",
+      "at": 30,
+      "hi": true
+     }
+    ]
+   ],
+   "from": 0
+  },
+  {
+   "type": "label",
+   "from_": 0,
+   "to": 30,
+   "text": "CAPS",
+   "dark": false,
+   "from": 0
+  },
+  {
+   "type": "label",
+   "from_": 30,
+   "to": 60,
+   "text": "JACKETS",
+   "dark": false,
+   "from": 30
+  },
+  {
+   "type": "label",
+   "from_": 60,
+   "to": 90,
+   "text": "TOTES",
+   "dark": false,
+   "from": 60
+  },
+  {
+   "type": "label",
+   "from_": 90,
+   "to": 120,
+   "text": "BACKPACKS",
+   "dark": false,
+   "from": 90
+  },
+  {
+   "type": "label",
+   "from_": 120,
+   "to": 150,
+   "text": "POLOS",
+   "dark": false,
+   "from": 120
+  },
+  {
+   "type": "headline",
+   "from_": 200,
+   "to": 256,
+   "top": 250,
+   "size": 104,
+   "sizes": null,
+   "dark": true,
+   "lines": [
+    [
+     {
+      "t": "ONE",
+      "at": 204,
+      "hi": false
+     },
+     {
+      "t": "PATCH.",
+      "at": 208,
+      "hi": false
+     }
+    ],
+    [
+     {
+      "t": "EVERY",
+      "at": 214,
+      "hi": false
+     },
+     {
+      "t": "PLACE.",
+      "at": 218,
+      "hi": true
+     }
+    ]
+   ],
+   "from": 200
+  },
+  {
+   "type": "sub",
+   "from_": 206,
+   "to": 256,
+   "text": "Caps, jackets, totes, backpacks and more.",
+   "top": 1580,
+   "dark": true,
+   "size": 40,
+   "from": 206
+  }
+ ],
+ "card": {
+  "headline": [
+   [
+    "YOUR",
+    0
+   ],
+   [
+    "LOGO.",
+    3
+   ],
+   [
+    "EVERYWHERE.",
+    7,
+    true
+   ]
+  ],
+  "cta": "EXPLORE CUSTOM PATCHES",
+  "variant": "cyan",
+  "enter": "slideUp",
+  "from": 256
+ },
+ "sound": {
+  "bed": "room",
+  "fast": [
+   150,
+   158,
+   166,
+   174,
+   182,
+   190
+  ],
+  "drops": [
+   198
+  ]
+ }
+}

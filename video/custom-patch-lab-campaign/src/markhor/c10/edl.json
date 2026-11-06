@@ -1,0 +1,208 @@
+{
+ "fps": 30,
+ "durationInFrames": 273,
+ "title": "Small Detail, Big Impact",
+ "studio": false,
+ "cuts": [
+  42,
+  75,
+  123,
+  183
+ ],
+ "shots": [
+  {
+   "id": "plain",
+   "source": "m19.mp4",
+   "srcIn": 0.0,
+   "srcOut": 1.4,
+   "frames": 42,
+   "interp": false,
+   "trans": "cut",
+   "drift": [
+    1.0,
+    1.06
+   ],
+   "from": 0,
+   "scale": 1.35,
+   "origin": {
+    "x": 1000,
+    "y": 1100
+   }
+  },
+  {
+   "id": "patch",
+   "source": "m19.mp4",
+   "srcIn": 2.5,
+   "srcOut": 3.6,
+   "frames": 33,
+   "interp": false,
+   "trans": "impact",
+   "drift": [
+    1.08,
+    1.0
+   ],
+   "from": 42
+  },
+  {
+   "id": "touch",
+   "source": "m19.mp4",
+   "srcIn": 3.6,
+   "srcOut": 5.2,
+   "frames": 48,
+   "interp": false,
+   "trans": "cut",
+   "drift": [
+    1.0,
+    1.05
+   ],
+   "from": 75
+  },
+  {
+   "id": "table",
+   "source": "m19.mp4",
+   "srcIn": 6.0,
+   "srcOut": 7.98,
+   "frames": 60,
+   "interp": false,
+   "trans": "dissolve",
+   "drift": [
+    1.08,
+    1.0
+   ],
+   "from": 123,
+   "scale": 1.35,
+   "origin": {
+    "x": 1000,
+    "y": 1100
+   }
+  }
+ ],
+ "text": [
+  {
+   "type": "headline",
+   "from_": 0,
+   "to": 42,
+   "top": 250,
+   "size": 124,
+   "sizes": null,
+   "dark": false,
+   "lines": [
+    [
+     {
+      "t": "SMALL",
+      "at": 4,
+      "hi": false
+     }
+    ],
+    [
+     {
+      "t": "DETAIL.",
+      "at": 10,
+      "hi": true
+     }
+    ]
+   ],
+   "from": 0
+  },
+  {
+   "type": "headline",
+   "from_": 42,
+   "to": 123,
+   "top": 250,
+   "size": 124,
+   "sizes": null,
+   "dark": false,
+   "lines": [
+    [
+     {
+      "t": "BIG",
+      "at": 42,
+      "hi": false
+     }
+    ],
+    [
+     {
+      "t": "IMPACT.",
+      "at": 46,
+      "hi": true
+     }
+    ]
+   ],
+   "from": 42
+  },
+  {
+   "type": "sub",
+   "from_": 80,
+   "to": 123,
+   "text": "Custom patches for caf\u00e9s, shops and merch.",
+   "top": 1450,
+   "dark": false,
+   "size": 42,
+   "from": 80
+  },
+  {
+   "type": "headline",
+   "from_": 123,
+   "to": 183,
+   "top": 250,
+   "size": 112,
+   "sizes": null,
+   "dark": false,
+   "lines": [
+    [
+     {
+      "t": "MADE",
+      "at": 127,
+      "hi": false
+     },
+     {
+      "t": "TO",
+      "at": 131,
+      "hi": false
+     }
+    ],
+    [
+     {
+      "t": "BE",
+      "at": 135,
+      "hi": false
+     },
+     {
+      "t": "SEEN.",
+      "at": 139,
+      "hi": true
+     }
+    ]
+   ],
+   "from": 123
+  }
+ ],
+ "card": {
+  "headline": [
+   [
+    "MAKE",
+    0
+   ],
+   [
+    "IT",
+    3
+   ],
+   [
+    "YOURS.",
+    7,
+    true
+   ]
+  ],
+  "cta": "CREATE YOUR CUSTOM PATCH",
+  "variant": "cyan",
+  "enter": "slideUp",
+  "len": 90,
+  "from": 183
+ },
+ "sound": {
+  "bed": "room",
+  "drops": [
+   42
+  ]
+ }
+}

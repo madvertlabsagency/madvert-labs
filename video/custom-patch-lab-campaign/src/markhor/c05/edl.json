@@ -1,0 +1,227 @@
+{
+ "fps": 30,
+ "durationInFrames": 385,
+ "title": "Oddly Satisfying",
+ "studio": false,
+ "cuts": [
+  42,
+  77,
+  113,
+  151,
+  187,
+  229,
+  265,
+  310
+ ],
+ "shots": [
+  {
+   "id": "macro",
+   "source": "m26.mp4",
+   "srcIn": 0.0,
+   "srcOut": 1.4,
+   "frames": 42,
+   "interp": false,
+   "trans": "cut",
+   "drift": [
+    1.0,
+    1.08
+   ],
+   "from": 0
+  },
+  {
+   "id": "blank",
+   "source": "m29.mp4",
+   "srcIn": 0.0,
+   "srcOut": 1.15,
+   "frames": 35,
+   "interp": false,
+   "trans": "cut",
+   "from": 42
+  },
+  {
+   "id": "hoop",
+   "source": "m29.mp4",
+   "srcIn": 2.5,
+   "srcOut": 3.7,
+   "frames": 36,
+   "interp": false,
+   "trans": "cut",
+   "drift": [
+    1.06,
+    1.0
+   ],
+   "from": 77
+  },
+  {
+   "id": "needle",
+   "source": "m29.mp4",
+   "srcIn": 3.8,
+   "srcOut": 5.05,
+   "frames": 38,
+   "interp": false,
+   "trans": "cut",
+   "scale": 1.12,
+   "from": 113
+  },
+  {
+   "id": "thread",
+   "source": "m1.mp4",
+   "srcIn": 0.0,
+   "srcOut": 1.2,
+   "frames": 36,
+   "interp": false,
+   "trans": "cut",
+   "from": 151
+  },
+  {
+   "id": "heads",
+   "source": "m8.mp4",
+   "srcIn": 0.0,
+   "srcOut": 1.4,
+   "frames": 42,
+   "interp": false,
+   "trans": "cut",
+   "from": 187
+  },
+  {
+   "id": "done",
+   "source": "m29.mp4",
+   "srcIn": 5.16,
+   "srcOut": 6.36,
+   "frames": 36,
+   "interp": false,
+   "trans": "dissolve",
+   "drift": [
+    1.0,
+    1.06
+   ],
+   "from": 229
+  },
+  {
+   "id": "row",
+   "source": "m29.mp4",
+   "srcIn": 6.46,
+   "srcOut": 7.98,
+   "frames": 45,
+   "interp": false,
+   "trans": "cut",
+   "drift": [
+    1.08,
+    1.0
+   ],
+   "from": 265
+  }
+ ],
+ "text": [
+  {
+   "type": "headline",
+   "from_": 0,
+   "to": 40,
+   "top": 250,
+   "size": 118,
+   "sizes": null,
+   "dark": false,
+   "lines": [
+    [
+     {
+      "t": "TURN",
+      "at": 2,
+      "hi": false
+     },
+     {
+      "t": "THE",
+      "at": 6,
+      "hi": false
+     }
+    ],
+    [
+     {
+      "t": "SOUND",
+      "at": 10,
+      "hi": false
+     },
+     {
+      "t": "ON.",
+      "at": 14,
+      "hi": true
+     }
+    ]
+   ],
+   "from": 0
+  },
+  {
+   "type": "headline",
+   "from_": 229,
+   "to": 310,
+   "top": 250,
+   "size": 104,
+   "sizes": null,
+   "dark": false,
+   "lines": [
+    [
+     {
+      "t": "ODDLY",
+      "at": 231,
+      "hi": false
+     }
+    ],
+    [
+     {
+      "t": "SATISFYING.",
+      "at": 238,
+      "hi": true
+     }
+    ]
+   ],
+   "from": 229
+  },
+  {
+   "type": "sub",
+   "from_": 267,
+   "to": 310,
+   "text": "Stitch by stitch.",
+   "top": 1450,
+   "dark": false,
+   "size": 44,
+   "from": 267
+  }
+ ],
+ "card": {
+  "headline": [
+   [
+    "MADE",
+    0
+   ],
+   [
+    "STITCH",
+    3
+   ],
+   [
+    "BY",
+    6
+   ],
+   [
+    "STITCH.",
+    9,
+    true
+   ]
+  ],
+  "cta": "GET YOUR CUSTOM QUOTE",
+  "variant": "navy",
+  "enter": "fade",
+  "from": 310
+ },
+ "sound": {
+  "bed": "clip",
+  "clip_ok": [
+   "m26",
+   "m29",
+   "m1",
+   "m8"
+  ],
+  "needle": true,
+  "drops": [
+   229
+  ]
+ }
+}

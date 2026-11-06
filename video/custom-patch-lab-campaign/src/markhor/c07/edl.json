@@ -1,0 +1,361 @@
+{
+ "fps": 30,
+ "durationInFrames": 365,
+ "title": "Beat Drop",
+ "studio": false,
+ "cuts": [
+  8,
+  16,
+  24,
+  32,
+  47,
+  62,
+  77,
+  92,
+  107,
+  122,
+  137,
+  152,
+  167,
+  182,
+  190,
+  198,
+  206,
+  214,
+  222,
+  230,
+  290
+ ],
+ "shots": [
+  {
+   "id": "h1",
+   "source": "m28.mp4",
+   "srcIn": 0.2,
+   "srcOut": 0.47,
+   "frames": 8,
+   "interp": false,
+   "trans": "cut",
+   "from": 0
+  },
+  {
+   "id": "h2",
+   "source": "m26.mp4",
+   "srcIn": 1.6,
+   "srcOut": 1.87,
+   "frames": 8,
+   "interp": false,
+   "trans": "cut",
+   "from": 8
+  },
+  {
+   "id": "h3",
+   "source": "m28.mp4",
+   "srcIn": 3.1,
+   "srcOut": 3.37,
+   "frames": 8,
+   "interp": false,
+   "trans": "cut",
+   "from": 16
+  },
+  {
+   "id": "h4",
+   "source": "m26.mp4",
+   "srcIn": 4.6,
+   "srcOut": 4.87,
+   "frames": 8,
+   "interp": false,
+   "trans": "cut",
+   "from": 24
+  },
+  {
+   "id": "b1",
+   "source": "m28.mp4",
+   "srcIn": 0.3,
+   "srcOut": 0.8,
+   "frames": 15,
+   "interp": false,
+   "trans": "punch",
+   "from": 32
+  },
+  {
+   "id": "b2",
+   "source": "m28.mp4",
+   "srcIn": 1.6,
+   "srcOut": 2.1,
+   "frames": 15,
+   "interp": false,
+   "trans": "punch",
+   "from": 47
+  },
+  {
+   "id": "b3",
+   "source": "m28.mp4",
+   "srcIn": 3.1,
+   "srcOut": 3.6,
+   "frames": 15,
+   "interp": false,
+   "trans": "punch",
+   "from": 62
+  },
+  {
+   "id": "b4",
+   "source": "m28.mp4",
+   "srcIn": 4.4,
+   "srcOut": 4.9,
+   "frames": 15,
+   "interp": false,
+   "trans": "punch",
+   "from": 77
+  },
+  {
+   "id": "b5",
+   "source": "m28.mp4",
+   "srcIn": 5.7,
+   "srcOut": 6.2,
+   "frames": 15,
+   "interp": false,
+   "trans": "punch",
+   "from": 92
+  },
+  {
+   "id": "b6",
+   "source": "m26.mp4",
+   "srcIn": 2.55,
+   "srcOut": 3.05,
+   "frames": 15,
+   "interp": false,
+   "trans": "punch",
+   "from": 107
+  },
+  {
+   "id": "b7",
+   "source": "m20.mp4",
+   "srcIn": 0.2,
+   "srcOut": 0.7,
+   "frames": 15,
+   "interp": false,
+   "trans": "punch",
+   "from": 122
+  },
+  {
+   "id": "b8",
+   "source": "m20.mp4",
+   "srcIn": 1.6,
+   "srcOut": 2.1,
+   "frames": 15,
+   "interp": false,
+   "trans": "punch",
+   "from": 137
+  },
+  {
+   "id": "b9",
+   "source": "m20.mp4",
+   "srcIn": 3.1,
+   "srcOut": 3.6,
+   "frames": 15,
+   "interp": false,
+   "trans": "punch",
+   "from": 152
+  },
+  {
+   "id": "b10",
+   "source": "m20.mp4",
+   "srcIn": 6.2,
+   "srcOut": 6.7,
+   "frames": 15,
+   "interp": false,
+   "trans": "punch",
+   "from": 167
+  },
+  {
+   "id": "f1",
+   "source": "m26.mp4",
+   "srcIn": 1.9,
+   "srcOut": 2.17,
+   "frames": 8,
+   "interp": false,
+   "trans": "cut",
+   "from": 182
+  },
+  {
+   "id": "f2",
+   "source": "m28.mp4",
+   "srcIn": 3.4,
+   "srcOut": 3.67,
+   "frames": 8,
+   "interp": false,
+   "trans": "cut",
+   "from": 190
+  },
+  {
+   "id": "f3",
+   "source": "m20.mp4",
+   "srcIn": 3.6,
+   "srcOut": 3.87,
+   "frames": 8,
+   "interp": false,
+   "trans": "cut",
+   "from": 198
+  },
+  {
+   "id": "f4",
+   "source": "m28.mp4",
+   "srcIn": 6.0,
+   "srcOut": 6.27,
+   "frames": 8,
+   "interp": false,
+   "trans": "cut",
+   "from": 206
+  },
+  {
+   "id": "f5",
+   "source": "m26.mp4",
+   "srcIn": 4.9,
+   "srcOut": 5.17,
+   "frames": 8,
+   "interp": false,
+   "trans": "cut",
+   "from": 214
+  },
+  {
+   "id": "f6",
+   "source": "m28.mp4",
+   "srcIn": 1.0,
+   "srcOut": 1.27,
+   "frames": 8,
+   "interp": false,
+   "trans": "cut",
+   "from": 222
+  }
+ ],
+ "text": [
+  {
+   "type": "headline",
+   "from_": 0,
+   "to": 32,
+   "top": 250,
+   "size": 120,
+   "sizes": null,
+   "dark": false,
+   "lines": [
+    [
+     {
+      "t": "FIVE",
+      "at": 0,
+      "hi": false
+     },
+     {
+      "t": "STYLES.",
+      "at": 8,
+      "hi": false
+     }
+    ],
+    [
+     {
+      "t": "ONE",
+      "at": 16,
+      "hi": false
+     },
+     {
+      "t": "BEAT.",
+      "at": 24,
+      "hi": true
+     }
+    ]
+   ],
+   "from": 0
+  },
+  {
+   "type": "label",
+   "from_": 32,
+   "to": 47,
+   "text": "EMBROIDERED",
+   "dark": false,
+   "from": 32
+  },
+  {
+   "type": "label",
+   "from_": 47,
+   "to": 62,
+   "text": "PVC",
+   "dark": false,
+   "from": 47
+  },
+  {
+   "type": "label",
+   "from_": 62,
+   "to": 77,
+   "text": "CHENILLE",
+   "dark": false,
+   "from": 62
+  },
+  {
+   "type": "label",
+   "from_": 77,
+   "to": 92,
+   "text": "WOVEN",
+   "dark": false,
+   "from": 77
+  },
+  {
+   "type": "label",
+   "from_": 92,
+   "to": 107,
+   "text": "LEATHER",
+   "dark": false,
+   "from": 92
+  }
+ ],
+ "card": {
+  "headline": [
+   [
+    "PICK",
+    0
+   ],
+   [
+    "YOUR",
+    3
+   ],
+   [
+    "STYLE.",
+    7,
+    true
+   ]
+  ],
+  "cta": "CREATE YOUR CUSTOM PATCH",
+  "variant": "cyan",
+  "enter": "fade",
+  "len": 75,
+  "from": 290
+ },
+ "sound": {
+  "bed": "room",
+  "fast": [
+   0,
+   8,
+   16,
+   24,
+   182,
+   190,
+   198,
+   206,
+   214,
+   222
+  ],
+  "drops": [
+   230
+  ]
+ },
+ "tiles": {
+  "len": 60,
+  "items": [
+   "c07-emb",
+   "c07-pvc",
+   "c07-che",
+   "c07-wov",
+   "c07-lea",
+   "mountain"
+  ],
+  "from": 230
+ }
+}

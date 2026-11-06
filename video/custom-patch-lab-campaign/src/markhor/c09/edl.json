@@ -1,0 +1,196 @@
+{
+ "fps": 30,
+ "durationInFrames": 307,
+ "title": "The Collection Drop",
+ "studio": true,
+ "cuts": [
+  42,
+  83,
+  124,
+  168,
+  217
+ ],
+ "shots": [
+  {
+   "id": "emb",
+   "source": "m20.mp4",
+   "srcIn": 0.0,
+   "srcOut": 1.42,
+   "frames": 42,
+   "interp": false,
+   "trans": "cut",
+   "drift": [
+    1.0,
+    1.05
+   ],
+   "from": 0
+  },
+  {
+   "id": "pvc",
+   "source": "m20.mp4",
+   "srcIn": 1.5,
+   "srcOut": 2.88,
+   "frames": 41,
+   "interp": false,
+   "trans": "slide",
+   "from": 42
+  },
+  {
+   "id": "che",
+   "source": "m20.mp4",
+   "srcIn": 3.0,
+   "srcOut": 4.38,
+   "frames": 41,
+   "interp": false,
+   "trans": "slide",
+   "from": 83
+  },
+  {
+   "id": "lea",
+   "source": "m20.mp4",
+   "srcIn": 6.04,
+   "srcOut": 7.5,
+   "frames": 44,
+   "interp": false,
+   "trans": "slide",
+   "from": 124
+  },
+  {
+   "id": "flat",
+   "source": "m28.mp4",
+   "srcIn": 6.75,
+   "srcOut": 7.98,
+   "frames": 49,
+   "interp": true,
+   "trans": "impact",
+   "drift": [
+    1.1,
+    1.0
+   ],
+   "from": 168
+  }
+ ],
+ "text": [
+  {
+   "type": "headline",
+   "from_": 0,
+   "to": 168,
+   "top": 250,
+   "size": 104,
+   "sizes": null,
+   "dark": true,
+   "lines": [
+    [
+     {
+      "t": "MEET",
+      "at": 4,
+      "hi": false
+     },
+     {
+      "t": "THE",
+      "at": 8,
+      "hi": false
+     }
+    ],
+    [
+     {
+      "t": "COLLECTION.",
+      "at": 14,
+      "hi": true
+     }
+    ]
+   ],
+   "from": 0
+  },
+  {
+   "type": "sub",
+   "from_": 10,
+   "to": 42,
+   "text": "Embroidered",
+   "top": 1450,
+   "dark": true,
+   "size": 48,
+   "from": 10
+  },
+  {
+   "type": "sub",
+   "from_": 48,
+   "to": 83,
+   "text": "PVC",
+   "top": 1450,
+   "dark": true,
+   "size": 48,
+   "from": 48
+  },
+  {
+   "type": "sub",
+   "from_": 89,
+   "to": 124,
+   "text": "Chenille",
+   "top": 1450,
+   "dark": true,
+   "size": 48,
+   "from": 89
+  },
+  {
+   "type": "sub",
+   "from_": 130,
+   "to": 168,
+   "text": "Leather",
+   "top": 1450,
+   "dark": true,
+   "size": 48,
+   "from": 130
+  },
+  {
+   "type": "headline",
+   "from_": 168,
+   "to": 217,
+   "top": 250,
+   "size": 120,
+   "sizes": null,
+   "dark": true,
+   "lines": [
+    [
+     {
+      "t": "PICK",
+      "at": 171,
+      "hi": false
+     }
+    ],
+    [
+     {
+      "t": "YOURS.",
+      "at": 177,
+      "hi": true
+     }
+    ]
+   ],
+   "from": 168
+  }
+ ],
+ "card": {
+  "headline": [
+   [
+    "THE",
+    0
+   ],
+   [
+    "COLLECTION.",
+    4,
+    true
+   ]
+  ],
+  "cta": "EXPLORE CUSTOM PATCHES",
+  "variant": "cyan",
+  "enter": "slide",
+  "len": 90,
+  "from": 217
+ },
+ "sound": {
+  "bed": "room",
+  "drops": [
+   168
+  ]
+ }
+}

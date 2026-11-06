@@ -1,0 +1,232 @@
+{
+ "fps": 30,
+ "durationInFrames": 327,
+ "title": "Texture Obsession",
+ "studio": false,
+ "cuts": [
+  42,
+  84,
+  126,
+  168,
+  210,
+  252
+ ],
+ "shots": [
+  {
+   "id": "che",
+   "source": "m21.mp4",
+   "srcIn": 3.3,
+   "srcOut": 4.0,
+   "frames": 42,
+   "interp": true,
+   "trans": "cut",
+   "drift": [
+    1.0,
+    1.1
+   ],
+   "from": 0
+  },
+  {
+   "id": "emb",
+   "source": "m21.mp4",
+   "srcIn": 0.1,
+   "srcOut": 0.8,
+   "frames": 42,
+   "interp": true,
+   "trans": "zoom",
+   "scale": 1.25,
+   "origin": {
+    "x": 540,
+    "y": 500
+   },
+   "from": 42
+  },
+  {
+   "id": "pvc",
+   "source": "m21.mp4",
+   "srcIn": 1.7,
+   "srcOut": 2.4,
+   "frames": 42,
+   "interp": true,
+   "trans": "zoom",
+   "drift": [
+    1.1,
+    1.0
+   ],
+   "from": 84
+  },
+  {
+   "id": "wov",
+   "source": "m21.mp4",
+   "srcIn": 4.9,
+   "srcOut": 5.6,
+   "frames": 42,
+   "interp": true,
+   "trans": "zoom",
+   "drift": [
+    1.0,
+    1.1
+   ],
+   "from": 126
+  },
+  {
+   "id": "lea",
+   "source": "m21.mp4",
+   "srcIn": 6.4,
+   "srcOut": 7.1,
+   "frames": 42,
+   "interp": true,
+   "trans": "zoom",
+   "drift": [
+    1.1,
+    1.0
+   ],
+   "from": 168
+  },
+  {
+   "id": "hero",
+   "source": "m28.mp4",
+   "srcIn": 0.0,
+   "srcOut": 1.4,
+   "frames": 42,
+   "interp": false,
+   "trans": "zoom",
+   "drift": [
+    1.12,
+    1.0
+   ],
+   "from": 210
+  }
+ ],
+ "text": [
+  {
+   "type": "headline",
+   "from_": 0,
+   "to": 42,
+   "top": 250,
+   "size": 112,
+   "sizes": null,
+   "dark": false,
+   "lines": [
+    [
+     {
+      "t": "TEXTURE",
+      "at": 4,
+      "hi": true
+     }
+    ],
+    [
+     {
+      "t": "OBSESSED?",
+      "at": 12,
+      "hi": false
+     }
+    ]
+   ],
+   "from": 0
+  },
+  {
+   "type": "label",
+   "from_": 0,
+   "to": 42,
+   "text": "CHENILLE",
+   "dark": false,
+   "from": 0
+  },
+  {
+   "type": "label",
+   "from_": 42,
+   "to": 84,
+   "text": "EMBROIDERED",
+   "dark": false,
+   "from": 42
+  },
+  {
+   "type": "label",
+   "from_": 84,
+   "to": 126,
+   "text": "PVC",
+   "dark": false,
+   "from": 84
+  },
+  {
+   "type": "label",
+   "from_": 126,
+   "to": 168,
+   "text": "WOVEN",
+   "dark": false,
+   "from": 126
+  },
+  {
+   "type": "label",
+   "from_": 168,
+   "to": 210,
+   "text": "LEATHER",
+   "dark": false,
+   "from": 168
+  },
+  {
+   "type": "headline",
+   "from_": 210,
+   "to": 252,
+   "top": 250,
+   "size": 104,
+   "sizes": null,
+   "dark": false,
+   "lines": [
+    [
+     {
+      "t": "FEEL",
+      "at": 212,
+      "hi": false
+     },
+     {
+      "t": "THE",
+      "at": 216,
+      "hi": false
+     }
+    ],
+    [
+     {
+      "t": "DIFFERENCE.",
+      "at": 222,
+      "hi": true
+     }
+    ]
+   ],
+   "from": 210
+  }
+ ],
+ "card": {
+  "headline": [
+   [
+    "EVERY",
+    0
+   ],
+   [
+    "TEXTURE.",
+    3
+   ],
+   [
+    "YOUR",
+    8
+   ],
+   [
+    "BRAND.",
+    11,
+    true
+   ]
+  ],
+  "cta": "EXPLORE CUSTOM PATCHES",
+  "variant": "cyan",
+  "enter": "fade",
+  "from": 252
+ },
+ "sound": {
+  "bed": "room",
+  "texture": true,
+  "drops": [
+   210
+  ]
+ }
+}

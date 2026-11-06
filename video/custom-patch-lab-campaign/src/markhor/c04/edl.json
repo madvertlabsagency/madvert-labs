@@ -1,0 +1,236 @@
+{
+ "fps": 30,
+ "durationInFrames": 330,
+ "title": "From Idea to Patch",
+ "studio": false,
+ "cuts": [
+  60,
+  93,
+  129,
+  174,
+  209,
+  255
+ ],
+ "shots": [
+  {
+   "id": "design",
+   "source": "m24.mp4",
+   "srcIn": 0.0,
+   "srcOut": 2.0,
+   "frames": 60,
+   "interp": false,
+   "trans": "cut",
+   "scale": 1.25,
+   "origin": {
+    "x": 540,
+    "y": 700
+   },
+   "drift": [
+    1.0,
+    1.08
+   ],
+   "from": 0
+  },
+  {
+   "id": "thread",
+   "source": "m29.mp4",
+   "srcIn": 1.3,
+   "srcOut": 2.4,
+   "frames": 33,
+   "interp": false,
+   "trans": "whip",
+   "from": 60
+  },
+  {
+   "id": "stitch1",
+   "source": "m24.mp4",
+   "srcIn": 2.2,
+   "srcOut": 3.4,
+   "frames": 36,
+   "interp": false,
+   "trans": "punch",
+   "scale": 1.06,
+   "from": 93
+  },
+  {
+   "id": "stitch2",
+   "source": "m24.mp4",
+   "srcIn": 3.55,
+   "srcOut": 5.05,
+   "frames": 45,
+   "interp": false,
+   "trans": "punch",
+   "drift": [
+    1.0,
+    1.08
+   ],
+   "from": 129
+  },
+  {
+   "id": "done",
+   "source": "m24.mp4",
+   "srcIn": 5.2,
+   "srcOut": 6.35,
+   "frames": 35,
+   "interp": false,
+   "trans": "zoom",
+   "from": 174
+  },
+  {
+   "id": "hero",
+   "source": "m24.mp4",
+   "srcIn": 6.45,
+   "srcOut": 7.98,
+   "frames": 46,
+   "interp": false,
+   "trans": "punch",
+   "drift": [
+    1.0,
+    1.06
+   ],
+   "from": 209
+  }
+ ],
+ "text": [
+  {
+   "type": "headline",
+   "from_": 0,
+   "to": 60,
+   "top": 250,
+   "size": 112,
+   "sizes": null,
+   "dark": false,
+   "lines": [
+    [
+     {
+      "t": "IT",
+      "at": 4,
+      "hi": false
+     },
+     {
+      "t": "STARTS",
+      "at": 8,
+      "hi": false
+     }
+    ],
+    [
+     {
+      "t": "AS",
+      "at": 14,
+      "hi": false
+     },
+     {
+      "t": "AN",
+      "at": 17,
+      "hi": false
+     },
+     {
+      "t": "IDEA.",
+      "at": 22,
+      "hi": true
+     }
+    ]
+   ],
+   "from": 0
+  },
+  {
+   "type": "label",
+   "from_": 0,
+   "to": 60,
+   "text": "01  DESIGN",
+   "dark": false,
+   "from": 0
+  },
+  {
+   "type": "label",
+   "from_": 60,
+   "to": 93,
+   "text": "02  THREAD",
+   "dark": false,
+   "from": 60
+  },
+  {
+   "type": "label",
+   "from_": 93,
+   "to": 174,
+   "text": "03  STITCH",
+   "dark": false,
+   "from": 93
+  },
+  {
+   "type": "label",
+   "from_": 174,
+   "to": 255,
+   "text": "04  PATCH",
+   "dark": false,
+   "from": 174
+  },
+  {
+   "type": "headline",
+   "from_": 209,
+   "to": 255,
+   "top": 250,
+   "size": 108,
+   "sizes": null,
+   "dark": false,
+   "lines": [
+    [
+     {
+      "t": "FROM",
+      "at": 211,
+      "hi": false
+     },
+     {
+      "t": "IDEA",
+      "at": 215,
+      "hi": false
+     }
+    ],
+    [
+     {
+      "t": "TO",
+      "at": 221,
+      "hi": false
+     },
+     {
+      "t": "PATCH.",
+      "at": 225,
+      "hi": true
+     }
+    ]
+   ],
+   "from": 209
+  }
+ ],
+ "card": {
+  "headline": [
+   [
+    "YOUR",
+    0
+   ],
+   [
+    "IDEA.",
+    3
+   ],
+   [
+    "STITCHED.",
+    8,
+    true
+   ]
+  ],
+  "cta": "BRING YOUR DESIGN TO LIFE",
+  "variant": "navy",
+  "enter": "iris",
+  "from": 255
+ },
+ "sound": {
+  "bed": "clip",
+  "clip_ok": [
+   "m24",
+   "m29"
+  ],
+  "drops": [
+   209
+  ]
+ }
+}

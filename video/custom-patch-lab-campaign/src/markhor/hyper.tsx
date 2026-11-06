@@ -144,7 +144,7 @@ export const Sub: React.FC<{text: string; at: number; top: number; dark?: boolea
 };
 
 /** Material / style label: white semibold caps with navy shadow + cyan tick, slides in. */
-export const Label: React.FC<{text: string; at: number; top?: number; exitAt?: number; dark?: boolean}> = ({text, at, top = 1420, exitAt, dark = false}) => {
+export const Label: React.FC<{text: string; at: number; top?: number; exitAt?: number; dark?: boolean}> = ({text, at, top = 1530, exitAt, dark = false}) => {
   const f = useCurrentFrame();
   const p = prog(f, at, 6, easeOut);
   const q = exitAt === undefined ? 0 : prog(f, exitAt, 4, easeIn);
