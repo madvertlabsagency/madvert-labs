@@ -840,5 +840,102 @@
   "enter": "impact",
   "len": 90,
   "from": 810
- }
+ },
+ "wide": [
+  {
+   "mode": "panel",
+   "from": 0,
+   "to": 120
+  },
+  {
+   "mode": "gallery",
+   "from": 120,
+   "to": 300,
+   "groups": [
+    {
+     "shots": [
+      "b1"
+     ],
+     "word": "BRANDS.",
+     "sub": null
+    },
+    {
+     "shots": [
+      "b2",
+      "b3"
+     ],
+     "word": "TEAMS.",
+     "sub": null
+    },
+    {
+     "shots": [
+      "b4"
+     ],
+     "word": "SCHOOLS.",
+     "sub": null
+    },
+    {
+     "shots": [
+      "b5"
+     ],
+     "word": "BUSINESSES.",
+     "sub": null
+    }
+   ]
+  },
+  {
+   "mode": "gallery",
+   "from": 300,
+   "to": 480,
+   "groups": [
+    {
+     "shots": [
+      "d1"
+     ],
+     "word": "EMBROIDERED.",
+     "sub": null
+    },
+    {
+     "shots": [
+      "d2"
+     ],
+     "word": "PVC.",
+     "sub": null
+    },
+    {
+     "shots": [
+      "d3"
+     ],
+     "word": "CHENILLE.",
+     "sub": null
+    },
+    {
+     "shots": [
+      "d4"
+     ],
+     "word": "WOVEN.",
+     "sub": null
+    },
+    {
+     "shots": [
+      "d5"
+     ],
+     "word": "LEATHER.",
+     "sub": null
+    },
+    {
+     "shots": [
+      "d6"
+     ],
+     "word": "FULL-COLOR.",
+     "sub": null
+    }
+   ]
+  },
+  {
+   "mode": "panel",
+   "from": 690,
+   "to": 810
+  }
+ ]
 }

@@ -49,7 +49,11 @@
     "render:flagship50:final": "remotion render MarkhorFlagship50 out/MARKHOR_FLAGSHIP_50S.mp4 --codec=h264 --crf=16 --color-space=bt709 --audio-codec=aac --audio-bitrate=320k",
     "render:commercial30:final": "remotion render MarkhorCommercial30 out/MARKHOR_COMMERCIAL_30S.mp4 --codec=h264 --crf=16 --color-space=bt709 --audio-codec=aac --audio-bitrate=320k",
     "render:metaad15:final": "remotion render MarkhorMetaAd15 out/MARKHOR_META_AD_15S.mp4 --codec=h264 --crf=16 --color-space=bt709 --audio-codec=aac --audio-bitrate=320k",
-    "render:websitehero:final": "remotion render MarkhorWebsiteHero out/MARKHOR_WEBSITE_HERO.mp4 --codec=h264 --crf=16 --color-space=bt709 --muted"
+    "render:websitehero:final": "remotion render MarkhorWebsiteHero out/MARKHOR_WEBSITE_HERO.mp4 --codec=h264 --crf=16 --color-space=bt709 --muted",
+    "render:flagship50wide:final": "remotion render MarkhorFlagship50Wide out/MARKHOR_FLAGSHIP_50S_16x9.mp4 --codec=h264 --crf=16 --color-space=bt709 --audio-codec=aac --audio-bitrate=320k",
+    "render:commercial30wide:final": "remotion render MarkhorCommercial30Wide out/MARKHOR_COMMERCIAL_30S_16x9.mp4 --codec=h264 --crf=16 --color-space=bt709 --audio-codec=aac --audio-bitrate=320k",
+    "render:metaad15wide:final": "remotion render MarkhorMetaAd15Wide out/MARKHOR_META_AD_15S_16x9.mp4 --codec=h264 --crf=16 --color-space=bt709 --audio-codec=aac --audio-bitrate=320k",
+    "render:websiteherowide:final": "remotion render MarkhorWebsiteHeroWide out/MARKHOR_WEBSITE_HERO_16x9.mp4 --codec=h264 --crf=16 --color-space=bt709 --muted"
   },
   "dependencies": {
     "@remotion/cli": "4.0.534",

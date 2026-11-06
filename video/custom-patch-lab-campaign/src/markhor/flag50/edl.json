@@ -1292,5 +1292,109 @@
   "enter": "impact",
   "len": 105,
   "from": 1395
- }
+ },
+ "wide": [
+  {
+   "mode": "panel",
+   "from": 0,
+   "to": 150
+  },
+  {
+   "mode": "gallery",
+   "from": 150,
+   "to": 390,
+   "groups": [
+    {
+     "shots": [
+      "b1",
+      "b2"
+     ],
+     "word": "BRANDS.",
+     "sub": "CLOTHING BRANDS & CAPS"
+    },
+    {
+     "shots": [
+      "b3",
+      "b4"
+     ],
+     "word": "TEAMS.",
+     "sub": "BASKETBALL \u00b7 BASEBALL"
+    },
+    {
+     "shots": [
+      "b5"
+     ],
+     "word": "SCHOOLS.",
+     "sub": "SCHOOL UNIFORMS"
+    },
+    {
+     "shots": [
+      "b6",
+      "b7"
+     ],
+     "word": "BUSINESSES.",
+     "sub": "CORPORATE WORKWEAR"
+    }
+   ]
+  },
+  {
+   "mode": "panel",
+   "from": 390,
+   "to": 660
+  },
+  {
+   "mode": "gallery",
+   "from": 660,
+   "to": 930,
+   "groups": [
+    {
+     "shots": [
+      "d1"
+     ],
+     "word": "EMBROIDERED.",
+     "sub": null
+    },
+    {
+     "shots": [
+      "d2"
+     ],
+     "word": "PVC.",
+     "sub": null
+    },
+    {
+     "shots": [
+      "d3"
+     ],
+     "word": "CHENILLE.",
+     "sub": null
+    },
+    {
+     "shots": [
+      "d4"
+     ],
+     "word": "WOVEN.",
+     "sub": null
+    },
+    {
+     "shots": [
+      "d5"
+     ],
+     "word": "LEATHER.",
+     "sub": null
+    },
+    {
+     "shots": [
+      "d6"
+     ],
+     "word": "FULL-COLOR.",
+     "sub": null
+    }
+   ]
+  },
+  {
+   "mode": "panel",
+   "from": 1230,
+   "to": 1395
+  }
+ ]
 }

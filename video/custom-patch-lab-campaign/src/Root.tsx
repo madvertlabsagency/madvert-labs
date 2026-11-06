@@ -85,7 +85,7 @@ export const RemotionRoot: React.FC = () => (
   </Folder>
   <Folder name="Markhor-Flagship">
     {FLAGSHIP.map((c) => (
-      <Composition key={c.id} id={c.id} component={c.Comp} durationInFrames={c.spec.durationInFrames} fps={30} width={1080} height={1920} />
+      <Composition key={c.id} id={c.id} component={c.Comp} durationInFrames={c.spec.durationInFrames} fps={30} width={c.width} height={c.height} />
     ))}
   </Folder>
   <Folder name="EPCF-Excellence-Punch">

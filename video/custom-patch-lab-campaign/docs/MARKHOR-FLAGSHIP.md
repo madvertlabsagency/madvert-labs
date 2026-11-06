@@ -6,23 +6,27 @@
 | `out/MARKHOR_COMMERCIAL_30S.mp4` | 30.0 s | Condensed premium version |
 | `out/MARKHOR_META_AD_15S.mp4` | 15.0 s | Fast, conversion-focused Meta ad |
 | `out/MARKHOR_WEBSITE_HERO.mp4` | 10.0 s | Muted, text-free, seamless loop for the website hero |
+| `out/MARKHOR_FLAGSHIP_50S_16x9.mp4` | 50.0 s | 16:9 version of the flagship |
+| `out/MARKHOR_COMMERCIAL_30S_16x9.mp4` | 30.0 s | 16:9 version of the 30 s |
+| `out/MARKHOR_META_AD_15S_16x9.mp4` | 15.0 s | 16:9 version of the 15 s |
+| `out/MARKHOR_WEBSITE_HERO_16x9.mp4` | 10.0 s | 16:9 desktop website hero (muted, seamless loop) |
 
-All four are 1080×1920 (9:16), 30 fps, H.264, yuv420p, BT.709. The three ads carry AAC 320k audio at −14 LUFS / −1.5 dBTP; the hero has no audio track.
+The 9:16 files are 1080×1920 and the 16:9 files are 1920×1080; all are 30 fps, H.264, yuv420p, BT.709. The ads carry AAC 320k audio at −14 LUFS / −1.5 dBTP (each 16:9 ad uses the same soundtrack and timing as its 9:16 version). The heroes have no audio track.
 
 **Related files**
 - Shot-by-shot timelines: `docs/MARKHOR-FLAGSHIP-TIMELINES.md`
 - Voiceover cue sheet: `docs/MARKHOR-FLAGSHIP-VO.txt`
 
 **Editable project**
-- Edit specs: `src/markhor/{flag50,flag30,meta15,hero}/edl.json`
-- Engine: `src/markhor/flagship.tsx`
+- Edit specs: `src/markhor/{flag50,flag30,meta15,hero,hero169}/edl.json` (the `wide` key holds the 16:9 staging)
+- Engines: `src/markhor/flagship.tsx` (9:16) and `src/markhor/flagship169.tsx` (16:9)
 - Design system: `src/markhor/hyper.tsx`
 
 **Pipelines**
 - Footage conform: `scripts/conform-shots.py markhor/<cut>`
 - Website conform: `scripts/conform-web.py markhor/<cut>`
 - Soundtrack: `scripts/markhor_flagship_audio.py`, built with `scripts/build-audio.sh markhor-<cut> -14 -1.5`
-- Render: `npm run render:flagship50:final`, `render:commercial30:final`, `render:metaad15:final`, `render:websitehero:final`
+- Render: `npm run render:flagship50:final`, `render:commercial30:final`, `render:metaad15:final`, `render:websitehero:final`; 16:9: `render:flagship50wide:final`, `render:commercial30wide:final`, `render:metaad15wide:final`, `render:websiteherowide:final`
 
 ## What is and is not in these renders
 - **Voiceover:** not included. No studio-quality voice generator is available in this environment, and the brief asks for a timed guide rather than a poor substitute. Every line has a fixed cue (see the VO cue sheet), and the on-screen typography carries the full story without sound.
@@ -37,7 +41,12 @@ All four are 1080×1920 (9:16), 30 fps, H.264, yuv420p, BT.709. The three ads ca
   - It builds through a roll into one final impact on the logo.
   - Natural sound: the embroidery machine's real recorded audio under every needle shot, plus needle strokes, fabric, packaging, a PVC tap and precise UI clicks on every website tap.
   - Short-term loudness stays between −11 and −18 LUFS across the whole 50 s, so nothing goes empty.
-- **16:9 landscape master:** not made. Every source clip is a 9:16 vertical at 720×1280. A 16:9 frame cropped from it would be a 720×405 slice upscaled 2.7×, which is not broadcast quality. A landscape master needs landscape footage.
+- **16:9 versions:** made as a designed landscape layout, not a crop. Every source clip is 9:16 (720×1280), and a straight 16:9 crop would be a 720×405 slice blown up 2.7×. Each 16:9 cut uses the same timeline, cuts and soundtrack as its vertical version, staged four ways:
+  - **Panel:** one vertical footage panel on the right, with the headline column on the left.
+  - **Gallery:** for the applications and patch-types sections, the panels fill the width one by one on the hits, each with its caption (BRANDS. / TEAMS. / SCHOOLS. / BUSINESSES.; EMBROIDERED. → FULL-COLOR.). The active panel is outlined in cyan.
+  - **Website:** the real recordings in the phone on the right, with the step headline on the left.
+  - **End card:** logo left; headline, CTA and URL right.
+  - **Desktop website hero:** a full-bleed triptych of slow-motion macros; each third swaps once, and the file loops seamlessly.
 - **Sora font:** not available offline here (the download was refused). Headlines use Manrope ExtraBold, the guide's listed alternative, with the guide's slant and highlight strips.
 
 ## Footage selection
@@ -135,3 +144,9 @@ Checked with ffprobe (stream specs, counted frames), a full decode (`ffmpeg -v e
 | MARKHOR_COMMERCIAL_30S_upload.mp4 | 25 MB | h264 1080 1920 yuv420p 30/1 | 900 (900) | aac 48000 317375 |  I: -14.0 LUFS  Peak: -1.2 dBFS  | 0 | 0 |
 | MARKHOR_META_AD_15S.mp4 | 18 MB | h264 1080 1920 yuv420p 30/1 | 450 (450) | aac 48000 317368 |  I: -14.2 LUFS  Peak: -1.2 dBFS  | 0 | 0 |
 | MARKHOR_WEBSITE_HERO.mp4 | 14 MB | h264 1080 1920 yuv420p 30/1 | 300 (300) | none (muted) | — | 0 | 0 |
+| MARKHOR_FLAGSHIP_50S_16x9.mp4 | 36 MB | h264 1920 1080 yuv420p 30/1 | 1500 (1500) | aac 48000 317377 |  I: -14.1 LUFS  Peak: -1.4 dBFS  | 0 | 0 |
+| MARKHOR_COMMERCIAL_30S_16x9.mp4 | 20 MB | h264 1920 1080 yuv420p 30/1 | 900 (900) | aac 48000 317375 |  I: -14.0 LUFS  Peak: -1.2 dBFS  | 0 | 0 |
+| MARKHOR_META_AD_15S_16x9.mp4 | 11 MB | h264 1920 1080 yuv420p 30/1 | 450 (450) | aac 48000 317368 |  I: -14.2 LUFS  Peak: -1.2 dBFS  | 0 | 0 |
+| MARKHOR_WEBSITE_HERO_16x9.mp4 | 16 MB | h264 1920 1080 yuv420p 30/1 | 300 (300) | none (muted) | — | 0 | 0 |
+
+The 16:9 website hero's last frame differs from its first by a mean of 1.6/255 (grain only), so it loops seamlessly. A 4.5 Mb/s upload copy of the 50 s 16:9 is in `out/MARKHOR_FLAGSHIP_50S_16x9_upload.mp4`.

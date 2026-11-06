@@ -578,5 +578,81 @@
   "enter": "impact",
   "len": 60,
   "from": 390
- }
+ },
+ "wide": [
+  {
+   "mode": "panel",
+   "from": 0,
+   "to": 80
+  },
+  {
+   "mode": "gallery",
+   "from": 80,
+   "to": 200,
+   "groups": [
+    {
+     "shots": [
+      "b1",
+      "b2"
+     ],
+     "word": null,
+     "sub": null
+    },
+    {
+     "shots": [
+      "b3",
+      "b4"
+     ],
+     "word": null,
+     "sub": null
+    },
+    {
+     "shots": [
+      "b5",
+      "b6"
+     ],
+     "word": null,
+     "sub": null
+    },
+    {
+     "shots": [
+      "b7",
+      "b8"
+     ],
+     "word": null,
+     "sub": null
+    }
+   ],
+   "title": [
+    [
+     [
+      "FOR",
+      84
+     ],
+     [
+      "BRANDS,",
+      88
+     ],
+     [
+      "TEAMS",
+      104
+     ],
+     [
+      "&",
+      108
+     ],
+     [
+      "SCHOOLS.",
+      112,
+      true
+     ]
+    ]
+   ]
+  },
+  {
+   "mode": "panel",
+   "from": 330,
+   "to": 390
+  }
+ ]
 }

@@ -208,3 +208,35 @@ build('hero', [
   S('h5', 'f02', 4.20, 5.40, 45, 'dissolve', interp=True),
   S('h6', 'f01', 3.00, 4.40, 60, 'dissolve', interp=True, drift=[1.0, 1.05]),
  ], [], None, [], dict(sections=[]), audio=False, extra=dict(loop=dict(at=285, dur=15)))
+
+# ------------------------------------------------------------------ 16:9 layouts (same timelines)
+def add_wide(name, wide):
+    p = os.path.join(ROOT, f'src/markhor/{name}/edl.json')
+    d = json.load(open(p)); d['wide'] = wide
+    json.dump(d, open(p, 'w'), indent=1)
+
+def P(a, b): return dict(mode='panel', **{'from': a}, to=b)
+def G(a, b, groups, title=None):
+    g = dict(mode='gallery', **{'from': a}, to=b, groups=[dict(shots=x[0], word=x[1] if len(x) > 1 else None, sub=x[2] if len(x) > 2 else None) for x in groups])
+    if title: g['title'] = [[list(w) for w in l] for l in title]
+    return g
+MAT = [(['d1'], 'EMBROIDERED.'), (['d2'], 'PVC.'), (['d3'], 'CHENILLE.'), (['d4'], 'WOVEN.'), (['d5'], 'LEATHER.'), (['d6'], 'FULL-COLOR.')]
+add_wide('flag50', [P(0, 150), G(150, 390, [(['b1', 'b2'], 'BRANDS.', 'CLOTHING BRANDS & CAPS'), (['b3', 'b4'], 'TEAMS.', 'BASKETBALL · BASEBALL'),
+                                           (['b5'], 'SCHOOLS.', 'SCHOOL UNIFORMS'), (['b6', 'b7'], 'BUSINESSES.', 'CORPORATE WORKWEAR')]),
+                    P(390, 660), G(660, 930, MAT), P(1230, 1395)])
+add_wide('flag30', [P(0, 120), G(120, 300, [(['b1'], 'BRANDS.'), (['b2', 'b3'], 'TEAMS.'), (['b4'], 'SCHOOLS.'), (['b5'], 'BUSINESSES.')]),
+                    G(300, 480, MAT), P(690, 810)])
+add_wide('meta15', [P(0, 80), G(80, 200, [(['b1', 'b2'],), (['b3', 'b4'],), (['b5', 'b6'],), (['b7', 'b8'],)],
+                                   title=[[('FOR', 84), ('BRANDS,', 88), ('TEAMS', 104), ('&', 108), ('SCHOOLS.', 112, True)]]),
+                    P(330, 390)])
+
+# website hero 16:9: full-bleed triptych, each slot swaps once (A 0–150, B 135–300), loops on frame 0
+build('hero169', [
+  S('s1', 'f06', 1.35, 4.95, 150, interp=True, drift=[1.0, 1.08]),
+  S('s2', 'f05', 2.50, 5.90, 150, interp=True, drift=[1.06, 1.0]),
+  S('s3', 'f04', 1.50, 4.40, 150, interp=True, drift=[1.0, 1.08]),
+  S('s4', 'f02', 0.00, 3.80, 165, interp=True, drift=[1.08, 1.0]),
+  S('s5', 'f02', 4.05, 6.00, 165, interp=True, drift=[1.0, 1.08]),
+  S('s6', 'f01', 2.60, 5.60, 165, interp=True, drift=[1.0, 1.06]),
+ ], [], None, [], dict(sections=[]), audio=False, extra=dict(slots=[['s1', 's4'], ['s2', 's5'], ['s3', 's6']], switchAt=150, fade=15))
+p = os.path.join(ROOT, 'src/markhor/hero169/edl.json'); d = json.load(open(p)); d['durationInFrames'] = 300; json.dump(d, open(p, 'w'), indent=1)

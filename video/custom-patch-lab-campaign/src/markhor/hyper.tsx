@@ -173,7 +173,7 @@ export const Label: React.FC<{text: string; at: number; top?: number; exitAt?: n
 
 /* ------------------------------------------------------------------ end card */
 
-export const CtaPill: React.FC<{at: number; text: string; top: number; variant?: 'navy' | 'cyan'; size?: number}> = ({at, text, top, variant = 'navy', size = 44}) => {
+export const CtaPill: React.FC<{at: number; text: string; top: number; variant?: 'navy' | 'cyan'; size?: number; justify?: 'center' | 'flex-start'}> = ({at, text, top, variant = 'navy', size = 44, justify = 'center'}) => {
   const f = useCurrentFrame();
   const {fps} = useVideoConfig();
   const s = spring({frame: f - at, fps, config: {damping: 14, stiffness: 200, mass: 0.7}});
@@ -181,7 +181,7 @@ export const CtaPill: React.FC<{at: number; text: string; top: number; variant?:
   const shine = prog(f, at + 24, 20, easeInOut);
   const navy = variant === 'navy';
   return (
-    <div style={{position: 'absolute', top, left: 0, right: 0, display: 'flex', justifyContent: 'center', opacity: f < at ? 0 : Math.min(1, s * 1.6), transform: `translateY(${(1 - s) * 40}px) scale(${mix(0.9, 1, s)})`}}>
+    <div style={{position: 'absolute', top, left: 0, right: 0, display: 'flex', justifyContent: justify, transformOrigin: justify === 'center' ? '50% 50%' : '0% 50%', opacity: f < at ? 0 : Math.min(1, s * 1.6), transform: `translateY(${(1 - s) * 40}px) scale(${mix(0.9, 1, s)})`}}>
       <div
         style={{
           position: 'relative',
