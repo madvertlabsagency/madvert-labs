@@ -1,0 +1,26 @@
+MARKHOR PATCHES — VOICEOVER CUE SHEET (American English, confident, warm, sophisticated; no shouting)
+
+== MARKHOR_FLAGSHIP_50S ==
+[000.5 – 003.6 s]  Every great brand starts with an identity.
+[005.2 – 012.6 s]  Your clothing brand. Your team. Your school. Your business.
+[013.6 – 017.8 s]  Whatever you're creating, make it unmistakably yours.
+[022.3 – 030.0 s]  From classic embroidery to bold PVC, chenille, woven, leather and full-color patches.
+[031.3 – 040.0 s]  Choose your style. Share your design. Request your custom quote. It's that simple.
+[041.2 – 049.0 s]  Premium detail. Your vision brought to life. Markhor Patches. Make your mark.
+
+== MARKHOR_COMMERCIAL_30S ==
+[000.4 – 003.0 s]  Every great brand starts with an identity.
+[004.1 – 009.6 s]  Your brand. Your team. Your school. Your business.
+[010.1 – 015.6 s]  From embroidery to PVC, chenille, woven, leather and full-color.
+[016.2 – 022.4 s]  Choose your style. Share your design. Request your custom quote.
+[023.4 – 029.2 s]  Premium detail. Your vision, brought to life. Markhor Patches. Make your mark.
+
+== MARKHOR_META_AD_15S ==
+[000.2 – 002.6 s]  Your design. Your identity. Your patch.
+[002.9 – 006.4 s]  Made for brands, teams and schools.
+[006.8 – 010.8 s]  Choose your style, upload your design and request your custom quote.
+[011.2 – 014.4 s]  Markhor Patches. Make your mark.
+
+Delivery: export each cut as one WAV/MP3 that starts at 0:00 with the lines on these cues
+(or send the lines separately and I will place them). Save as public/audio/markhor-<flag50|flag30|meta15>-vo.wav
+and re-run scripts/build-audio.sh markhor-<cut> -14 -1.5 — the mix ducks the drums under the voice automatically.

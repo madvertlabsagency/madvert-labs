@@ -1,0 +1,582 @@
+{
+ "fps": 30,
+ "durationInFrames": 450,
+ "studio": false,
+ "audio": true,
+ "shots": [
+  {
+   "kind": "shot",
+   "id": "a0",
+   "source": "f06.mp4",
+   "srcIn": 1.4,
+   "srcOut": 1.9,
+   "frames": 15,
+   "interp": false,
+   "trans": "cut",
+   "from": 0
+  },
+  {
+   "kind": "shot",
+   "id": "a1",
+   "source": "f05.mp4",
+   "srcIn": 0.0,
+   "srcOut": 0.3,
+   "frames": 8,
+   "interp": false,
+   "trans": "cut",
+   "from": 15
+  },
+  {
+   "kind": "shot",
+   "id": "a2",
+   "source": "f04.mp4",
+   "srcIn": 0.0,
+   "srcOut": 0.3,
+   "frames": 8,
+   "interp": false,
+   "trans": "cut",
+   "from": 23
+  },
+  {
+   "kind": "shot",
+   "id": "a3",
+   "source": "m21.mp4",
+   "srcIn": 3.3,
+   "srcOut": 3.6,
+   "frames": 8,
+   "interp": false,
+   "trans": "cut",
+   "from": 31
+  },
+  {
+   "kind": "shot",
+   "id": "a4",
+   "source": "f02.mp4",
+   "srcIn": 0.2,
+   "srcOut": 0.5,
+   "frames": 8,
+   "interp": false,
+   "trans": "cut",
+   "from": 39
+  },
+  {
+   "kind": "shot",
+   "id": "a5",
+   "source": "m26.mp4",
+   "srcIn": 4.6,
+   "srcOut": 4.87,
+   "frames": 8,
+   "interp": false,
+   "trans": "cut",
+   "from": 47
+  },
+  {
+   "kind": "shot",
+   "id": "a6",
+   "source": "f02.mp4",
+   "srcIn": 4.4,
+   "srcOut": 4.7,
+   "frames": 8,
+   "interp": false,
+   "trans": "cut",
+   "from": 55
+  },
+  {
+   "kind": "shot",
+   "id": "a7",
+   "source": "f06.mp4",
+   "srcIn": 2.8,
+   "srcOut": 3.4,
+   "frames": 17,
+   "interp": false,
+   "trans": "punch",
+   "from": 63
+  },
+  {
+   "kind": "shot",
+   "id": "b1",
+   "source": "f14.mp4",
+   "srcIn": 0.3,
+   "srcOut": 0.8,
+   "frames": 15,
+   "interp": false,
+   "trans": "impact",
+   "from": 80
+  },
+  {
+   "kind": "shot",
+   "id": "b2",
+   "source": "f04.mp4",
+   "srcIn": 3.0,
+   "srcOut": 3.5,
+   "frames": 15,
+   "interp": false,
+   "trans": "punch",
+   "from": 95
+  },
+  {
+   "kind": "shot",
+   "id": "b3",
+   "source": "f10.mp4",
+   "srcIn": 0.0,
+   "srcOut": 0.5,
+   "frames": 15,
+   "interp": false,
+   "trans": "punch",
+   "from": 110
+  },
+  {
+   "kind": "shot",
+   "id": "b4",
+   "source": "f09.mp4",
+   "srcIn": 0.8,
+   "srcOut": 1.3,
+   "frames": 15,
+   "interp": false,
+   "trans": "punch",
+   "from": 125
+  },
+  {
+   "kind": "shot",
+   "id": "b5",
+   "source": "f08.mp4",
+   "srcIn": 3.2,
+   "srcOut": 3.7,
+   "frames": 15,
+   "interp": false,
+   "trans": "punch",
+   "from": 140
+  },
+  {
+   "kind": "shot",
+   "id": "b6",
+   "source": "f07.mp4",
+   "srcIn": 2.2,
+   "srcOut": 2.7,
+   "frames": 15,
+   "interp": false,
+   "trans": "punch",
+   "from": 155
+  },
+  {
+   "kind": "shot",
+   "id": "b7",
+   "source": "f15.mp4",
+   "srcIn": 2.5,
+   "srcOut": 3.0,
+   "frames": 15,
+   "interp": false,
+   "trans": "punch",
+   "from": 170
+  },
+  {
+   "kind": "shot",
+   "id": "b8",
+   "source": "f12.mp4",
+   "srcIn": 2.6,
+   "srcOut": 3.1,
+   "frames": 15,
+   "interp": false,
+   "trans": "punch",
+   "from": 185
+  },
+  {
+   "kind": "shot",
+   "id": "e1",
+   "source": "f01.mp4",
+   "srcIn": 3.0,
+   "srcOut": 4.4,
+   "frames": 60,
+   "interp": false,
+   "trans": "impact",
+   "drift": [
+    1.0,
+    1.06
+   ],
+   "from": 330
+  }
+ ],
+ "web": [
+  {
+   "kind": "web",
+   "id": "wchoose",
+   "source": "w02.mp4",
+   "srcIn": 0.55,
+   "srcOut": 2.05,
+   "frames": 45,
+   "taps": [
+    [
+     14,
+     234,
+     882
+    ]
+   ],
+   "focus": [
+    0.42,
+    1.18
+   ],
+   "chips": null,
+   "from": 200
+  },
+  {
+   "kind": "web",
+   "id": "wup",
+   "source": "w03.mp4",
+   "srcIn": 5.0,
+   "srcOut": 8.5,
+   "frames": 40,
+   "taps": [],
+   "focus": [
+    0.4,
+    1.2
+   ],
+   "chips": null,
+   "from": 245
+  },
+  {
+   "kind": "web",
+   "id": "wquote",
+   "source": "w04.mp4",
+   "srcIn": 0.0,
+   "srcOut": 1.5,
+   "frames": 45,
+   "taps": [
+    [
+     20,
+     540,
+     1562
+    ]
+   ],
+   "focus": [
+    0.66,
+    1.15
+   ],
+   "chips": null,
+   "from": 285
+  }
+ ],
+ "cuts": [
+  15,
+  23,
+  31,
+  39,
+  47,
+  55,
+  63,
+  80,
+  95,
+  110,
+  125,
+  140,
+  155,
+  170,
+  185,
+  200,
+  245,
+  285,
+  330,
+  390
+ ],
+ "text": [
+  {
+   "type": "headline",
+   "from": 0,
+   "to": 40,
+   "top": 250,
+   "size": 136,
+   "sizes": null,
+   "dark": false,
+   "lines": [
+    [
+     {
+      "t": "YOUR",
+      "at": 0,
+      "hi": false
+     },
+     {
+      "t": "LOGO.",
+      "at": 4,
+      "hi": true
+     }
+    ]
+   ]
+  },
+  {
+   "type": "headline",
+   "from": 40,
+   "to": 80,
+   "top": 250,
+   "size": 116,
+   "sizes": null,
+   "dark": false,
+   "lines": [
+    [
+     {
+      "t": "AS",
+      "at": 40,
+      "hi": false
+     },
+     {
+      "t": "A",
+      "at": 43,
+      "hi": false
+     }
+    ],
+    [
+     {
+      "t": "PREMIUM",
+      "at": 46,
+      "hi": false
+     },
+     {
+      "t": "PATCH.",
+      "at": 50,
+      "hi": true
+     }
+    ]
+   ]
+  },
+  {
+   "type": "headline",
+   "from": 80,
+   "to": 200,
+   "top": 250,
+   "size": 104,
+   "sizes": null,
+   "dark": false,
+   "lines": [
+    [
+     {
+      "t": "FOR",
+      "at": 84,
+      "hi": false
+     },
+     {
+      "t": "BRANDS,",
+      "at": 88,
+      "hi": false
+     }
+    ],
+    [
+     {
+      "t": "TEAMS",
+      "at": 104,
+      "hi": false
+     },
+     {
+      "t": "&",
+      "at": 108,
+      "hi": false
+     },
+     {
+      "t": "SCHOOLS.",
+      "at": 112,
+      "hi": true
+     }
+    ]
+   ]
+  },
+  {
+   "type": "headline",
+   "from": 200,
+   "to": 245,
+   "top": 170,
+   "size": 84,
+   "sizes": null,
+   "dark": true,
+   "lines": [
+    [
+     {
+      "t": "CHOOSE",
+      "at": 202,
+      "hi": false
+     },
+     {
+      "t": "YOUR",
+      "at": 205,
+      "hi": false
+     }
+    ],
+    [
+     {
+      "t": "STYLE.",
+      "at": 209,
+      "hi": true
+     }
+    ]
+   ]
+  },
+  {
+   "type": "headline",
+   "from": 245,
+   "to": 285,
+   "top": 170,
+   "size": 84,
+   "sizes": null,
+   "dark": true,
+   "lines": [
+    [
+     {
+      "t": "UPLOAD",
+      "at": 246,
+      "hi": false
+     },
+     {
+      "t": "YOUR",
+      "at": 249,
+      "hi": false
+     }
+    ],
+    [
+     {
+      "t": "DESIGN.",
+      "at": 253,
+      "hi": true
+     }
+    ]
+   ]
+  },
+  {
+   "type": "headline",
+   "from": 285,
+   "to": 330,
+   "top": 170,
+   "size": 84,
+   "sizes": null,
+   "dark": true,
+   "lines": [
+    [
+     {
+      "t": "GET",
+      "at": 286,
+      "hi": false
+     },
+     {
+      "t": "YOUR",
+      "at": 289,
+      "hi": false
+     }
+    ],
+    [
+     {
+      "t": "QUOTE.",
+      "at": 293,
+      "hi": true
+     }
+    ]
+   ]
+  },
+  {
+   "type": "headline",
+   "from": 330,
+   "to": 390,
+   "top": 250,
+   "size": 124,
+   "sizes": null,
+   "dark": false,
+   "lines": [
+    [
+     {
+      "t": "MAKE",
+      "at": 332,
+      "hi": false
+     },
+     {
+      "t": "YOUR",
+      "at": 336,
+      "hi": false
+     }
+    ],
+    [
+     {
+      "t": "MARK.",
+      "at": 342,
+      "hi": true
+     }
+    ]
+   ]
+  }
+ ],
+ "vo": [
+  {
+   "at": 0.2,
+   "to": 2.6,
+   "line": "Your design. Your identity. Your patch."
+  },
+  {
+   "at": 2.9,
+   "to": 6.4,
+   "line": "Made for brands, teams and schools."
+  },
+  {
+   "at": 6.8,
+   "to": 10.8,
+   "line": "Choose your style, upload your design and request your custom quote."
+  },
+  {
+   "at": 11.2,
+   "to": 14.4,
+   "line": "Markhor Patches. Make your mark."
+  }
+ ],
+ "sound": {
+  "sections": [
+   [
+    0,
+    80,
+    "hook"
+   ],
+   [
+    80,
+    200,
+    "full"
+   ],
+   [
+    200,
+    330,
+    "half"
+   ],
+   [
+    330,
+    390,
+    "build"
+   ],
+   [
+    390,
+    450,
+    "tail"
+   ]
+  ],
+  "machine": [
+   "a0",
+   "a7"
+  ],
+  "foley": {}
+ },
+ "card": {
+  "headline": [
+   [
+    "YOUR",
+    0
+   ],
+   [
+    "DESIGN.",
+    3
+   ],
+   [
+    "YOUR",
+    7
+   ],
+   [
+    "PATCH.",
+    10,
+    true
+   ]
+  ],
+  "cta": "GET YOUR CUSTOM QUOTE",
+  "variant": "navy",
+  "enter": "impact",
+  "len": 60,
+  "from": 390
+ }
+}

@@ -41,6 +41,7 @@ import edlHY3 from './markhor/h3/edl.json';
 import {HyperReel04} from './markhor/h4/HyperReel04';
 import edlHY4 from './markhor/h4/edl.json';
 import {COMMERCIALS} from './markhor/commercials';
+import {FLAGSHIP} from './markhor/flagships';
 import {BillysReel15} from './billys/reel15/BillysReel15';
 import edlBR15 from './billys/reel15/edl.json';
 import {BillysReelLaser} from './billys/reel15laser/BillysReelLaser';
@@ -79,6 +80,11 @@ export const RemotionRoot: React.FC = () => (
   </Folder>
   <Folder name="Markhor-Commercials">
     {COMMERCIALS.map((c) => (
+      <Composition key={c.id} id={c.id} component={c.Comp} durationInFrames={c.spec.durationInFrames} fps={30} width={1080} height={1920} />
+    ))}
+  </Folder>
+  <Folder name="Markhor-Flagship">
+    {FLAGSHIP.map((c) => (
       <Composition key={c.id} id={c.id} component={c.Comp} durationInFrames={c.spec.durationInFrames} fps={30} width={1080} height={1920} />
     ))}
   </Folder>

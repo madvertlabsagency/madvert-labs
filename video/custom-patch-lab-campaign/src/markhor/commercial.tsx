@@ -34,7 +34,7 @@ export type Spec = {
 const TAIL = 8; // every shot keeps rendering a few frames past its cut (under the next one) for transitions
 const IN = {punch: 6, impact: 8, zoom: 7, whip: 5, dissolve: 8, slide: 6, cut: 0} as const;
 
-const ShotLayer: React.FC<{s: ShotSpec; next?: ShotSpec; dir: string; id: string; shade: number}> = ({s, next, dir, id, shade}) => {
+export const ShotLayer: React.FC<{s: ShotSpec; next?: ShotSpec; dir: string; id: string; shade: number}> = ({s, next, dir, id, shade}) => {
   const f = useCurrentFrame(); // local to the shot
   const pin = s.trans === 'cut' ? 1 : prog(f, 0, IN[s.trans], s.trans === 'dissolve' ? easeInOut : easeOut);
   const end = s.frames;

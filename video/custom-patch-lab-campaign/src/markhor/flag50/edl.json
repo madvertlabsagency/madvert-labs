@@ -1,0 +1,1296 @@
+{
+ "fps": 30,
+ "durationInFrames": 1500,
+ "studio": false,
+ "audio": true,
+ "shots": [
+  {
+   "kind": "shot",
+   "id": "a0",
+   "source": "f06.mp4",
+   "srcIn": 1.4,
+   "srcOut": 2.4,
+   "frames": 30,
+   "interp": false,
+   "trans": "cut",
+   "drift": [
+    1.0,
+    1.06
+   ],
+   "from": 0
+  },
+  {
+   "kind": "shot",
+   "id": "a1",
+   "source": "f05.mp4",
+   "srcIn": 0.0,
+   "srcOut": 0.6,
+   "frames": 15,
+   "interp": false,
+   "trans": "punch",
+   "from": 30
+  },
+  {
+   "kind": "shot",
+   "id": "a2",
+   "source": "f04.mp4",
+   "srcIn": 0.0,
+   "srcOut": 0.6,
+   "frames": 15,
+   "interp": false,
+   "trans": "punch",
+   "from": 45
+  },
+  {
+   "kind": "shot",
+   "id": "a3",
+   "source": "f06.mp4",
+   "srcIn": 2.6,
+   "srcOut": 3.6,
+   "frames": 30,
+   "interp": false,
+   "trans": "punch",
+   "scale": 1.1,
+   "origin": {
+    "x": 540,
+    "y": 900
+   },
+   "from": 60
+  },
+  {
+   "kind": "shot",
+   "id": "a4",
+   "source": "f04.mp4",
+   "srcIn": 1.6,
+   "srcOut": 2.1,
+   "frames": 15,
+   "interp": false,
+   "trans": "punch",
+   "scale": 1.15,
+   "from": 90
+  },
+  {
+   "kind": "shot",
+   "id": "b1",
+   "source": "f02.mp4",
+   "srcIn": 0.0,
+   "srcOut": 1.1,
+   "frames": 30,
+   "interp": false,
+   "trans": "impact",
+   "drift": [
+    1.04,
+    1.0
+   ],
+   "from": 150
+  },
+  {
+   "kind": "shot",
+   "id": "b2",
+   "source": "f14.mp4",
+   "srcIn": 0.1,
+   "srcOut": 1.1,
+   "frames": 30,
+   "interp": false,
+   "trans": "punch",
+   "from": 180
+  },
+  {
+   "kind": "shot",
+   "id": "b3",
+   "source": "f04.mp4",
+   "srcIn": 3.0,
+   "srcOut": 4.0,
+   "frames": 30,
+   "interp": false,
+   "trans": "whip",
+   "drift": [
+    1.0,
+    1.05
+   ],
+   "from": 210
+  },
+  {
+   "kind": "shot",
+   "id": "b4",
+   "source": "f10.mp4",
+   "srcIn": 0.0,
+   "srcOut": 1.2,
+   "frames": 30,
+   "interp": false,
+   "trans": "punch",
+   "from": 240
+  },
+  {
+   "kind": "shot",
+   "id": "b5",
+   "source": "f09.mp4",
+   "srcIn": 0.2,
+   "srcOut": 2.2,
+   "frames": 60,
+   "interp": false,
+   "trans": "whip",
+   "drift": [
+    1.0,
+    1.1
+   ],
+   "origin": {
+    "x": 620,
+    "y": 1250
+   },
+   "from": 270
+  },
+  {
+   "kind": "shot",
+   "id": "b6",
+   "source": "f08.mp4",
+   "srcIn": 0.2,
+   "srcOut": 1.4,
+   "frames": 30,
+   "interp": false,
+   "trans": "whip",
+   "from": 330
+  },
+  {
+   "kind": "shot",
+   "id": "b7",
+   "source": "f08.mp4",
+   "srcIn": 3.1,
+   "srcOut": 4.3,
+   "frames": 30,
+   "interp": false,
+   "trans": "punch",
+   "drift": [
+    1.05,
+    1.0
+   ],
+   "from": 360
+  },
+  {
+   "kind": "shot",
+   "id": "c1",
+   "source": "f07.mp4",
+   "srcIn": 1.6,
+   "srcOut": 3.0,
+   "frames": 42,
+   "interp": false,
+   "trans": "dissolve",
+   "drift": [
+    1.0,
+    1.06
+   ],
+   "from": 390
+  },
+  {
+   "kind": "shot",
+   "id": "c2",
+   "source": "f12.mp4",
+   "srcIn": 1.5,
+   "srcOut": 3.7,
+   "frames": 66,
+   "interp": false,
+   "trans": "slide",
+   "from": 432
+  },
+  {
+   "kind": "shot",
+   "id": "c3",
+   "source": "f15.mp4",
+   "srcIn": 2.0,
+   "srcOut": 4.0,
+   "frames": 60,
+   "interp": false,
+   "trans": "slide",
+   "drift": [
+    1.04,
+    1.0
+   ],
+   "from": 498
+  },
+  {
+   "kind": "shot",
+   "id": "c4",
+   "source": "f11.mp4",
+   "srcIn": 3.6,
+   "srcOut": 5.6,
+   "frames": 60,
+   "interp": false,
+   "trans": "slide",
+   "from": 558
+  },
+  {
+   "kind": "shot",
+   "id": "c5",
+   "source": "f01.mp4",
+   "srcIn": 2.6,
+   "srcOut": 4.0,
+   "frames": 42,
+   "interp": false,
+   "trans": "zoom",
+   "drift": [
+    1.0,
+    1.05
+   ],
+   "from": 618
+  },
+  {
+   "kind": "shot",
+   "id": "d1",
+   "source": "f06.mp4",
+   "srcIn": 3.6,
+   "srcOut": 5.0,
+   "frames": 60,
+   "interp": false,
+   "trans": "impact",
+   "drift": [
+    1.0,
+    1.08
+   ],
+   "from": 660
+  },
+  {
+   "kind": "shot",
+   "id": "d2",
+   "source": "f05.mp4",
+   "srcIn": 2.4,
+   "srcOut": 3.9,
+   "frames": 45,
+   "interp": false,
+   "trans": "punch",
+   "from": 720
+  },
+  {
+   "kind": "shot",
+   "id": "d3",
+   "source": "m21.mp4",
+   "srcIn": 3.3,
+   "srcOut": 4.0,
+   "frames": 30,
+   "interp": true,
+   "trans": "punch",
+   "from": 765
+  },
+  {
+   "kind": "shot",
+   "id": "d4",
+   "source": "f02.mp4",
+   "srcIn": 0.0,
+   "srcOut": 1.4,
+   "frames": 45,
+   "interp": false,
+   "trans": "punch",
+   "drift": [
+    1.08,
+    1.0
+   ],
+   "from": 795
+  },
+  {
+   "kind": "shot",
+   "id": "d5",
+   "source": "m26.mp4",
+   "srcIn": 4.55,
+   "srcOut": 5.3,
+   "frames": 30,
+   "interp": false,
+   "trans": "punch",
+   "drift": [
+    1.0,
+    1.06
+   ],
+   "from": 840
+  },
+  {
+   "kind": "shot",
+   "id": "d6",
+   "source": "f02.mp4",
+   "srcIn": 4.1,
+   "srcOut": 6.0,
+   "frames": 60,
+   "interp": false,
+   "trans": "punch",
+   "drift": [
+    1.0,
+    1.08
+   ],
+   "from": 870
+  },
+  {
+   "kind": "shot",
+   "id": "e1",
+   "source": "f06.mp4",
+   "srcIn": 0.0,
+   "srcOut": 1.2,
+   "frames": 30,
+   "interp": false,
+   "trans": "impact",
+   "drift": [
+    1.0,
+    1.08
+   ],
+   "from": 1230
+  },
+  {
+   "kind": "shot",
+   "id": "e2",
+   "source": "f14.mp4",
+   "srcIn": 3.4,
+   "srcOut": 3.9,
+   "frames": 15,
+   "interp": false,
+   "trans": "punch",
+   "from": 1260
+  },
+  {
+   "kind": "shot",
+   "id": "e3",
+   "source": "f10.mp4",
+   "srcIn": 0.3,
+   "srcOut": 0.8,
+   "frames": 15,
+   "interp": false,
+   "trans": "punch",
+   "from": 1275
+  },
+  {
+   "kind": "shot",
+   "id": "e4",
+   "source": "f07.mp4",
+   "srcIn": 2.2,
+   "srcOut": 2.7,
+   "frames": 15,
+   "interp": false,
+   "trans": "punch",
+   "from": 1290
+  },
+  {
+   "kind": "shot",
+   "id": "e5",
+   "source": "f08.mp4",
+   "srcIn": 3.6,
+   "srcOut": 4.1,
+   "frames": 15,
+   "interp": false,
+   "trans": "punch",
+   "from": 1305
+  },
+  {
+   "kind": "shot",
+   "id": "e6",
+   "source": "f05.mp4",
+   "srcIn": 4.0,
+   "srcOut": 4.5,
+   "frames": 15,
+   "interp": false,
+   "trans": "punch",
+   "from": 1320
+  },
+  {
+   "kind": "shot",
+   "id": "e7",
+   "source": "f12.mp4",
+   "srcIn": 2.6,
+   "srcOut": 3.1,
+   "frames": 15,
+   "interp": false,
+   "trans": "punch",
+   "from": 1335
+  },
+  {
+   "kind": "shot",
+   "id": "e8",
+   "source": "f01.mp4",
+   "srcIn": 3.0,
+   "srcOut": 4.7,
+   "frames": 45,
+   "interp": false,
+   "trans": "impact",
+   "drift": [
+    1.0,
+    1.06
+   ],
+   "from": 1350
+  }
+ ],
+ "web": [
+  {
+   "kind": "web",
+   "id": "whome",
+   "source": "w04.mp4",
+   "srcIn": 0.0,
+   "srcOut": 1.5,
+   "frames": 45,
+   "taps": [],
+   "focus": [
+    0.4,
+    1.0
+   ],
+   "chips": null,
+   "from": 105
+  },
+  {
+   "kind": "web",
+   "id": "wchoose",
+   "source": "w02.mp4",
+   "srcIn": 0.55,
+   "srcOut": 2.8833333333333337,
+   "frames": 70,
+   "taps": [
+    [
+     14,
+     234,
+     882
+    ]
+   ],
+   "focus": [
+    0.42,
+    1.18
+   ],
+   "chips": null,
+   "from": 930
+  },
+  {
+   "kind": "web",
+   "id": "wwizard",
+   "source": "w01.mp4",
+   "srcIn": 9.8,
+   "srcOut": 15.2,
+   "frames": 54,
+   "taps": [],
+   "focus": [
+    0.38,
+    1.12
+   ],
+   "chips": [
+    "SIZE",
+    "QUANTITY",
+    "SHAPE",
+    "ATTACHMENT",
+    "BORDER"
+   ],
+   "from": 1000
+  },
+  {
+   "kind": "web",
+   "id": "wart",
+   "source": "w02.mp4",
+   "srcIn": 17.7,
+   "srcOut": 18.5,
+   "frames": 24,
+   "taps": [
+    [
+     12,
+     540,
+     1250
+    ]
+   ],
+   "focus": [
+    0.45,
+    1.12
+   ],
+   "chips": null,
+   "from": 1054
+  },
+  {
+   "kind": "web",
+   "id": "wup",
+   "source": "w03.mp4",
+   "srcIn": 5.0,
+   "srcOut": 8.5,
+   "frames": 62,
+   "taps": [],
+   "focus": [
+    0.4,
+    1.2
+   ],
+   "chips": null,
+   "from": 1078
+  },
+  {
+   "kind": "web",
+   "id": "wquote",
+   "source": "w04.mp4",
+   "srcIn": 0.0,
+   "srcOut": 1.6,
+   "frames": 90,
+   "taps": [
+    [
+     20,
+     540,
+     1562
+    ]
+   ],
+   "focus": [
+    0.66,
+    1.15
+   ],
+   "chips": null,
+   "from": 1140
+  }
+ ],
+ "cuts": [
+  30,
+  45,
+  60,
+  90,
+  105,
+  150,
+  180,
+  210,
+  240,
+  270,
+  330,
+  360,
+  390,
+  432,
+  498,
+  558,
+  618,
+  660,
+  720,
+  765,
+  795,
+  840,
+  870,
+  930,
+  1000,
+  1054,
+  1078,
+  1140,
+  1230,
+  1260,
+  1275,
+  1290,
+  1305,
+  1320,
+  1335,
+  1350,
+  1395
+ ],
+ "text": [
+  {
+   "type": "headline",
+   "from": 6,
+   "to": 58,
+   "top": 250,
+   "size": 128,
+   "sizes": null,
+   "dark": false,
+   "lines": [
+    [
+     {
+      "t": "YOUR",
+      "at": 6,
+      "hi": false
+     },
+     {
+      "t": "DESIGN.",
+      "at": 12,
+      "hi": true
+     }
+    ]
+   ]
+  },
+  {
+   "type": "headline",
+   "from": 60,
+   "to": 104,
+   "top": 250,
+   "size": 128,
+   "sizes": null,
+   "dark": false,
+   "lines": [
+    [
+     {
+      "t": "YOUR",
+      "at": 60,
+      "hi": false
+     },
+     {
+      "t": "IDENTITY.",
+      "at": 66,
+      "hi": true
+     }
+    ]
+   ]
+  },
+  {
+   "type": "headline",
+   "from": 105,
+   "to": 150,
+   "top": 230,
+   "size": 120,
+   "sizes": null,
+   "dark": true,
+   "lines": [
+    [
+     {
+      "t": "YOUR",
+      "at": 107,
+      "hi": false
+     },
+     {
+      "t": "PATCH.",
+      "at": 112,
+      "hi": true
+     }
+    ]
+   ]
+  },
+  {
+   "type": "headline",
+   "from": 150,
+   "to": 210,
+   "top": 250,
+   "size": 150,
+   "sizes": null,
+   "dark": false,
+   "lines": [
+    [
+     {
+      "t": "BRANDS.",
+      "at": 152,
+      "hi": true
+     }
+    ]
+   ]
+  },
+  {
+   "type": "label",
+   "from": 150,
+   "to": 210,
+   "text": "CLOTHING BRANDS & CAPS",
+   "dark": false,
+   "top": 1530
+  },
+  {
+   "type": "headline",
+   "from": 210,
+   "to": 270,
+   "top": 250,
+   "size": 150,
+   "sizes": null,
+   "dark": false,
+   "lines": [
+    [
+     {
+      "t": "TEAMS.",
+      "at": 212,
+      "hi": true
+     }
+    ]
+   ]
+  },
+  {
+   "type": "label",
+   "from": 210,
+   "to": 270,
+   "text": "BASKETBALL \u00b7 BASEBALL",
+   "dark": false,
+   "top": 1530
+  },
+  {
+   "type": "headline",
+   "from": 270,
+   "to": 330,
+   "top": 250,
+   "size": 150,
+   "sizes": null,
+   "dark": false,
+   "lines": [
+    [
+     {
+      "t": "SCHOOLS.",
+      "at": 272,
+      "hi": true
+     }
+    ]
+   ]
+  },
+  {
+   "type": "label",
+   "from": 270,
+   "to": 330,
+   "text": "SCHOOL UNIFORMS",
+   "dark": false,
+   "top": 1530
+  },
+  {
+   "type": "headline",
+   "from": 330,
+   "to": 390,
+   "top": 250,
+   "size": 130,
+   "sizes": null,
+   "dark": false,
+   "lines": [
+    [
+     {
+      "t": "BUSINESSES.",
+      "at": 332,
+      "hi": true
+     }
+    ]
+   ]
+  },
+  {
+   "type": "label",
+   "from": 330,
+   "to": 390,
+   "text": "CORPORATE WORKWEAR",
+   "dark": false,
+   "top": 1530
+  },
+  {
+   "type": "label",
+   "from": 390,
+   "to": 432,
+   "text": "NAME PATCHES",
+   "dark": false,
+   "top": 1530
+  },
+  {
+   "type": "label",
+   "from": 432,
+   "to": 498,
+   "text": "PERSONALIZED GIFTS",
+   "dark": false,
+   "top": 1530
+  },
+  {
+   "type": "label",
+   "from": 498,
+   "to": 558,
+   "text": "BAGS & TOTES",
+   "dark": false,
+   "top": 1530
+  },
+  {
+   "type": "label",
+   "from": 558,
+   "to": 618,
+   "text": "JACKETS & APPAREL",
+   "dark": false,
+   "top": 1530
+  },
+  {
+   "type": "headline",
+   "from": 410,
+   "to": 650,
+   "top": 250,
+   "size": 118,
+   "sizes": null,
+   "dark": false,
+   "lines": [
+    [
+     {
+      "t": "MADE",
+      "at": 412,
+      "hi": false
+     },
+     {
+      "t": "FOR",
+      "at": 416,
+      "hi": false
+     },
+     {
+      "t": "YOUR",
+      "at": 420,
+      "hi": false
+     }
+    ],
+    [
+     {
+      "t": "IDENTITY.",
+      "at": 428,
+      "hi": true
+     }
+    ]
+   ]
+  },
+  {
+   "type": "headline",
+   "from": 660,
+   "to": 720,
+   "top": 250,
+   "size": 118,
+   "sizes": null,
+   "dark": false,
+   "lines": [
+    [
+     {
+      "t": "EMBROIDERED.",
+      "at": 668,
+      "hi": true
+     }
+    ]
+   ]
+  },
+  {
+   "type": "label",
+   "from": 660,
+   "to": 720,
+   "text": "01 / 06",
+   "dark": false,
+   "top": 1530
+  },
+  {
+   "type": "headline",
+   "from": 720,
+   "to": 765,
+   "top": 250,
+   "size": 150,
+   "sizes": null,
+   "dark": false,
+   "lines": [
+    [
+     {
+      "t": "PVC.",
+      "at": 722,
+      "hi": true
+     }
+    ]
+   ]
+  },
+  {
+   "type": "label",
+   "from": 720,
+   "to": 765,
+   "text": "02 / 06",
+   "dark": false,
+   "top": 1530
+  },
+  {
+   "type": "headline",
+   "from": 765,
+   "to": 795,
+   "top": 250,
+   "size": 136,
+   "sizes": null,
+   "dark": false,
+   "lines": [
+    [
+     {
+      "t": "CHENILLE.",
+      "at": 766,
+      "hi": true
+     }
+    ]
+   ]
+  },
+  {
+   "type": "label",
+   "from": 765,
+   "to": 795,
+   "text": "03 / 06",
+   "dark": false,
+   "top": 1530
+  },
+  {
+   "type": "headline",
+   "from": 795,
+   "to": 840,
+   "top": 250,
+   "size": 150,
+   "sizes": null,
+   "dark": false,
+   "lines": [
+    [
+     {
+      "t": "WOVEN.",
+      "at": 797,
+      "hi": true
+     }
+    ]
+   ]
+  },
+  {
+   "type": "label",
+   "from": 795,
+   "to": 840,
+   "text": "04 / 06",
+   "dark": false,
+   "top": 1530
+  },
+  {
+   "type": "headline",
+   "from": 840,
+   "to": 870,
+   "top": 250,
+   "size": 140,
+   "sizes": null,
+   "dark": false,
+   "lines": [
+    [
+     {
+      "t": "LEATHER.",
+      "at": 841,
+      "hi": true
+     }
+    ]
+   ]
+  },
+  {
+   "type": "label",
+   "from": 840,
+   "to": 870,
+   "text": "05 / 06",
+   "dark": false,
+   "top": 1530
+  },
+  {
+   "type": "headline",
+   "from": 870,
+   "to": 930,
+   "top": 250,
+   "size": 124,
+   "sizes": null,
+   "dark": false,
+   "lines": [
+    [
+     {
+      "t": "FULL-COLOR.",
+      "at": 872,
+      "hi": true
+     }
+    ]
+   ]
+  },
+  {
+   "type": "label",
+   "from": 870,
+   "to": 930,
+   "text": "06 / 06",
+   "dark": false,
+   "top": 1530
+  },
+  {
+   "type": "headline",
+   "from": 930,
+   "to": 1054,
+   "top": 170,
+   "size": 84,
+   "sizes": null,
+   "dark": true,
+   "lines": [
+    [
+     {
+      "t": "CHOOSE",
+      "at": 934,
+      "hi": false
+     },
+     {
+      "t": "YOUR",
+      "at": 938,
+      "hi": false
+     }
+    ],
+    [
+     {
+      "t": "STYLE.",
+      "at": 944,
+      "hi": true
+     }
+    ]
+   ]
+  },
+  {
+   "type": "headline",
+   "from": 1054,
+   "to": 1140,
+   "top": 170,
+   "size": 84,
+   "sizes": null,
+   "dark": true,
+   "lines": [
+    [
+     {
+      "t": "SHARE",
+      "at": 1056,
+      "hi": false
+     },
+     {
+      "t": "YOUR",
+      "at": 1060,
+      "hi": false
+     }
+    ],
+    [
+     {
+      "t": "DESIGN.",
+      "at": 1066,
+      "hi": true
+     }
+    ]
+   ]
+  },
+  {
+   "type": "headline",
+   "from": 1140,
+   "to": 1194,
+   "top": 170,
+   "size": 84,
+   "sizes": null,
+   "dark": true,
+   "lines": [
+    [
+     {
+      "t": "REQUEST",
+      "at": 1142,
+      "hi": false
+     },
+     {
+      "t": "YOUR",
+      "at": 1146,
+      "hi": false
+     }
+    ],
+    [
+     {
+      "t": "QUOTE.",
+      "at": 1152,
+      "hi": true
+     }
+    ]
+   ]
+  },
+  {
+   "type": "headline",
+   "from": 1194,
+   "to": 1230,
+   "top": 170,
+   "size": 84,
+   "sizes": null,
+   "dark": true,
+   "lines": [
+    [
+     {
+      "t": "IT'S",
+      "at": 1195,
+      "hi": false
+     },
+     {
+      "t": "THAT",
+      "at": 1198,
+      "hi": false
+     }
+    ],
+    [
+     {
+      "t": "SIMPLE.",
+      "at": 1202,
+      "hi": true
+     }
+    ]
+   ]
+  },
+  {
+   "type": "headline",
+   "from": 1230,
+   "to": 1290,
+   "top": 250,
+   "size": 124,
+   "sizes": null,
+   "dark": false,
+   "lines": [
+    [
+     {
+      "t": "PREMIUM",
+      "at": 1232,
+      "hi": false
+     }
+    ],
+    [
+     {
+      "t": "DETAIL.",
+      "at": 1238,
+      "hi": true
+     }
+    ]
+   ]
+  },
+  {
+   "type": "headline",
+   "from": 1290,
+   "to": 1395,
+   "top": 250,
+   "size": 110,
+   "sizes": null,
+   "dark": false,
+   "lines": [
+    [
+     {
+      "t": "YOUR",
+      "at": 1296,
+      "hi": false
+     },
+     {
+      "t": "VISION.",
+      "at": 1300,
+      "hi": true
+     }
+    ],
+    [
+     {
+      "t": "BROUGHT",
+      "at": 1350,
+      "hi": false
+     },
+     {
+      "t": "TO",
+      "at": 1354,
+      "hi": false
+     },
+     {
+      "t": "LIFE.",
+      "at": 1358,
+      "hi": true
+     }
+    ]
+   ]
+  }
+ ],
+ "vo": [
+  {
+   "at": 0.5,
+   "to": 3.6,
+   "line": "Every great brand starts with an identity."
+  },
+  {
+   "at": 5.2,
+   "to": 12.6,
+   "line": "Your clothing brand. Your team. Your school. Your business.",
+   "marks": [
+    5.2,
+    7.1,
+    9.1,
+    11.1
+   ]
+  },
+  {
+   "at": 13.6,
+   "to": 17.8,
+   "line": "Whatever you're creating, make it unmistakably yours."
+  },
+  {
+   "at": 22.3,
+   "to": 30.0,
+   "line": "From classic embroidery to bold PVC, chenille, woven, leather and full-color patches.",
+   "marks": [
+    22.3,
+    24.0,
+    25.5,
+    26.5,
+    28.0,
+    29.0
+   ]
+  },
+  {
+   "at": 31.3,
+   "to": 40.0,
+   "line": "Choose your style. Share your design. Request your custom quote. It's that simple.",
+   "marks": [
+    31.3,
+    35.2,
+    38.0,
+    39.4
+   ]
+  },
+  {
+   "at": 41.2,
+   "to": 49.0,
+   "line": "Premium detail. Your vision brought to life. Markhor Patches. Make your mark.",
+   "marks": [
+    41.2,
+    43.0,
+    46.5,
+    48.0
+   ]
+  }
+ ],
+ "sound": {
+  "sections": [
+   [
+    0,
+    150,
+    "open"
+   ],
+   [
+    150,
+    390,
+    "groove"
+   ],
+   [
+    390,
+    660,
+    "warm"
+   ],
+   [
+    660,
+    930,
+    "full"
+   ],
+   [
+    930,
+    1230,
+    "half"
+   ],
+   [
+    1230,
+    1380,
+    "build"
+   ],
+   [
+    1380,
+    1500,
+    "tail"
+   ]
+  ],
+  "machine": [
+   "a0",
+   "a3",
+   "d1",
+   "e1"
+  ],
+  "foley": {
+   "c2": "box",
+   "c4": "press",
+   "d2": "pvc",
+   "d3": "brush",
+   "d4": "fabric",
+   "d5": "leather",
+   "c1": "cloth",
+   "c3": "cloth"
+  }
+ },
+ "card": {
+  "headline": [
+   [
+    "CUSTOM",
+    0
+   ],
+   [
+    "PATCHES",
+    3
+   ],
+   [
+    "FOR",
+    6
+   ],
+   [
+    "BOLD",
+    9
+   ],
+   [
+    "BRANDS.",
+    12,
+    true
+   ]
+  ],
+  "cta": "GET YOUR CUSTOM QUOTE",
+  "variant": "navy",
+  "enter": "impact",
+  "len": 105,
+  "from": 1395
+ }
+}

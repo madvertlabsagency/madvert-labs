@@ -1,0 +1,108 @@
+{
+ "fps": 30,
+ "durationInFrames": 300,
+ "studio": false,
+ "audio": false,
+ "shots": [
+  {
+   "kind": "shot",
+   "id": "h1",
+   "source": "f06.mp4",
+   "srcIn": 1.4,
+   "srcOut": 2.6,
+   "frames": 60,
+   "interp": true,
+   "trans": "cut",
+   "drift": [
+    1.0,
+    1.06
+   ],
+   "from": 0
+  },
+  {
+   "kind": "shot",
+   "id": "h2",
+   "source": "f05.mp4",
+   "srcIn": 0.0,
+   "srcOut": 1.2,
+   "frames": 45,
+   "interp": true,
+   "trans": "dissolve",
+   "drift": [
+    1.04,
+    1.0
+   ],
+   "from": 60
+  },
+  {
+   "kind": "shot",
+   "id": "h3",
+   "source": "f04.mp4",
+   "srcIn": 0.0,
+   "srcOut": 1.2,
+   "frames": 45,
+   "interp": true,
+   "trans": "dissolve",
+   "from": 105
+  },
+  {
+   "kind": "shot",
+   "id": "h4",
+   "source": "f02.mp4",
+   "srcIn": 0.0,
+   "srcOut": 1.2,
+   "frames": 45,
+   "interp": true,
+   "trans": "dissolve",
+   "drift": [
+    1.06,
+    1.0
+   ],
+   "from": 150
+  },
+  {
+   "kind": "shot",
+   "id": "h5",
+   "source": "f02.mp4",
+   "srcIn": 4.2,
+   "srcOut": 5.4,
+   "frames": 45,
+   "interp": true,
+   "trans": "dissolve",
+   "from": 195
+  },
+  {
+   "kind": "shot",
+   "id": "h6",
+   "source": "f01.mp4",
+   "srcIn": 3.0,
+   "srcOut": 4.4,
+   "frames": 60,
+   "interp": true,
+   "trans": "dissolve",
+   "drift": [
+    1.0,
+    1.05
+   ],
+   "from": 240
+  }
+ ],
+ "web": [],
+ "cuts": [
+  60,
+  105,
+  150,
+  195,
+  240,
+  300
+ ],
+ "text": [],
+ "vo": [],
+ "sound": {
+  "sections": []
+ },
+ "loop": {
+  "at": 285,
+  "dur": 15
+ }
+}
