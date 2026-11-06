@@ -1,0 +1,111 @@
+{
+ "fps": 30,
+ "durationInFrames": 330,
+ "bpm": 120,
+ "note": "Hyper-cut 04 THE PATCH DROP. Four 8-frame material flashes (m10) under the hook, macros on beats, the chenille M on a varsity jacket, then a motion-designed collection reveal built from real footage frames (public/markhor2/tiles, cropped from m5/m6), CTA from 240.",
+ "cuts": [
+  8,
+  16,
+  24,
+  32,
+  47,
+  62,
+  77,
+  92,
+  107,
+  150
+ ],
+ "shots": [
+  {
+   "id": "q1",
+   "source": "m10.mp4",
+   "from": 0,
+   "frames": 8,
+   "srcIn": 0.7,
+   "srcOut": 0.97,
+   "interp": false
+  },
+  {
+   "id": "q2",
+   "source": "m10.mp4",
+   "from": 8,
+   "frames": 8,
+   "srcIn": 2.4,
+   "srcOut": 2.67,
+   "interp": false
+  },
+  {
+   "id": "q3",
+   "source": "m10.mp4",
+   "from": 16,
+   "frames": 8,
+   "srcIn": 4.1,
+   "srcOut": 4.37,
+   "interp": false
+  },
+  {
+   "id": "q4",
+   "source": "m10.mp4",
+   "from": 24,
+   "frames": 8,
+   "srcIn": 7.0,
+   "srcOut": 7.27,
+   "interp": false
+  },
+  {
+   "id": "a",
+   "source": "m4.mp4",
+   "from": 32,
+   "frames": 15,
+   "srcIn": 0.0,
+   "srcOut": 0.5,
+   "interp": false
+  },
+  {
+   "id": "b",
+   "source": "m2.mp4",
+   "from": 47,
+   "frames": 15,
+   "srcIn": 0.45,
+   "srcOut": 0.95,
+   "interp": false
+  },
+  {
+   "id": "c",
+   "source": "m3.mp4",
+   "from": 62,
+   "frames": 15,
+   "srcIn": 2.0,
+   "srcOut": 2.5,
+   "interp": false
+  },
+  {
+   "id": "d",
+   "source": "m2.mp4",
+   "from": 77,
+   "frames": 15,
+   "srcIn": 1.75,
+   "srcOut": 2.25,
+   "interp": false
+  },
+  {
+   "id": "e",
+   "source": "m10.mp4",
+   "from": 92,
+   "frames": 15,
+   "srcIn": 5.4,
+   "srcOut": 5.9,
+   "interp": false
+  },
+  {
+   "id": "f",
+   "source": "m3.mp4",
+   "from": 107,
+   "frames": 43,
+   "srcIn": 5.3,
+   "srcOut": 6.7,
+   "interp": true
+  }
+ ],
+ "collection": 150
+}

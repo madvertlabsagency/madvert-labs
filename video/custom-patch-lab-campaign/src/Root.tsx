@@ -34,6 +34,12 @@ import {MarkhorReel03} from './markhor/r3/MarkhorReel03';
 import edlMK3 from './markhor/r3/edl.json';
 import {MarkhorReel04} from './markhor/r4/MarkhorReel04';
 import edlMK4 from './markhor/r4/edl.json';
+import {HyperReel01} from './markhor/h1/HyperReel01';
+import edlHY1 from './markhor/h1/edl.json';
+import {HyperReel03} from './markhor/h3/HyperReel03';
+import edlHY3 from './markhor/h3/edl.json';
+import {HyperReel04} from './markhor/h4/HyperReel04';
+import edlHY4 from './markhor/h4/edl.json';
 import {BillysReel15} from './billys/reel15/BillysReel15';
 import edlBR15 from './billys/reel15/edl.json';
 import {BillysReelLaser} from './billys/reel15laser/BillysReelLaser';
@@ -64,6 +70,11 @@ export const RemotionRoot: React.FC = () => (
     <Composition id="MarkhorReel02" component={MarkhorReel02} durationInFrames={edlMK2.durationInFrames} fps={edlMK2.fps} width={1080} height={1920} />
     <Composition id="MarkhorReel03" component={MarkhorReel03} durationInFrames={edlMK3.durationInFrames} fps={edlMK3.fps} width={1080} height={1920} />
     <Composition id="MarkhorReel04" component={MarkhorReel04} durationInFrames={edlMK4.durationInFrames} fps={edlMK4.fps} width={1080} height={1920} />
+  </Folder>
+  <Folder name="Markhor-Hyper-Cut">
+    <Composition id="MarkhorHyper01" component={HyperReel01} durationInFrames={edlHY1.durationInFrames} fps={edlHY1.fps} width={1080} height={1920} />
+    <Composition id="MarkhorHyper03" component={HyperReel03} durationInFrames={edlHY3.durationInFrames} fps={edlHY3.fps} width={1080} height={1920} />
+    <Composition id="MarkhorHyper04" component={HyperReel04} durationInFrames={edlHY4.durationInFrames} fps={edlHY4.fps} width={1080} height={1920} />
   </Folder>
   <Folder name="EPCF-Excellence-Punch">
     <Composition id="EpcfAd01Lion" component={EpcfAd01} durationInFrames={edl01.durationInFrames} fps={edl01.fps} width={1080} height={1920} />

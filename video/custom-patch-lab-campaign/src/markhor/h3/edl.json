@@ -1,0 +1,160 @@
+{
+ "fps": 30,
+ "durationInFrames": 360,
+ "bpm": 120,
+ "note": "Hyper-cut 03 PRECISION HITS DIFFERENT. Needles on beats, a 0.25 s run of machine cuts, the m6 needle on the mountain, then match to the same mountain finished (m6). CTA from 270. m6 5.1-6.4 s (gibberish machine brand) and 1.8-3.4 s (Apple logo) not used.",
+ "cuts": [
+  15,
+  30,
+  60,
+  75,
+  90,
+  105,
+  120,
+  128,
+  136,
+  144,
+  152,
+  160,
+  168,
+  210,
+  270
+ ],
+ "shots": [
+  {
+   "id": "a",
+   "source": "m1.mp4",
+   "from": 0,
+   "frames": 15,
+   "srcIn": 0.0,
+   "srcOut": 0.5,
+   "interp": false
+  },
+  {
+   "id": "b",
+   "source": "m8.mp4",
+   "from": 15,
+   "frames": 15,
+   "srcIn": 0.2,
+   "srcOut": 0.7,
+   "interp": false
+  },
+  {
+   "id": "c",
+   "source": "m8.mp4",
+   "from": 30,
+   "frames": 30,
+   "srcIn": 6.62,
+   "srcOut": 7.62,
+   "interp": false
+  },
+  {
+   "id": "d",
+   "source": "m1.mp4",
+   "from": 60,
+   "frames": 15,
+   "srcIn": 2.2,
+   "srcOut": 2.7,
+   "interp": false
+  },
+  {
+   "id": "e",
+   "source": "m8.mp4",
+   "from": 75,
+   "frames": 15,
+   "srcIn": 3.0,
+   "srcOut": 3.5,
+   "interp": false
+  },
+  {
+   "id": "f",
+   "source": "m3.mp4",
+   "from": 90,
+   "frames": 15,
+   "srcIn": 0.0,
+   "srcOut": 0.5,
+   "interp": false
+  },
+  {
+   "id": "g",
+   "source": "m1.mp4",
+   "from": 105,
+   "frames": 15,
+   "srcIn": 4.3,
+   "srcOut": 4.8,
+   "interp": false
+  },
+  {
+   "id": "h1",
+   "source": "m8.mp4",
+   "from": 120,
+   "frames": 8,
+   "srcIn": 0.8,
+   "srcOut": 1.07,
+   "interp": false
+  },
+  {
+   "id": "h2",
+   "source": "m6.mp4",
+   "from": 128,
+   "frames": 8,
+   "srcIn": 3.8,
+   "srcOut": 4.07,
+   "interp": false
+  },
+  {
+   "id": "h3",
+   "source": "m1.mp4",
+   "from": 136,
+   "frames": 8,
+   "srcIn": 5.1,
+   "srcOut": 5.37,
+   "interp": false
+  },
+  {
+   "id": "h4",
+   "source": "m3.mp4",
+   "from": 144,
+   "frames": 8,
+   "srcIn": 0.6,
+   "srcOut": 0.87,
+   "interp": false
+  },
+  {
+   "id": "h5",
+   "source": "m8.mp4",
+   "from": 152,
+   "frames": 8,
+   "srcIn": 5.6,
+   "srcOut": 5.87,
+   "interp": false
+  },
+  {
+   "id": "h6",
+   "source": "m6.mp4",
+   "from": 160,
+   "frames": 8,
+   "srcIn": 4.3,
+   "srcOut": 4.57,
+   "interp": false
+  },
+  {
+   "id": "i",
+   "source": "m6.mp4",
+   "from": 168,
+   "frames": 42,
+   "srcIn": 3.48,
+   "srcOut": 4.88,
+   "interp": false
+  },
+  {
+   "id": "hero",
+   "source": "m6.mp4",
+   "from": 210,
+   "frames": 60,
+   "srcIn": 6.46,
+   "srcOut": 7.96,
+   "interp": true
+  }
+ ]
+}

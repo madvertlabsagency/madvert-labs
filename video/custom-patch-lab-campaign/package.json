@@ -32,7 +32,10 @@
     "render:markhor01:final": "remotion render MarkhorReel01 out/Markhor_Reel_01.mp4 --codec=h264 --crf=17 --color-space=bt709 --audio-codec=aac --audio-bitrate=256k",
     "render:markhor02:final": "remotion render MarkhorReel02 out/Markhor_Reel_02.mp4 --codec=h264 --crf=17 --color-space=bt709 --audio-codec=aac --audio-bitrate=256k",
     "render:markhor03:final": "remotion render MarkhorReel03 out/Markhor_Reel_03.mp4 --codec=h264 --crf=17 --color-space=bt709 --audio-codec=aac --audio-bitrate=256k",
-    "render:markhor04:final": "remotion render MarkhorReel04 out/Markhor_Reel_04.mp4 --codec=h264 --crf=17 --color-space=bt709 --audio-codec=aac --audio-bitrate=256k"
+    "render:markhor04:final": "remotion render MarkhorReel04 out/Markhor_Reel_04.mp4 --codec=h264 --crf=17 --color-space=bt709 --audio-codec=aac --audio-bitrate=256k",
+    "render:markhorhyper01:final": "remotion render MarkhorHyper01 out/Markhor_HyperCut_Reel_01_PatchSwitch.mp4 --codec=h264 --crf=17 --color-space=bt709 --audio-codec=aac --audio-bitrate=256k",
+    "render:markhorhyper03:final": "remotion render MarkhorHyper03 out/Markhor_HyperCut_Reel_03_PrecisionHitsDifferent.mp4 --codec=h264 --crf=17 --color-space=bt709 --audio-codec=aac --audio-bitrate=256k",
+    "render:markhorhyper04:final": "remotion render MarkhorHyper04 out/Markhor_HyperCut_Reel_04_ThePatchDrop.mp4 --codec=h264 --crf=17 --color-space=bt709 --audio-codec=aac --audio-bitrate=256k"
   },
   "dependencies": {
     "@remotion/cli": "4.0.534",

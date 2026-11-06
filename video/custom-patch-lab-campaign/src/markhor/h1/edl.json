@@ -1,0 +1,170 @@
+{
+ "fps": 30,
+ "durationInFrames": 360,
+ "bpm": 120,
+ "note": "Hyper-cut 01 PATCH SWITCH. 120 BPM (beat = 15 f). Hook on the embroidered mountain (m5), then each style as macro (m10/m2) + product (m5) pair on beats, woven and leather macros on half-bars, a 0.25 s stutter recap, the mountain again as the hero, CTA from 270.",
+ "cuts": [
+  30,
+  45,
+  60,
+  75,
+  90,
+  105,
+  120,
+  150,
+  180,
+  188,
+  196,
+  204,
+  212,
+  220,
+  228,
+  270
+ ],
+ "shots": [
+  {
+   "id": "hook",
+   "source": "m5.mp4",
+   "from": 0,
+   "frames": 30,
+   "srcIn": 0.2,
+   "srcOut": 1.2,
+   "interp": false
+  },
+  {
+   "id": "emb1",
+   "source": "m10.mp4",
+   "from": 30,
+   "frames": 15,
+   "srcIn": 0.1,
+   "srcOut": 0.6,
+   "interp": false
+  },
+  {
+   "id": "emb2",
+   "source": "m2.mp4",
+   "from": 45,
+   "frames": 15,
+   "srcIn": 0.0,
+   "srcOut": 0.5,
+   "interp": false
+  },
+  {
+   "id": "pvc1",
+   "source": "m10.mp4",
+   "from": 60,
+   "frames": 15,
+   "srcIn": 1.7,
+   "srcOut": 2.2,
+   "interp": false
+  },
+  {
+   "id": "pvc2",
+   "source": "m5.mp4",
+   "from": 75,
+   "frames": 15,
+   "srcIn": 1.55,
+   "srcOut": 2.05,
+   "interp": false
+  },
+  {
+   "id": "che1",
+   "source": "m10.mp4",
+   "from": 90,
+   "frames": 15,
+   "srcIn": 3.3,
+   "srcOut": 3.8,
+   "interp": false
+  },
+  {
+   "id": "che2",
+   "source": "m5.mp4",
+   "from": 105,
+   "frames": 15,
+   "srcIn": 3.0,
+   "srcOut": 3.5,
+   "interp": false
+  },
+  {
+   "id": "wov",
+   "source": "m10.mp4",
+   "from": 120,
+   "frames": 30,
+   "srcIn": 5.05,
+   "srcOut": 6.05,
+   "interp": false
+  },
+  {
+   "id": "lea",
+   "source": "m10.mp4",
+   "from": 150,
+   "frames": 30,
+   "srcIn": 6.65,
+   "srcOut": 7.65,
+   "interp": false
+  },
+  {
+   "id": "s1",
+   "source": "m5.mp4",
+   "from": 180,
+   "frames": 8,
+   "srcIn": 0.9,
+   "srcOut": 1.17,
+   "interp": false
+  },
+  {
+   "id": "s2",
+   "source": "m5.mp4",
+   "from": 188,
+   "frames": 8,
+   "srcIn": 2.3,
+   "srcOut": 2.57,
+   "interp": false
+  },
+  {
+   "id": "s3",
+   "source": "m5.mp4",
+   "from": 196,
+   "frames": 8,
+   "srcIn": 3.9,
+   "srcOut": 4.17,
+   "interp": false
+  },
+  {
+   "id": "s4",
+   "source": "m10.mp4",
+   "from": 204,
+   "frames": 8,
+   "srcIn": 5.9,
+   "srcOut": 6.17,
+   "interp": false
+  },
+  {
+   "id": "s5",
+   "source": "m10.mp4",
+   "from": 212,
+   "frames": 8,
+   "srcIn": 7.6,
+   "srcOut": 7.87,
+   "interp": false
+  },
+  {
+   "id": "s6",
+   "source": "m2.mp4",
+   "from": 220,
+   "frames": 8,
+   "srcIn": 1.7,
+   "srcOut": 1.97,
+   "interp": false
+  },
+  {
+   "id": "hero",
+   "source": "m5.mp4",
+   "from": 228,
+   "frames": 42,
+   "srcIn": 0.0,
+   "srcOut": 1.4,
+   "interp": false
+  }
+ ]
+}
