@@ -1,0 +1,10 @@
+{
+  "fps": 30, "durationInFrames": 336, "cuts": [36, 81, 126, 246],
+  "note": "Markhor Reel 02 'You can almost feel this' — m3 only (chenille M). b2 is a speed ramp down (0.6x) on the texture; c is the jacket reveal. 246-336 CTA.",
+  "shots": [
+    { "id": "a",  "source": "m3.mp4", "from": 0,   "frames": 36,  "srcIn": 0.0, "srcOut": 1.2,  "interp": false },
+    { "id": "b1", "source": "m3.mp4", "from": 36,  "frames": 45,  "srcIn": 1.5, "srcOut": 3.0,  "interp": false },
+    { "id": "b2", "source": "m3.mp4", "from": 81,  "frames": 45,  "srcIn": 3.0, "srcOut": 3.9,  "interp": true },
+    { "id": "c",  "source": "m3.mp4", "from": 126, "frames": 120, "srcIn": 4.6, "srcOut": 7.88, "interp": true }
+  ]
+}

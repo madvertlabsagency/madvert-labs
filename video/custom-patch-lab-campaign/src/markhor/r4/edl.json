@@ -1,0 +1,10 @@
+{
+  "fps": 30, "durationInFrames": 273, "cuts": [42, 84, 126, 168],
+  "note": "Markhor Reel 04 'Look closer' — macro montage from the clean head of each clip: m4 eagle (before its pull-back), m2 mountain / chenille / PVC macros (between its morph dissolves). Slow-motion macros (interp). 168-273 CTA.",
+  "shots": [
+    { "id": "eagle", "source": "m4.mp4", "from": 0,   "frames": 42, "srcIn": 0.0,  "srcOut": 1.30, "interp": false },
+    { "id": "mtn",   "source": "m2.mp4", "from": 42,  "frames": 42, "srcIn": 0.0,  "srcOut": 1.02, "interp": true },
+    { "id": "chen",  "source": "m2.mp4", "from": 84,  "frames": 42, "srcIn": 3.0,  "srcOut": 3.9,  "interp": true },
+    { "id": "pvc",   "source": "m2.mp4", "from": 126, "frames": 42, "srcIn": 1.6,  "srcOut": 2.3,  "interp": true }
+  ]
+}

@@ -28,7 +28,11 @@
     "render:epcf02:final": "remotion render EpcfAd02Eagle out/EPCF_Ad02_Eagle_1080x1920.mp4 --codec=h264 --crf=17 --color-space=bt709 --audio-codec=aac --audio-bitrate=256k",
     "render:epcf03:final": "remotion render EpcfAd03Tiger out/EPCF_Ad03_Tiger_1080x1920.mp4 --codec=h264 --crf=17 --color-space=bt709 --audio-codec=aac --audio-bitrate=256k",
     "render:billysreel15:final": "remotion render BillysReel15 out/BillysCustomPatches_Reel15s_1080x1920.mp4 --codec=h264 --crf=17 --color-space=bt709 --audio-codec=aac --audio-bitrate=256k",
-    "render:billyslaser:final": "remotion render BillysReelLaser out/BillysCustomPatches_Reel15s_LaserCut_1080x1920.mp4 --codec=h264 --crf=17 --color-space=bt709 --audio-codec=aac --audio-bitrate=256k"
+    "render:billyslaser:final": "remotion render BillysReelLaser out/BillysCustomPatches_Reel15s_LaserCut_1080x1920.mp4 --codec=h264 --crf=17 --color-space=bt709 --audio-codec=aac --audio-bitrate=256k",
+    "render:markhor01:final": "remotion render MarkhorReel01 out/Markhor_Reel_01.mp4 --codec=h264 --crf=17 --color-space=bt709 --audio-codec=aac --audio-bitrate=256k",
+    "render:markhor02:final": "remotion render MarkhorReel02 out/Markhor_Reel_02.mp4 --codec=h264 --crf=17 --color-space=bt709 --audio-codec=aac --audio-bitrate=256k",
+    "render:markhor03:final": "remotion render MarkhorReel03 out/Markhor_Reel_03.mp4 --codec=h264 --crf=17 --color-space=bt709 --audio-codec=aac --audio-bitrate=256k",
+    "render:markhor04:final": "remotion render MarkhorReel04 out/Markhor_Reel_04.mp4 --codec=h264 --crf=17 --color-space=bt709 --audio-codec=aac --audio-bitrate=256k"
   },
   "dependencies": {
     "@remotion/cli": "4.0.534",

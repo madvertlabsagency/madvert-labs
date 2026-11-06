@@ -1,0 +1,10 @@
+{
+  "fps": 30, "durationInFrames": 330, "cuts": [60, 120, 180, 240],
+  "note": "Markhor Reel 01 'It starts as thread' — m1 only (embroidery machine stitching the mountain patch). 240-330 CTA over a freeze of d.",
+  "shots": [
+    { "id": "a", "source": "m1.mp4", "from": 0,   "frames": 60, "srcIn": 0.0,  "srcOut": 1.8,  "interp": false },
+    { "id": "b", "source": "m1.mp4", "from": 60,  "frames": 60, "srcIn": 2.1,  "srcOut": 4.1,  "interp": false },
+    { "id": "c", "source": "m1.mp4", "from": 120, "frames": 60, "srcIn": 4.2,  "srcOut": 6.2,  "interp": false },
+    { "id": "d", "source": "m1.mp4", "from": 180, "frames": 60, "srcIn": 6.25, "srcOut": 7.85, "interp": false }
+  ]
+}

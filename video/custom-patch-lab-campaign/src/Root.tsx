@@ -26,6 +26,14 @@ import edlEE from './epcf/eagle/edl.json';
 import {EpcfTiger} from './epcf/tiger/EpcfTiger';
 import edlET from './epcf/tiger/edl.json';
 import edlBT from './billys/tiger/edl.json';
+import {MarkhorReel01} from './markhor/r1/MarkhorReel01';
+import edlMK1 from './markhor/r1/edl.json';
+import {MarkhorReel02} from './markhor/r2/MarkhorReel02';
+import edlMK2 from './markhor/r2/edl.json';
+import {MarkhorReel03} from './markhor/r3/MarkhorReel03';
+import edlMK3 from './markhor/r3/edl.json';
+import {MarkhorReel04} from './markhor/r4/MarkhorReel04';
+import edlMK4 from './markhor/r4/edl.json';
 import {BillysReel15} from './billys/reel15/BillysReel15';
 import edlBR15 from './billys/reel15/edl.json';
 import {BillysReelLaser} from './billys/reel15laser/BillysReelLaser';
@@ -50,6 +58,12 @@ export const RemotionRoot: React.FC = () => (
     <Composition id="BillysAd03Tiger" component={BillysTiger} durationInFrames={edlBT.durationInFrames} fps={edlBT.fps} width={1080} height={1920} />
     <Composition id="BillysReel15" component={BillysReel15} durationInFrames={edlBR15.durationInFrames} fps={edlBR15.fps} width={1080} height={1920} />
     <Composition id="BillysReelLaser" component={BillysReelLaser} durationInFrames={edlBRL.durationInFrames} fps={edlBRL.fps} width={1080} height={1920} />
+  </Folder>
+  <Folder name="Markhor-Patches">
+    <Composition id="MarkhorReel01" component={MarkhorReel01} durationInFrames={edlMK1.durationInFrames} fps={edlMK1.fps} width={1080} height={1920} />
+    <Composition id="MarkhorReel02" component={MarkhorReel02} durationInFrames={edlMK2.durationInFrames} fps={edlMK2.fps} width={1080} height={1920} />
+    <Composition id="MarkhorReel03" component={MarkhorReel03} durationInFrames={edlMK3.durationInFrames} fps={edlMK3.fps} width={1080} height={1920} />
+    <Composition id="MarkhorReel04" component={MarkhorReel04} durationInFrames={edlMK4.durationInFrames} fps={edlMK4.fps} width={1080} height={1920} />
   </Folder>
   <Folder name="EPCF-Excellence-Punch">
     <Composition id="EpcfAd01Lion" component={EpcfAd01} durationInFrames={edl01.durationInFrames} fps={edl01.fps} width={1080} height={1920} />

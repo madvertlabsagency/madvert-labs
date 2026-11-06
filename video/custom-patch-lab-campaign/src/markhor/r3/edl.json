@@ -1,0 +1,14 @@
+{
+  "fps": 30, "durationInFrames": 300, "cuts": [8, 16, 24, 32, 77, 122, 167, 212],
+  "note": "Markhor Reel 03 'Which one is you?' — m5 product line-up on ice-white (internal cuts 1.458/2.917/4.458/5.875 s). The leather shot (5.9-8 s) is not used: its stamped text is a nonsense word. h1-h4 = 8-frame hook flashes.",
+  "shots": [
+    { "id": "h1", "source": "m5.mp4", "from": 0,   "frames": 8,  "srcIn": 0.6,  "srcOut": 0.87, "interp": false },
+    { "id": "h2", "source": "m5.mp4", "from": 8,   "frames": 8,  "srcIn": 2.0,  "srcOut": 2.27, "interp": false },
+    { "id": "h3", "source": "m5.mp4", "from": 16,  "frames": 8,  "srcIn": 3.5,  "srcOut": 3.77, "interp": false },
+    { "id": "h4", "source": "m5.mp4", "from": 24,  "frames": 8,  "srcIn": 5.0,  "srcOut": 5.27, "interp": false },
+    { "id": "emb", "source": "m5.mp4", "from": 32,  "frames": 45, "srcIn": 0.0,  "srcOut": 1.40, "interp": false },
+    { "id": "pvc", "source": "m5.mp4", "from": 77,  "frames": 45, "srcIn": 1.50, "srcOut": 2.86, "interp": false },
+    { "id": "che", "source": "m5.mp4", "from": 122, "frames": 45, "srcIn": 2.96, "srcOut": 4.40, "interp": false },
+    { "id": "own", "source": "m5.mp4", "from": 167, "frames": 45, "srcIn": 4.50, "srcOut": 5.82, "interp": false }
+  ]
+}
