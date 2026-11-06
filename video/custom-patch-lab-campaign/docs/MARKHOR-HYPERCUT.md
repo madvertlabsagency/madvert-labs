@@ -25,7 +25,7 @@ Nothing is tonal or melodic. Short drop-outs come before the hero and CTA hits.
 From the 13 clips in this upload, only three are Markhor material: **m6** (design on screen → stitching → finished mountain patch), **m8** (multi-head embroidery) and **m10** (embroidered / PVC / chenille / woven / leather macros).
 
 **Not used:**
-- m7, m11, m14, m17, m18: NIKSOL Energy branding
+- m7, m11, m17, m18 and the rest of m14: robots / solar, no patches (m14's embroidered-logo shirt close-up **is** used in Reel 04)
 - m9, m12, m15: VELORA jewellery
 - m13: a dog in costume
 - m16: a printed T-shirt, not a patch
@@ -47,8 +47,8 @@ Footage: m1, m8, m3 (needles/hoops), m6 (needle on the mountain + finished patch
 Caption: *Turn the sound up. 🔊 Every needle hit, every hoop, every thread — precision hits different. Get your custom quote at markhorpatches.com* #embroidery #asmr #satisfying #custompatches #embroideredpatches #makingof
 
 ## Reel 04 — THE PATCH DROP (11.0 s)
-"NOT / JUST / A / **PATCH.**" comes one word per hit over four 8-frame material flashes. Macros follow on beats (eagle thread, mountain border, chenille pile, PVC, weave), then the chenille M on a varsity jacket: "IT'S A **STATEMENT.**" A cyan → royal strip wipe opens the white stage, where four patches slam into a grid on 8-frame hits with "THE PATCH **DROP.**" and the sub "Embroidered, PVC, chenille and more." The tiles are real frames from m5/m6, cropped, not redrawn. End card: "NOT JUST A **PATCH.**" · **BRING YOUR DESIGN TO LIFE →** (navy).
-Footage: m10 (flashes, weave), m4 (eagle macro), m2 (mountain and PVC macros), m3 (chenille macro, jacket), tiles from m5 (embroidered, PVC, chenille M) and m6 (finished mountain).
+"NOT / JUST / A / **PATCH.**" comes one word per hit over four 8-frame material flashes. Macros follow on beats (eagle thread, mountain border, chenille pile, PVC), then the embroidered logo on a work shirt (m14), then the chenille M on a varsity jacket: "IT'S A **STATEMENT.**" A cyan → royal strip wipe opens the white stage, where four patches slam into a grid on 8-frame hits with "THE PATCH **DROP.**" and the sub "Embroidered, PVC, chenille and more." The tiles are real frames from m5/m6, cropped, not redrawn. End card: "NOT JUST A **PATCH.**" · **BRING YOUR DESIGN TO LIFE →** (navy).
+Footage: m10 (flashes), m4 (eagle macro), m14 0.36–0.86 s (embroidered NIKSOL ENERGY logo on workwear; NIKSOL is an agency client, approved for use), m2 (mountain and PVC macros), m3 (chenille macro, jacket), tiles from m5 (embroidered, PVC, chenille M) and m6 (finished mountain).
 Caption: *Not just a patch. A statement. 🧢 The drop: embroidered, PVC, chenille and more, made for your brand. Bring your design to life at markhorpatches.com* #thepatchdrop #custompatches #merch #clothingbrand #patches #varsity
 
 ## Claims

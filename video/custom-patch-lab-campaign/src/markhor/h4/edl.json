@@ -2,7 +2,7 @@
  "fps": 30,
  "durationInFrames": 330,
  "bpm": 120,
- "note": "Hyper-cut 04 THE PATCH DROP. Four 8-frame material flashes (m10) under the hook, macros on beats, the chenille M on a varsity jacket, then a motion-designed collection reveal built from real footage frames (public/markhor2/tiles, cropped from m5/m6), CTA from 240.",
+ "note": "Hyper-cut 04 THE PATCH DROP. Four 8-frame material flashes (m10) under the hook, macros on beats, the chenille M on a varsity jacket, then a motion-designed collection reveal built from real footage frames (public/markhor2/tiles, cropped from m5/m6), CTA from 240. polo (92-107) = m14 0.36-0.86 s: embroidered NIKSOL ENERGY logo on a work shirt (NIKSOL is an agency client; approved by the user for use here).",
  "cuts": [
   8,
   16,
@@ -89,12 +89,12 @@
    "interp": false
   },
   {
-   "id": "e",
-   "source": "m10.mp4",
+   "id": "polo",
+   "source": "m14.mp4",
    "from": 92,
    "frames": 15,
-   "srcIn": 5.4,
-   "srcOut": 5.9,
+   "srcIn": 0.36,
+   "srcOut": 0.86,
    "interp": false
   },
   {
