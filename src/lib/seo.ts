@@ -75,6 +75,16 @@ export const schema = {
       addressCountry: office.countryCode,
     },
     telephone: office.phoneE164,
+    contactPoint: [
+      {
+        "@type": "ContactPoint",
+        contactType: "sales",
+        telephone: office.phoneE164,
+        areaServed: ["PK", "AE", "SA", "US", "GB"],
+        availableLanguage: ["English", "Urdu"],
+        ...(organization.email ? { email: organization.email } : {}),
+      },
+    ],
     image: absoluteUrl("/brand/app-icon-512.png"),
     hasMap: office.gbpUrl ?? office.mapsUrl,
     areaServed: organization.areaServed,

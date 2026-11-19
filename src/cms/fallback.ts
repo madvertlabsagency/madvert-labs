@@ -920,6 +920,7 @@ const realTestimonials: Testimonial[] = [
     videoUrl: "/video/testimonials/azeem-qadir-the-event-planet.mp4",
     posterUrl: "/video/testimonials/azeem-qadir-the-event-planet-poster.webp",
     duration: "1:55",
+    uploadDate: "2026-10-18",
   },
   {
     id: "saniya-khan",
@@ -931,6 +932,7 @@ const realTestimonials: Testimonial[] = [
     videoUrl: "/video/testimonials/de-wooden-spoon.mp4",
     posterUrl: "/video/testimonials/de-wooden-spoon-poster.webp",
     duration: "1:51",
+    uploadDate: "2026-10-18",
   },
 ];
 

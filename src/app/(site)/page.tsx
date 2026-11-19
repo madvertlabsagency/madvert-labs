@@ -85,6 +85,20 @@ export default async function HomePage() {
             }),
             transcript: INTRO_TRANSCRIPT.join(" "),
           },
+          // Real client video testimonials shown in the Proof section.
+          ...testimonials
+            .filter((t) => !t.placeholder && t.videoUrl?.startsWith("/") && t.posterUrl && t.uploadDate && t.duration)
+            .map((t) =>
+              schema.video({
+                name: `${t.name}, ${t.role ? `${t.role}, ` : ""}${t.business ?? t.company ?? ""}: client testimonial for Madvert Labs`,
+                description: `\u201c${t.quote}\u201d ${t.name}${t.business ? ` of ${t.business}` : ""} on working with Madvert Labs.`,
+                thumbnail: t.posterUrl!,
+                contentUrl: t.videoUrl!,
+                uploadDate: t.uploadDate!,
+                duration: `PT${t.duration!.split(":")[0]}M${t.duration!.split(":")[1]}S`,
+                path: "/",
+              }),
+            ),
         ]}
       />
     </>

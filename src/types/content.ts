@@ -32,6 +32,8 @@ export type Testimonial = {
   posterUrl?: string;
   /** Display duration, e.g. "1:12". */
   duration?: string;
+  /** Date the video was first published on the site (ISO), for VideoObject structured data. */
+  uploadDate?: string;
   placeholder?: boolean;
 };
 

@@ -13,6 +13,7 @@ import { ProcessDiagram } from "@/components/facts/ProcessDiagram";
 import { ProofCard } from "@/components/facts/ProofCard";
 import { Breadcrumbs } from "@/components/layout/Breadcrumbs";
 import { JsonLd } from "@/components/seo/JsonLd";
+import { ogImageUrl } from "@/lib/seo";
 import { Arrow, Cta } from "@/components/ui/Button";
 import { Eyebrow } from "@/components/ui/Section";
 import { GrowthRibbon } from "@/components/visuals/GrowthRibbon";
@@ -319,6 +320,7 @@ export function ArticleTemplate({
             dateModified: a.dateModified,
             mainEntityOfPage: { "@type": "WebPage", "@id": url },
             url,
+            image: absoluteUrl(ogImageUrl(a.metaTitle, path)),
             inLanguage: "en",
             citation: a.sources?.length ? a.sources.map((src) => ({ "@type": "CreativeWork", name: src.title, url: src.url, publisher: { "@type": "Organization", name: src.publisher } })) : undefined,
           }}
