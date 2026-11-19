@@ -59,7 +59,8 @@
     "render:fpp30:final": "remotion render FuturePvcF30 out/FUTURE_PVC_PATCH_30S.mp4 --codec=h264 --crf=16 --color-space=bt709 --audio-codec=aac --audio-bitrate=320k",
     "render:fpp30wide:final": "remotion render FuturePvcF30Wide out/FUTURE_PVC_PATCH_30S_16x9.mp4 --codec=h264 --crf=16 --color-space=bt709 --audio-codec=aac --audio-bitrate=320k",
     "render:fpp15:final": "remotion render FuturePvcF15 out/FUTURE_PVC_PATCH_15S.mp4 --codec=h264 --crf=16 --color-space=bt709 --audio-codec=aac --audio-bitrate=320k",
-    "render:fpp15wide:final": "remotion render FuturePvcF15Wide out/FUTURE_PVC_PATCH_15S_16x9.mp4 --codec=h264 --crf=16 --color-space=bt709 --audio-codec=aac --audio-bitrate=320k"
+    "render:fpp15wide:final": "remotion render FuturePvcF15Wide out/FUTURE_PVC_PATCH_15S_16x9.mp4 --codec=h264 --crf=16 --color-space=bt709 --audio-codec=aac --audio-bitrate=320k",
+    "render:fpplion:final": "remotion render FppAd01Lion out/FuturePvcPatch_Ad01_Lion_1080x1920.mp4 --codec=h264 --crf=17 --color-space=bt709 --audio-codec=aac --audio-bitrate=256k"
   },
   "dependencies": {
     "@remotion/cli": "4.0.534",
