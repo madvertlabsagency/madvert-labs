@@ -1,0 +1,723 @@
+{
+ "fps": 30,
+ "durationInFrames": 900,
+ "studio": false,
+ "audio": true,
+ "shots": [
+  {
+   "kind": "shot",
+   "id": "a1",
+   "source": "v3.mp4",
+   "srcIn": 0.0,
+   "srcOut": 1.2,
+   "frames": 30,
+   "interp": false,
+   "trans": "cut",
+   "drift": [
+    1.0,
+    1.08
+   ],
+   "from": 0
+  },
+  {
+   "kind": "shot",
+   "id": "a2",
+   "source": "m21.mp4",
+   "srcIn": 1.65,
+   "srcOut": 2.6,
+   "frames": 30,
+   "interp": true,
+   "trans": "punch",
+   "from": 30
+  },
+  {
+   "kind": "shot",
+   "id": "a3",
+   "source": "m10.mp4",
+   "srcIn": 1.65,
+   "srcOut": 2.6,
+   "frames": 30,
+   "interp": true,
+   "trans": "punch",
+   "from": 60
+  },
+  {
+   "kind": "shot",
+   "id": "a4",
+   "source": "v3.mp4",
+   "srcIn": 1.6,
+   "srcOut": 2.8,
+   "frames": 30,
+   "interp": false,
+   "trans": "impact",
+   "from": 90
+  },
+  {
+   "kind": "shot",
+   "id": "b1",
+   "source": "f05.mp4",
+   "srcIn": 0.0,
+   "srcOut": 1.5,
+   "frames": 45,
+   "interp": false,
+   "trans": "zoom",
+   "from": 120
+  },
+  {
+   "kind": "shot",
+   "id": "b2",
+   "source": "m28.mp4",
+   "srcIn": 1.5,
+   "srcOut": 2.9,
+   "frames": 45,
+   "interp": false,
+   "trans": "whip",
+   "from": 165
+  },
+  {
+   "kind": "shot",
+   "id": "b3",
+   "source": "m20.mp4",
+   "srcIn": 1.5,
+   "srcOut": 2.9,
+   "frames": 45,
+   "interp": false,
+   "trans": "whip",
+   "from": 210
+  },
+  {
+   "kind": "shot",
+   "id": "b4",
+   "source": "f01.mp4",
+   "srcIn": 3.0,
+   "srcOut": 4.4,
+   "frames": 45,
+   "interp": false,
+   "trans": "punch",
+   "scale": 1.22,
+   "origin": {
+    "x": 540,
+    "y": 700
+   },
+   "from": 255
+  },
+  {
+   "kind": "shot",
+   "id": "d1",
+   "source": "v3.mp4",
+   "srcIn": 4.6,
+   "srcOut": 7.2,
+   "frames": 75,
+   "interp": false,
+   "trans": "impact",
+   "from": 300
+  },
+  {
+   "kind": "shot",
+   "id": "d2",
+   "source": "f09.mp4",
+   "srcIn": 0.2,
+   "srcOut": 1.4,
+   "frames": 35,
+   "interp": false,
+   "trans": "whip",
+   "from": 375
+  },
+  {
+   "kind": "shot",
+   "id": "d3",
+   "source": "f08.mp4",
+   "srcIn": 0.2,
+   "srcOut": 1.4,
+   "frames": 35,
+   "interp": false,
+   "trans": "whip",
+   "from": 410
+  },
+  {
+   "kind": "shot",
+   "id": "d4",
+   "source": "f07.mp4",
+   "srcIn": 0.0,
+   "srcOut": 1.2,
+   "frames": 35,
+   "interp": false,
+   "trans": "whip",
+   "from": 445
+  },
+  {
+   "kind": "shot",
+   "id": "e1",
+   "source": "f05.mp4",
+   "srcIn": 1.0,
+   "srcOut": 1.5,
+   "frames": 15,
+   "interp": false,
+   "trans": "impact",
+   "from": 690
+  },
+  {
+   "kind": "shot",
+   "id": "e2",
+   "source": "m28.mp4",
+   "srcIn": 2.2,
+   "srcOut": 2.7,
+   "frames": 15,
+   "interp": false,
+   "trans": "punch",
+   "from": 705
+  },
+  {
+   "kind": "shot",
+   "id": "e3",
+   "source": "m20.mp4",
+   "srcIn": 2.2,
+   "srcOut": 2.7,
+   "frames": 15,
+   "interp": false,
+   "trans": "punch",
+   "from": 720
+  },
+  {
+   "kind": "shot",
+   "id": "e4",
+   "source": "f01.mp4",
+   "srcIn": 3.6,
+   "srcOut": 4.1,
+   "frames": 15,
+   "interp": false,
+   "trans": "punch",
+   "scale": 1.22,
+   "origin": {
+    "x": 540,
+    "y": 700
+   },
+   "from": 735
+  },
+  {
+   "kind": "shot",
+   "id": "e5",
+   "source": "m26.mp4",
+   "srcIn": 1.9,
+   "srcOut": 2.4,
+   "frames": 15,
+   "interp": false,
+   "trans": "punch",
+   "from": 750
+  },
+  {
+   "kind": "shot",
+   "id": "e6",
+   "source": "v3.mp4",
+   "srcIn": 6.6,
+   "srcOut": 8.0,
+   "frames": 35,
+   "interp": false,
+   "trans": "impact",
+   "from": 765
+  }
+ ],
+ "web": [],
+ "steps": [
+  {
+   "kind": "steps",
+   "id": "order",
+   "frames": 210,
+   "title": [
+    [
+     {
+      "t": "3",
+      "at": 484,
+      "hi": false
+     },
+     {
+      "t": "SIMPLE",
+      "at": 488,
+      "hi": false
+     },
+     {
+      "t": "STEPS.",
+      "at": 492,
+      "hi": true
+     }
+    ]
+   ],
+   "steps": [
+    {
+     "at": 502,
+     "n": "01",
+     "title": "SEND YOUR DESIGN",
+     "sub": "Your logo or artwork",
+     "icon": "upload"
+    },
+    {
+     "at": 558,
+     "n": "02",
+     "title": "CHOOSE SIZE & QUANTITY",
+     "sub": "Tell us what you need",
+     "icon": "size"
+    },
+    {
+     "at": 614,
+     "n": "03",
+     "title": "GET YOUR CUSTOM QUOTE",
+     "sub": "At futurepvcpatch.com",
+     "icon": "quote"
+    }
+   ],
+   "urlAt": 646,
+   "from": 480
+  }
+ ],
+ "cuts": [
+  30,
+  60,
+  90,
+  120,
+  165,
+  210,
+  255,
+  300,
+  375,
+  410,
+  445,
+  480,
+  690,
+  705,
+  720,
+  735,
+  750,
+  765,
+  800
+ ],
+ "text": [
+  {
+   "type": "headline",
+   "from": 4,
+   "to": 34,
+   "top": 250,
+   "size": 124,
+   "sizes": null,
+   "dark": false,
+   "lines": [
+    [
+     {
+      "t": "NOT",
+      "at": 4,
+      "hi": false
+     },
+     {
+      "t": "PRINTED.",
+      "at": 8,
+      "hi": false
+     }
+    ]
+   ]
+  },
+  {
+   "type": "headline",
+   "from": 34,
+   "to": 64,
+   "top": 250,
+   "size": 124,
+   "sizes": null,
+   "dark": false,
+   "lines": [
+    [
+     {
+      "t": "NOT",
+      "at": 34,
+      "hi": false
+     },
+     {
+      "t": "STITCHED.",
+      "at": 38,
+      "hi": false
+     }
+    ]
+   ]
+  },
+  {
+   "type": "headline",
+   "from": 64,
+   "to": 120,
+   "top": 250,
+   "size": 150,
+   "sizes": null,
+   "dark": false,
+   "lines": [
+    [
+     {
+      "t": "MOLDED.",
+      "at": 66,
+      "hi": true
+     }
+    ]
+   ]
+  },
+  {
+   "type": "headline",
+   "from": 122,
+   "to": 165,
+   "top": 250,
+   "size": 128,
+   "sizes": null,
+   "dark": false,
+   "lines": [
+    [
+     {
+      "t": "3D",
+      "at": 122,
+      "hi": false
+     },
+     {
+      "t": "RAISED.",
+      "at": 126,
+      "hi": true
+     }
+    ]
+   ]
+  },
+  {
+   "type": "headline",
+   "from": 165,
+   "to": 210,
+   "top": 250,
+   "size": 128,
+   "sizes": null,
+   "dark": false,
+   "lines": [
+    [
+     {
+      "t": "CRISP",
+      "at": 166,
+      "hi": false
+     },
+     {
+      "t": "EDGES.",
+      "at": 170,
+      "hi": true
+     }
+    ]
+   ]
+  },
+  {
+   "type": "headline",
+   "from": 210,
+   "to": 255,
+   "top": 250,
+   "size": 128,
+   "sizes": null,
+   "dark": false,
+   "lines": [
+    [
+     {
+      "t": "BOLD",
+      "at": 211,
+      "hi": false
+     },
+     {
+      "t": "COLOR.",
+      "at": 215,
+      "hi": true
+     }
+    ]
+   ]
+  },
+  {
+   "type": "headline",
+   "from": 255,
+   "to": 300,
+   "top": 250,
+   "size": 136,
+   "sizes": null,
+   "dark": false,
+   "lines": [
+    [
+     {
+      "t": "FLEXIBLE.",
+      "at": 256,
+      "hi": true
+     }
+    ]
+   ]
+  },
+  {
+   "type": "headline",
+   "from": 302,
+   "to": 480,
+   "top": 250,
+   "size": 104,
+   "sizes": null,
+   "dark": false,
+   "lines": [
+    [
+     {
+      "t": "ANYWHERE",
+      "at": 304,
+      "hi": false
+     }
+    ],
+    [
+     {
+      "t": "YOUR",
+      "at": 310,
+      "hi": false
+     },
+     {
+      "t": "BRAND",
+      "at": 314,
+      "hi": false
+     },
+     {
+      "t": "GOES.",
+      "at": 318,
+      "hi": true
+     }
+    ]
+   ]
+  },
+  {
+   "type": "label",
+   "from": 302,
+   "to": 375,
+   "text": "BAGS & GEAR",
+   "dark": false,
+   "top": 1530
+  },
+  {
+   "type": "label",
+   "from": 375,
+   "to": 410,
+   "text": "UNIFORMS",
+   "dark": false,
+   "top": 1530
+  },
+  {
+   "type": "label",
+   "from": 410,
+   "to": 445,
+   "text": "WORKWEAR",
+   "dark": false,
+   "top": 1530
+  },
+  {
+   "type": "label",
+   "from": 445,
+   "to": 480,
+   "text": "PERSONALIZED",
+   "dark": false,
+   "top": 1530
+  },
+  {
+   "type": "headline",
+   "from": 692,
+   "to": 790,
+   "top": 250,
+   "size": 124,
+   "sizes": null,
+   "dark": false,
+   "lines": [
+    [
+     {
+      "t": "YOUR",
+      "at": 694,
+      "hi": false
+     },
+     {
+      "t": "BRAND.",
+      "at": 698,
+      "hi": false
+     }
+    ],
+    [
+     {
+      "t": "IN",
+      "at": 710,
+      "hi": false
+     },
+     {
+      "t": "3D.",
+      "at": 714,
+      "hi": true
+     }
+    ]
+   ]
+  }
+ ],
+ "card": {
+  "headline": [
+   [
+    "BUILT",
+    0
+   ],
+   [
+    "FOR",
+    3
+   ],
+   [
+    "WHAT'S",
+    6
+   ],
+   [
+    "NEXT.",
+    9,
+    true
+   ]
+  ],
+  "cta": "GET YOUR CUSTOM QUOTE",
+  "variant": "navy",
+  "enter": "impact",
+  "len": 100,
+  "from": 800
+ },
+ "vo": [
+  {
+   "at": 0.3,
+   "to": 3.7,
+   "line": "Not printed. Not stitched. Molded."
+  },
+  {
+   "at": 4.1,
+   "to": 9.6,
+   "line": "Raised 3D layers, crisp edges and bold color, on a patch that flexes."
+  },
+  {
+   "at": 10.2,
+   "to": 15.4,
+   "line": "Made for bags, uniforms, workwear and more."
+  },
+  {
+   "at": 16.3,
+   "to": 22.6,
+   "line": "Send your design, choose your size and quantity, and get your custom quote."
+  },
+  {
+   "at": 23.4,
+   "to": 29.0,
+   "line": "Future PVC Patch. Built for what's next."
+  }
+ ],
+ "sound": {
+  "sections": [
+   [
+    0,
+    120,
+    "open"
+   ],
+   [
+    120,
+    300,
+    "groove"
+   ],
+   [
+    300,
+    480,
+    "full"
+   ],
+   [
+    480,
+    690,
+    "half"
+   ],
+   [
+    690,
+    800,
+    "build"
+   ],
+   [
+    800,
+    900,
+    "tail"
+   ]
+  ],
+  "machine": [],
+  "foley": {
+   "b1": "pvc",
+   "b4": "flex",
+   "d1": "pvc"
+  }
+ },
+ "wide": [
+  {
+   "mode": "panel",
+   "from": 0,
+   "to": 120
+  },
+  {
+   "mode": "gallery",
+   "from": 120,
+   "to": 300,
+   "groups": [
+    {
+     "shots": [
+      "b1"
+     ],
+     "word": "3D RAISED.",
+     "sub": null
+    },
+    {
+     "shots": [
+      "b2"
+     ],
+     "word": "CRISP EDGES.",
+     "sub": null
+    },
+    {
+     "shots": [
+      "b3"
+     ],
+     "word": "BOLD COLOR.",
+     "sub": null
+    },
+    {
+     "shots": [
+      "b4"
+     ],
+     "word": "FLEXIBLE.",
+     "sub": null
+    }
+   ]
+  },
+  {
+   "mode": "gallery",
+   "from": 300,
+   "to": 480,
+   "groups": [
+    {
+     "shots": [
+      "d1"
+     ],
+     "word": "BAGS & GEAR.",
+     "sub": null
+    },
+    {
+     "shots": [
+      "d2"
+     ],
+     "word": "UNIFORMS.",
+     "sub": null
+    },
+    {
+     "shots": [
+      "d3"
+     ],
+     "word": "WORKWEAR.",
+     "sub": null
+    },
+    {
+     "shots": [
+      "d4"
+     ],
+     "word": "PERSONALIZED.",
+     "sub": null
+    }
+   ]
+  },
+  {
+   "mode": "panel",
+   "from": 690,
+   "to": 800
+  }
+ ]
+}

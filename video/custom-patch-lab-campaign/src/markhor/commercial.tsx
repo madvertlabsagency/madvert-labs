@@ -31,7 +31,9 @@ export type Spec = {
   tiles?: {from: number; len: number; items: string[]};
 };
 
-const TAIL = 8; // every shot keeps rendering a few frames past its cut (under the next one) for transitions
+const TAIL = 8;
+/** Conformed segment path: `dir` is a Markhor cut name ('c01') or a full segment folder ('fpp/f50'). */
+export const segPath = (dir: string, id: string) => `segments/${dir.includes('/') ? dir : `markhor/${dir}`}/${id}.mp4`; // every shot keeps rendering a few frames past its cut (under the next one) for transitions
 const IN = {punch: 6, impact: 8, zoom: 7, whip: 5, dissolve: 8, slide: 6, cut: 0} as const;
 
 export const ShotLayer: React.FC<{s: ShotSpec; next?: ShotSpec; dir: string; id: string; shade: number}> = ({s, next, dir, id, shade}) => {
@@ -54,13 +56,13 @@ export const ShotLayer: React.FC<{s: ShotSpec; next?: ShotSpec; dir: string; id:
   if (s.trans === 'slide') { tx += (1 - pin) * 1080; blur += pin < 1 ? 24 : 0; }
   if (s.trans === 'dissolve') op = pin;
   if (f >= end + TAIL - 1) op = 0;
-  const fid = `${id}-${s.id}`;
+  const fid = `${id}-${s.id}`.replace(/[^a-zA-Z0-9_-]/g, '-');
   const horizontal = s.trans === 'whip' || s.trans === 'slide' || nt === 'whip' || nt === 'slide';
   return (
     <AbsoluteFill style={{opacity: op}}>
       {blur > 0.3 && <MotionBlur id={fid} x={horizontal ? blur : blur * 0.5} y={horizontal ? 0 : blur * 0.5} />}
       <Footage
-        src={`segments/markhor/${dir}/${s.id}.mp4`}
+        src={segPath(dir, s.id)}
         scale={s.scale ?? 1.03}
         y={s.y ?? 0}
         drift={s.drift ?? [1, 1.04]}

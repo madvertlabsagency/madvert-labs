@@ -65,11 +65,12 @@ def limit(x, SR, thr_db=-10.0, release=0.08):
     return x / np.maximum(env, 1.0)[:, None]
 
 
-def build(cut, out):
-    spec = json.load(open(os.path.join(ROOT, f'src/markhor/{cut}/edl.json')))
+def build(cut, out, root='markhor', vo_prefix='markhor', seed=4242):
+    """root: folder under src/ holding <cut>/edl.json; vo_prefix: public/audio/<vo_prefix>-<cut>-vo.wav"""
+    spec = json.load(open(os.path.join(ROOT, f'src/{root}/{cut}/edl.json')))
     fps = spec['fps']
     dur = spec['durationInFrames'] / fps
-    sfxlib.configure(dur, seed=4242)
+    sfxlib.configure(dur, seed=seed)
     import naturalsfx as nx
     N, SR = sfxlib.N, sfxlib.SR
     rng = sfxlib.rng
@@ -127,7 +128,7 @@ def build(cut, out):
             place(daf, nx.daf_tak(1.0), A + fr(26), 0.4)               # CTA lands
 
     # accents on every cut (the hits the edit is cut to)
-    items = sorted(spec['shots'] + spec['web'], key=lambda s: s['from'])
+    items = sorted(spec['shots'] + spec['web'] + spec.get('steps', []), key=lambda s: s['from'])
     for s in items:
         c = fr(s['from'])
         tr = s.get('trans', 'web')
@@ -157,11 +158,21 @@ def build(cut, out):
             for i in range(n):
                 place(fx, nx.ui_click(1.6), c + fr(w['frames']) * i / n, 0.3)
 
+    # designed order steps: entry wipe, a click + tick as each step card lands, a soft hit on the URL
+    for b in spec.get('steps', []):
+        place(fx, nx.air(0.32, 450, 4200), fr(b['from']) - 0.18, 0.34)
+        for st in b['steps']:
+            place(fx, nx.ui_click(1.3), fr(st['at']), 0.55)
+            place(fx, mb.tish(0.8), fr(st['at']), 0.2)
+        place(fx, nx.ui_click(1.6), fr(b['urlAt']), 0.45)
+        place(fx, nx.soft_hit(0.7, 0.8), fr(b['urlAt']), 0.2)
+
     # natural sound: the embroidery machine's own audio under the needle shots
-    foot = os.path.join(ROOT, 'assets/source/markhor/flagship/footage')
-    machine = load_wav(os.path.join(foot, 'f06.mp4'), SR)
-    machine = filt(machine, 'highpass', 45)
     by_id = {s['id']: s for s in spec['shots']}
+    machine = None
+    if snd.get('machine'):
+        foot = os.path.join(ROOT, 'assets/source/markhor/flagship/footage')
+        machine = filt(load_wav(os.path.join(foot, 'f06.mp4'), SR), 'highpass', 45)
     for sid in snd.get('machine', []):
         s = by_id[sid]
         i0 = int(s['srcIn'] * SR)
@@ -181,6 +192,7 @@ def build(cut, out):
         'fabric': lambda c: (place(fx, sfxlib.fabric(1.2, density=30, bright=(600, 3800), level=0.18), c, 0.6),),
         'leather': lambda c: (place(fx, nx.cloth(0.6, 150, 1100, 0.3), c, 0.6),),
         'cloth': lambda c: (place(fx, nx.cloth(0.6, 250, 1800, 0.3), c + 0.05, 0.5),),
+        'flex': lambda c: (place(fx, nx.cloth(0.9, 160, 1100, 0.3), c + 0.1, 0.7), place(fx, nx.heavy_hit(0.5), c + 0.7, 0.25)),
     }
     for sid, kind in snd.get('foley', {}).items():
         FOLEY[kind](fr(by_id[sid]['from']))
@@ -196,8 +208,8 @@ def build(cut, out):
     music = daf * 1.0 + fx * 0.85 + bed * 0.9 + room
 
     # optional stems: wordless vocal layer + voiceover (side-chain ducking)
-    vox_p = os.path.join(ROOT, f'public/audio/markhor-{cut}-vox.wav')
-    vo_p = os.path.join(ROOT, f'public/audio/markhor-{cut}-vo.wav')
+    vox_p = os.path.join(ROOT, f'public/audio/{vo_prefix}-{cut}-vox.wav')
+    vo_p = os.path.join(ROOT, f'public/audio/{vo_prefix}-{cut}-vo.wav')
     if os.path.exists(vox_p):
         vox = load_wav(vox_p, SR)[:N]
         music[:len(vox)] += vox * 0.35

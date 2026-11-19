@@ -53,7 +53,13 @@
     "render:flagship50wide:final": "remotion render MarkhorFlagship50Wide out/MARKHOR_FLAGSHIP_50S_16x9.mp4 --codec=h264 --crf=16 --color-space=bt709 --audio-codec=aac --audio-bitrate=320k",
     "render:commercial30wide:final": "remotion render MarkhorCommercial30Wide out/MARKHOR_COMMERCIAL_30S_16x9.mp4 --codec=h264 --crf=16 --color-space=bt709 --audio-codec=aac --audio-bitrate=320k",
     "render:metaad15wide:final": "remotion render MarkhorMetaAd15Wide out/MARKHOR_META_AD_15S_16x9.mp4 --codec=h264 --crf=16 --color-space=bt709 --audio-codec=aac --audio-bitrate=320k",
-    "render:websiteherowide:final": "remotion render MarkhorWebsiteHeroWide out/MARKHOR_WEBSITE_HERO_16x9.mp4 --codec=h264 --crf=16 --color-space=bt709 --muted"
+    "render:websiteherowide:final": "remotion render MarkhorWebsiteHeroWide out/MARKHOR_WEBSITE_HERO_16x9.mp4 --codec=h264 --crf=16 --color-space=bt709 --muted",
+    "render:fpp50:final": "remotion render FuturePvcF50 out/FUTURE_PVC_PATCH_50S.mp4 --codec=h264 --crf=16 --color-space=bt709 --audio-codec=aac --audio-bitrate=320k",
+    "render:fpp50wide:final": "remotion render FuturePvcF50Wide out/FUTURE_PVC_PATCH_50S_16x9.mp4 --codec=h264 --crf=16 --color-space=bt709 --audio-codec=aac --audio-bitrate=320k",
+    "render:fpp30:final": "remotion render FuturePvcF30 out/FUTURE_PVC_PATCH_30S.mp4 --codec=h264 --crf=16 --color-space=bt709 --audio-codec=aac --audio-bitrate=320k",
+    "render:fpp30wide:final": "remotion render FuturePvcF30Wide out/FUTURE_PVC_PATCH_30S_16x9.mp4 --codec=h264 --crf=16 --color-space=bt709 --audio-codec=aac --audio-bitrate=320k",
+    "render:fpp15:final": "remotion render FuturePvcF15 out/FUTURE_PVC_PATCH_15S.mp4 --codec=h264 --crf=16 --color-space=bt709 --audio-codec=aac --audio-bitrate=320k",
+    "render:fpp15wide:final": "remotion render FuturePvcF15Wide out/FUTURE_PVC_PATCH_15S_16x9.mp4 --codec=h264 --crf=16 --color-space=bt709 --audio-codec=aac --audio-bitrate=320k"
   },
   "dependencies": {
     "@remotion/cli": "4.0.534",

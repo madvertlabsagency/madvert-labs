@@ -12,12 +12,22 @@ import {FilmGrain} from '../shared/components/FilmGrain';
 import {Footage} from '../shared/components/Footage';
 import {easeIn, easeInOut, easeOut, mix, prog} from '../shared/motion';
 import {Themed} from '../shared/theme';
-import {ShotLayer, type Trans} from './commercial';
-import {BrightField, EndCard, FONT, H, HYPER_THEME, Headline, Label, Sub, type Word} from './hyper';
+import type {Theme} from '../shared/theme';
+import {ShotLayer, segPath, type Trans} from './commercial';
+import {BrandProvider, BrightField, CubeLines, EndCard, HexField, HYPER_THEME, Headline, Label, Line, MARKHOR_BRAND, Sub, useBrand, type Brand, type Word} from './hyper';
 
 export type ShotSpec = {id: string; from: number; frames: number; trans: Trans; scale?: number; y?: number; drift?: [number, number]; origin?: {x: number; y: number}};
 export type WebSpec = {id: string; from: number; frames: number; taps: [number, number, number][]; focus: [number, number]; chips?: string[] | null};
 type W = {t: string; at: number; hi?: boolean};
+/** Designed "how to order" block (used when no website recording exists). Frames in `steps[].at` are absolute. */
+export type StepsSpec = {
+  id: string;
+  from: number;
+  frames: number;
+  title: W[][];
+  steps: {at: number; n: string; title: string; sub: string; icon: 'upload' | 'size' | 'quote'}[];
+  urlAt: number;
+};
 export type TextSpec =
   | {type: 'headline'; from: number; to: number; top: number; size: number; sizes?: number[] | null; dark?: boolean; lines: W[][]}
   | {type: 'label'; from: number; to: number; text: string; dark?: boolean; top?: number}
@@ -27,6 +37,7 @@ export type FlagSpec = {
   audio: boolean;
   shots: ShotSpec[];
   web: WebSpec[];
+  steps?: StepsSpec[];
   text: TextSpec[];
   card?: {from: number; len: number; headline: [string, number, boolean?][]; cta: string; variant: 'navy' | 'cyan'};
   loop?: {at: number; dur: number};
@@ -44,6 +55,7 @@ const screenH = (g: Geo) => Math.round((g.screenW * 1464) / 720);
 
 const Tap: React.FC<{at: number; x: number; y: number; g: Geo}> = ({at, x, y, g}) => {
   const f = useCurrentFrame();
+  const H = useBrand().c;
   if (f < at - 8 || f > at + 22) return null;
   const k = g.screenW / 520;
   const pre = prog(f, at - 8, 8, easeOut);
@@ -84,6 +96,7 @@ const Tap: React.FC<{at: number; x: number; y: number; g: Geo}> = ({at, x, y, g}
 
 const Chips: React.FC<{chips: string[]; frames: number; g: Geo}> = ({chips, frames, g}) => {
   const f = useCurrentFrame();
+  const {c: H, font: FONT} = useBrand();
   const k = g.screenW / 520;
   const step = frames / chips.length;
   const inP = prog(f, 0, 8, easeOut);
@@ -117,6 +130,7 @@ const Chips: React.FC<{chips: string[]; frames: number; g: Geo}> = ({chips, fram
 
 const UrlChip: React.FC<{g: Geo}> = ({g}) => {
   const f = useCurrentFrame();
+  const {c: H, font: FONT, domain} = useBrand();
   const {fps} = useVideoConfig();
   const k = g.screenW / 520;
   const s = spring({frame: f - 6, fps, config: {damping: 14, stiffness: 200, mass: 0.7}});
@@ -127,7 +141,7 @@ const UrlChip: React.FC<{g: Geo}> = ({g}) => {
           <circle cx={12} cy={12} r={10} fill="none" stroke={H.cyan} strokeWidth={2.4} />
           <path d="M2 12h20M12 2c3 3 3 17 0 20M12 2c-3 3-3 17 0 20" fill="none" stroke={H.cyan} strokeWidth={2} />
         </svg>
-        <span style={{fontFamily: FONT, fontWeight: 800, fontSize: 32 * k, letterSpacing: '0.02em', color: H.white}}>markhorpatches.com</span>
+        <span style={{fontFamily: FONT, fontWeight: 800, fontSize: 32 * k, letterSpacing: '0.02em', color: H.white}}>{domain}</span>
       </div>
     </div>
   );
@@ -136,6 +150,9 @@ const UrlChip: React.FC<{g: Geo}> = ({g}) => {
 /** Bright stage for 16:9 (ice white → light blue, slow cyan strip). */
 export const BrightWide: React.FC = () => {
   const f = useCurrentFrame();
+  const b = useBrand();
+  const H = b.c;
+  if (b.motif === 'hex') return <HexField />;
   return (
     <AbsoluteFill style={{background: `linear-gradient(120deg, ${H.white} 0%, ${H.white} 40%, ${H.light} 100%)`, overflow: 'hidden'}}>
       <div style={{position: 'absolute', left: -400, right: -400, top: 900 + Math.sin(f / 30) * 8, height: 90, background: 'linear-gradient(100deg, rgba(0,194,255,0) 0%, rgba(0,194,255,0.2) 40%, rgba(16,104,215,0.2) 70%, rgba(16,104,215,0) 100%)', transform: `skewY(-4deg) translateX(${(f % 120) * 2 - 120}px)`}} />
@@ -148,6 +165,7 @@ export const BrightWide: React.FC = () => {
 export const WebBlock: React.FC<{items: WebSpec[]; start: number; dir: string; g?: Geo}> = ({items, start, dir, g = VERTICAL_GEO}) => {
   const f = useCurrentFrame();
   const {fps} = useVideoConfig();
+  const H = useBrand().c;
   const SH = screenH(g);
   const k = g.screenW / 520;
   const len = items.reduce((a, w) => a + w.frames, 0);
@@ -195,7 +213,7 @@ export const WebBlock: React.FC<{items: WebSpec[]; start: number; dir: string; g
         <div style={{position: 'absolute', left: BEZEL * k, top: BEZEL * k, width: g.screenW, height: SH, borderRadius: 56 * k, overflow: 'hidden', background: H.white}}>
           {items.map((w) => (
             <Sequence key={w.id} from={w.from - start} durationInFrames={w.frames} name={w.id}>
-              <OffthreadVideo muted src={staticFile(`segments/markhor/${dir}/${w.id}.mp4`)} style={{width: g.screenW, height: SH, display: 'block'}} />
+              <OffthreadVideo muted src={staticFile(segPath(dir, w.id))} style={{width: g.screenW, height: SH, display: 'block'}} />
               {w.taps.map(([at, x, y], i) => (
                 <Tap key={i} at={at} x={x} y={y} g={g} />
               ))}
@@ -220,7 +238,12 @@ export const CardIn: React.FC<{children: React.ReactNode}> = ({children}) => {
   return <AbsoluteFill style={{opacity: Math.min(1, p * 1.6), transform: `scale(${mix(1.08, 1, p)})`, filter: p < 1 ? `blur(${(1 - p) * 10}px)` : undefined}}>{children}</AbsoluteFill>;
 };
 
-export const makeFlagship = (spec: FlagSpec, dir: string) => {
+export type MakeOpts = {brand?: Brand; theme?: Theme; audio?: string};
+const cssId = (s: string) => s.replace(/[^a-zA-Z0-9_-]/g, '-');
+
+export const makeFlagship = (spec: FlagSpec, dir: string, opts: MakeOpts = {}) => {
+  const brand = opts.brand ?? MARKHOR_BRAND;
+  const audio = opts.audio ?? `audio/markhor-${dir}-mix.wav`;
   const blocks: WebSpec[][] = [];
   spec.web.forEach((w) => {
     const last = blocks[blocks.length - 1];
@@ -228,14 +251,15 @@ export const makeFlagship = (spec: FlagSpec, dir: string) => {
     else blocks.push([w]);
   });
   const Comp: React.FC = () => (
-    <Themed theme={HYPER_THEME}>
-      <AbsoluteFill style={{background: H.navy}}>
+    <BrandProvider value={brand}>
+    <Themed theme={opts.theme ?? HYPER_THEME}>
+      <AbsoluteFill style={{background: brand.c.navy}}>
         {spec.shots.map((s, i) => {
           const nx = spec.shots[i + 1];
           const next = nx && nx.from === s.from + s.frames ? nx : undefined;
           return (
             <Sequence key={s.id} from={s.from} durationInFrames={s.frames + 8} name={s.id}>
-              <ShotLayer s={s} next={next} dir={dir} id={dir} shade={spec.loop ? 0 : 0.7} />
+              <ShotLayer s={s} next={next} dir={dir} id={cssId(dir)} shade={spec.loop ? 0 : 0.7} />
             </Sequence>
           );
         })}
@@ -249,6 +273,12 @@ export const makeFlagship = (spec: FlagSpec, dir: string) => {
             </Sequence>
           );
         })}
+
+        {(spec.steps ?? []).map((b) => (
+          <Sequence key={b.id} from={b.from} durationInFrames={b.frames} name={`steps ${b.from}`}>
+            <StepsBlock b={b} wide={false} />
+          </Sequence>
+        ))}
 
         {spec.text.map((t, i) => {
           const len = t.to - t.from;
@@ -285,9 +315,10 @@ export const makeFlagship = (spec: FlagSpec, dir: string) => {
         )}
 
         <FilmGrain opacity={0.04} />
-        {spec.audio && <Audio src={staticFile(`audio/markhor-${dir}-mix.wav`)} />}
+        {spec.audio && <Audio src={staticFile(audio)} />}
       </AbsoluteFill>
     </Themed>
+    </BrandProvider>
   );
   return Comp;
 };
@@ -299,9 +330,161 @@ const LoopFade: React.FC<{dur: number; first: ShotSpec; dir: string}> = ({dur, f
     <AbsoluteFill style={{opacity: prog(f, 0, dur, easeInOut)}}>
       <Freeze frame={0}>
         <Sequence durationInFrames={first.frames + 8}>
-          <Footage src={`segments/markhor/${dir}/${first.id}.mp4`} scale={first.scale ?? 1.03} y={first.y ?? 0} drift={first.drift ?? [1, 1.04]} origin={first.origin} shadeTop={0} />
+          <Footage src={segPath(dir, first.id)} scale={first.scale ?? 1.03} y={first.y ?? 0} drift={first.drift ?? [1, 1.04]} origin={first.origin} shadeTop={0} />
         </Sequence>
       </Freeze>
+    </AbsoluteFill>
+  );
+};
+
+/* ------------------------------------------------------------------ "how to order" steps */
+
+const StepIcon: React.FC<{kind: 'upload' | 'size' | 'quote'; size: number; color: string}> = ({kind, size, color}) => (
+  <svg width={size} height={size} viewBox="0 0 48 48" fill="none" stroke={color} strokeWidth={3.4} strokeLinecap="round" strokeLinejoin="round">
+    {kind === 'upload' && (
+      <>
+        <path d="M24 31 V9 M15 18 L24 9 L33 18" />
+        <path d="M8 29 V37 Q8 40 11 40 H37 Q40 40 40 37 V29" />
+      </>
+    )}
+    {kind === 'size' && (
+      <>
+        <rect x={9} y={9} width={30} height={30} rx={3} />
+        <path d="M9 17 H14 M9 24 H16 M9 31 H14 M17 9 V14 M24 9 V16 M31 9 V14" />
+      </>
+    )}
+    {kind === 'quote' && (
+      <>
+        <path d="M13 6 H29 L37 14 V40 Q37 42 35 42 H13 Q11 42 11 40 V8 Q11 6 13 6 Z" />
+        <path d="M29 6 V14 H37 M17 24 H31 M17 31 H26" />
+      </>
+    )}
+  </svg>
+);
+
+const HexBadge: React.FC<{n: string; size: number}> = ({n, size}) => {
+  const b = useBrand();
+  return (
+    <div style={{position: 'relative', width: size, height: size * 1.1547, flexShrink: 0}}>
+      <svg width={size} height={size * 1.1547} viewBox="0 0 100 115.47" style={{position: 'absolute', inset: 0}}>
+        <defs>
+          <linearGradient id={`hb${n}`} x1="0" x2="1">
+            <stop offset="0" stopColor={b.c.navy} />
+            <stop offset="0.55" stopColor={b.c.royal} />
+            <stop offset="1" stopColor={b.c.cyan} />
+          </linearGradient>
+        </defs>
+        <path d="M50 0 L100 28.87 L100 86.6 L50 115.47 L0 86.6 L0 28.87 Z" fill={`url(#hb${n})`} />
+      </svg>
+      <div style={{position: 'absolute', inset: 0, display: 'flex', alignItems: 'center', justifyContent: 'center', fontFamily: b.font, fontWeight: 900, fontSize: size * 0.42, color: b.c.white, letterSpacing: '0.02em'}}>{n}</div>
+    </div>
+  );
+};
+
+const StepCard: React.FC<{at: number; n: string; title: string; sub: string; icon: 'upload' | 'size' | 'quote'; wide: boolean; active: boolean}> = ({at, n, title, sub, icon, wide, active}) => {
+  const f = useCurrentFrame();
+  const {fps} = useVideoConfig();
+  const b = useBrand();
+  if (f < at) return null;
+  const s = spring({frame: f - at, fps, config: {damping: 16, stiffness: 200, mass: 0.7}});
+  const k = wide ? 0.82 : 1;
+  return (
+    <div
+      style={{
+        position: 'relative',
+        display: 'flex',
+        flexDirection: wide ? 'column' : 'row',
+        alignItems: wide ? 'flex-start' : 'center',
+        gap: 30 * k,
+        padding: wide ? '40px 40px 44px' : '34px 44px',
+        width: wide ? 500 : 960,
+        height: wide ? 430 : 250,
+        boxSizing: 'border-box',
+        borderRadius: 30,
+        background: 'rgba(255,255,255,0.92)',
+        boxShadow: active ? `0 30px 70px rgba(19,99,162,0.28), 0 0 0 3px ${b.c.cyan}` : '0 20px 50px rgba(19,60,120,0.14), 0 0 0 1px rgba(19,99,162,0.12)',
+        transform: `translate${wide ? 'Y' : 'X'}(${(1 - s) * (wide ? 80 : -120)}px) scale(${mix(0.94, 1, s)})`,
+        opacity: Math.min(1, s * 1.6),
+      }}
+    >
+      <HexBadge n={n} size={wide ? 82 : 118} />
+      <div style={{flex: 1}}>
+        <div style={{fontFamily: b.font, fontWeight: 800, fontSize: wide ? 40 : 54, lineHeight: 1.08, color: b.c.navy, letterSpacing: '0.01em'}}>{title}</div>
+        <div style={{marginTop: 12, fontFamily: b.font, fontWeight: 600, fontSize: wide ? 26 : 36, lineHeight: 1.3, color: b.c.royal}}>{sub}</div>
+      </div>
+      {!wide && <StepIcon kind={icon} size={92} color={b.c.cyan} />}
+      {wide && (
+        <div style={{position: 'absolute', right: 36, top: 44}}>
+          <StepIcon kind={icon} size={70} color={b.c.cyan} />
+        </div>
+      )}
+    </div>
+  );
+};
+
+const DomainChip: React.FC<{at: number; size: number}> = ({at, size}) => {
+  const f = useCurrentFrame();
+  const {fps} = useVideoConfig();
+  const b = useBrand();
+  if (f < at) return null;
+  const s = spring({frame: f - at, fps, config: {damping: 14, stiffness: 200, mass: 0.7}});
+  return (
+    <div style={{display: 'flex', alignItems: 'center', gap: 16, padding: '20px 40px', clipPath: 'polygon(28px 0, calc(100% - 28px) 0, 100% 50%, calc(100% - 28px) 100%, 28px 100%, 0 50%)', background: `linear-gradient(100deg, ${b.c.navy}, ${b.c.royal})`, opacity: Math.min(1, s * 1.5), transform: `scale(${mix(0.85, 1, s)})`}}>
+      <svg width={size} height={size} viewBox="0 0 24 24">
+        <circle cx={12} cy={12} r={10} fill="none" stroke={b.c.cyan} strokeWidth={2.4} />
+        <path d="M2 12h20M12 2c3 3 3 17 0 20M12 2c-3 3-3 17 0 20" fill="none" stroke={b.c.cyan} strokeWidth={2} />
+      </svg>
+      <span style={{fontFamily: b.font, fontWeight: 800, fontSize: size * 1.05, color: b.c.white, letterSpacing: '0.03em'}}>{b.domain}</span>
+    </div>
+  );
+};
+
+/** "How to order" in three steps on the bright stage (9:16 stacked, 16:9 side by side). Local frames from b.from. */
+export const StepsBlock: React.FC<{b: StepsSpec; wide: boolean}> = ({b, wide}) => {
+  const f = useCurrentFrame();
+  const brand = useBrand();
+  const wipe = prog(f, 0, 10, easeInOut);
+  const out = prog(f, b.frames - 5, 5, easeIn);
+  const local = b.steps.map((s) => s.at - b.from);
+  const active = local.reduce((a, t, i) => (f >= t ? i : a), -1);
+  return (
+    <AbsoluteFill style={{clipPath: `polygon(0 0, ${wipe * 140}% 0, ${wipe * 140 - 40}% 100%, 0 100%)`}}>
+      <BrightField />
+      <AbsoluteFill style={{opacity: 1 - out, transform: `scale(${1 + out * 0.04})`}}>
+        <div style={{position: 'absolute', top: wide ? 90 : 230, left: 60, right: 60}}>
+          {b.title.map((l, i) => (
+            <Line key={i} words={l.map((x) => ({...x, at: x.at - b.from}))} size={wide ? 92 : 100} dark />
+          ))}
+        </div>
+        <div
+          style={{
+            position: 'absolute',
+            left: 0,
+            right: 0,
+            top: wide ? 330 : b.title.length > 1 ? 590 : 500,
+            display: 'flex',
+            flexDirection: wide ? 'row' : 'column',
+            alignItems: 'center',
+            justifyContent: 'center',
+            gap: wide ? 40 : 44,
+          }}
+        >
+          {b.steps.map((s, i) => (
+            <StepCard key={s.n} at={local[i]} n={s.n} title={s.title} sub={s.sub} icon={s.icon} wide={wide} active={active === i} />
+          ))}
+        </div>
+        <div style={{position: 'absolute', left: 0, right: 0, top: wide ? 840 : 1490, display: 'flex', justifyContent: 'center'}}>
+          <DomainChip at={b.urlAt - b.from} size={wide ? 34 : 46} />
+        </div>
+        {!wide && (
+          <div style={{position: 'absolute', left: 540 - 60, top: 1640, opacity: 0.25}}>
+            <CubeLines size={120} color={brand.c.royal} width={3} draw={prog(f, 10, 30, easeOut)} />
+          </div>
+        )}
+      </AbsoluteFill>
+      {wipe > 0 && wipe < 1 && (
+        <div style={{position: 'absolute', top: -200, bottom: -200, left: `${wipe * 140 - 20}%`, width: 80, background: `linear-gradient(180deg, ${brand.c.cyan}, ${brand.c.royal})`, transform: 'skewX(-22deg)'}} />
+      )}
     </AbsoluteFill>
   );
 };

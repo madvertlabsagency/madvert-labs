@@ -16,9 +16,9 @@ import {FilmGrain} from '../shared/components/FilmGrain';
 import {Footage} from '../shared/components/Footage';
 import {easeIn, easeInOut, easeOut, mix, prog} from '../shared/motion';
 import {Themed} from '../shared/theme';
-import {ShotLayer} from './commercial';
-import {BrightWide, CardIn, type FlagSpec, type Geo, type ShotSpec, type WebSpec, WebBlock} from './flagship';
-import {CtaPill, FONT, H, HYPER_THEME, LOGO_LIGHT, Line, URL, type Word} from './hyper';
+import {ShotLayer, segPath} from './commercial';
+import {BrightWide, CardIn, type FlagSpec, type Geo, type MakeOpts, type ShotSpec, StepsBlock, type WebSpec, WebBlock} from './flagship';
+import {BrandName, BrandProvider, CtaPill, CubeLines, H, HYPER_THEME, Line, LogoTile, MARKHOR_BRAND, useBrand, type Word} from './hyper';
 
 type Group = {shots: string[]; word?: string; sub?: string};
 type WideSection =
@@ -34,6 +34,18 @@ const WEB_GEO: Geo = {screenW: 420, top: 74, cx: 1440, minTop: 40, wide: true};
 
 const NavyStage: React.FC = () => {
   const f = useCurrentFrame();
+  const b = useBrand();
+  if (b.motif === 'hex') {
+    const c = b.c;
+    return (
+      <AbsoluteFill style={{background: `radial-gradient(60% 80% at ${72 + Math.sin(f / 60) * 3}% 50%, ${c.royal}66, ${c.royal}00 70%), linear-gradient(120deg, ${c.deep} 0%, ${c.navy} 60%, ${c.royal} 120%)`, overflow: 'hidden'}}>
+        <div style={{position: 'absolute', left: -180, top: 560, opacity: 0.12, transform: `rotate(${f * 0.04}deg)`}}>
+          <CubeLines size={700} color={c.cyan} width={4} />
+        </div>
+        <div style={{position: 'absolute', left: 0, right: 0, bottom: 0, height: 12, background: `linear-gradient(90deg, ${c.navy}, ${c.royal} 50%, ${c.cyan})`}} />
+      </AbsoluteFill>
+    );
+  }
   return (
     <AbsoluteFill style={{background: `radial-gradient(60% 80% at ${72 + Math.sin(f / 60) * 3}% 50%, rgba(16,104,215,0.38), rgba(16,104,215,0) 70%), linear-gradient(120deg, #07182F 0%, ${H.navy} 55%, #0E2C57 100%)`, overflow: 'hidden'}}>
       <div style={{position: 'absolute', left: -300, width: 1400, top: 990, height: 10, background: `linear-gradient(90deg, rgba(0,194,255,0), ${H.cyan}, ${H.royal}, rgba(16,104,215,0))`, transform: 'skewY(-3deg)', opacity: 0.55}} />
@@ -54,6 +66,7 @@ const Canvas: React.FC<{w: number; h?: number; children: React.ReactNode}> = ({w
 
 /** Shots of one run, back to back inside a canvas (local frames from `start`), last frame held until `hold`. */
 const ShotRun: React.FC<{shots: ShotSpec[]; start: number; hold: number; dir: string}> = ({shots, start, hold, dir}) => {
+  const H = useBrand().c;
   const last = shots[shots.length - 1];
   const lastEnd = last.from + last.frames - start;
   return (
@@ -62,7 +75,7 @@ const ShotRun: React.FC<{shots: ShotSpec[]; start: number; hold: number; dir: st
         <Sequence from={lastEnd - 1} durationInFrames={hold - lastEnd + 1} name="hold">
           <Freeze frame={last.frames - 1}>
             <Sequence durationInFrames={last.frames + TAIL}>
-              <Footage src={`segments/markhor/${dir}/${last.id}.mp4`} scale={last.scale ?? 1.03} y={last.y ?? 0} drift={last.drift ?? [1, 1.04]} origin={last.origin} />
+              <Footage src={segPath(dir, last.id)} scale={last.scale ?? 1.03} y={last.y ?? 0} drift={last.drift ?? [1, 1.04]} origin={last.origin} />
             </Sequence>
           </Freeze>
         </Sequence>
@@ -72,7 +85,7 @@ const ShotRun: React.FC<{shots: ShotSpec[]; start: number; hold: number; dir: st
         const next = nx && nx.from === s.from + s.frames ? nx : undefined;
         return (
           <Sequence key={s.id} from={s.from - start} durationInFrames={s.frames + (next ? TAIL : 1)} name={s.id}>
-            <ShotLayer s={s} next={next} dir={dir} id={`w${dir}`} shade={0} />
+            <ShotLayer s={s} next={next} dir={dir} id={`w${dir}`.replace(/[^a-zA-Z0-9_-]/g, '-')} shade={0} />
           </Sequence>
         );
       })}
@@ -111,6 +124,7 @@ const PanelSection: React.FC<{shots: ShotSpec[]; start: number; len: number; dir
 
 const GallerySection: React.FC<{sec: Extract<WideSection, {mode: 'gallery'}>; byId: Record<string, ShotSpec>; dir: string}> = ({sec, byId, dir}) => {
   const f = useCurrentFrame();
+  const brandFont = useBrand().font;
   const {fps} = useVideoConfig();
   const n = sec.groups.length;
   const gap = 28;
@@ -166,8 +180,8 @@ const GallerySection: React.FC<{sec: Extract<WideSection, {mode: 'gallery'}>; by
             </div>
             {g.word && (
               <div style={{marginTop: 26, marginLeft: -gap / 2, width: pw + gap, opacity: prog(f, at + 2, 8), transform: `translateY(${(1 - prog(f, at + 2, 10, easeOut)) * 20}px)`}}>
-                <Line words={[{t: g.word, at: at + 2, hi: active}]} size={capSize} dark={false} />
-                {g.sub && <div style={{marginTop: 12, textAlign: 'center', fontFamily: FONT, fontWeight: 700, fontSize: n > 4 ? 18 : 22, letterSpacing: '0.14em', color: 'rgba(255,255,255,0.72)'}}>{g.sub}</div>}
+                <Line words={[{t: g.word, at: at + 2, hi: active}]} size={Math.min(capSize, Math.floor((pw + gap - 24) / (g.word.length * 0.74)))} dark={false} />
+                {g.sub && <div style={{marginTop: 12, textAlign: 'center', fontFamily: brandFont, fontWeight: 700, fontSize: n > 4 ? 18 : 22, letterSpacing: '0.14em', color: 'rgba(255,255,255,0.72)'}}>{g.sub}</div>}
               </div>
             )}
           </div>
@@ -208,13 +222,20 @@ const LeftText: React.FC<{spec: WideSpec; gallery: [number, number][]}> = ({spec
 
 const SideNote: React.FC<{text: string; dark: boolean; kind: 'label' | 'sub'; len: number}> = ({text, dark, kind, len}) => {
   const f = useCurrentFrame();
+  const {c: H, font: FONT, strip} = useBrand();
   const p = prog(f, 0, 8, easeOut);
   const q = prog(f, len - 5, 5, easeIn);
   return (
     <div style={{position: 'absolute', left: 130, top: 760, opacity: p * (1 - q), transform: `translateX(${(1 - p) * -30}px)`}}>
       {kind === 'label' ? (
         <div style={{display: 'flex', alignItems: 'center', gap: 16}}>
-          <span style={{width: 40, height: 8, background: `linear-gradient(90deg, ${H.cyan}, ${H.royal})`}} />
+          {strip === 'hex' ? (
+            <svg width={28} height={32} viewBox="0 0 30 34">
+              <path d="M15 1 L29 9 L29 25 L15 33 L1 25 L1 9 Z" fill={H.cyan} />
+            </svg>
+          ) : (
+            <span style={{width: 40, height: 8, background: `linear-gradient(90deg, ${H.cyan}, ${H.royal})`}} />
+          )}
           <span style={{fontFamily: FONT, fontWeight: 800, fontSize: 34, letterSpacing: '0.12em', color: dark ? H.navy : H.white}}>{text}</span>
         </div>
       ) : (
@@ -231,24 +252,53 @@ const EndCardWide: React.FC<{headline: Word[]; cta: string; variant: 'navy' | 'c
   const {fps} = useVideoConfig();
   const s = spring({frame: f - 2, fps, config: {damping: 16, stiffness: 150, mass: 0.8}});
   const url = prog(f, 32, 12, easeOut);
+  const b = useBrand();
+  const H = b.c;
+  const FONT = b.font;
+  if (b.logoTile) {
+    const ring = prog(f, 4, 22, easeOut);
+    return (
+      <AbsoluteFill>
+        <BrightWide />
+        <div style={{position: 'absolute', left: 180, top: 170, width: 600, height: 600, display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
+          <div style={{position: 'absolute', opacity: 0.5 * (1 - prog(f, 26, 20))}}>
+            <CubeLines size={560} color={H.cyan} width={3} draw={ring} />
+          </div>
+          <LogoTile size={430} s={s} />
+        </div>
+        <div style={{position: 'absolute', left: 900, top: 250}}>
+          <BrandName at={8} size={62} align="left" />
+        </div>
+        <div style={{position: 'absolute', left: 900, width: 900, top: 360}}>
+          <Line words={headline.map((x) => ({...x, at: x.at + 10}))} size={64} dark align="left" />
+        </div>
+        <div style={{position: 'absolute', left: 900, width: 900, top: 0, height: 1080}}>
+          <CtaPill at={26} text={cta} top={560} variant={variant} size={38} justify="flex-start" />
+        </div>
+        <div style={{position: 'absolute', left: 906, top: 706, fontFamily: FONT, fontWeight: 700, fontSize: 34, letterSpacing: '0.08em', color: H.navy, opacity: url, transform: `translateY(${(1 - url) * 14}px)`}}>{b.url}</div>
+      </AbsoluteFill>
+    );
+  }
   return (
     <AbsoluteFill>
       <BrightWide />
-      <Img src={staticFile(LOGO_LIGHT)} style={{position: 'absolute', left: 170, top: 180, width: 640, height: 640, transform: `scale(${mix(0.86, 1, s)})`, opacity: Math.min(1, s * 1.5)}} />
+      <Img src={staticFile(b.logo)} style={{position: 'absolute', left: 170, top: 180, width: 640, height: 640, transform: `scale(${mix(0.86, 1, s)})`, opacity: Math.min(1, s * 1.5)}} />
       <div style={{position: 'absolute', left: 900, width: 900, top: 330}}>
         <Line words={headline.map((x) => ({...x, at: x.at + 4}))} size={78} dark align="left" />
       </div>
       <div style={{position: 'absolute', left: 900, width: 900, top: 0, height: 1080}}>
         <CtaPill at={24} text={cta} top={560} variant={variant} size={40} justify="flex-start" />
       </div>
-      <div style={{position: 'absolute', left: 904, top: 700, fontFamily: FONT, fontWeight: 600, fontSize: 36, letterSpacing: '0.06em', color: H.navy, opacity: url, transform: `translateY(${(1 - url) * 14}px)`}}>{URL}</div>
+      <div style={{position: 'absolute', left: 904, top: 700, fontFamily: FONT, fontWeight: 600, fontSize: 36, letterSpacing: '0.06em', color: H.navy, opacity: url, transform: `translateY(${(1 - url) * 14}px)`}}>{b.url}</div>
     </AbsoluteFill>
   );
 };
 
 /* ------------------------------------------------------------------ composition */
 
-export const makeWide = (spec: WideSpec, dir: string) => {
+export const makeWide = (spec: WideSpec, dir: string, opts: MakeOpts = {}) => {
+  const brand = opts.brand ?? MARKHOR_BRAND;
+  const audio = opts.audio ?? `audio/markhor-${dir}-mix.wav`;
   const byId: Record<string, ShotSpec> = Object.fromEntries(spec.shots.map((s) => [s.id, s]));
   const blocks: WebSpec[][] = [];
   spec.web.forEach((w) => {
@@ -256,10 +306,14 @@ export const makeWide = (spec: WideSpec, dir: string) => {
     if (last && last[last.length - 1].from + last[last.length - 1].frames === w.from) last.push(w);
     else blocks.push([w]);
   });
-  const gallery = spec.wide.filter((s) => s.mode === 'gallery').map((s) => [s.from, s.to] as [number, number]);
+  const gallery = [
+    ...spec.wide.filter((s) => s.mode === 'gallery').map((s) => [s.from, s.to] as [number, number]),
+    ...(spec.steps ?? []).map((b) => [b.from, b.from + b.frames] as [number, number]),
+  ];
   const Comp: React.FC = () => (
-    <Themed theme={HYPER_THEME}>
-      <AbsoluteFill style={{background: H.navy}}>
+    <BrandProvider value={brand}>
+    <Themed theme={opts.theme ?? HYPER_THEME}>
+      <AbsoluteFill style={{background: brand.c.navy}}>
         {spec.wide.map((sec) => {
           const len = sec.to - sec.from;
           if (sec.mode === 'panel') {
@@ -285,6 +339,11 @@ export const makeWide = (spec: WideSpec, dir: string) => {
             </Sequence>
           );
         })}
+        {(spec.steps ?? []).map((b) => (
+          <Sequence key={b.id} from={b.from} durationInFrames={b.frames} name={`steps ${b.from}`}>
+            <StepsBlock b={b} wide />
+          </Sequence>
+        ))}
         <LeftText spec={spec} gallery={gallery} />
         {spec.card && (
           <Sequence from={spec.card.from} name="end card">
@@ -294,9 +353,10 @@ export const makeWide = (spec: WideSpec, dir: string) => {
           </Sequence>
         )}
         <FilmGrain opacity={0.035} />
-        {spec.audio && <Audio src={staticFile(`audio/markhor-${dir}-mix.wav`)} />}
+        {spec.audio && <Audio src={staticFile(audio)} />}
       </AbsoluteFill>
     </Themed>
+    </BrandProvider>
   );
   return Comp;
 };
@@ -312,7 +372,7 @@ export const makeWideHero = (spec: HeroSpec, dir: string) => {
   const Clip: React.FC<{s: ShotSpec; frozen?: boolean}> = ({s, frozen}) => {
     const body = (
       <Sequence durationInFrames={s.frames + TAIL}>
-        <Footage src={`segments/markhor/${dir}/${s.id}.mp4`} scale={s.scale ?? 1.03} drift={s.drift ?? [1, 1.04]} origin={s.origin} />
+        <Footage src={segPath(dir, s.id)} scale={s.scale ?? 1.03} drift={s.drift ?? [1, 1.04]} origin={s.origin} />
       </Sequence>
     );
     return <Canvas w={slotW} h={1080}>{frozen ? <Freeze frame={0}>{body}</Freeze> : body}</Canvas>;

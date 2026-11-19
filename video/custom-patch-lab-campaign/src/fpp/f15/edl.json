@@ -1,0 +1,560 @@
+{
+ "fps": 30,
+ "durationInFrames": 450,
+ "studio": false,
+ "audio": true,
+ "shots": [
+  {
+   "kind": "shot",
+   "id": "a1",
+   "source": "v3.mp4",
+   "srcIn": 0.2,
+   "srcOut": 0.47,
+   "frames": 8,
+   "interp": false,
+   "trans": "cut",
+   "from": 0
+  },
+  {
+   "kind": "shot",
+   "id": "a2",
+   "source": "m21.mp4",
+   "srcIn": 1.7,
+   "srcOut": 1.97,
+   "frames": 8,
+   "interp": false,
+   "trans": "cut",
+   "from": 8
+  },
+  {
+   "kind": "shot",
+   "id": "a3",
+   "source": "m10.mp4",
+   "srcIn": 1.7,
+   "srcOut": 1.97,
+   "frames": 8,
+   "interp": false,
+   "trans": "cut",
+   "from": 16
+  },
+  {
+   "kind": "shot",
+   "id": "a4",
+   "source": "m26.mp4",
+   "srcIn": 1.6,
+   "srcOut": 1.87,
+   "frames": 8,
+   "interp": false,
+   "trans": "cut",
+   "from": 24
+  },
+  {
+   "kind": "shot",
+   "id": "a5",
+   "source": "f05.mp4",
+   "srcIn": 0.0,
+   "srcOut": 1.9,
+   "frames": 58,
+   "interp": false,
+   "trans": "impact",
+   "drift": [
+    1.0,
+    1.08
+   ],
+   "from": 32
+  },
+  {
+   "kind": "shot",
+   "id": "b1",
+   "source": "m28.mp4",
+   "srcIn": 1.6,
+   "srcOut": 2.1,
+   "frames": 15,
+   "interp": false,
+   "trans": "punch",
+   "from": 90
+  },
+  {
+   "kind": "shot",
+   "id": "b2",
+   "source": "m20.mp4",
+   "srcIn": 1.6,
+   "srcOut": 2.1,
+   "frames": 15,
+   "interp": false,
+   "trans": "punch",
+   "from": 105
+  },
+  {
+   "kind": "shot",
+   "id": "b3",
+   "source": "f01.mp4",
+   "srcIn": 3.1,
+   "srcOut": 3.6,
+   "frames": 15,
+   "interp": false,
+   "trans": "punch",
+   "scale": 1.22,
+   "origin": {
+    "x": 540,
+    "y": 700
+   },
+   "from": 120
+  },
+  {
+   "kind": "shot",
+   "id": "b4",
+   "source": "v3.mp4",
+   "srcIn": 2.0,
+   "srcOut": 2.5,
+   "frames": 15,
+   "interp": false,
+   "trans": "punch",
+   "from": 135
+  },
+  {
+   "kind": "shot",
+   "id": "b5",
+   "source": "v3.mp4",
+   "srcIn": 6.4,
+   "srcOut": 6.9,
+   "frames": 15,
+   "interp": false,
+   "trans": "punch",
+   "from": 150
+  },
+  {
+   "kind": "shot",
+   "id": "b6",
+   "source": "f09.mp4",
+   "srcIn": 0.8,
+   "srcOut": 1.3,
+   "frames": 15,
+   "interp": false,
+   "trans": "punch",
+   "from": 165
+  },
+  {
+   "kind": "shot",
+   "id": "b7",
+   "source": "f08.mp4",
+   "srcIn": 0.4,
+   "srcOut": 0.9,
+   "frames": 15,
+   "interp": false,
+   "trans": "punch",
+   "from": 180
+  },
+  {
+   "kind": "shot",
+   "id": "b8",
+   "source": "f07.mp4",
+   "srcIn": 0.3,
+   "srcOut": 0.8,
+   "frames": 15,
+   "interp": false,
+   "trans": "punch",
+   "from": 195
+  },
+  {
+   "kind": "shot",
+   "id": "e1",
+   "source": "v3.mp4",
+   "srcIn": 6.2,
+   "srcOut": 8.0,
+   "frames": 60,
+   "interp": false,
+   "trans": "impact",
+   "drift": [
+    1.0,
+    1.06
+   ],
+   "from": 330
+  }
+ ],
+ "web": [],
+ "steps": [
+  {
+   "kind": "steps",
+   "id": "order",
+   "frames": 120,
+   "title": [
+    [
+     {
+      "t": "ORDER",
+      "at": 212,
+      "hi": false
+     },
+     {
+      "t": "IN",
+      "at": 216,
+      "hi": false
+     },
+     {
+      "t": "3",
+      "at": 220,
+      "hi": false
+     },
+     {
+      "t": "STEPS.",
+      "at": 224,
+      "hi": true
+     }
+    ]
+   ],
+   "steps": [
+    {
+     "at": 222,
+     "n": "01",
+     "title": "SEND YOUR DESIGN",
+     "sub": "Your logo or artwork",
+     "icon": "upload"
+    },
+    {
+     "at": 250,
+     "n": "02",
+     "title": "CHOOSE SIZE & QUANTITY",
+     "sub": "Tell us what you need",
+     "icon": "size"
+    },
+    {
+     "at": 278,
+     "n": "03",
+     "title": "GET YOUR CUSTOM QUOTE",
+     "sub": "At futurepvcpatch.com",
+     "icon": "quote"
+    }
+   ],
+   "urlAt": 300,
+   "from": 210
+  }
+ ],
+ "cuts": [
+  8,
+  16,
+  24,
+  32,
+  90,
+  105,
+  120,
+  135,
+  150,
+  165,
+  180,
+  195,
+  210,
+  330,
+  390
+ ],
+ "text": [
+  {
+   "type": "headline",
+   "from": 0,
+   "to": 45,
+   "top": 250,
+   "size": 136,
+   "sizes": null,
+   "dark": false,
+   "lines": [
+    [
+     {
+      "t": "YOUR",
+      "at": 0,
+      "hi": false
+     },
+     {
+      "t": "LOGO.",
+      "at": 4,
+      "hi": false
+     }
+    ]
+   ]
+  },
+  {
+   "type": "headline",
+   "from": 45,
+   "to": 90,
+   "top": 250,
+   "size": 160,
+   "sizes": null,
+   "dark": false,
+   "lines": [
+    [
+     {
+      "t": "IN",
+      "at": 46,
+      "hi": false
+     },
+     {
+      "t": "3D.",
+      "at": 50,
+      "hi": true
+     }
+    ]
+   ]
+  },
+  {
+   "type": "headline",
+   "from": 90,
+   "to": 210,
+   "top": 250,
+   "size": 92,
+   "sizes": null,
+   "dark": false,
+   "lines": [
+    [
+     {
+      "t": "CUSTOM",
+      "at": 92,
+      "hi": false
+     },
+     {
+      "t": "PVC",
+      "at": 96,
+      "hi": true
+     },
+     {
+      "t": "PATCHES",
+      "at": 100,
+      "hi": false
+     }
+    ],
+    [
+     {
+      "t": "FOR",
+      "at": 120,
+      "hi": false
+     },
+     {
+      "t": "BRANDS,",
+      "at": 124,
+      "hi": false
+     }
+    ],
+    [
+     {
+      "t": "TEAMS",
+      "at": 140,
+      "hi": false
+     },
+     {
+      "t": "&",
+      "at": 144,
+      "hi": false
+     },
+     {
+      "t": "BUSINESSES.",
+      "at": 148,
+      "hi": true
+     }
+    ]
+   ]
+  },
+  {
+   "type": "headline",
+   "from": 332,
+   "to": 390,
+   "top": 250,
+   "size": 116,
+   "sizes": null,
+   "dark": false,
+   "lines": [
+    [
+     {
+      "t": "BUILT",
+      "at": 334,
+      "hi": false
+     },
+     {
+      "t": "FOR",
+      "at": 338,
+      "hi": false
+     }
+    ],
+    [
+     {
+      "t": "WHAT'S",
+      "at": 342,
+      "hi": false
+     },
+     {
+      "t": "NEXT.",
+      "at": 348,
+      "hi": true
+     }
+    ]
+   ]
+  }
+ ],
+ "card": {
+  "headline": [
+   [
+    "YOUR",
+    0
+   ],
+   [
+    "LOGO.",
+    3
+   ],
+   [
+    "IN",
+    7
+   ],
+   [
+    "3D.",
+    10,
+    true
+   ]
+  ],
+  "cta": "GET YOUR CUSTOM QUOTE",
+  "variant": "navy",
+  "enter": "impact",
+  "len": 60,
+  "from": 390
+ },
+ "vo": [
+  {
+   "at": 0.2,
+   "to": 2.6,
+   "line": "Your logo. In 3D."
+  },
+  {
+   "at": 3.0,
+   "to": 6.8,
+   "line": "Custom PVC patches for brands, teams and businesses."
+  },
+  {
+   "at": 7.2,
+   "to": 10.8,
+   "line": "Send your design and get your custom quote at futurepvcpatch.com."
+  },
+  {
+   "at": 11.2,
+   "to": 14.4,
+   "line": "Future PVC Patch. Built for what's next."
+  }
+ ],
+ "sound": {
+  "sections": [
+   [
+    0,
+    90,
+    "hook"
+   ],
+   [
+    90,
+    210,
+    "full"
+   ],
+   [
+    210,
+    330,
+    "half"
+   ],
+   [
+    330,
+    390,
+    "build"
+   ],
+   [
+    390,
+    450,
+    "tail"
+   ]
+  ],
+  "machine": [],
+  "foley": {
+   "a5": "pvc",
+   "e1": "pvc"
+  }
+ },
+ "wide": [
+  {
+   "mode": "panel",
+   "from": 0,
+   "to": 90
+  },
+  {
+   "mode": "gallery",
+   "from": 90,
+   "to": 210,
+   "groups": [
+    {
+     "shots": [
+      "b1",
+      "b2"
+     ],
+     "word": null,
+     "sub": null
+    },
+    {
+     "shots": [
+      "b3",
+      "b4"
+     ],
+     "word": null,
+     "sub": null
+    },
+    {
+     "shots": [
+      "b5",
+      "b6"
+     ],
+     "word": null,
+     "sub": null
+    },
+    {
+     "shots": [
+      "b7",
+      "b8"
+     ],
+     "word": null,
+     "sub": null
+    }
+   ],
+   "title": [
+    [
+     [
+      "CUSTOM",
+      92
+     ],
+     [
+      "PVC",
+      96,
+      true
+     ],
+     [
+      "PATCHES",
+      100
+     ],
+     [
+      "FOR",
+      120
+     ],
+     [
+      "BRANDS,",
+      124
+     ],
+     [
+      "TEAMS",
+      140
+     ],
+     [
+      "&",
+      144
+     ],
+     [
+      "BUSINESSES.",
+      148,
+      true
+     ]
+    ]
+   ]
+  },
+  {
+   "mode": "panel",
+   "from": 330,
+   "to": 390
+  }
+ ]
+}

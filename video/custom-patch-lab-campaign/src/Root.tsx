@@ -42,6 +42,7 @@ import {HyperReel04} from './markhor/h4/HyperReel04';
 import edlHY4 from './markhor/h4/edl.json';
 import {COMMERCIALS} from './markhor/commercials';
 import {FLAGSHIP} from './markhor/flagships';
+import {FPP_COMPS} from './fpp/compositions';
 import {BillysReel15} from './billys/reel15/BillysReel15';
 import edlBR15 from './billys/reel15/edl.json';
 import {BillysReelLaser} from './billys/reel15laser/BillysReelLaser';
@@ -86,6 +87,11 @@ export const RemotionRoot: React.FC = () => (
   <Folder name="Markhor-Flagship">
     {FLAGSHIP.map((c) => (
       <Composition key={c.id} id={c.id} component={c.Comp} durationInFrames={c.spec.durationInFrames} fps={30} width={c.width} height={c.height} />
+    ))}
+  </Folder>
+  <Folder name="Future-PVC-Patch">
+    {FPP_COMPS.map((c) => (
+      <Composition key={c.id} id={c.id} component={c.Comp} durationInFrames={c.durationInFrames} fps={30} width={c.width} height={c.height} />
     ))}
   </Folder>
   <Folder name="EPCF-Excellence-Punch">
