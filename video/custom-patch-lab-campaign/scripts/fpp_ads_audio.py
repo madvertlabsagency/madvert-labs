@@ -1,22 +1,19 @@
-"""Future PVC Patch Meta ads — full soundtrack: original music + SFX + foley + VO.
+"""Future PVC Patch Meta ads — soundtrack. NO MUSIC (client requirement): no melody,
+no chords, no bass notes, no synths, no bells. Only:
+  daf     frame drum (dum / tak / ka / rolls, no jingles) for all rhythm, and
+          hand claps; section patterns come from the spec's `music` list, each
+          section restarting its grid so the big daf hits land on the reveal cuts.
+  voice   natural, unpitched vocal sounds only — breaths, inhales before drops,
+          whispered "hah" exhales, a chest "hup" — never words, never pitched.
+  DOOF    on every product reveal: a doubled daf dum + low thump + soft boom.
+  sfx     whooshes / impacts / clicks on cuts and type, UI clicks in the website
+          funnel (no chimes), CTA and end-card hits.
+  foley   fabric, cap, PVC taps/flex, leather, handling, pencil, and the
+          embroidery machine's own recorded audio; light workshop ambience.
+  vo      (ads 1–2) high-pass, gentle compression, presence; the daf ducks
+          ~9 dB and sfx ~4 dB under the voice. Loudness: build-audio.sh.
 
     python3 -I scripts/sound-design-fpp-a40.py out.wav   (via scripts/build-audio.sh fpp-a40 -14 -1.5)
-
-Everything is synthesized here (no samples, no licensed music):
-  music   modern premium groove in F minor (i–VI–III–VII), kick / clap / hats /
-          808 bass / chord stabs / pads, plus short wordless vocal chops
-          (formant-synthesized "ah/oh" — no words). Section modes come from the
-          spec's `music` list; each section restarts the bar grid so drops land
-          exactly on the reveal cuts. Risers + reverse swells + a short gap
-          before every drop, an impact on it.
-  sfx     per cut (whoosh / punch / impact by transition type), accents on
-          kinetic type and slams, UI clicks + upload chime in the website funnel,
-          CTA impact + chime, end-card hit.
-  foley   fabric, cap, PVC taps/flex, leather, handling, gift box, pencil, and the
-          embroidery machine's own recorded audio on the needle shots; light
-          workshop ambience under the product sections.
-  vo      high-pass, gentle compression, presence lift; music ducks ~9 dB and
-          sfx ~4 dB under the voice. Loudness is set afterwards by build-audio.sh.
 """
 import json
 import os
@@ -68,34 +65,34 @@ def limit(x, SR, thr_db=-8.0, release=0.08):
     return x / np.maximum(env, 1.0)[:, None]
 
 
-# ---------------------------------------------------------------- instruments
-def vchop(f0, dur, vowel='ah', SR=48000):
-    """Wordless vocal chop: harmonic source shaped by vowel formants (no words)."""
-    F = {'ah': [(730, 90, 1.0), (1090, 110, 0.55), (2440, 160, 0.22)],
-         'oh': [(570, 80, 1.0), (840, 100, 0.6), (2410, 170, 0.15)],
-         'eh': [(530, 80, 1.0), (1840, 120, 0.45), (2480, 160, 0.2)]}[vowel]
+# ---------------------------------------------------------------- natural vocal sounds (unpitched)
+FORMANTS = {'ah': [(730, 140, 1.0), (1090, 160, 0.6), (2440, 260, 0.3)],
+            'oh': [(570, 120, 1.0), (840, 140, 0.6), (2410, 260, 0.2)],
+            'eh': [(530, 120, 1.0), (1840, 200, 0.5), (2480, 260, 0.25)]}
+
+
+def whisper(dur, vowel='ah', att=0.015, decay=0.35):
+    """Whispered (unvoiced) vowel: breath noise shaped by vowel formants — no pitch."""
     t = t_axis(dur)
-    vib = 1 + 0.006 * np.sin(2 * np.pi * 5.5 * t) * np.minimum(1, t / 0.15)
-    ph = 2 * np.pi * np.cumsum(f0 * vib) / SR
-    x = np.zeros_like(t)
-    for h in range(1, int(5000 / f0)):
-        fh = h * f0
-        amp = sum(g * np.exp(-((fh - fc) / bw) ** 2) for fc, bw, g in F) + 0.02 / h
-        x += amp * np.sin(h * ph)
-    breath = filt(noise(dur), 'bandpass', [1800, 6000]) * 0.02
-    env = np.minimum(1, t / 0.012) * np.exp(-np.maximum(0, t - dur * 0.55) / (dur * 0.18))
-    return norm(x + breath) * env * 0.5
+    x = sum(g * filt(noise(dur), 'bandpass', [fc - bw, fc + bw]) for fc, bw, g in FORMANTS[vowel])
+    x = x + filt(noise(dur), 'bandpass', [3000, 7000]) * 0.15
+    env = np.minimum(1, t / att) * np.exp(-t / (dur * decay))
+    return norm(x) * env * 0.5
 
 
-def stab(freqs, dur=0.22):
+def hah():
+    return whisper(0.24, 'ah', 0.006, 0.3)
+
+
+def inhale(dur):
     t = t_axis(dur)
-    x = sum(np.sign(np.sin(2 * np.pi * f * t)) * 0.3 + np.sin(2 * np.pi * f * 2 * t) * 0.2 for f in freqs)
-    x = filt(x, 'lowpass', 2600)
-    return x * np.exp(-t / 0.09) * np.minimum(1, t / 0.004) * 0.18
+    x = filt(noise(dur), 'bandpass', [900, 5200])
+    return norm(x) * (t / dur) ** 1.8 * np.exp(-np.maximum(0, t - dur * 0.92) / 0.02) * 0.4
 
 
-def chime(freqs, dur=0.9):
-    return sum(sfxlib.bell(f, dur, 0.7) for f in freqs) * 0.9
+def hup():
+    t = t_axis(0.16)
+    return norm(filt(noise(0.16), 'bandpass', [120, 700])) * np.minimum(1, t / 0.004) * np.exp(-t / 0.04) * 0.6
 
 
 def build(cut, out):
@@ -114,136 +111,101 @@ def build(cut, out):
     S16 = BEAT / 4
     note = sfxlib.note
 
-    drums, bass, harm, vox, fx, foley, amb = bus(), bus(), bus(), bus(), bus(), bus(), bus()
-    # F minor: i – VI – III – VII
-    PROG = [(41, [53, 56, 60]), (37, [49, 53, 56]), (44, [56, 60, 63]), (39, [51, 55, 58])]
+    daf, vox, fx, foley, amb = bus(), bus(), bus(), bus(), bus()
 
-    def chord_at(bar):
-        return PROG[bar % 4]
+    def D(at, g=1.0, pan=0.0):
+        place(daf, nx.daf_dum(1.0), at, 0.9 * g, pan=pan)
 
+    def T(at, g=1.0):
+        place(daf, nx.daf_tak(0.95), at, 0.7 * g, pan=float(rng.uniform(-0.2, 0.2)))
+
+    def K(at, g=1.0):
+        place(daf, nx.daf_ka(1.0), at, 0.6 * g, pan=float(rng.uniform(-0.3, 0.3)))
+
+    def CLAP(at, g=1.0):
+        place(daf, sfxlib.clap(), at, 0.32 * g, pan=float(rng.uniform(-0.25, 0.25)))
+
+    # 16-step daf patterns (D dum, T tak, k ka, . rest)
+    PAT = {
+        'drop':  'D.k.T.kkD.k.T.k.',   # maqsum with ka ghosts
+        'drop2': 'D.kTk.T.D.kTk.Tk',   # busier, syncopated
+        'hook':  'DkkTkDkTDkkTkDTk',
+        'groove': 'D...T..kD.k.T...',  # baladi, light
+        'half':  'D.......T...k...',
+        'outro': 'D...T.k.D.k.T...',
+        'intro': '..k...k...k...k.',
+        'reveal': '........T.......',
+    }
     for a, b, mode in spec['music']:
-        bars = int(np.ceil((b - a) / (4 * BEAT)))
-        for bar in range(bars):
-            root, ch = chord_at(bar)
-            for s16 in range(16):
-                tt = a + bar * 4 * BEAT + s16 * S16
-                if tt >= b - 0.02:
-                    break
-                beat = s16 // 4
-                on = s16 % 4 == 0
-                if mode in ('drop', 'drop2', 'hook'):
-                    if on:
-                        place(drums, sfxlib.kick(1.05), tt, 0.85)
-                    if s16 in (4, 12):
-                        place(drums, sfxlib.clap(), tt, 0.5)
-                    place(drums, sfxlib.hat(open_=(s16 % 4 == 2)), tt, 0.32 if s16 % 2 else 0.2, pan=0.25 if s16 % 2 else -0.15)
-                    if s16 in (0, 6, 10) or (mode == 'hook' and s16 in (3, 8, 14)):
-                        place(bass, sfxlib.sub808(note(root - 12 + 12), 0.36 if s16 else 0.5), tt, 0.5)
-                    if s16 in (2, 7, 10, 15) and mode != 'hook':
-                        place(harm, stab([note(n) for n in ch]), tt, 0.55, pan=-0.3 if s16 % 2 else 0.3)
-                    if mode == 'drop2' and s16 in (3, 11):
-                        place(drums, sfxlib.rim(), tt, 0.35, pan=0.4)
-                    # vocal chops: syncopated "ah/oh" on chord tones
-                    if (mode in ('drop', 'drop2') and s16 in (3, 6, 14)) or (mode == 'hook' and s16 in (6, 14)):
-                        n = ch[(s16 + bar) % 3] + 12
-                        place(vox, vchop(note(n), 0.16 if s16 != 14 else 0.28, 'ah' if s16 != 6 else 'oh', SR), tt, 0.32, pan=float(rng.uniform(-0.35, 0.35)))
-                elif mode == 'groove':
-                    if s16 in (0, 10) or (s16 == 8 and bar % 2):
-                        place(drums, sfxlib.kick(0.95), tt, 0.75)
-                    if s16 in (4, 12):
-                        place(drums, sfxlib.clap(), tt, 0.42)
-                    if s16 % 2 == 0:
-                        place(drums, sfxlib.hat(), tt, 0.2, pan=0.2)
-                    if s16 in (0, 10):
-                        place(bass, sfxlib.sub808(note(root), 0.55), tt, 0.45)
-                    if s16 in (0, 3, 6, 8, 11, 14):
-                        place(harm, sfxlib.pluck(note(ch[(s16 // 3) % 3] + 12), 0.4), tt, 0.32, pan=0.3 if s16 % 2 else -0.3)
-                elif mode == 'half':
-                    if s16 == 0 or (s16 == 10 and bar % 2):
-                        place(drums, sfxlib.kick(0.9), tt, 0.62)
-                    if s16 == 8:
-                        place(drums, sfxlib.clap(), tt, 0.38)
-                    if s16 % 2 == 0:
-                        place(drums, sfxlib.hat(), tt, 0.14, pan=-0.2)
-                    if s16 == 0:
-                        place(bass, sfxlib.sub808(note(root), BEAT * 3.5), tt, 0.4)
-                    if s16 in (0, 6, 12):
-                        place(harm, sfxlib.pluck(note(ch[s16 // 6 % 3] + 24), 0.35), tt, 0.18, pan=0.35)
-                elif mode == 'intro':
-                    if s16 % 4 == 2:
-                        place(drums, sfxlib.hat(), tt, 0.14)
-                    if on and beat == 0:
-                        place(bass, sfxlib.sub808(note(root), BEAT * 2), tt, 0.32)
-                elif mode == 'tension':
-                    k = (tt - a) / max(0.01, b - a)
-                    step = 4 if k < 0.45 else (2 if k < 0.8 else 1)
-                    if s16 % step == 0:
-                        place(drums, sfxlib.hat(), tt, 0.1 + 0.22 * k, pan=0.2 if s16 % 2 else -0.2)
-                    if s16 in (0, 8):
-                        place(drums, sfxlib.kick(0.7), tt, 0.3 + 0.25 * k)  # heartbeat
-                    if s16 == 0:
-                        place(bass, sfxlib.sub808(note(root), BEAT * 3), tt, 0.25)
-                    if k > 0.5 and s16 % 2 == 0:
-                        place(drums, sfxlib.clap(), tt, 0.08 + 0.25 * (k - 0.5) * 2)
-                elif mode == 'build':
-                    k = (tt - a) / max(0.01, b - a)
-                    step = 4 if k < 0.5 else (2 if k < 0.8 else 1)
-                    if s16 % step == 0:
-                        place(drums, sfxlib.clap(), tt, 0.18 + 0.3 * k)
-                    if on:
-                        place(drums, sfxlib.kick(0.8), tt, 0.4 + 0.3 * k)
-                elif mode == 'reveal':
-                    if s16 % 4 == 2 and bar >= 1:
-                        place(drums, sfxlib.hat(), tt, 0.12)
-                    if on and beat in (0, 2) and bar >= 1:
-                        place(drums, sfxlib.kick(0.8), tt, 0.4)
-                elif mode == 'outro':  # end card: lighter groove that keeps the energy up under the CTA
-                    if s16 in (0, 8) or (s16 == 10 and bar % 2):
-                        place(drums, sfxlib.kick(0.9), tt, 0.55)
-                    if s16 in (4, 12):
-                        place(drums, sfxlib.clap(), tt, 0.32)
-                    if s16 % 2 == 0:
-                        place(drums, sfxlib.hat(open_=(s16 % 4 == 2)), tt, 0.16, pan=0.2)
-                    if s16 == 0:
-                        place(bass, sfxlib.sub808(note(root), BEAT * 3), tt, 0.38)
-                    if s16 in (3, 11):
-                        place(vox, vchop(note(ch[(s16 + bar) % 3] + 12), 0.16, 'ah', SR), tt, 0.22, pan=0.3 if s16 == 3 else -0.3)
-            # pads under everything except the hook
-            if mode != 'hook':
-                pl = min(4 * BEAT, b - (a + bar * 4 * BEAT))
-                if pl > 0.3:
-                    place(harm, sfxlib.pad([note(n) for n in ch], pl + 0.4), a + bar * 4 * BEAT, 0.9 if mode in ('reveal', 'intro', 'outro', 'half') else 0.55)
+        steps = int(np.ceil((b - a) / S16))
+        for j in range(steps):
+            tt = a + j * S16
+            if tt >= b - 0.02:
+                break
+            s16, bar = j % 16, j // 16
+            if mode == 'tension':  # heartbeat dum, accelerating ka, claps in the last stretch
+                k = (tt - a) / max(0.01, b - a)
+                step = 4 if k < 0.4 else (2 if k < 0.75 else 1)
+                if s16 % step == 0:
+                    K(tt, 0.35 + 0.55 * k)
+                if s16 in (0, 6):
+                    D(tt, 0.45 + 0.35 * k)
+                if k > 0.55 and s16 % 4 == 0:
+                    CLAP(tt, 0.4 + 0.8 * (k - 0.55))
+                continue
+            if mode == 'build':
+                k = (tt - a) / max(0.01, b - a)
+                step = 4 if k < 0.5 else (2 if k < 0.8 else 1)
+                if s16 % step == 0:
+                    K(tt, 0.5 + 0.5 * k); CLAP(tt, 0.3 + 0.6 * k)
+                if s16 % 8 == 0:
+                    D(tt, 0.6 + 0.3 * k)
+                continue
+            p = PAT.get(mode, PAT['groove'])[s16]
+            g = 0.75 if mode in ('half', 'intro', 'reveal') else 1.0
+            if p == 'D':
+                D(tt, g)
+            elif p == 'T':
+                T(tt, g)
+            elif p == 'k':
+                K(tt, 0.7 * g)
+            if mode in ('drop2', 'hook') and s16 in (4, 12):
+                CLAP(tt, 0.9)
+            if mode == 'drop' and s16 == 12 and bar % 2:
+                CLAP(tt, 0.7)
+            # natural vocal accents: whispered "hah" on the offbeat, chest "hup" on the one
+            if mode in ('drop', 'drop2') and s16 == 14 and bar % 2 == 0:
+                place(vox, hah(), tt, 0.5, pan=float(rng.uniform(-0.3, 0.3)))
+            if mode == 'hook' and s16 == 0:
+                place(vox, hup(), tt, 0.55)
         if mode == 'tension':
-            place(fx, sfxlib.riser(b - a + 0.1), a, 0.3)
-            place(vox, vchop(note(56), min(2.6, b - a), 'oh', SR), a + 0.2, 0.22, pan=-0.2)
-            place(vox, vchop(note(60), min(2.6, b - a - 0.6), 'oh', SR), a + 0.8, 0.2, pan=0.2)
-        if mode in ('reveal', 'outro'):
-            place(vox, vchop(note(60), 1.4, 'oh', SR), a + 0.05, 0.38)
-            place(vox, vchop(note(65), 1.4, 'ah', SR), a + 0.05, 0.28, pan=0.3)
-            place(vox, vchop(note(68), 1.4, 'ah', SR), a + 0.05, 0.2, pan=-0.3)
+            place(fx, nx.air_swell(b - a, 250, 3600), a, 0.22)
+            place(daf, nx.daf_roll(min(1.0, b - a)), b - min(1.0, b - a) - 0.05, 0.75)
+        if mode == 'build':
+            place(daf, nx.daf_roll(0.8), b - 0.85, 0.7)
+        if mode == 'reveal':
+            D(a, 1.3); D(a + 0.02, 0.8, pan=0.2)
+            place(vox, whisper(0.9, 'oh', 0.08, 0.5), a + 0.05, 0.35)
 
-    # drops: riser + reverse swell + gap, impact on the drop
+    # drops: air swell + inhale + a short silence, then the big hit
     gate = np.ones(N)
     for d in spec['drops']:
-        place(fx, sfxlib.riser(1.6), d - 1.6, 0.28)
-        place(fx, sfxlib.reverse_swell(0.7), d - 0.7, 0.35)
+        place(fx, nx.air_swell(1.4, 300, 4000), d - 1.4, 0.3)
+        place(vox, inhale(0.55), d - 0.6, 0.45)
+        place(fx, sfxlib.reverse_swell(0.7), d - 0.7, 0.3)
         g = np.clip(np.abs(t - (d - 0.09)) / 0.09, 0, 1)
-        gate *= np.where((t > d - 0.18) & (t < d), g, 1.0)  # short silence before the drop
-        place(fx, sfxlib.impact(1.2), d, 0.55)
+        gate *= np.where((t > d - 0.18) & (t < d), g, 1.0)
+        place(fx, nx.soft_hit(1.3, 1.4), d, 0.45)
         place(fx, mb.thump(1.3), d, 0.5)
 
-    # DOOF: deep bass hit + vocal stab on every product reveal
-    def doof():
-        tt = t_axis(1.3)
-        f = 38 + 70 * np.exp(-tt / 0.05)
-        body = np.tanh(np.sin(2 * np.pi * np.cumsum(f) / SR) * 2.2) * np.exp(-tt / 0.42)
-        click = filt(noise(1.3), 'bandpass', [1500, 6000]) * np.exp(-tt / 0.004) * 0.5
-        return (body + click) * np.minimum(1, tt / 0.002) * 0.9
+    # DOOF on every product reveal: doubled daf dum + low thump + soft boom + exhale
     for i, d in enumerate(spec.get('doofs', [])):
-        place(fx, doof(), d, 0.85)
-        place(fx, sfxlib.kick(1.3), d, 0.5)
-        place(vox, vchop(note([65, 68, 63, 70][i % 4]), 0.22, 'eh', SR), d + 0.01, 0.42, pan=0.0)
-        place(vox, vchop(note([77, 80, 75, 82][i % 4]), 0.18, 'ah', SR), d + BEAT * 0.75, 0.24, pan=0.35)
+        place(fx, nx.daf_dum(1.6), d, 1.0)
+        place(fx, filt(nx.daf_dum(1.6), 'lowpass', 220), d + 0.008, 0.9)
+        place(fx, mb.thump(1.4), d, 0.6)
+        place(fx, nx.soft_hit(1.5, 1.5), d, 0.5)
+        place(vox, hah(), d + 0.02, 0.55)
+        place(vox, hup(), d + BEAT * 0.75, 0.35, pan=0.3)
 
     # ---------------------------------------------------------------- cut sfx + type accents
     shots = spec['shots']
@@ -265,7 +227,7 @@ def build(cut, out):
     for tx in spec['text']:
         a = fr(tx['from'])
         if tx['type'] == 'slam':
-            place(fx, sfxlib.kick(1.1), a, 0.35); place(fx, sfxlib.clap(), a, 0.2); place(fx, sfxlib.whoosh(0.22, 800, 7000, 0.8), a - 0.12, 0.25)
+            place(fx, nx.daf_dum(1.2), a, 0.45); place(fx, nx.daf_tak(1.0), a + 0.01, 0.25); place(fx, sfxlib.whoosh(0.22, 800, 7000, 0.8), a - 0.12, 0.25)
         elif tx['type'] in ('head', 'material'):
             place(fx, sfxlib.text_swish(), a, 0.25)
             for line in tx.get('lines', []):
@@ -330,26 +292,23 @@ def build(cut, out):
             for k in range(6):  # typing the size
                 place(fx, nx.ui_click(1.8), c + 0.08 + k * 0.11, 0.16)
         if w['kind'] == 'uploaded':
-            place(fx, chime([note(84), note(91)], 0.9), c + 0.05, 0.35)  # file added
+            place(fx, nx.ui_click(1.2), c + 0.05, 0.45); place(fx, nx.ui_click(1.7), c + 0.11, 0.35)  # file added (tick-tick)
     # CTA + end card
     cta = spec.get('cta')
     if cta:
-        place(fx, sfxlib.impact(1.0), fr(cta['from']), 0.45)
+        place(fx, nx.soft_hit(1.1, 1.2), fr(cta['from']), 0.4); place(fx, nx.daf_dum(1.3), fr(cta['from']), 0.6)
         place(fx, sfxlib.whoosh(0.35, 3000, 400, 0.4), fr(cta['clickAt']), 0.3)
-        place(fx, chime([note(79), note(86), note(91)], 1.2), fr(cta['quoteAt']), 0.4)
-        place(fx, sfxlib.clap(), fr(cta['quoteAt']), 0.25)
+        place(fx, nx.daf_tak(1.2), fr(cta['quoteAt']), 0.5); place(fx, sfxlib.clap(), fr(cta['quoteAt']), 0.3); place(fx, nx.ui_click(1.4), fr(cta['quoteAt']), 0.3)
     rv = spec.get('reveal')
     if rv:
-        place(fx, sfxlib.sparkle(1.4), fr(rv['from']) + 0.1, 0.35)
+        place(fx, nx.air_swell(0.6, 400, 4200), fr(rv['from']) - 0.45, 0.25)
     card = fr(spec['card']['from'])
-    place(fx, sfxlib.impact(1.4), card, 0.6); place(fx, chime([note(77), note(84), note(89)], 1.6), card + 0.3, 0.35)
-    place(harm, stab([note(n) for n in PROG[0][1]], 0.6), card, 0.7)
+    place(fx, nx.soft_hit(1.4, 1.5), card, 0.5); place(fx, nx.daf_dum(1.5), card, 0.8); place(fx, mb.thump(1.2), card, 0.4)
     if not cta:  # no separate CTA block: the end card carries CLICK BELOW + the quote pill
         place(fx, sfxlib.whoosh(0.35, 3000, 400, 0.4), card + fr(12), 0.3)
-        place(fx, chime([note(79), note(86), note(91)], 1.2), card + fr(20), 0.38)
-        place(fx, sfxlib.clap(), card + fr(20), 0.25)
+        place(fx, nx.daf_tak(1.2), card + fr(20), 0.5); place(fx, sfxlib.clap(), card + fr(20), 0.3)
 
-    music = (drums + bass * 1.1 + harm + vox) * gate[:, None]
+    music = (daf + vox) * gate[:, None]
 
     # ---------------------------------------------------------------- voiceover
     V = np.zeros((N, 2))

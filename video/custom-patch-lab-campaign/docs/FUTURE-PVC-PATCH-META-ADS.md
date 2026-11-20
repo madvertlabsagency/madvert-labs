@@ -67,22 +67,16 @@ Hand holds the patch close while the music builds (heartbeat kick, accelerating 
   - DOOF → IMPOSSIBLE TO MISS.
   - MADE TO ROAR. / YOUR BRAND. IN 3D.
 
-## Sound design (all four)
-Everything is synthesized here (no samples, no licensed music).
-- **Music:** an original F-minor groove with kick, clap, 16th hats, 808 bass, chord stabs, pads and plucks. Each section restarts the bar grid, so drops land exactly on the reveal cuts. Risers, reverse swells and a short silence come before every drop, with an impact on it.
-- **Vocals:** wordless formant-synthesized "ah/oh/eh" chops and stabs. They carry no words, so nothing competes with the voiceover.
-- **SFX:**
-  - whooshes on whips and zooms;
-  - punch/impact hits on cuts;
-  - accents on kinetic type and slams;
-  - UI clicks on every website tap, typing ticks on the size step and a soft chime when the artwork file is added;
-  - a CTA impact with a bright chime.
-- **Foley:**
-  - fabric on jackets, shirts and caps;
-  - PVC taps and flexes, patch handling and finger movement;
-  - leather, pencil and brush sounds;
-  - the real embroidery machine's recorded audio under the needle shots, plus light workshop ambience.
-- **Voiceover (ads 1–2):** high-pass, 3:1 compression and a presence lift. The music ducks about 9 dB under the voice and the SFX about 4 dB. A slow leveler keeps every section at an even loudness.
+## Sound design (all four) — NO MUSIC
+At the client's requirement, there is no music of any kind: no melody, chords, bass notes, synths, pads or bells. Everything is synthesized here (no samples):
+- **Rhythm:** daf only (dum / tak / ka / rolls, no jingles), plus hand claps.
+  - Patterns per section: maqsum and baladi grooves with ka ghost notes, half-time under the website steps, accelerating ka and a heartbeat dum in the build-ups, and a daf roll into every drop.
+- **DOOF on every product reveal:** a doubled daf dum, a low thump, a soft boom and a whispered "hah" exhale. A short silence and an inhale come just before each drop.
+- **Natural vocal sounds:** unpitched only (breaths, inhales, whispered "hah", a chest "hup"). No words and no sung notes.
+- **SFX:** whooshes and impacts on cuts, daf accents on the kinetic slams, UI clicks and typing ticks in the website funnel, a "tick-tick" when the artwork file is added (no chimes), and daf and boom hits on the CTA and end card.
+- **Foley:** fabric, caps, PVC taps and flexes, patch handling, leather, pencil and brush sounds, and the real embroidery machine's recorded audio, with light workshop ambience.
+- **Voiceover (ads 1–2):** high-pass, 3:1 compression and a presence lift. The daf ducks about 9 dB under the voice, and a slow leveler keeps the loudness even.
+- **Check:** a spectral analysis of all four mixes finds no sustained tonal content.
 
 ## Website funnel (real recording): what is and isn't shown
 **Shown**
