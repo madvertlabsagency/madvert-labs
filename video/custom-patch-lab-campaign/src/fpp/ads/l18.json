@@ -1,0 +1,401 @@
+{
+ "fps": 30,
+ "durationInFrames": 540,
+ "style": "aggressive",
+ "bpm": 124,
+ "vo": null,
+ "voFile": "fpp-l18",
+ "shots": [
+  {
+   "id": "l01",
+   "source": "n5.mp4",
+   "frames": 58,
+   "srcIn": 0.0,
+   "srcOut": 2.6,
+   "trans": "cut",
+   "interp": false,
+   "drift": [
+    1.0,
+    1.1
+   ],
+   "from": 0
+  },
+  {
+   "id": "l02",
+   "source": "n5.mp4",
+   "frames": 58,
+   "srcIn": 2.8,
+   "srcOut": 5.2,
+   "trans": "zoom",
+   "interp": false,
+   "drift": [
+    1.05,
+    1.18
+   ],
+   "from": 58
+  },
+  {
+   "id": "l03",
+   "source": "n1.mp4",
+   "frames": 29,
+   "srcIn": 0.0,
+   "srcOut": 1.0,
+   "trans": "impact",
+   "interp": false,
+   "drift": [
+    1.0,
+    1.06
+   ],
+   "from": 116
+  },
+  {
+   "id": "l04",
+   "source": "n1.mp4",
+   "frames": 22,
+   "srcIn": 3.9,
+   "srcOut": 5.6,
+   "trans": "punch",
+   "interp": true,
+   "from": 145
+  },
+  {
+   "id": "l05",
+   "source": "n1.mp4",
+   "frames": 7,
+   "srcIn": 6.2,
+   "srcOut": 7.0,
+   "trans": "punch",
+   "interp": false,
+   "scale": 1.12,
+   "from": 167
+  },
+  {
+   "id": "l06",
+   "source": "n3.mp4",
+   "frames": 29,
+   "srcIn": 5.5,
+   "srcOut": 6.7,
+   "trans": "impact",
+   "interp": false,
+   "from": 174
+  },
+  {
+   "id": "l07",
+   "source": "n3.mp4",
+   "frames": 22,
+   "srcIn": 0.0,
+   "srcOut": 0.9,
+   "trans": "whip",
+   "interp": false,
+   "drift": [
+    1.04,
+    1.0
+   ],
+   "from": 203
+  },
+  {
+   "id": "l08",
+   "source": "n5.mp4",
+   "frames": 7,
+   "srcIn": 6.0,
+   "srcOut": 6.6,
+   "trans": "punch",
+   "interp": false,
+   "from": 225
+  },
+  {
+   "id": "l09",
+   "source": "n1.mp4",
+   "frames": 29,
+   "srcIn": 6.4,
+   "srcOut": 7.9,
+   "trans": "impact",
+   "interp": false,
+   "drift": [
+    1.0,
+    1.1
+   ],
+   "from": 232
+  },
+  {
+   "id": "l10",
+   "source": "n5.mp4",
+   "frames": 29,
+   "srcIn": 5.2,
+   "srcOut": 6.4,
+   "trans": "whip",
+   "interp": false,
+   "from": 261
+  },
+  {
+   "id": "l11",
+   "source": "n3.mp4",
+   "frames": 11,
+   "srcIn": 7.0,
+   "srcOut": 7.4,
+   "trans": "cut",
+   "interp": false,
+   "from": 290
+  },
+  {
+   "id": "l12",
+   "source": "n1.mp4",
+   "frames": 11,
+   "srcIn": 5.0,
+   "srcOut": 5.4,
+   "trans": "cut",
+   "interp": false,
+   "from": 301
+  },
+  {
+   "id": "l13",
+   "source": "n5.mp4",
+   "frames": 11,
+   "srcIn": 3.0,
+   "srcOut": 3.4,
+   "trans": "cut",
+   "interp": false,
+   "from": 312
+  },
+  {
+   "id": "l14",
+   "source": "n3.mp4",
+   "frames": 11,
+   "srcIn": 6.1,
+   "srcOut": 6.5,
+   "trans": "cut",
+   "interp": false,
+   "from": 323
+  },
+  {
+   "id": "l15",
+   "source": "n1.mp4",
+   "frames": 7,
+   "srcIn": 7.2,
+   "srcOut": 7.6,
+   "trans": "cut",
+   "interp": false,
+   "from": 334
+  },
+  {
+   "id": "l16",
+   "source": "n5.mp4",
+   "frames": 7,
+   "srcIn": 1.0,
+   "srcOut": 1.4,
+   "trans": "cut",
+   "interp": false,
+   "from": 341
+  },
+  {
+   "id": "l17",
+   "source": "n3.mp4",
+   "frames": 58,
+   "srcIn": 6.7,
+   "srcOut": 7.9,
+   "trans": "impact",
+   "interp": true,
+   "drift": [
+    1.08,
+    1.0
+   ],
+   "from": 348
+  }
+ ],
+ "desk": [],
+ "text": [
+  {
+   "type": "head",
+   "from": 6,
+   "to": 57,
+   "top": 300,
+   "size": 140,
+   "lines": [
+    [
+     {
+      "t": "YOUR",
+      "at": 9,
+      "hi": false
+     },
+     {
+      "t": "LOGO.",
+      "at": 15,
+      "hi": true
+     }
+    ]
+   ]
+  },
+  {
+   "type": "slam",
+   "from": 58,
+   "to": 72,
+   "text": "BOLD.",
+   "size": 220,
+   "top": 300,
+   "sub": null
+  },
+  {
+   "type": "slam",
+   "from": 73,
+   "to": 86,
+   "text": "RAISED.",
+   "size": 210,
+   "top": 300,
+   "sub": null
+  },
+  {
+   "type": "slam",
+   "from": 87,
+   "to": 101,
+   "text": "MOLDED.",
+   "size": 200,
+   "top": 300,
+   "sub": null
+  },
+  {
+   "type": "slam",
+   "from": 102,
+   "to": 115,
+   "text": "IN 3D.",
+   "size": 220,
+   "top": 300,
+   "sub": null
+  },
+  {
+   "type": "slam",
+   "from": 116,
+   "to": 144,
+   "text": "VARSITY.",
+   "size": 190,
+   "top": 300,
+   "sub": "ON YOUR"
+  },
+  {
+   "type": "slam",
+   "from": 174,
+   "to": 202,
+   "text": "CAP.",
+   "size": 230,
+   "top": 300,
+   "sub": "ON YOUR"
+  },
+  {
+   "type": "slam",
+   "from": 232,
+   "to": 260,
+   "text": "TO MISS.",
+   "size": 180,
+   "top": 300,
+   "sub": "IMPOSSIBLE"
+  },
+  {
+   "type": "slam",
+   "from": 290,
+   "to": 347,
+   "text": "MADE TO ROAR.",
+   "size": 140,
+   "top": 300,
+   "sub": null
+  },
+  {
+   "type": "head",
+   "from": 348,
+   "to": 405,
+   "top": 280,
+   "size": 124,
+   "lines": [
+    [
+     {
+      "t": "YOUR",
+      "at": 351,
+      "hi": false
+     },
+     {
+      "t": "BRAND.",
+      "at": 359,
+      "hi": false
+     }
+    ],
+    [
+     {
+      "t": "IN",
+      "at": 363,
+      "hi": false
+     },
+     {
+      "t": "3D.",
+      "at": 370,
+      "hi": true
+     }
+    ]
+   ]
+  }
+ ],
+ "card": {
+  "from": 406,
+  "variant": "made"
+ },
+ "capsOff": [],
+ "flashes": [
+  116,
+  174,
+  232,
+  348
+ ],
+ "shakes": [
+  116,
+  174,
+  232,
+  348
+ ],
+ "music": [
+  [
+   0.0,
+   3.871,
+   "tension"
+  ],
+  [
+   3.871,
+   9.6774,
+   "drop2"
+  ],
+  [
+   9.6774,
+   11.6129,
+   "drop"
+  ],
+  [
+   11.6129,
+   13.5484,
+   "reveal"
+  ],
+  [
+   13.5484,
+   18.0,
+   "outro"
+  ]
+ ],
+ "foley": {
+  "l01": "handle",
+  "l02": "pvc",
+  "l03": "fabric",
+  "l04": "fabric",
+  "l05": "pvc",
+  "l06": "cap",
+  "l07": "cap",
+  "l08": "handle",
+  "l09": "fabric",
+  "l10": "pvc",
+  "l17": "cap"
+ },
+ "drops": [
+  3.871,
+  13.5484
+ ],
+ "doofs": [
+  3.871,
+  5.8065,
+  7.7419,
+  11.6129
+ ]
+}

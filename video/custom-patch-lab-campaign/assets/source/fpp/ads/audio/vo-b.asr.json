@@ -1,0 +1,168 @@
+[
+ {
+  "start": 0.06,
+  "end": 1.96,
+  "text": "Your logo deserves more than a print.",
+  "tokens": [
+   " Your",
+   " logo",
+   " deserves",
+   " more",
+   " than",
+   " a",
+   " print",
+   "."
+  ],
+  "tts": []
+ },
+ {
+  "start": 2.32,
+  "end": 3.62,
+  "text": "Make it a custom patch.",
+  "tokens": [
+   " Make",
+   " it",
+   " a",
+   " custom",
+   " patch",
+   "."
+  ],
+  "tts": []
+ },
+ {
+  "start": 4.04,
+  "end": 7.56,
+  "text": "PVC embroidered, chenille, woven, or leather.",
+  "tokens": [
+   " PVC",
+   " embro",
+   "idered",
+   ",",
+   " c",
+   "hen",
+   "ille",
+   ",",
+   " woven",
+   ",",
+   " or",
+   " leather",
+   "."
+  ],
+  "tts": []
+ },
+ {
+  "start": 7.96,
+  "end": 9.62,
+  "text": "Your design, your style.",
+  "tokens": [
+   " Your",
+   " design",
+   ",",
+   " your",
+   " style",
+   "."
+  ],
+  "tts": []
+ },
+ {
+  "start": 10.16,
+  "end": 13.0,
+  "text": "from varsity jackets and caps to polos and uniforms.",
+  "tokens": [
+   " from",
+   " v",
+   "arsity",
+   " jackets",
+   " and",
+   " caps",
+   " to",
+   " pol",
+   "os",
+   " and",
+   " uniforms",
+   "."
+  ],
+  "tts": []
+ },
+ {
+  "start": 13.28,
+  "end": 15.0,
+  "text": "Make every detail stand out.",
+  "tokens": [
+   " Make",
+   " every",
+   " detail",
+   " stand",
+   " out",
+   "."
+  ],
+  "tts": []
+ },
+ {
+  "start": 15.54,
+  "end": 16.82,
+  "text": "future PVC patch.",
+  "tokens": [
+   " future",
+   " PVC",
+   " patch",
+   "."
+  ],
+  "tts": []
+ },
+ {
+  "start": 17.14,
+  "end": 17.7,
+  "text": "Click below.",
+  "tokens": [
+   " Click",
+   " below",
+   "."
+  ],
+  "tts": []
+ },
+ {
+  "start": 18.22,
+  "end": 19.22,
+  "text": "Select your patch type.",
+  "tokens": [
+   " Select",
+   " your",
+   " patch",
+   " type",
+   "."
+  ],
+  "tts": []
+ },
+ {
+  "start": 19.48,
+  "end": 20.32,
+  "text": "Choose your size.",
+  "tokens": [
+   " Choose",
+   " your",
+   " size",
+   "."
+  ],
+  "tts": []
+ },
+ {
+  "start": 20.6,
+  "end": 23.78,
+  "text": "Upload your artwork and get an instant quote within minutes.",
+  "tokens": [
+   " Upload",
+   " your",
+   " artwork",
+   " and",
+   " get",
+   " an",
+   " instant",
+   " quote",
+   " within",
+   " minutes",
+   "."
+  ],
+  "tts": []
+ }
+]

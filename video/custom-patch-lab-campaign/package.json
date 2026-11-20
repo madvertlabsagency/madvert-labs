@@ -60,7 +60,11 @@
     "render:fpp30wide:final": "remotion render FuturePvcF30Wide out/FUTURE_PVC_PATCH_30S_16x9.mp4 --codec=h264 --crf=16 --color-space=bt709 --audio-codec=aac --audio-bitrate=320k",
     "render:fpp15:final": "remotion render FuturePvcF15 out/FUTURE_PVC_PATCH_15S.mp4 --codec=h264 --crf=16 --color-space=bt709 --audio-codec=aac --audio-bitrate=320k",
     "render:fpp15wide:final": "remotion render FuturePvcF15Wide out/FUTURE_PVC_PATCH_15S_16x9.mp4 --codec=h264 --crf=16 --color-space=bt709 --audio-codec=aac --audio-bitrate=320k",
-    "render:fpplion:final": "remotion render FppAd01Lion out/FuturePvcPatch_Ad01_Lion_1080x1920.mp4 --codec=h264 --crf=17 --color-space=bt709 --audio-codec=aac --audio-bitrate=256k"
+    "render:fpplion:final": "remotion render FppAd01Lion out/FuturePvcPatch_Ad01_Lion_1080x1920.mp4 --codec=h264 --crf=17 --color-space=bt709 --audio-codec=aac --audio-bitrate=256k",
+    "render:fppmeta40:final": "remotion render FppMetaA40 out/FuturePvcPatch_MetaAd_40s_1080x1920.mp4 --codec=h264 --crf=16 --color-space=bt709 --audio-codec=aac --audio-bitrate=320k",
+    "render:fppmeta23:final": "remotion render FppMetaB23 out/FuturePvcPatch_MetaAd_23s_1080x1920.mp4 --codec=h264 --crf=16 --color-space=bt709 --audio-codec=aac --audio-bitrate=320k",
+    "render:fppeagle18:final": "remotion render FppEagle18 out/FuturePvcPatch_Ad03_Eagle_18s_1080x1920.mp4 --codec=h264 --crf=16 --color-space=bt709 --audio-codec=aac --audio-bitrate=320k",
+    "render:fpplion18:final": "remotion render FppLion18 out/FuturePvcPatch_Ad04_Lion_18s_1080x1920.mp4 --codec=h264 --crf=16 --color-space=bt709 --audio-codec=aac --audio-bitrate=320k"
   },
   "dependencies": {
     "@remotion/cli": "4.0.534",

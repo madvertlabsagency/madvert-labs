@@ -1,0 +1,753 @@
+{
+ "source": "assets/source/fpp/ads/audio/vo-a.mp3",
+ "duration": 43.729,
+ "phrases": [
+  {
+   "text": "Your logo.",
+   "start": 0.06,
+   "end": 0.74,
+   "method": "forced-alignment",
+   "words": [
+    {
+     "w": "Your",
+     "start": 0.06,
+     "end": 0.25
+    },
+    {
+     "w": "logo.",
+     "start": 0.25,
+     "end": 0.74
+    }
+   ]
+  },
+  {
+   "text": "Your identity.",
+   "start": 1.13,
+   "end": 1.84,
+   "method": "forced-alignment",
+   "words": [
+    {
+     "w": "Your",
+     "start": 1.13,
+     "end": 1.28
+    },
+    {
+     "w": "identity.",
+     "start": 1.28,
+     "end": 1.84
+    }
+   ]
+  },
+  {
+   "text": "Your custom patch.",
+   "start": 2.26,
+   "end": 3.41,
+   "method": "forced-alignment",
+   "words": [
+    {
+     "w": "Your",
+     "start": 2.26,
+     "end": 2.42
+    },
+    {
+     "w": "custom",
+     "start": 2.42,
+     "end": 2.89
+    },
+    {
+     "w": "patch.",
+     "start": 2.89,
+     "end": 3.41
+    }
+   ]
+  },
+  {
+   "text": "From bold PVC patches on varsity jackets",
+   "start": 3.91,
+   "end": 6.49,
+   "method": "forced-alignment",
+   "words": [
+    {
+     "w": "From",
+     "start": 3.91,
+     "end": 4.06
+    },
+    {
+     "w": "bold",
+     "start": 4.06,
+     "end": 4.37
+    },
+    {
+     "w": "PVC",
+     "start": 4.37,
+     "end": 4.88
+    },
+    {
+     "w": "patches",
+     "start": 4.88,
+     "end": 5.34
+    },
+    {
+     "w": "on",
+     "start": 5.34,
+     "end": 5.49
+    },
+    {
+     "w": "varsity",
+     "start": 5.49,
+     "end": 5.93
+    },
+    {
+     "w": "jackets",
+     "start": 5.93,
+     "end": 6.49
+    }
+   ]
+  },
+  {
+   "text": "to embroidered logos on caps",
+   "start": 6.63,
+   "end": 8.5,
+   "method": "forced-alignment",
+   "words": [
+    {
+     "w": "to",
+     "start": 6.63,
+     "end": 6.73
+    },
+    {
+     "w": "embroidered",
+     "start": 6.73,
+     "end": 7.25
+    },
+    {
+     "w": "logos",
+     "start": 7.25,
+     "end": 7.66
+    },
+    {
+     "w": "on",
+     "start": 7.66,
+     "end": 7.8
+    },
+    {
+     "w": "caps",
+     "start": 7.8,
+     "end": 8.5
+    }
+   ]
+  },
+  {
+   "text": "and personalized names on polo shirts.",
+   "start": 8.66,
+   "end": 10.36,
+   "method": "forced-alignment",
+   "words": [
+    {
+     "w": "and",
+     "start": 8.66,
+     "end": 8.74
+    },
+    {
+     "w": "personalized",
+     "start": 8.74,
+     "end": 9.19
+    },
+    {
+     "w": "names",
+     "start": 9.19,
+     "end": 9.49
+    },
+    {
+     "w": "on",
+     "start": 9.49,
+     "end": 9.61
+    },
+    {
+     "w": "polo",
+     "start": 9.61,
+     "end": 9.94
+    },
+    {
+     "w": "shirts.",
+     "start": 9.94,
+     "end": 10.36
+    }
+   ]
+  },
+  {
+   "text": "Turn your designs into something people can wear.",
+   "start": 10.87,
+   "end": 13.21,
+   "method": "forced-alignment",
+   "words": [
+    {
+     "w": "Turn",
+     "start": 10.87,
+     "end": 11.1
+    },
+    {
+     "w": "your",
+     "start": 11.1,
+     "end": 11.34
+    },
+    {
+     "w": "designs",
+     "start": 11.34,
+     "end": 11.83
+    },
+    {
+     "w": "into",
+     "start": 11.83,
+     "end": 12.01
+    },
+    {
+     "w": "something",
+     "start": 12.01,
+     "end": 12.45
+    },
+    {
+     "w": "people",
+     "start": 12.45,
+     "end": 12.72
+    },
+    {
+     "w": "can",
+     "start": 12.72,
+     "end": 12.86
+    },
+    {
+     "w": "wear.",
+     "start": 12.86,
+     "end": 13.21
+    }
+   ]
+  },
+  {
+   "text": "Choose from PVC,",
+   "start": 13.89,
+   "end": 15.09,
+   "method": "forced-alignment",
+   "words": [
+    {
+     "w": "Choose",
+     "start": 13.89,
+     "end": 14.15
+    },
+    {
+     "w": "from",
+     "start": 14.15,
+     "end": 14.32
+    },
+    {
+     "w": "PVC,",
+     "start": 14.32,
+     "end": 15.09
+    }
+   ]
+  },
+  {
+   "text": "embroidered,",
+   "start": 15.29,
+   "end": 15.92,
+   "method": "forced-alignment",
+   "words": [
+    {
+     "w": "embroidered,",
+     "start": 15.29,
+     "end": 15.92
+    }
+   ]
+  },
+  {
+   "text": "chenille,",
+   "start": 16.09,
+   "end": 16.64,
+   "method": "syllable-estimate",
+   "words": [
+    {
+     "w": "chenille,",
+     "start": 16.09,
+     "end": 16.64
+    }
+   ]
+  },
+  {
+   "text": "woven, and leather patches.",
+   "start": 16.88,
+   "end": 18.51,
+   "method": "forced-alignment",
+   "words": [
+    {
+     "w": "woven,",
+     "start": 16.88,
+     "end": 17.37
+    },
+    {
+     "w": "and",
+     "start": 17.37,
+     "end": 17.66
+    },
+    {
+     "w": "leather",
+     "start": 17.66,
+     "end": 17.98
+    },
+    {
+     "w": "patches.",
+     "start": 17.98,
+     "end": 18.51
+    }
+   ]
+  },
+  {
+   "text": "Different styles,",
+   "start": 19.02,
+   "end": 19.92,
+   "method": "forced-alignment",
+   "words": [
+    {
+     "w": "Different",
+     "start": 19.02,
+     "end": 19.26
+    },
+    {
+     "w": "styles,",
+     "start": 19.26,
+     "end": 19.92
+    }
+   ]
+  },
+  {
+   "text": "textures,",
+   "start": 20.04,
+   "end": 20.83,
+   "method": "forced-alignment",
+   "words": [
+    {
+     "w": "textures,",
+     "start": 20.04,
+     "end": 20.63
+    }
+   ]
+  },
+  {
+   "text": "and endless possibilities.",
+   "start": 21.0,
+   "end": 22.18,
+   "method": "forced-alignment",
+   "words": [
+    {
+     "w": "and",
+     "start": 21.0,
+     "end": 21.12
+    },
+    {
+     "w": "endless",
+     "start": 21.12,
+     "end": 21.35
+    },
+    {
+     "w": "possibilities.",
+     "start": 21.35,
+     "end": 22.18
+    }
+   ]
+  },
+  {
+   "text": "Made for clothing brands,",
+   "start": 22.74,
+   "end": 23.85,
+   "method": "forced-alignment",
+   "words": [
+    {
+     "w": "Made",
+     "start": 22.74,
+     "end": 22.9
+    },
+    {
+     "w": "for",
+     "start": 22.9,
+     "end": 23.03
+    },
+    {
+     "w": "clothing",
+     "start": 23.03,
+     "end": 23.42
+    },
+    {
+     "w": "brands,",
+     "start": 23.42,
+     "end": 23.85
+    }
+   ]
+  },
+  {
+   "text": "sports teams,",
+   "start": 24.0,
+   "end": 24.88,
+   "method": "forced-alignment",
+   "words": [
+    {
+     "w": "sports",
+     "start": 24.0,
+     "end": 24.43
+    },
+    {
+     "w": "teams,",
+     "start": 24.43,
+     "end": 24.88
+    }
+   ]
+  },
+  {
+   "text": "businesses,",
+   "start": 25.1,
+   "end": 25.68,
+   "method": "forced-alignment",
+   "words": [
+    {
+     "w": "businesses,",
+     "start": 25.1,
+     "end": 25.68
+    }
+   ]
+  },
+  {
+   "text": "and anyone who wants to stand out.",
+   "start": 26.22,
+   "end": 27.56,
+   "method": "forced-alignment",
+   "words": [
+    {
+     "w": "and",
+     "start": 26.22,
+     "end": 26.27
+    },
+    {
+     "w": "anyone",
+     "start": 26.27,
+     "end": 26.6
+    },
+    {
+     "w": "who",
+     "start": 26.6,
+     "end": 26.72
+    },
+    {
+     "w": "wants",
+     "start": 26.72,
+     "end": 26.96
+    },
+    {
+     "w": "to",
+     "start": 26.96,
+     "end": 27.04
+    },
+    {
+     "w": "stand",
+     "start": 27.04,
+     "end": 27.39
+    },
+    {
+     "w": "out.",
+     "start": 27.39,
+     "end": 27.56
+    }
+   ]
+  },
+  {
+   "text": "Because the smallest details",
+   "start": 28.11,
+   "end": 29.56,
+   "method": "forced-alignment",
+   "words": [
+    {
+     "w": "Because",
+     "start": 28.11,
+     "end": 28.35
+    },
+    {
+     "w": "the",
+     "start": 28.35,
+     "end": 28.42
+    },
+    {
+     "w": "smallest",
+     "start": 28.42,
+     "end": 28.99
+    },
+    {
+     "w": "details",
+     "start": 28.99,
+     "end": 29.56
+    }
+   ]
+  },
+  {
+   "text": "make the",
+   "start": 29.69,
+   "end": 29.98,
+   "method": "forced-alignment",
+   "words": [
+    {
+     "w": "make",
+     "start": 29.69,
+     "end": 29.86
+    },
+    {
+     "w": "the",
+     "start": 29.86,
+     "end": 29.98
+    }
+   ]
+  },
+  {
+   "text": "biggest impression.",
+   "start": 30.12,
+   "end": 30.9,
+   "method": "forced-alignment",
+   "words": [
+    {
+     "w": "biggest",
+     "start": 30.12,
+     "end": 30.44
+    },
+    {
+     "w": "impression.",
+     "start": 30.44,
+     "end": 30.9
+    }
+   ]
+  },
+  {
+   "text": "Future PVC Patch.",
+   "start": 31.63,
+   "end": 32.91,
+   "method": "forced-alignment",
+   "words": [
+    {
+     "w": "Future",
+     "start": 31.63,
+     "end": 31.94
+    },
+    {
+     "w": "PVC",
+     "start": 31.94,
+     "end": 32.47
+    },
+    {
+     "w": "Patch.",
+     "start": 32.47,
+     "end": 32.91
+    }
+   ]
+  },
+  {
+   "text": "Your design.",
+   "start": 33.26,
+   "end": 33.99,
+   "method": "forced-alignment",
+   "words": [
+    {
+     "w": "Your",
+     "start": 33.26,
+     "end": 33.49
+    },
+    {
+     "w": "design.",
+     "start": 33.49,
+     "end": 33.99
+    }
+   ]
+  },
+  {
+   "text": "Made to stand out.",
+   "start": 34.28,
+   "end": 35.17,
+   "method": "forced-alignment",
+   "words": [
+    {
+     "w": "Made",
+     "start": 34.28,
+     "end": 34.54
+    },
+    {
+     "w": "to",
+     "start": 34.54,
+     "end": 34.63
+    },
+    {
+     "w": "stand",
+     "start": 34.63,
+     "end": 35.0
+    },
+    {
+     "w": "out.",
+     "start": 35.0,
+     "end": 35.17
+    }
+   ]
+  },
+  {
+   "text": "Click below to get your instant quote.",
+   "start": 35.78,
+   "end": 37.31,
+   "method": "forced-alignment",
+   "words": [
+    {
+     "w": "Click",
+     "start": 35.78,
+     "end": 35.98
+    },
+    {
+     "w": "below",
+     "start": 35.98,
+     "end": 36.3
+    },
+    {
+     "w": "to",
+     "start": 36.3,
+     "end": 36.36
+    },
+    {
+     "w": "get",
+     "start": 36.36,
+     "end": 36.53
+    },
+    {
+     "w": "your",
+     "start": 36.53,
+     "end": 36.68
+    },
+    {
+     "w": "instant",
+     "start": 36.68,
+     "end": 37.05
+    },
+    {
+     "w": "quote.",
+     "start": 37.05,
+     "end": 37.31
+    }
+   ]
+  },
+  {
+   "text": "Select your patch type.",
+   "start": 37.82,
+   "end": 38.81,
+   "method": "forced-alignment",
+   "words": [
+    {
+     "w": "Select",
+     "start": 37.82,
+     "end": 38.14
+    },
+    {
+     "w": "your",
+     "start": 38.14,
+     "end": 38.24
+    },
+    {
+     "w": "patch",
+     "start": 38.24,
+     "end": 38.58
+    },
+    {
+     "w": "type.",
+     "start": 38.58,
+     "end": 38.81
+    }
+   ]
+  },
+  {
+   "text": "Choose your size,",
+   "start": 39.12,
+   "end": 39.99,
+   "method": "forced-alignment",
+   "words": [
+    {
+     "w": "Choose",
+     "start": 39.12,
+     "end": 39.33
+    },
+    {
+     "w": "your",
+     "start": 39.33,
+     "end": 39.44
+    },
+    {
+     "w": "size,",
+     "start": 39.44,
+     "end": 39.99
+    }
+   ]
+  },
+  {
+   "text": "upload your artwork,",
+   "start": 40.23,
+   "end": 41.06,
+   "method": "forced-alignment",
+   "words": [
+    {
+     "w": "upload",
+     "start": 40.23,
+     "end": 40.53
+    },
+    {
+     "w": "your",
+     "start": 40.53,
+     "end": 40.69
+    },
+    {
+     "w": "artwork,",
+     "start": 40.69,
+     "end": 41.06
+    }
+   ]
+  },
+  {
+   "text": "and receive your custom quote within minutes.",
+   "start": 41.27,
+   "end": 43.21,
+   "method": "forced-alignment",
+   "words": [
+    {
+     "w": "and",
+     "start": 41.27,
+     "end": 41.36
+    },
+    {
+     "w": "receive",
+     "start": 41.36,
+     "end": 41.73
+    },
+    {
+     "w": "your",
+     "start": 41.73,
+     "end": 41.85
+    },
+    {
+     "w": "custom",
+     "start": 41.85,
+     "end": 42.29
+    },
+    {
+     "w": "quote",
+     "start": 42.29,
+     "end": 42.61
+    },
+    {
+     "w": "within",
+     "start": 42.61,
+     "end": 42.89
+    },
+    {
+     "w": "minutes.",
+     "start": 42.89,
+     "end": 43.21
+    }
+   ]
+  }
+ ]
+}

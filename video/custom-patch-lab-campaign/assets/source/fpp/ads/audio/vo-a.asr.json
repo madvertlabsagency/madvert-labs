@@ -1,0 +1,265 @@
+[
+ {
+  "start": 0.06,
+  "end": 0.76,
+  "text": "Your logo.",
+  "tokens": [
+   " Your",
+   " logo",
+   "."
+  ],
+  "tts": []
+ },
+ {
+  "start": 1.1,
+  "end": 1.9,
+  "text": "Your identity.",
+  "tokens": [
+   " Your",
+   " identity",
+   "."
+  ],
+  "tts": []
+ },
+ {
+  "start": 2.26,
+  "end": 3.42,
+  "text": "your custom patch.",
+  "tokens": [
+   " your",
+   " custom",
+   " patch",
+   "."
+  ],
+  "tts": []
+ },
+ {
+  "start": 3.9,
+  "end": 10.38,
+  "text": "From bold PVC patches on varsity jackets to embroidered logos on caps and personalized names on polo shirts.",
+  "tokens": [
+   " From",
+   " bold",
+   " PVC",
+   " patches",
+   " on",
+   " v",
+   "arsity",
+   " jackets",
+   " to",
+   " embro",
+   "idered",
+   " logos",
+   " on",
+   " caps",
+   " and",
+   " personalized",
+   " names",
+   " on",
+   " pol",
+   "o",
+   " shirts",
+   "."
+  ],
+  "tts": []
+ },
+ {
+  "start": 10.86,
+  "end": 13.3,
+  "text": "Turn your designs into something people can wear.",
+  "tokens": [
+   " Turn",
+   " your",
+   " designs",
+   " into",
+   " something",
+   " people",
+   " can",
+   " wear",
+   "."
+  ],
+  "tts": []
+ },
+ {
+  "start": 13.88,
+  "end": 18.52,
+  "text": "Choose from PVC, embroidered, chenille, woven, and leather patches.",
+  "tokens": [
+   " Choose",
+   " from",
+   " PVC",
+   ",",
+   " embro",
+   "idered",
+   ",",
+   " c",
+   "hen",
+   "ille",
+   ",",
+   " woven",
+   ",",
+   " and",
+   " leather",
+   " patches",
+   "."
+  ],
+  "tts": []
+ },
+ {
+  "start": 19.0,
+  "end": 22.2,
+  "text": "different styles, textures, and endless possibilities.",
+  "tokens": [
+   " different",
+   " styles",
+   ",",
+   " textures",
+   ",",
+   " and",
+   " endless",
+   " possibilities",
+   "."
+  ],
+  "tts": []
+ },
+ {
+  "start": 22.74,
+  "end": 25.7,
+  "text": "Made for clothing brands, sports teams, businesses,",
+  "tokens": [
+   " Made",
+   " for",
+   " clothing",
+   " brands",
+   ",",
+   " sports",
+   " teams",
+   ",",
+   " businesses",
+   ","
+  ],
+  "tts": []
+ },
+ {
+  "start": 25.96,
+  "end": 27.58,
+  "text": "and anyone who wants to stand out.",
+  "tokens": [
+   " and",
+   " anyone",
+   " who",
+   " wants",
+   " to",
+   " stand",
+   " out",
+   "."
+  ],
+  "tts": []
+ },
+ {
+  "start": 28.1,
+  "end": 30.92,
+  "text": "because the smallest details make the biggest impression.",
+  "tokens": [
+   " because",
+   " the",
+   " smallest",
+   " details",
+   " make",
+   " the",
+   " biggest",
+   " impression",
+   "."
+  ],
+  "tts": []
+ },
+ {
+  "start": 31.62,
+  "end": 32.92,
+  "text": "future PVC patch.",
+  "tokens": [
+   " future",
+   " PVC",
+   " patch",
+   "."
+  ],
+  "tts": []
+ },
+ {
+  "start": 33.24,
+  "end": 34.0,
+  "text": "Your design?",
+  "tokens": [
+   " Your",
+   " design",
+   "?"
+  ],
+  "tts": []
+ },
+ {
+  "start": 34.26,
+  "end": 35.18,
+  "text": "Made to stand out.",
+  "tokens": [
+   " Made",
+   " to",
+   " stand",
+   " out",
+   "."
+  ],
+  "tts": []
+ },
+ {
+  "start": 35.76,
+  "end": 37.32,
+  "text": "Click below to get your instant quote.",
+  "tokens": [
+   " Click",
+   " below",
+   " to",
+   " get",
+   " your",
+   " instant",
+   " quote",
+   "."
+  ],
+  "tts": []
+ },
+ {
+  "start": 37.82,
+  "end": 38.82,
+  "text": "Select your patch type.",
+  "tokens": [
+   " Select",
+   " your",
+   " patch",
+   " type",
+   "."
+  ],
+  "tts": []
+ },
+ {
+  "start": 39.1,
+  "end": 43.72,
+  "text": "Choose your size, upload your artwork, and receive your custom quote within minutes.",
+  "tokens": [
+   " Choose",
+   " your",
+   " size",
+   ",",
+   " upload",
+   " your",
+   " artwork",
+   ",",
+   " and",
+   " receive",
+   " your",
+   " custom",
+   " quote",
+   " within",
+   " minutes",
+   "."
+  ],
+  "tts": []
+ }
+]
