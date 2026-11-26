@@ -1,0 +1,242 @@
+{
+ "fps": 30,
+ "shots": [
+  {
+   "id": "h01",
+   "source": "c1-hand.mp4",
+   "from": 0,
+   "frames": 45,
+   "srcIn": 0.2,
+   "srcOut": 1.9,
+   "trans": "cut",
+   "interp": false,
+   "y": 90,
+   "scale": 1.1,
+   "drift": [
+    1.0,
+    1.04
+   ]
+  },
+  {
+   "id": "h02",
+   "source": "c1-hand.mp4",
+   "from": 45,
+   "frames": 30,
+   "srcIn": 5.55,
+   "srcOut": 6.75,
+   "trans": "zoom",
+   "interp": false,
+   "y": 90,
+   "scale": 1.1,
+   "drift": [
+    1.0,
+    1.03
+   ]
+  },
+  {
+   "id": "h03",
+   "source": "c1-hand.mp4",
+   "from": 75,
+   "frames": 15,
+   "srcIn": 7.0,
+   "srcOut": 7.6,
+   "trans": "punch",
+   "interp": false,
+   "scale": 1.12
+  },
+  {
+   "id": "j01",
+   "source": "c2-jacket.mp4",
+   "from": 90,
+   "frames": 30,
+   "srcIn": 4.0,
+   "srcOut": 5.1,
+   "trans": "impact",
+   "interp": false,
+   "drift": [
+    1.6,
+    1.18
+   ],
+   "origin": {
+    "x": 545,
+    "y": 1000
+   }
+  },
+  {
+   "id": "j02",
+   "source": "c2-jacket.mp4",
+   "from": 120,
+   "frames": 30,
+   "srcIn": 5.1,
+   "srcOut": 6.1,
+   "trans": "punch",
+   "interp": false,
+   "scale": 1.22,
+   "origin": {
+    "x": 620,
+    "y": 1100
+   }
+  },
+  {
+   "id": "j03",
+   "source": "c2-jacket.mp4",
+   "from": 150,
+   "frames": 60,
+   "srcIn": 6.0,
+   "srcOut": 7.9,
+   "trans": "zoom",
+   "interp": true,
+   "scale": 1.1,
+   "drift": [
+    1.0,
+    1.08
+   ],
+   "origin": {
+    "x": 600,
+    "y": 1050
+   }
+  },
+  {
+   "id": "k01",
+   "source": "c3-cap.mp4",
+   "from": 210,
+   "frames": 30,
+   "srcIn": 0.0,
+   "srcOut": 1.1,
+   "trans": "impact",
+   "interp": false,
+   "y": 50,
+   "scale": 1.07,
+   "drift": [
+    1.0,
+    1.05
+   ]
+  },
+  {
+   "id": "k02",
+   "source": "c3-cap.mp4",
+   "from": 240,
+   "frames": 30,
+   "srcIn": 3.2,
+   "srcOut": 4.3,
+   "trans": "whip",
+   "interp": false,
+   "y": 90,
+   "scale": 1.1,
+   "drift": [
+    1.0,
+    1.02
+   ]
+  },
+  {
+   "id": "k03",
+   "source": "c3-cap.mp4",
+   "from": 270,
+   "frames": 15,
+   "srcIn": 4.3,
+   "srcOut": 5.2,
+   "trans": "punch",
+   "interp": false,
+   "y": 90,
+   "scale": 1.1
+  },
+  {
+   "id": "k04",
+   "source": "c3-cap.mp4",
+   "from": 285,
+   "frames": 45,
+   "srcIn": 6.5,
+   "srcOut": 7.9,
+   "trans": "zoom",
+   "interp": false,
+   "y": 50,
+   "scale": 1.07,
+   "drift": [
+    1.0,
+    1.08
+   ]
+  },
+  {
+   "id": "b01",
+   "source": "c4-backpack.mp4",
+   "from": 330,
+   "frames": 30,
+   "srcIn": 0.0,
+   "srcOut": 1.0,
+   "trans": "impact",
+   "interp": false,
+   "drift": [
+    1.0,
+    1.06
+   ]
+  },
+  {
+   "id": "b02",
+   "source": "c2-jacket.mp4",
+   "from": 360,
+   "frames": 8,
+   "srcIn": 7.2,
+   "srcOut": 7.55,
+   "trans": "cut",
+   "interp": false,
+   "scale": 1.3,
+   "origin": {
+    "x": 600,
+    "y": 915
+   }
+  },
+  {
+   "id": "b03",
+   "source": "c4-backpack.mp4",
+   "from": 368,
+   "frames": 7,
+   "srcIn": 1.0,
+   "srcOut": 1.35,
+   "trans": "punch",
+   "interp": false,
+   "scale": 1.2
+  },
+  {
+   "id": "b04",
+   "source": "c3-cap.mp4",
+   "from": 375,
+   "frames": 7,
+   "srcIn": 4.6,
+   "srcOut": 4.95,
+   "trans": "cut",
+   "interp": false,
+   "scale": 1.25,
+   "origin": {
+    "x": 520,
+    "y": 840
+   }
+  },
+  {
+   "id": "b05",
+   "source": "c1-hand.mp4",
+   "from": 382,
+   "frames": 8,
+   "srcIn": 7.2,
+   "srcOut": 7.55,
+   "trans": "cut",
+   "interp": false,
+   "scale": 1.1
+  },
+  {
+   "id": "b06",
+   "source": "c4-backpack.mp4",
+   "from": 390,
+   "frames": 60,
+   "srcIn": 2.3,
+   "srcOut": 4.4,
+   "trans": "zoom",
+   "interp": true,
+   "y": 60,
+   "scale": 1.07,
+   "drift": [
+    1.0,
+    1.03
+   ]
+  }
+ ]
+}

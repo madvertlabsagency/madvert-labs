@@ -95,8 +95,8 @@ def hup():
     return norm(filt(noise(0.16), 'bandpass', [120, 700])) * np.minimum(1, t / 0.004) * np.exp(-t / 0.04) * 0.6
 
 
-def build(cut, out):
-    spec = json.load(open(os.path.join(ROOT, f'src/fpp/ads/{cut}.json')))
+def build(cut, out, spec_path=None):
+    spec = json.load(open(spec_path or os.path.join(ROOT, f'src/fpp/ads/{cut}.json')))
     FPS = spec['fps']
     DUR = spec['durationInFrames'] / FPS
     sfxlib.configure(DUR, seed=777 if cut == 'a40' else 778)
@@ -206,6 +206,13 @@ def build(cut, out):
         place(fx, nx.soft_hit(1.5, 1.5), d, 0.5)
         place(vox, hah(), d + 0.02, 0.55)
         place(vox, hup(), d + BEAT * 0.75, 0.35, pan=0.3)
+
+    # vocal chops: unpitched, rhythmic — chest "hup" on the one, then a 16th-note stutter of whispered "hah"s
+    for c in spec.get('chops', []):
+        place(vox, hup(), c, 0.6)
+        for k, g in enumerate((0.55, 0.4, 0.5, 0.0, 0.45, 0.6)):
+            if g:
+                place(vox, whisper(0.12, 'ah' if k % 2 == 0 else 'eh', 0.004, 0.25), c + BEAT * 0.5 + k * S16, g, pan=(-0.3 if k % 2 else 0.3))
 
     # ---------------------------------------------------------------- cut sfx + type accents
     shots = spec['shots']

@@ -1,0 +1,419 @@
+{
+ "fps": 30,
+ "durationInFrames": 540,
+ "style": "aggressive",
+ "bpm": 120,
+ "vo": null,
+ "voFile": "ac-cobra18",
+ "shots": [
+  {
+   "id": "h01",
+   "source": "c1-hand.mp4",
+   "from": 0,
+   "frames": 45,
+   "srcIn": 0.2,
+   "srcOut": 1.9,
+   "trans": "cut",
+   "interp": false,
+   "y": 90,
+   "scale": 1.1,
+   "drift": [
+    1.0,
+    1.04
+   ]
+  },
+  {
+   "id": "h02",
+   "source": "c1-hand.mp4",
+   "from": 45,
+   "frames": 30,
+   "srcIn": 5.55,
+   "srcOut": 6.75,
+   "trans": "zoom",
+   "interp": false,
+   "y": 90,
+   "scale": 1.1,
+   "drift": [
+    1.0,
+    1.03
+   ]
+  },
+  {
+   "id": "h03",
+   "source": "c1-hand.mp4",
+   "from": 75,
+   "frames": 15,
+   "srcIn": 7.0,
+   "srcOut": 7.6,
+   "trans": "punch",
+   "interp": false,
+   "scale": 1.12
+  },
+  {
+   "id": "j01",
+   "source": "c2-jacket.mp4",
+   "from": 90,
+   "frames": 30,
+   "srcIn": 4.0,
+   "srcOut": 5.1,
+   "trans": "impact",
+   "interp": false,
+   "drift": [
+    1.6,
+    1.18
+   ],
+   "origin": {
+    "x": 545,
+    "y": 1000
+   }
+  },
+  {
+   "id": "j02",
+   "source": "c2-jacket.mp4",
+   "from": 120,
+   "frames": 30,
+   "srcIn": 5.1,
+   "srcOut": 6.1,
+   "trans": "punch",
+   "interp": false,
+   "scale": 1.22,
+   "origin": {
+    "x": 620,
+    "y": 1100
+   }
+  },
+  {
+   "id": "j03",
+   "source": "c2-jacket.mp4",
+   "from": 150,
+   "frames": 60,
+   "srcIn": 6.0,
+   "srcOut": 7.9,
+   "trans": "zoom",
+   "interp": true,
+   "scale": 1.1,
+   "drift": [
+    1.0,
+    1.08
+   ],
+   "origin": {
+    "x": 600,
+    "y": 1050
+   }
+  },
+  {
+   "id": "k01",
+   "source": "c3-cap.mp4",
+   "from": 210,
+   "frames": 30,
+   "srcIn": 0.0,
+   "srcOut": 1.1,
+   "trans": "impact",
+   "interp": false,
+   "y": 50,
+   "scale": 1.07,
+   "drift": [
+    1.0,
+    1.05
+   ]
+  },
+  {
+   "id": "k02",
+   "source": "c3-cap.mp4",
+   "from": 240,
+   "frames": 30,
+   "srcIn": 3.2,
+   "srcOut": 4.3,
+   "trans": "whip",
+   "interp": false,
+   "y": 90,
+   "scale": 1.1,
+   "drift": [
+    1.0,
+    1.02
+   ]
+  },
+  {
+   "id": "k03",
+   "source": "c3-cap.mp4",
+   "from": 270,
+   "frames": 15,
+   "srcIn": 4.3,
+   "srcOut": 5.2,
+   "trans": "punch",
+   "interp": false,
+   "y": 90,
+   "scale": 1.1
+  },
+  {
+   "id": "k04",
+   "source": "c3-cap.mp4",
+   "from": 285,
+   "frames": 45,
+   "srcIn": 6.5,
+   "srcOut": 7.9,
+   "trans": "zoom",
+   "interp": false,
+   "y": 50,
+   "scale": 1.07,
+   "drift": [
+    1.0,
+    1.08
+   ]
+  },
+  {
+   "id": "b01",
+   "source": "c4-backpack.mp4",
+   "from": 330,
+   "frames": 30,
+   "srcIn": 0.0,
+   "srcOut": 1.0,
+   "trans": "impact",
+   "interp": false,
+   "drift": [
+    1.0,
+    1.06
+   ]
+  },
+  {
+   "id": "b02",
+   "source": "c2-jacket.mp4",
+   "from": 360,
+   "frames": 8,
+   "srcIn": 7.2,
+   "srcOut": 7.55,
+   "trans": "cut",
+   "interp": false,
+   "scale": 1.3,
+   "origin": {
+    "x": 600,
+    "y": 915
+   }
+  },
+  {
+   "id": "b03",
+   "source": "c4-backpack.mp4",
+   "from": 368,
+   "frames": 7,
+   "srcIn": 1.0,
+   "srcOut": 1.35,
+   "trans": "punch",
+   "interp": false,
+   "scale": 1.2
+  },
+  {
+   "id": "b04",
+   "source": "c3-cap.mp4",
+   "from": 375,
+   "frames": 7,
+   "srcIn": 4.6,
+   "srcOut": 4.95,
+   "trans": "cut",
+   "interp": false,
+   "scale": 1.25,
+   "origin": {
+    "x": 520,
+    "y": 840
+   }
+  },
+  {
+   "id": "b05",
+   "source": "c1-hand.mp4",
+   "from": 382,
+   "frames": 8,
+   "srcIn": 7.2,
+   "srcOut": 7.55,
+   "trans": "cut",
+   "interp": false,
+   "scale": 1.1
+  },
+  {
+   "id": "b06",
+   "source": "c4-backpack.mp4",
+   "from": 390,
+   "frames": 60,
+   "srcIn": 2.3,
+   "srcOut": 4.4,
+   "trans": "zoom",
+   "interp": true,
+   "y": 60,
+   "scale": 1.07,
+   "drift": [
+    1.0,
+    1.03
+   ]
+  }
+ ],
+ "desk": [],
+ "text": [
+  {
+   "type": "head",
+   "from": 4,
+   "to": 44,
+   "top": 270,
+   "size": 150,
+   "lines": [
+    [
+     {
+      "t": "YOUR",
+      "at": 6,
+      "hi": false
+     },
+     {
+      "t": "DESIGN.",
+      "at": 15,
+      "hi": true
+     }
+    ]
+   ]
+  },
+  {
+   "type": "head",
+   "from": 45,
+   "to": 74,
+   "top": 270,
+   "size": 150,
+   "lines": [
+    [
+     {
+      "t": "YOUR",
+      "at": 46,
+      "hi": false
+     },
+     {
+      "t": "PATCH.",
+      "at": 60,
+      "hi": true
+     }
+    ]
+   ]
+  },
+  {
+   "type": "slam",
+   "from": 120,
+   "to": 164,
+   "text": "JACKET.",
+   "size": 210,
+   "top": 270,
+   "sub": "ON YOUR"
+  },
+  {
+   "type": "head",
+   "from": 210,
+   "to": 328,
+   "top": 235,
+   "size": 122,
+   "lines": [
+    [
+     {
+      "t": "MADE",
+      "at": 212,
+      "hi": false
+     },
+     {
+      "t": "TO",
+      "at": 219,
+      "hi": false
+     }
+    ],
+    [
+     {
+      "t": "STAND",
+      "at": 225,
+      "hi": false
+     },
+     {
+      "t": "OUT.",
+      "at": 234,
+      "hi": true
+     }
+    ]
+   ]
+  },
+  {
+   "type": "slam",
+   "from": 390,
+   "to": 448,
+   "text": "BACKPACK.",
+   "size": 180,
+   "top": 270,
+   "sub": "ON YOUR"
+  }
+ ],
+ "card": {
+  "from": 450,
+  "variant": "made"
+ },
+ "capsOff": [],
+ "flashes": [
+  90,
+  210,
+  330
+ ],
+ "shakes": [
+  90,
+  210,
+  330,
+  450
+ ],
+ "music": [
+  [
+   0.0,
+   3.0,
+   "tension"
+  ],
+  [
+   3.0,
+   7.0,
+   "drop"
+  ],
+  [
+   7.0,
+   11.0,
+   "hook"
+  ],
+  [
+   11.0,
+   14.0,
+   "drop2"
+  ],
+  [
+   14.0,
+   15.0,
+   "build"
+  ],
+  [
+   15.0,
+   18.0,
+   "outro"
+  ]
+ ],
+ "drops": [
+  3.0,
+  15.0
+ ],
+ "doofs": [
+  3.0,
+  7.0,
+  11.0,
+  15.0
+ ],
+ "chops": [
+  7.0,
+  9.0
+ ],
+ "foley": {
+  "h01": "handle",
+  "h02": "pvc",
+  "h03": "handle",
+  "j01": "fabric",
+  "j02": "fabric",
+  "j03": "fabric",
+  "k01": "cap",
+  "k02": "cap",
+  "k04": "cap",
+  "b01": "fabric",
+  "b03": "fabric",
+  "b06": "fabric"
+ }
+}
