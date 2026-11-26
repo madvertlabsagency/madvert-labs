@@ -65,3 +65,13 @@ audio `bash scripts/build-audio.sh ac-cobra40 -14 -1.5`, segments as above with 
 | 24–26 s | hero jacket: YOUR DESIGN. / YOUR PATCH. |
 | 26–34 s | quote funnel, 5 steps: type, quantity (real click), size (typing), backing (real click), upload |
 | 34–40 s | end card: logo, GET YOUR CUSTOM PATCHES MADE., CLICK BELOW, GET YOUR QUOTE, domain |
+
+## 40 s with voiceover
+
+`out/American-Custom-Cobra-Drop-40s-VO.mp4` (+ `_light.mp4`). Composition `AmericanCustomCobraDrop40VO`,
+spec `scripts/ac-cobra40vo-spec.py`, audio `bash scripts/build-audio.sh ac-cobra40vo -14 -1.5`.
+VO: ElevenLabs take `assets/source/americancustom/audio/vo-c40.mp3` (29.6 s, script in
+`vo-c40-transcript.txt`), word times `src/americancustom/vo-c40.json` (pocketsphinx forced alignment;
+whisper check in `vo-c40.asr.json`). The take is cut in its own pauses into 7 blocks, each placed on
+its section (`voBlocks`), and the slams, cuts, website steps and end-card words land on the spoken
+words. The daf bed ducks under the voice; still no music.

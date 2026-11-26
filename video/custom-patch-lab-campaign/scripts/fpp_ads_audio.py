@@ -321,7 +321,16 @@ def build(cut, out, spec_path=None):
     V = np.zeros((N, 2))
     k = np.zeros(N)
     if spec.get('vo'):
-        vo = load(os.path.join(ROOT, f'assets/source/fpp/ads/audio/vo-{spec["vo"]}.mp3'), SR)
+        vo = load(os.path.join(ROOT, spec.get('voPath') or f'assets/source/fpp/ads/audio/vo-{spec["vo"]}.mp3'), SR)
+        if spec.get('voBlocks'):  # re-space the take: [srcStart, srcEnd, dstStart] pieces cut in its pauses
+            placed = np.zeros((N, 2))
+            for a0, b0, d0 in spec['voBlocks']:
+                seg = vo[int(a0 * SR):int(b0 * SR)].copy()
+                xf = int(0.01 * SR)
+                seg[:xf] *= np.linspace(0, 1, xf)[:, None]; seg[-xf:] *= np.linspace(1, 0, xf)[:, None]
+                i0 = int(d0 * SR); n = min(len(seg), N - i0)
+                placed[i0:i0 + n] += seg[:n]
+            vo = placed
         vo = filt(vo, 'highpass', 75)
         e = env_follow(vo, SR, 0.005, 0.12)
         thr = np.max(e) * 0.25

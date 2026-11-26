@@ -74,10 +74,14 @@ export type CobraSpec = {
   shots: Shot[];
   text: Text[];
   desk: Desk[];
-  card: {from: number};
+  /** End-card timing in local frames (voiceover cut: words land on the VO); defaults are the no-VO timings. */
+  card: {from: number; t?: CardT};
   flashes: number[];
   shakes: number[];
 };
+
+type CardT = {move: number; get: number; your: number; custom: number; patches: number; made: number; click: number; quote: number; url: number};
+const CARD_T: CardT = {move: -100, get: 4, your: 6, custom: 8, patches: 10, made: 12, click: 16, quote: 21, url: 26};
 
 /* ------------------------------------------------------------------ pieces */
 
@@ -377,20 +381,24 @@ const DeskBlock: React.FC<{items: Desk[]; start: number; dir: string}> = ({items
   );
 };
 
-const EndCard: React.FC = () => {
+const EndCard: React.FC<{t?: CardT}> = ({t = CARD_T}) => {
   const f = useCurrentFrame();
-  const u = prog(f, 26, 10, easeOut);
+  const u = prog(f, t.url, 10, easeOut);
+  // VO cut: the logo first sits large in the centre while the brand name is spoken, then rises into place
+  const mv = t.move < 0 ? 1 : prog(f, t.move, 14, easeInOut);
   return (
     <AbsoluteFill>
       <Stage />
-      <LogoCard at={0} width={840} top={230} />
-      <div style={{position: 'absolute', top: 650, left: 50, right: 50}}>
-        <Line words={[{t: 'GET', at: 4}, {t: 'YOUR', at: 6}, {t: 'CUSTOM', at: 8}]} size={128} dark={false} />
-        <div style={{height: 10}} />
-        <Line words={[{t: 'PATCHES', at: 10}, {t: 'MADE.', at: 12, hi: true}]} size={128} dark={false} />
+      <div style={{position: 'absolute', inset: 0, transformOrigin: '540px 230px', transform: `translateY(${mix(430, 0, mv)}px) scale(${mix(1.14, 1, mv)})`}}>
+        <LogoCard at={0} width={840} top={230} />
       </div>
-      <ClickBelow at={16} top={985} size={104} />
-      <QuotePill at={21} top={1190} size={80} />
+      <div style={{position: 'absolute', top: 650, left: 50, right: 50}}>
+        <Line words={[{t: 'GET', at: t.get}, {t: 'YOUR', at: t.your}, {t: 'CUSTOM', at: t.custom}]} size={128} dark={false} />
+        <div style={{height: 10}} />
+        <Line words={[{t: 'PATCHES', at: t.patches}, {t: 'MADE.', at: t.made, hi: true}]} size={128} dark={false} />
+      </div>
+      <ClickBelow at={t.click} top={985} size={104} />
+      <QuotePill at={t.quote} top={1190} size={80} />
       <div style={{position: 'absolute', top: 1345, left: 0, right: 0, textAlign: 'center', fontFamily: BODY, fontWeight: 700, fontSize: 36, letterSpacing: '0.04em', color: AC.cream, opacity: u, transform: `translateY(${(1 - u) * 14}px)`}}>
         {DOMAIN}
       </div>
@@ -448,7 +456,7 @@ export const makeCobraAd = (spec: CobraSpec, dir: string) => {
           )}
           <Sequence from={spec.card.from} name="end card">
             <Wipe dur={7}>
-              <EndCard />
+              <EndCard t={spec.card.t} />
             </Wipe>
           </Sequence>
           <FilmGrain opacity={0.035} />
