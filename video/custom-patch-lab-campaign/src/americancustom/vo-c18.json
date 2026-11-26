@@ -1,0 +1,247 @@
+{
+ "source": "assets/source/americancustom/audio/vo-c18.mp3",
+ "duration": 12.8,
+ "phrases": [
+  {
+   "text": "Your design",
+   "start": 0.08,
+   "end": 0.8,
+   "method": "forced-alignment",
+   "words": [
+    {
+     "w": "Your",
+     "start": 0.08,
+     "end": 0.25
+    },
+    {
+     "w": "design",
+     "start": 0.25,
+     "end": 0.8
+    }
+   ]
+  },
+  {
+   "text": "your patch",
+   "start": 1.16,
+   "end": 1.58,
+   "method": "forced-alignment",
+   "words": [
+    {
+     "w": "your",
+     "start": 1.16,
+     "end": 1.27
+    },
+    {
+     "w": "patch",
+     "start": 1.27,
+     "end": 1.58
+    }
+   ]
+  },
+  {
+   "text": "Bold",
+   "start": 2.25,
+   "end": 2.76,
+   "method": "forced-alignment",
+   "words": [
+    {
+     "w": "Bold",
+     "start": 2.25,
+     "end": 2.76
+    }
+   ]
+  },
+  {
+   "text": "raised",
+   "start": 2.98,
+   "end": 3.52,
+   "method": "forced-alignment",
+   "words": [
+    {
+     "w": "raised",
+     "start": 2.98,
+     "end": 3.52
+    }
+   ]
+  },
+  {
+   "text": "three D",
+   "start": 3.77,
+   "end": 4.26,
+   "method": "forced-alignment",
+   "words": [
+    {
+     "w": "three",
+     "start": 3.77,
+     "end": 4.02
+    },
+    {
+     "w": "D",
+     "start": 4.02,
+     "end": 4.26
+    }
+   ]
+  },
+  {
+   "text": "on your jacket",
+   "start": 4.67,
+   "end": 5.29,
+   "method": "forced-alignment",
+   "words": [
+    {
+     "w": "on",
+     "start": 4.67,
+     "end": 4.8
+    },
+    {
+     "w": "your",
+     "start": 4.8,
+     "end": 4.91
+    },
+    {
+     "w": "jacket",
+     "start": 4.91,
+     "end": 5.29
+    }
+   ]
+  },
+  {
+   "text": "Made to stand out",
+   "start": 5.79,
+   "end": 6.69,
+   "method": "forced-alignment",
+   "words": [
+    {
+     "w": "Made",
+     "start": 5.79,
+     "end": 6.01
+    },
+    {
+     "w": "to",
+     "start": 6.01,
+     "end": 6.1
+    },
+    {
+     "w": "stand",
+     "start": 6.1,
+     "end": 6.51
+    },
+    {
+     "w": "out",
+     "start": 6.51,
+     "end": 6.69
+    }
+   ]
+  },
+  {
+   "text": "on your cap",
+   "start": 7.18,
+   "end": 7.7,
+   "method": "forced-alignment",
+   "words": [
+    {
+     "w": "on",
+     "start": 7.18,
+     "end": 7.27
+    },
+    {
+     "w": "your",
+     "start": 7.27,
+     "end": 7.38
+    },
+    {
+     "w": "cap",
+     "start": 7.38,
+     "end": 7.7
+    }
+   ]
+  },
+  {
+   "text": "on your backpack",
+   "start": 8.11,
+   "end": 8.81,
+   "method": "forced-alignment",
+   "words": [
+    {
+     "w": "on",
+     "start": 8.11,
+     "end": 8.21
+    },
+    {
+     "w": "your",
+     "start": 8.21,
+     "end": 8.3
+    },
+    {
+     "w": "backpack",
+     "start": 8.3,
+     "end": 8.81
+    }
+   ]
+  },
+  {
+   "text": "American Custom Patch",
+   "start": 9.28,
+   "end": 10.5,
+   "method": "forced-alignment",
+   "words": [
+    {
+     "w": "American",
+     "start": 9.28,
+     "end": 9.85
+    },
+    {
+     "w": "Custom",
+     "start": 9.85,
+     "end": 10.31
+    },
+    {
+     "w": "Patch",
+     "start": 10.31,
+     "end": 10.5
+    }
+   ]
+  },
+  {
+   "text": "Click below",
+   "start": 11.09,
+   "end": 11.59,
+   "method": "forced-alignment",
+   "words": [
+    {
+     "w": "Click",
+     "start": 11.09,
+     "end": 11.26
+    },
+    {
+     "w": "below",
+     "start": 11.26,
+     "end": 11.59
+    }
+   ]
+  },
+  {
+   "text": "get your quote",
+   "start": 11.98,
+   "end": 12.5,
+   "method": "forced-alignment",
+   "words": [
+    {
+     "w": "get",
+     "start": 11.98,
+     "end": 12.11
+    },
+    {
+     "w": "your",
+     "start": 12.11,
+     "end": 12.21
+    },
+    {
+     "w": "quote",
+     "start": 12.21,
+     "end": 12.5
+    }
+   ]
+  }
+ ]
+}

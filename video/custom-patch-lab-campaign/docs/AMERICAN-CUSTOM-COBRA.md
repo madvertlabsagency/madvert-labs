@@ -75,3 +75,12 @@ VO: ElevenLabs take `assets/source/americancustom/audio/vo-c40.mp3` (29.6 s, scr
 whisper check in `vo-c40.asr.json`). The take is cut in its own pauses into 7 blocks, each placed on
 its section (`voBlocks`), and the slams, cuts, website steps and end-card words land on the spoken
 words. The daf bed ducks under the voice; still no music.
+
+## 18 s with voiceover
+
+`out/American-Custom-Cobra-Drop-18s-VO.mp4` (+ `_light.mp4`). Composition `AmericanCustomCobraDrop18VO`,
+spec `scripts/ac-cobra18vo-spec.py`, audio `bash scripts/build-audio.sh ac-cobra18vo -14 -1.5`.
+VO: ElevenLabs take `assets/source/americancustom/audio/vo-c18.mp3` (12.8 s), word times
+`src/americancustom/vo-c18.json`. The spoken end line ("American Custom Patch. Click below — get your
+quote.") needs ~3 s, so the end card starts at 14.5 s and the sections sit at 0 / 3 / 6.5 / 9.5 / 12 s.
+Block cuts must leave a word's release burst in (the "ch" of "Patch" runs to 10.72 s of the take).
