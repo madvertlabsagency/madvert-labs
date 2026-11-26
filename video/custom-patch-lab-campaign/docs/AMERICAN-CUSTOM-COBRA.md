@@ -48,3 +48,20 @@ Brief asked for instrumental music; per the standing rule there is none: daf (du
 rolls), hand claps, unpitched vocal sounds (breaths, inhales, "hah", "hup"), DOOF hits, whooshes,
 fabric / cap / PVC / handling foley and room tone only. Spectral check: no sustained tonal
 peak longer than 0.35 s.
+
+## 40 s long version
+
+`out/American-Custom-Cobra-Drop-40s.mp4` (+ `_light.mp4` for WhatsApp/chat). Composition
+`AmericanCustomCobraDrop40`, spec `scripts/ac-cobra40-spec.py` → `src/americancustom/cobra40.json`,
+audio `bash scripts/build-audio.sh ac-cobra40 -14 -1.5`, segments as above with `cobra40`.
+
+| Time | Content |
+| --- | --- |
+| 0–4 s | hook, hand + cobra: YOUR DESIGN. / YOUR PATCH. (tension build) |
+| 4–10 s | DOOF drop, match cut to the jacket: ON YOUR JACKET., then BOLD. RAISED. MOLDED. IN 3D. one per beat |
+| 10–16 s | cap, DOOF + vocal chop: MADE TO STAND OUT., ON YOUR CAP. |
+| 16–22 s | backpack: close-up, rapid close-ups, slow pull-back: ON YOUR BACKPACK. |
+| 22–24 s | 0.25 s montage: JACKETS. CAPS. BACKPACKS. YOUR GEAR. |
+| 24–26 s | hero jacket: YOUR DESIGN. / YOUR PATCH. |
+| 26–34 s | quote funnel, 5 steps: type, quantity (real click), size (typing), backing (real click), upload |
+| 34–40 s | end card: logo, GET YOUR CUSTOM PATCHES MADE., CLICK BELOW, GET YOUR QUOTE, domain |
