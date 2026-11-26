@@ -8,6 +8,7 @@ A lighter copy for WhatsApp/chat: `out/American-Custom-Cobra-Drop-18s_light.mp4`
 ```bash
 python3 -I scripts/ac-cobra-spec.py .                          # spec + EDL
 python3 -I scripts/conform-shots.py americancustom/cobra18      # segments (footage: assets/source/americancustom/footage)
+python3 -I scripts/conform-desk.py americancustom/cobra18 src/americancustom/cobra18.json <quote-funnel recording.mp4>
 bash scripts/build-audio.sh ac-cobra18 -14 -1.5                 # soundtrack
 npx remotion render AmericanCustomCobraDrop18 out/American-Custom-Cobra-Drop-18s.mp4 \
   --codec=h264 --crf=16 --color-space=bt709 --audio-codec=aac --audio-bitrate=320k
@@ -22,8 +23,14 @@ Composition `AmericanCustomCobraDrop18` (folder "American-Custom"), engine `src/
 | 0–3 s | hand close-ups (c1) | YOUR DESIGN. / YOUR PATCH. | tension: heartbeat daf, accelerating ka, claps, air swell, handling foley |
 | 3 s | match cut: jacket shot opens at the hand close-up's scale and pulls out (c2) | ON YOUR JACKET. (from 4 s) | gate gap → DOOF (doubled daf dum + thump + soft boom), whoosh, flash, shake |
 | 7 s | cap reveal (c3) | MADE TO STAND OUT. | DOOF + unpitched vocal chop (chest "hup" + whispered "hah" stutter), hook pattern |
-| 11 s | backpack close-up, 4 rapid close-ups, pull-back reveal (c4) | ON YOUR BACKPACK. | DOOF, busier daf + claps, fabric foley, roll into the card |
-| 15–18 s | end card: logo card, GET YOUR CUSTOM PATCHES MADE., CLICK BELOW, GET YOUR QUOTE pill, quote.americancustompatchlab.com | | final DOOF + card hit |
+| 11–13.5 s | backpack close-up, 3 rapid close-ups, pull-back reveal (c4) | ON YOUR BACKPACK. | DOOF, busier daf + claps, fabric foley |
+| 13.5–16 s | the real quote funnel in a browser frame on the site's cream: step 1 patch type, step 2 quantity (real click on "10 to 24"), step 5 upload | GET YOUR QUOTE eyebrow + step titles | whoosh in, UI clicks on taps, light daf groove, roll into the card |
+| 16–18 s | end card: logo card, GET YOUR CUSTOM PATCHES MADE., CLICK BELOW, GET YOUR QUOTE pill, quote.americancustompatchlab.com | | final DOOF + card hit |
+
+The quote-funnel screen recording (client's WhatsApp video, 1898×926) is **not stored in the repo**:
+later in it the OS file picker, an email address, names, a phone number, a WhatsApp notification and
+upload / submit errors are visible. Only 2.8–3.7 s, 4.5–5.4 s and 11.0–11.85 s are used (card column
+crop 1160×820 at x 170, y 20; `deskCrop` in the spec), before any of that appears.
 
 Avoided source ranges (generation artefacts): c2 0–3.5 s (face / arm in frame), c3 2.3–3.1 s and
 5.4–6.4 s (morph ghosting), c4 4.6 s+ (duplicate ghost patch).

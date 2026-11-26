@@ -160,9 +160,9 @@
    "id": "b01",
    "source": "c4-backpack.mp4",
    "from": 330,
-   "frames": 30,
+   "frames": 22,
    "srcIn": 0.0,
-   "srcOut": 1.0,
+   "srcOut": 0.8,
    "trans": "impact",
    "interp": false,
    "drift": [
@@ -173,7 +173,7 @@
   {
    "id": "b02",
    "source": "c2-jacket.mp4",
-   "from": 360,
+   "from": 352,
    "frames": 8,
    "srcIn": 7.2,
    "srcOut": 7.55,
@@ -188,8 +188,8 @@
   {
    "id": "b03",
    "source": "c4-backpack.mp4",
-   "from": 368,
-   "frames": 7,
+   "from": 360,
+   "frames": 8,
    "srcIn": 1.0,
    "srcOut": 1.35,
    "trans": "punch",
@@ -199,7 +199,7 @@
   {
    "id": "b04",
    "source": "c3-cap.mp4",
-   "from": 375,
+   "from": 368,
    "frames": 7,
    "srcIn": 4.6,
    "srcOut": 4.95,
@@ -212,23 +212,12 @@
    }
   },
   {
-   "id": "b05",
-   "source": "c1-hand.mp4",
-   "from": 382,
-   "frames": 8,
-   "srcIn": 7.2,
-   "srcOut": 7.55,
-   "trans": "cut",
-   "interp": false,
-   "scale": 1.1
-  },
-  {
    "id": "b06",
    "source": "c4-backpack.mp4",
-   "from": 390,
-   "frames": 60,
-   "srcIn": 2.3,
-   "srcOut": 4.4,
+   "from": 375,
+   "frames": 30,
+   "srcIn": 2.6,
+   "srcOut": 4.0,
    "trans": "zoom",
    "interp": true,
    "y": 60,

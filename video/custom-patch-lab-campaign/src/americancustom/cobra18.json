@@ -165,9 +165,9 @@
    "id": "b01",
    "source": "c4-backpack.mp4",
    "from": 330,
-   "frames": 30,
+   "frames": 22,
    "srcIn": 0.0,
-   "srcOut": 1.0,
+   "srcOut": 0.8,
    "trans": "impact",
    "interp": false,
    "drift": [
@@ -178,7 +178,7 @@
   {
    "id": "b02",
    "source": "c2-jacket.mp4",
-   "from": 360,
+   "from": 352,
    "frames": 8,
    "srcIn": 7.2,
    "srcOut": 7.55,
@@ -193,8 +193,8 @@
   {
    "id": "b03",
    "source": "c4-backpack.mp4",
-   "from": 368,
-   "frames": 7,
+   "from": 360,
+   "frames": 8,
    "srcIn": 1.0,
    "srcOut": 1.35,
    "trans": "punch",
@@ -204,7 +204,7 @@
   {
    "id": "b04",
    "source": "c3-cap.mp4",
-   "from": 375,
+   "from": 368,
    "frames": 7,
    "srcIn": 4.6,
    "srcOut": 4.95,
@@ -217,23 +217,12 @@
    }
   },
   {
-   "id": "b05",
-   "source": "c1-hand.mp4",
-   "from": 382,
-   "frames": 8,
-   "srcIn": 7.2,
-   "srcOut": 7.55,
-   "trans": "cut",
-   "interp": false,
-   "scale": 1.1
-  },
-  {
    "id": "b06",
    "source": "c4-backpack.mp4",
-   "from": 390,
-   "frames": 60,
-   "srcIn": 2.3,
-   "srcOut": 4.4,
+   "from": 375,
+   "frames": 30,
+   "srcIn": 2.6,
+   "srcOut": 4.0,
    "trans": "zoom",
    "interp": true,
    "y": 60,
@@ -244,7 +233,77 @@
    ]
   }
  ],
- "desk": [],
+ "desk": [
+  {
+   "id": "w1",
+   "source": "web.mp4",
+   "from": 405,
+   "frames": 25,
+   "srcIn": 2.8,
+   "srcOut": 3.7,
+   "focus": [
+    470,
+    330,
+    1.22
+   ],
+   "taps": [
+    [
+     15,
+     150,
+     305
+    ]
+   ],
+   "step": 1,
+   "title": "PICK YOUR PATCH TYPE",
+   "kind": "type"
+  },
+  {
+   "id": "w2",
+   "source": "web.mp4",
+   "from": 430,
+   "frames": 24,
+   "srcIn": 4.5,
+   "srcOut": 5.4,
+   "focus": [
+    470,
+    300,
+    1.3
+   ],
+   "taps": [
+    [
+     17,
+     150,
+     305
+    ]
+   ],
+   "step": 2,
+   "title": "CHOOSE YOUR QUANTITY",
+   "kind": "qty"
+  },
+  {
+   "id": "w3",
+   "source": "web.mp4",
+   "from": 454,
+   "frames": 26,
+   "srcIn": 11.0,
+   "srcOut": 11.85,
+   "focus": [
+    545,
+    330,
+    1.08
+   ],
+   "taps": [
+    [
+     16,
+     580,
+     385
+    ]
+   ],
+   "step": 3,
+   "title": "UPLOAD YOUR ARTWORK",
+   "kind": "upload"
+  }
+ ],
  "text": [
   {
    "type": "head",
@@ -332,8 +391,8 @@
   },
   {
    "type": "slam",
-   "from": 390,
-   "to": 448,
+   "from": 375,
+   "to": 404,
    "text": "BACKPACK.",
    "size": 180,
    "top": 270,
@@ -341,7 +400,7 @@
   }
  ],
  "card": {
-  "from": 450,
+  "from": 480,
   "variant": "made"
  },
  "capsOff": [],
@@ -354,7 +413,7 @@
   90,
   210,
   330,
-  450
+  480
  ],
  "music": [
   [
@@ -374,29 +433,34 @@
   ],
   [
    11.0,
-   14.0,
+   13.5,
    "drop2"
   ],
   [
-   14.0,
+   13.5,
    15.0,
-   "build"
+   "groove"
   ],
   [
    15.0,
+   16.0,
+   "build"
+  ],
+  [
+   16.0,
    18.0,
    "outro"
   ]
  ],
  "drops": [
   3.0,
-  15.0
+  16.0
  ],
  "doofs": [
   3.0,
   7.0,
   11.0,
-  15.0
+  16.0
  ],
  "chops": [
   7.0,
@@ -415,5 +479,6 @@
   "b01": "fabric",
   "b03": "fabric",
   "b06": "fabric"
- }
+ },
+ "deskCrop": "1160:820:170:20"
 }

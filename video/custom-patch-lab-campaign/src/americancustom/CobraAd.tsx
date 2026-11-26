@@ -1,5 +1,6 @@
 /**
- * American Custom (Patch Lab) — "Cobra Drop" 18 s Meta ad (9:16, no voiceover).
+ * American Custom (Patch Lab) — "Cobra Drop" 18 s Meta ad (9:16, no voiceover):
+ * product shots → the real quote funnel (screen recording, browser frame) → end card.
  * Spec: src/americancustom/cobra18.json (scripts/ac-cobra-spec.py).
  *
  * Brand layer from quote.americancustompatchlab.com: deep navy (#0C1D48 /
@@ -10,11 +11,11 @@
  * white card. Footage keeps its own colours — the green cobra is never tinted.
  */
 import React from 'react';
-import {AbsoluteFill, Audio, Img, Sequence, spring, staticFile, useCurrentFrame, useVideoConfig} from 'remotion';
+import {AbsoluteFill, Audio, Img, OffthreadVideo, Sequence, spring, staticFile, useCurrentFrame, useVideoConfig} from 'remotion';
 import {FilmGrain} from '../shared/components/FilmGrain';
 import {easeIn, easeInOut, easeOut, mix, prog} from '../shared/motion';
 import {CPL_THEME, Themed, type Theme} from '../shared/theme';
-import {ShotLayer, type Trans} from '../markhor/commercial';
+import {ShotLayer, segPath, type Trans} from '../markhor/commercial';
 import {BrandProvider, Headline, Line, type Brand, type Word} from '../markhor/hyper';
 
 /* ------------------------------------------------------------------ brand */
@@ -62,6 +63,7 @@ const AC_THEME: Theme = {
 /* ------------------------------------------------------------------ spec */
 
 type Shot = {id: string; from: number; frames: number; trans: Trans; scale?: number; y?: number; drift?: [number, number]; origin?: {x: number; y: number}};
+type Desk = {id: string; from: number; frames: number; focus: [number, number, number]; taps: [number, number, number][]; step: number; title: string; kind: string};
 type W = {t: string; at: number; hi?: boolean};
 type Text =
   | {type: 'head'; from: number; to: number; top: number; size: number; lines: W[][]}
@@ -71,6 +73,7 @@ export type CobraSpec = {
   voFile: string;
   shots: Shot[];
   text: Text[];
+  desk: Desk[];
   card: {from: number};
   flashes: number[];
   shakes: number[];
@@ -255,20 +258,139 @@ const QuotePill: React.FC<{at: number; top: number; text?: string; size?: number
   );
 };
 
+/* ------------------------------------------------------------------ website funnel */
+
+/** Cream field like the site's page background, faint navy stars, gradient edge. */
+const StageLight: React.FC = () => {
+  const f = useCurrentFrame();
+  const stars: [number, number, number][] = [[100, 1560, 70], [960, 1500, 90], [880, 1780, 46], [70, 1820, 40]];
+  return (
+    <AbsoluteFill style={{background: `radial-gradient(80% 50% at 50% 30%, #FFFFFF 0%, ${AC.cream} 70%, #E9E2D3 100%)`, overflow: 'hidden'}}>
+      {stars.map(([x, y, s], i) => (
+        <div key={i} style={{position: 'absolute', left: x - s / 2, top: y - s / 2, opacity: 0.1, transform: `rotate(${(f + i * 40) * 0.3}deg)`}}>
+          <Star size={s} color={i % 2 ? AC.crimson : AC.navy} stroke={i % 2 === 0} />
+        </div>
+      ))}
+      <div style={{position: 'absolute', left: 0, right: 0, bottom: 0, height: 14, background: EDGE}} />
+    </AbsoluteFill>
+  );
+};
+
+const SRC = {w: 1160, h: 820}; // crop of the funnel card column in the recording (scripts/conform-desk.py)
+const WIN = {w: 1000, left: 40, top: 560, bar: 58};
+const WIN_H = Math.round((WIN.w * SRC.h) / SRC.w);
+
+const TapRing: React.FC<{at: number; x: number; y: number}> = ({at, x, y}) => {
+  const f = useCurrentFrame();
+  if (f < at - 6 || f > at + 20) return null;
+  const pre = prog(f, at - 6, 6, easeOut);
+  const ring = prog(f, at, 16, easeOut);
+  return (
+    <>
+      <div style={{position: 'absolute', left: x - 30, top: y - 30, width: 60, height: 60, borderRadius: 30, background: 'rgba(184,0,46,0.28)', border: `6px solid ${AC.crimson}`, opacity: pre * (1 - prog(f, at + 6, 10)), transform: `scale(${f < at ? mix(1.4, 1, pre) : mix(1, 0.85, prog(f, at, 4))})`}} />
+      <div style={{position: 'absolute', left: x - 100 * ring, top: y - 100 * ring, width: 200 * ring, height: 200 * ring, borderRadius: '50%', border: `7px solid ${AC.gold}`, opacity: f >= at ? 1 - ring : 0}} />
+    </>
+  );
+};
+
+/** The real quote funnel in a browser frame: step header (site-style eyebrow + condensed title), camera moves, tap rings. */
+const DeskBlock: React.FC<{items: Desk[]; start: number; dir: string}> = ({items, start, dir}) => {
+  const f = useCurrentFrame();
+  const {fps} = useVideoConfig();
+  const rise = spring({frame: f - 1, fps, config: {damping: 18, stiffness: 160, mass: 0.7}});
+  let [cx, cy, z] = items[0].focus;
+  items.forEach((w, i) => {
+    const local = w.from - start;
+    if (f >= local) {
+      const prev = i ? items[i - 1].focus : [w.focus[0], w.focus[1], 1];
+      const k = prog(f, local, 10, easeInOut);
+      cx = mix(prev[0], w.focus[0], k);
+      cy = mix(prev[1], w.focus[1], k);
+      z = mix(prev[2], w.focus[2], k);
+    }
+  });
+  const sc = (WIN.w / SRC.w) * z;
+  const tx = Math.min(0, Math.max(WIN.w - SRC.w * sc, WIN.w / 2 - cx * sc));
+  const ty = Math.min(0, Math.max(WIN_H - SRC.h * sc, WIN_H / 2 - cy * sc));
+  const cur = items.reduce((a, w) => (f >= w.from - start ? w : a), items[0]);
+  const stepIn = prog(f, cur.from - start, 7, easeOut);
+  const eyebrow = prog(f, 2, 8, easeOut);
+  return (
+    <AbsoluteFill>
+      <StageLight />
+      <div style={{position: 'absolute', top: 250, left: 0, right: 0, display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
+        <div style={{display: 'flex', alignItems: 'center', gap: 18, opacity: eyebrow, fontFamily: BODY, fontWeight: 800, fontSize: 34, letterSpacing: '0.2em', color: AC.crimson}}>
+          <span style={{width: 50, height: 4, background: AC.crimson}} />
+          GET YOUR QUOTE
+          <span style={{width: 50, height: 4, background: AC.crimson}} />
+        </div>
+        <div style={{display: 'flex', gap: 14, margin: '22px 0 18px'}}>
+          {items.map((w) => (
+            <div key={w.step} style={{width: w.step === cur.step ? 76 : 22, height: 14, borderRadius: 7, background: w.step <= cur.step ? EDGE : 'rgba(12,29,72,0.16)'}} />
+          ))}
+        </div>
+        <div key={cur.step} style={{fontFamily: DISPLAY, fontSize: 118, lineHeight: 1, letterSpacing: '0.02em', color: AC.navy, opacity: stepIn, transform: `translateY(${(1 - stepIn) * 26}px)`, whiteSpace: 'nowrap'}}>
+          {cur.title}
+        </div>
+      </div>
+      <div
+        style={{
+          position: 'absolute',
+          left: WIN.left,
+          top: WIN.top,
+          width: WIN.w,
+          height: WIN_H + WIN.bar,
+          borderRadius: 26,
+          overflow: 'hidden',
+          background: AC.white,
+          boxShadow: '0 40px 90px rgba(12,29,72,0.32), 0 0 0 2px rgba(12,29,72,0.12)',
+          transform: `translateY(${(1 - rise) * 240}px) scale(${mix(0.92, 1, rise)})`,
+          opacity: Math.min(1, rise * 1.5),
+        }}
+      >
+        <div style={{height: WIN.bar, background: '#F1F2F6', display: 'flex', alignItems: 'center', gap: 12, padding: '0 22px', borderBottom: '1px solid #E0E2EA'}}>
+          {['#FF5F57', '#FEBC2E', '#28C840'].map((c) => (
+            <span key={c} style={{width: 16, height: 16, borderRadius: 8, background: c}} />
+          ))}
+          <div style={{marginLeft: 18, flex: 1, height: 36, borderRadius: 18, background: AC.white, border: '1px solid #E0E2EA', display: 'flex', alignItems: 'center', gap: 10, padding: '0 18px', fontFamily: BODY, fontWeight: 600, fontSize: 22, color: '#4A5568'}}>
+            <svg width={16} height={18} viewBox="0 0 16 18">
+              <rect x={2} y={8} width={12} height={9} rx={2} fill="#7A869A" />
+              <path d="M5 8 V5 a3 3 0 0 1 6 0 V8" fill="none" stroke="#7A869A" strokeWidth={2} />
+            </svg>
+            {DOMAIN}
+          </div>
+        </div>
+        <div style={{position: 'relative', width: WIN.w, height: WIN_H, overflow: 'hidden', background: AC.deep}}>
+          <div style={{position: 'absolute', left: 0, top: 0, width: SRC.w, height: SRC.h, transformOrigin: '0 0', transform: `translate(${tx}px, ${ty}px) scale(${sc})`}}>
+            {items.map((w) => (
+              <Sequence key={w.id} from={w.from - start} durationInFrames={w.frames} name={w.id}>
+                <OffthreadVideo muted src={staticFile(segPath(dir, w.id))} style={{width: SRC.w, height: SRC.h, display: 'block'}} />
+                {w.taps.map(([at, x, y], i) => (
+                  <TapRing key={i} at={at} x={x} y={y} />
+                ))}
+              </Sequence>
+            ))}
+          </div>
+        </div>
+      </div>
+    </AbsoluteFill>
+  );
+};
+
 const EndCard: React.FC = () => {
   const f = useCurrentFrame();
-  const u = prog(f, 36, 12, easeOut);
+  const u = prog(f, 26, 10, easeOut);
   return (
     <AbsoluteFill>
       <Stage />
       <LogoCard at={0} width={840} top={230} />
       <div style={{position: 'absolute', top: 650, left: 50, right: 50}}>
-        <Line words={[{t: 'GET', at: 6}, {t: 'YOUR', at: 8}, {t: 'CUSTOM', at: 10}]} size={128} dark={false} />
+        <Line words={[{t: 'GET', at: 4}, {t: 'YOUR', at: 6}, {t: 'CUSTOM', at: 8}]} size={128} dark={false} />
         <div style={{height: 10}} />
-        <Line words={[{t: 'PATCHES', at: 12}, {t: 'MADE.', at: 14, hi: true}]} size={128} dark={false} />
+        <Line words={[{t: 'PATCHES', at: 10}, {t: 'MADE.', at: 12, hi: true}]} size={128} dark={false} />
       </div>
-      <ClickBelow at={20} top={985} size={104} />
-      <QuotePill at={26} top={1190} size={80} />
+      <ClickBelow at={16} top={985} size={104} />
+      <QuotePill at={21} top={1190} size={80} />
       <div style={{position: 'absolute', top: 1345, left: 0, right: 0, textAlign: 'center', fontFamily: BODY, fontWeight: 700, fontSize: 36, letterSpacing: '0.04em', color: AC.cream, opacity: u, transform: `translateY(${(1 - u) * 14}px)`}}>
         {DOMAIN}
       </div>
@@ -317,6 +439,13 @@ export const makeCobraAd = (spec: CobraSpec, dir: string) => {
               );
             })}
           </FlashShake>
+          {spec.desk.length > 0 && (
+            <Sequence from={spec.desk[0].from} durationInFrames={spec.desk.reduce((a, w) => a + w.frames, 0) + 8} name="website funnel">
+              <Wipe>
+                <DeskBlock items={spec.desk} start={spec.desk[0].from} dir={dir} />
+              </Wipe>
+            </Sequence>
+          )}
           <Sequence from={spec.card.from} name="end card">
             <Wipe dur={7}>
               <EndCard />

@@ -12,7 +12,8 @@ every product reveal on a downbeat with a DOOF.
   3 s     DROP: match cut (zoom-out from the hand close-up's framing) to the jacket
   7 s     cap reveal, DOOF + unpitched vocal chop, "MADE TO STAND OUT."
   11 s    backpack: close-up, rapid close-ups, pull-back reveal "ON YOUR BACKPACK."
-  15 s    end card: logo, GET YOUR CUSTOM PATCHES MADE, CLICK BELOW, GET YOUR QUOTE
+  13.5 s  the real quote funnel in a browser frame: patch type → quantity → upload
+  16 s    end card: logo, GET YOUR CUSTOM PATCHES MADE, CLICK BELOW, GET YOUR QUOTE
 Source ranges avoid the clips' generation artefacts (measured on contact sheets):
 c2 jacket 0–3.5 s (face / arm in frame), c3 cap 2.3–3.1 s and 5.4–6.4 s (morph
 ghosting), c4 backpack 4.6 s+ (duplicate ghost patch). Type sits in the top band
@@ -48,7 +49,7 @@ def SLAM(t0, t1, word, size=200, top=270, sub=None):
     return dict(type='slam', **{'from': fr(t0)}, to=fr(t1), text=word, size=size, top=top, sub=sub)
 
 
-END, CARD = 18.0, B(30)
+END, DESK, CARD = 18.0, B(27), B(32)
 UP = dict(y=50, scale=1.07)  # framing for shots under type: patch top lands below the type band
 HOOK = dict(y=90, scale=1.1)  # the hand close-ups sit higher in frame
 
@@ -67,37 +68,59 @@ cuts = [
     (B(18), 'k03', 'c3-cap', 4.30, 5.20, 'punch', dict(y=90, scale=1.1)),
     (B(19), 'k04', 'c3-cap', 6.50, 7.90, 'zoom', dict(UP, drift=[1.0, 1.08])),
     # 11 s BACKPACK — close-up, rapid close-ups, pull-back reveal
-    (B(22), 'b01', 'c4-backpack', 0.00, 1.00, 'impact', dict(drift=[1.0, 1.06])),
-    (B(24), 'b02', 'c2-jacket', 7.20, 7.55, 'cut', dict(scale=1.3, origin={'x': 600, 'y': 915})),
-    (B(24.5), 'b03', 'c4-backpack', 1.00, 1.35, 'punch', dict(scale=1.2)),
-    (B(25), 'b04', 'c3-cap', 4.60, 4.95, 'cut', dict(scale=1.25, origin={'x': 520, 'y': 840})),
-    (B(25.5), 'b05', 'c1-hand', 7.20, 7.55, 'cut', dict(scale=1.1)),
-    (B(26), 'b06', 'c4-backpack', 2.30, 4.40, 'zoom', dict(y=60, scale=1.07, interp=True, drift=[1.0, 1.03])),
+    (B(22), 'b01', 'c4-backpack', 0.00, 0.80, 'impact', dict(drift=[1.0, 1.06])),
+    (B(23.5), 'b02', 'c2-jacket', 7.20, 7.55, 'cut', dict(scale=1.3, origin={'x': 600, 'y': 915})),
+    (B(24), 'b03', 'c4-backpack', 1.00, 1.35, 'punch', dict(scale=1.2)),
+    (B(24.5), 'b04', 'c3-cap', 4.60, 4.95, 'cut', dict(scale=1.25, origin={'x': 520, 'y': 840})),
+    (B(25), 'b06', 'c4-backpack', 2.60, 4.00, 'zoom', dict(y=60, scale=1.07, interp=True, drift=[1.0, 1.03])),
 ]
-shots = timeline(cuts, CARD)
+shots = timeline(cuts, DESK)
+
+
+def desk(t0, segs, end):
+    """segs: [(dur_s, id, srcIn, srcOut, focus(cx, cy, zoom), taps[(local_s, x, y)], step, title, kind)];
+    coordinates are in the 1160 x 820 crop of the funnel card (see scripts/conform-desk.py)."""
+    out, t = [], t0
+    for i, (dur, sid, a, b, focus, taps, step, title, kind) in enumerate(segs):
+        t1 = end if i == len(segs) - 1 else t + dur
+        out.append(dict(id=sid, source='web.mp4', **{'from': fr(t)}, frames=fr(t1) - fr(t), srcIn=a, srcOut=b, focus=list(focus),
+                        taps=[[fr(lt), x, y] for lt, x, y in taps], step=step, title=title, kind=kind))
+        t = t1
+    return out
+
+
+# 13.5 s WEBSITE — the real quote funnel (quote.americancustompatchlab.com screen recording, steps 1, 2, 5).
+# Only moments before any selection / file picker / personal details: 2.8–3.7 s (step 1, before the
+# recording picks a type), 4.5–5.4 s (step 2, the real click on "10 to 24"), 11.0–11.85 s (step 5 drop zone).
+web = desk(DESK, [
+    (0.85, 'w1', 2.80, 3.70, (470, 330, 1.22), [(0.50, 150, 305)], 1, 'PICK YOUR PATCH TYPE', 'type'),
+    (0.80, 'w2', 4.50, 5.40, (470, 300, 1.3), [(0.56, 150, 305)], 2, 'CHOOSE YOUR QUANTITY', 'qty'),
+    (0.85, 'w3', 11.00, 11.85, (545, 330, 1.08), [(0.55, 580, 385)], 3, 'UPLOAD YOUR ARTWORK', 'upload'),
+], CARD)
 
 text = [
     H(B(0) + 0.15, B(3) - 0.05, [[('YOUR', B(0) + 0.2), ('DESIGN.', B(1), True)]], size=150, top=270),
     H(B(3), B(5) - 0.05, [[('YOUR', B(3) + 0.05), ('PATCH.', B(4), True)]], size=150, top=270),  # clear before the h03 macro
     SLAM(B(8), B(11) - 0.05, 'JACKET.', size=210, top=270, sub='ON YOUR'),  # the 3 s match cut stays clean
     H(B(14), B(22) - 0.05, [[('MADE', B(14) + 0.05), ('TO', B(14) + 0.3)], [('STAND', B(15)), ('OUT.', B(15) + 0.3, True)]], size=122, top=235),
-    SLAM(B(26), B(30) - 0.05, 'BACKPACK.', size=180, top=270, sub='ON YOUR'),
+    SLAM(B(25), B(27) - 0.05, 'BACKPACK.', size=180, top=270, sub='ON YOUR'),
 ]
 
 doofs = [B(6), B(14), B(22), CARD]
 spec = dict(
     fps=FPS, durationInFrames=fr(END), style='aggressive', bpm=120, vo=None, voFile='ac-cobra18',
-    shots=shots, desk=[], text=text, card={'from': fr(CARD), 'variant': 'made'},
+    shots=shots, desk=web, text=text, card={'from': fr(CARD), 'variant': 'made'},
     capsOff=[], flashes=[fr(x) for x in doofs[:3]], shakes=[fr(x) for x in doofs],
-    music=[[0.0, B(6), 'tension'], [B(6), B(14), 'drop'], [B(14), B(22), 'hook'], [B(22), B(28), 'drop2'], [B(28), CARD, 'build'], [CARD, END, 'outro']],
+    music=[[0.0, B(6), 'tension'], [B(6), B(14), 'drop'], [B(14), B(22), 'hook'], [B(22), DESK, 'drop2'], [DESK, B(30), 'groove'], [B(30), CARD, 'build'], [CARD, END, 'outro']],
     drops=[B(6), CARD], doofs=doofs, chops=[B(14), B(18)],
     foley={'h01': 'handle', 'h02': 'pvc', 'h03': 'handle', 'j01': 'fabric', 'j02': 'fabric', 'j03': 'fabric',
            'k01': 'cap', 'k02': 'cap', 'k04': 'cap', 'b01': 'fabric', 'b03': 'fabric', 'b06': 'fabric'},
+    deskCrop='1160:820:170:20',
 )
 os.makedirs(os.path.join(ROOT, 'src/americancustom/cobra18'), exist_ok=True)
 json.dump(spec, open(os.path.join(ROOT, 'src/americancustom/cobra18.json'), 'w'), indent=1)
 json.dump(dict(fps=FPS, shots=shots), open(os.path.join(ROOT, 'src/americancustom/cobra18/edl.json'), 'w'), indent=1)
-print(f'cobra18: {spec["durationInFrames"]} f = {END:.1f} s · {len(shots)} shots · card at {CARD} s')
+print(f'cobra18: {spec["durationInFrames"]} f = {END:.1f} s · {len(shots)} shots · website {DESK} s · card {CARD} s')
 
 # logo for the end card: the supplied file with its white canvas trimmed (artwork + 24 px), never recoloured
 logo_out = os.path.join(ROOT, 'public/brand/ac-logo-crop.png')
