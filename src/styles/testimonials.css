@@ -390,6 +390,64 @@
   max-width: 1180px;
   margin-inline: auto;
 }
+/* More than two stories: a horizontal slider with arrows (swipe on touch). */
+.tm-slider {
+  position: relative;
+  max-width: 1180px;
+  margin-inline: auto;
+}
+.tm-feature.tm-feature--slide {
+  display: flex;
+  gap: 24px;
+  max-width: none;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  scrollbar-width: none;
+  padding-bottom: 4px;
+  justify-content: flex-start;
+  grid-template-columns: none;
+  list-style: none;
+}
+.tm-feature--slide::-webkit-scrollbar {
+  display: none;
+}
+.tm-feature--slide > li {
+  flex: 0 0 calc((100% - 24px) / 2);
+  scroll-snap-align: start;
+}
+.tm-slider-nav {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 22px;
+}
+.tm-slider-btn {
+  display: grid;
+  place-items: center;
+  width: 46px;
+  height: 46px;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  background: linear-gradient(160deg, var(--surface), var(--surface-2));
+  color: var(--fg, currentColor);
+  cursor: pointer;
+  transition: border-color 0.2s, color 0.2s, opacity 0.2s, transform 0.2s;
+}
+.tm-slider-btn:hover:not(:disabled) {
+  border-color: var(--accent, #00b4ff);
+  color: var(--accent, #00b4ff);
+  transform: translateY(-1px);
+}
+.tm-slider-btn:disabled {
+  opacity: 0.35;
+  cursor: default;
+}
+@media (max-width: 900px) {
+  .tm-feature--slide > li {
+    flex-basis: min(640px, 88%);
+  }
+}
 .tm-feature--one {
   grid-template-columns: minmax(0, 620px);
   justify-content: center;

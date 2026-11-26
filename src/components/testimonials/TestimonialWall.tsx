@@ -53,15 +53,60 @@ type PlayFn = (t: Testimonial, portrait?: boolean) => void;
 /* ───────── Featured stories: a small number of real videos, shown large ───────── */
 
 function Featured({ items, onPlay }: { items: Testimonial[]; onPlay: PlayFn }) {
+  const ref = useRef<HTMLUListElement>(null);
+  const [edge, setEdge] = useState({ start: true, end: items.length <= 2 });
+  const slider = items.length > 2;
+
+  const update = useCallback(() => {
+    const el = ref.current;
+    if (!el) return;
+    setEdge({ start: el.scrollLeft < 8, end: el.scrollLeft + el.clientWidth >= el.scrollWidth - 8 });
+  }, []);
+
+  useEffect(() => {
+    const el = ref.current;
+    if (!el || !slider) return;
+    update();
+    el.addEventListener("scroll", update, { passive: true });
+    window.addEventListener("resize", update);
+    return () => {
+      el.removeEventListener("scroll", update);
+      window.removeEventListener("resize", update);
+    };
+  }, [slider, update]);
+
+  const go = (dir: 1 | -1) => {
+    const el = ref.current;
+    const card = el?.querySelector("li");
+    if (!el || !card) return;
+    el.scrollBy({ left: dir * (card.getBoundingClientRect().width + 24), behavior: "smooth" });
+  };
+
   return (
     <div className="container-x">
-      <ul className={`tm-feature ${items.length === 1 ? "tm-feature--one" : ""}`} aria-label="Client video testimonials">
-        {items.map((t, i) => (
-          <li key={t.id} data-reveal style={{ ["--reveal-delay" as string]: i * 90 }}>
-            <StoryCard t={t} onPlay={onPlay} />
-          </li>
-        ))}
-      </ul>
+      <div className={slider ? "tm-slider" : undefined}>
+        <ul ref={ref} className={`tm-feature ${items.length === 1 ? "tm-feature--one" : ""} ${slider ? "tm-feature--slide" : ""}`} aria-label="Client video testimonials">
+          {items.map((t, i) => (
+            <li key={t.id} data-reveal style={{ ["--reveal-delay" as string]: i * 90 }}>
+              <StoryCard t={t} onPlay={onPlay} />
+            </li>
+          ))}
+        </ul>
+        {slider ? (
+          <div className="tm-slider-nav">
+            <button type="button" className="tm-slider-btn" onClick={() => go(-1)} disabled={edge.start} aria-label="Previous testimonial">
+              <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true">
+                <path d="M15 5l-7 7 7 7" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" />
+              </svg>
+            </button>
+            <button type="button" className="tm-slider-btn" onClick={() => go(1)} disabled={edge.end} aria-label="Next testimonial">
+              <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true">
+                <path d="M9 5l7 7-7 7" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" />
+              </svg>
+            </button>
+          </div>
+        ) : null}
+      </div>
     </div>
   );
 }

@@ -905,7 +905,7 @@ export const fallbackCaseStudies: CaseStudy[] = [
 export { leadMagnets as fallbackResources } from "@/content/lead-magnets";
 
 /**
- * Video testimonials. The first two are real client videos (names, roles, businesses and quotes
+  * Video testimonials. The first three are real client videos (names, roles, businesses and quotes
  * are taken from the videos' own captions; the business name for Azeem Qadir was confirmed by
  * the client). The remaining slots are bracketed placeholders until more videos are supplied.
  */
@@ -933,6 +933,19 @@ const realTestimonials: Testimonial[] = [
     posterUrl: "/video/testimonials/de-wooden-spoon-poster.webp",
     duration: "1:51",
     uploadDate: "2026-10-18",
+  },
+  {
+    id: "muhammad-mubeen",
+    name: "Muhammad Mubeen",
+    role: "Owner",
+    business: "Future PVC Patch",
+    industry: "Patches Partnership",
+    market: "USA",
+    quote: "Proper leads are being generated, WhatsApp leads are coming in, and we're getting a good response.",
+    videoUrl: "/video/testimonials/muhammad-mubeen-future-pvc-patch.mp4",
+    posterUrl: "/video/testimonials/muhammad-mubeen-future-pvc-patch-poster.webp",
+    duration: "0:56",
+    uploadDate: "2026-11-26",
   },
 ];
 
