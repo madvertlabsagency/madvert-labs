@@ -1,6 +1,9 @@
 """Build a phrase- and word-level timing map from the ACTUAL voiceover recording.
 
-    python3 -I scripts/vo-timing.py <voiceover audio> <script.txt> <out.json>
+    python3 -I scripts/vo-timing.py <voiceover audio> <script.txt> <out.json> [gate_db=-38] [min_gap_s=0.12]
+
+(softer voices need a lower gate, e.g. -50, and a longer min_gap so a word's
+quiet tail is not split off as its own phrase)
 
 Phrase boundaries come from measured silences in the recording (energy gate).
 The script supplies the words of each phrase. Word boundaries inside a phrase
@@ -105,15 +108,17 @@ def force_align(x16, t0, t1, words):
 
 def main():
     audio, script_path, out = sys.argv[1:4]
+    gate = float(sys.argv[4]) if len(sys.argv) > 4 else -38
+    gap = float(sys.argv[5]) if len(sys.argv) > 5 else 0.12
     lines = [l.strip() for l in open(script_path) if l.strip()]
     x = load(audio)
     db = envelope(x)
-    phrases = phrases_from_silence(db)
+    phrases = phrases_from_silence(db, gate_db=gate, min_gap=gap)
     if len(phrases) != len(lines):
         sys.exit(f'Found {len(phrases)} spoken phrases but the script has {len(lines)} lines: {phrases}')
     result = {'source': audio, 'duration': round(len(x) / SR, 3), 'phrases': []}
     for (t0, t1), line in zip(phrases, lines):
-        words = line.split()
+        words = [w for w in line.split() if spoken_tokens(w)]  # drop dashes and other non-words
         aligned = force_align(x, t0, t1, words)
         if aligned:
             result['phrases'].append({
@@ -141,4 +146,5 @@ def main():
         print(f"{p['start']:6.2f}-{p['end']:5.2f} {p['method'][:6]}  " + ' '.join(f"{w['w']}@{w['start']:.2f}" for w in p['words']))
 
 
-main()
+if __name__ == '__main__':
+    main()

@@ -67,7 +67,11 @@ type Desk = {id: string; from: number; frames: number; focus: [number, number, n
 type W = {t: string; at: number; hi?: boolean};
 type Text =
   | {type: 'head'; from: number; to: number; top: number; size: number; lines: W[][]}
-  | {type: 'slam'; from: number; to: number; text: string; size: number; top: number; sub?: string | null};
+  | {type: 'slam'; from: number; to: number; text: string; size: number; top: number; sub?: string | null}
+  | {type: 'label'; from: number; to: number; text: string}
+  | {type: 'material'; from: number; to: number; text: string; idx: number; of?: number};
+type VoWord = {w: string; start: number; end: number};
+type VoPhrase = {start: number; end: number; words: VoWord[]};
 export type CobraSpec = {
   durationInFrames: number;
   voFile: string;
@@ -76,6 +80,11 @@ export type CobraSpec = {
   desk: Desk[];
   /** End-card timing in local frames (voiceover cut: words land on the VO); defaults are the no-VO timings. */
   card: {from: number; t?: CardT};
+  /** Script ads (VO): logo reveal with lines on the VO, CLICK BELOW block, caption-free ranges. */
+  reveal?: {from: number; to: number; lines: [string, number, boolean?][][]};
+  cta?: {from: number; to: number; clickAt: number; quoteAt: number};
+  quoteText?: string;
+  capsOff?: [number, number][];
   flashes: number[];
   shakes: number[];
 };
@@ -381,7 +390,7 @@ const DeskBlock: React.FC<{items: Desk[]; start: number; dir: string}> = ({items
   );
 };
 
-const EndCard: React.FC<{t?: CardT}> = ({t = CARD_T}) => {
+const EndCard: React.FC<{t?: CardT; quote?: string}> = ({t = CARD_T, quote}) => {
   const f = useCurrentFrame();
   const u = prog(f, t.url, 10, easeOut);
   // VO cut: the logo first sits large in the centre while the brand name is spoken, then rises into place
@@ -398,13 +407,104 @@ const EndCard: React.FC<{t?: CardT}> = ({t = CARD_T}) => {
         <Line words={[{t: 'PATCHES', at: t.patches}, {t: 'MADE.', at: t.made, hi: true}]} size={128} dark={false} />
       </div>
       <ClickBelow at={t.click} top={985} size={104} />
-      <QuotePill at={t.quote} top={1190} size={80} />
+      <QuotePill at={t.quote} top={1190} size={80} text={quote} />
       <div style={{position: 'absolute', top: 1345, left: 0, right: 0, textAlign: 'center', fontFamily: BODY, fontWeight: 700, fontSize: 36, letterSpacing: '0.04em', color: AC.cream, opacity: u, transform: `translateY(${(1 - u) * 14}px)`}}>
         {DOMAIN}
       </div>
     </AbsoluteFill>
   );
 };
+
+/* ------------------------------------------------------------------ script-ad pieces (VO cuts) */
+
+/** Top label: navy plate with a gold star, condensed caps. Local frames. */
+const TopLabel: React.FC<{text: string; len: number}> = ({text, len}) => {
+  const f = useCurrentFrame();
+  const p = prog(f, 0, 7, easeOut);
+  const q = prog(f, len - 4, 4, easeIn);
+  return (
+    <div style={{position: 'absolute', top: 290, left: 0, right: 0, display: 'flex', justifyContent: 'center', opacity: p * (1 - q)}}>
+      <div style={{display: 'flex', alignItems: 'center', gap: 22, padding: '16px 40px 12px', borderRadius: 16, background: 'rgba(8,18,52,0.72)', boxShadow: `inset 0 -6px 0 ${AC.crimson}`, transform: `translateY(${(1 - p) * -24}px)`}}>
+        <Star size={40} color={AC.gold} />
+        <span style={{fontFamily: DISPLAY, fontSize: 72, lineHeight: 1, letterSpacing: '0.06em', color: AC.white, whiteSpace: 'nowrap'}}>{text}</span>
+      </div>
+    </div>
+  );
+};
+
+/** Patch-type tag: "01 / 05" counter + the type name with the crimson strip. */
+const MaterialTag: React.FC<{text: string; idx: number; of: number; len: number}> = ({text, idx, of, len}) => {
+  const f = useCurrentFrame();
+  const p = prog(f, 0, 6, easeOut);
+  const q = prog(f, len - 4, 4, easeIn);
+  const size = Math.min(190, Math.floor(980 / (text.length * 0.5)));
+  return (
+    <div style={{position: 'absolute', top: 262, left: 0, right: 0, opacity: 1 - q}}>
+      <div style={{textAlign: 'center', fontFamily: BODY, fontWeight: 800, fontSize: 34, letterSpacing: '0.4em', color: AC.gold, opacity: p, textShadow: '0 3px 12px rgba(0,0,0,0.7)'}}>
+        {String(idx).padStart(2, '0')} / {String(of).padStart(2, '0')}
+      </div>
+      <div style={{marginTop: 8}}>
+        <Line words={[{t: `${text}.`, at: 0, hi: true}]} size={size} dark={false} />
+      </div>
+    </div>
+  );
+};
+
+/** Word-synced captions for the voiceover (navy plate, current word in gold). */
+const Captions: React.FC<{phrases: VoPhrase[]; off: [number, number][]; top: number}> = ({phrases, off, top}) => {
+  const f = useCurrentFrame();
+  const t = f / 30;
+  if (off.some(([a, b]) => f >= a && f < b)) return null;
+  const i = phrases.findIndex((p, k) => t >= p.start - 0.08 && t < (k + 1 < phrases.length ? Math.min(phrases[k + 1].start - 0.08, p.end + 0.6) : p.end + 0.6));
+  if (i < 0) return null;
+  const p = phrases[i];
+  // long phrases are shown in chunks of up to 6 words so a caption never covers more than two lines
+  const chunk = Math.floor(p.words.filter((w) => t >= w.start - 0.03).length / 6.0001);
+  const words = p.words.slice(Math.max(0, chunk) * 6, Math.max(0, chunk) * 6 + 6);
+  const cStart = words.length ? words[0].start : p.start;
+  const inP = prog(f, Math.round((cStart - 0.08) * 30), 5, easeOut);
+  return (
+    <div style={{position: 'absolute', top, left: 60, right: 60, display: 'flex', justifyContent: 'center', opacity: inP}}>
+      <div style={{display: 'flex', flexWrap: 'wrap', justifyContent: 'center', columnGap: 14, rowGap: 2, maxWidth: 940, padding: '14px 30px 14px', borderRadius: 18, background: 'rgba(8,18,52,0.74)', boxShadow: '0 10px 30px rgba(0,0,0,0.35)', transform: `translateY(${(1 - inP) * 14}px)`}}>
+        {words.map((w, k) => {
+          const on = t >= w.start - 0.03;
+          const cur = on && (k + 1 >= words.length || t < words[k + 1].start - 0.03);
+          return (
+            <span key={k} style={{fontFamily: BODY, fontWeight: 800, fontSize: 46, lineHeight: 1.15, color: cur ? AC.gold : AC.white, opacity: on ? 1 : 0.38, transform: cur ? 'scale(1.06)' : undefined, display: 'inline-block'}}>
+              {w.w}
+            </span>
+          );
+        })}
+      </div>
+    </div>
+  );
+};
+
+const Reveal: React.FC<{spec: NonNullable<CobraSpec['reveal']>}> = ({spec}) => {
+  const len = spec.to - spec.from;
+  return (
+    <AbsoluteFill>
+      <Stage />
+      <LogoCard at={2} width={900} top={spec.lines.length ? 420 : 640} />
+      {spec.lines.length > 0 && (
+        <div style={{position: 'absolute', top: 900, left: 50, right: 50, display: 'flex', flexDirection: 'column', gap: 14}}>
+          {spec.lines.map((l, i) => (
+            <Line key={i} words={l.map(([t, at, hi]) => ({t, at: at - spec.from, hi: !!hi}) as Word)} size={128} dark={false} exitAt={len - 5} />
+          ))}
+        </div>
+      )}
+    </AbsoluteFill>
+  );
+};
+
+const Cta: React.FC<{spec: NonNullable<CobraSpec['cta']>; quote: string}> = ({spec, quote}) => (
+  <AbsoluteFill>
+    <Stage />
+    <LogoCard at={0} width={620} top={260} />
+    <ClickBelow at={spec.clickAt - spec.from} top={640} size={150} />
+    <QuotePill at={spec.quoteAt - spec.from} top={960} size={84} text={quote} />
+  </AbsoluteFill>
+);
 
 const FlashShake: React.FC<{flashes: number[]; shakes: number[]; children: React.ReactNode}> = ({flashes, shakes, children}) => {
   const f = useCurrentFrame();
@@ -422,7 +522,7 @@ const FlashShake: React.FC<{flashes: number[]; shakes: number[]; children: React
 
 /* ------------------------------------------------------------------ composition */
 
-export const makeCobraAd = (spec: CobraSpec, dir: string) => {
+export const makeCobraAd = (spec: CobraSpec, dir: string, vo: {phrases: VoPhrase[]} | null = null) => {
   const Comp: React.FC = () => (
     <BrandProvider value={AC_BRAND}>
       <Themed theme={AC_THEME}>
@@ -443,10 +543,24 @@ export const makeCobraAd = (spec: CobraSpec, dir: string) => {
                 <Sequence key={i} from={t.from} durationInFrames={len} name={`${t.type} ${t.from}`}>
                   {t.type === 'head' && <Headline lines={t.lines.map((l) => l.map((x) => ({t: x.t, at: x.at - t.from, hi: x.hi}) as Word))} size={t.size} top={t.top} exitAt={len - 5} />}
                   {t.type === 'slam' && <Slam text={t.text} size={t.size} top={t.top} sub={t.sub} len={len} />}
+                  {t.type === 'label' && <TopLabel text={t.text} len={len} />}
+                  {t.type === 'material' && <MaterialTag text={t.text} idx={t.idx} of={t.of ?? 5} len={len} />}
                 </Sequence>
               );
             })}
           </FlashShake>
+          {spec.reveal && (
+            <Sequence from={spec.reveal.from} durationInFrames={spec.reveal.to - spec.reveal.from + 2} name="brand reveal">
+              <Wipe dur={6}>
+                <Reveal spec={spec.reveal} />
+              </Wipe>
+            </Sequence>
+          )}
+          {spec.cta && (
+            <Sequence from={spec.cta.from} durationInFrames={spec.cta.to - spec.cta.from + 10} name="click below">
+              <Cta spec={spec.cta} quote={spec.quoteText ?? 'GET YOUR QUOTE'} />
+            </Sequence>
+          )}
           {spec.desk.length > 0 && (
             <Sequence from={spec.desk[0].from} durationInFrames={spec.desk.reduce((a, w) => a + w.frames, 0) + 8} name="website funnel">
               <Wipe>
@@ -456,9 +570,10 @@ export const makeCobraAd = (spec: CobraSpec, dir: string) => {
           )}
           <Sequence from={spec.card.from} name="end card">
             <Wipe dur={7}>
-              <EndCard t={spec.card.t} />
+              <EndCard t={spec.card.t} quote={spec.quoteText} />
             </Wipe>
           </Sequence>
+          {vo && <Captions phrases={vo.phrases} off={spec.capsOff ?? []} top={1400} />}
           <FilmGrain opacity={0.035} />
           <Audio src={staticFile(`audio/${spec.voFile}-mix.wav`)} />
         </AbsoluteFill>

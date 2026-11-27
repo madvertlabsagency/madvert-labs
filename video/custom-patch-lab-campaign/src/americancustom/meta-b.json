@@ -1,0 +1,543 @@
+{
+ "fps": 30,
+ "durationInFrames": 738,
+ "style": "aggressive",
+ "vo": "meta-b",
+ "voPath": "assets/source/americancustom/audio/vo-meta-b.mp3",
+ "voFile": "ac-meta-b",
+ "quoteText": "GET YOUR FREE QUOTE",
+ "shots": [
+  {
+   "id": "b01",
+   "source": "n2.mp4",
+   "from": 0,
+   "frames": 15,
+   "srcIn": 5.5,
+   "srcOut": 6.1,
+   "trans": "cut",
+   "interp": false
+  },
+  {
+   "id": "b02",
+   "source": "n5.mp4",
+   "from": 15,
+   "frames": 14,
+   "srcIn": 1.0,
+   "srcOut": 1.6,
+   "trans": "cut",
+   "interp": false,
+   "scale": 1.1
+  },
+  {
+   "id": "b03",
+   "source": "v3.mp4",
+   "from": 29,
+   "frames": 16,
+   "srcIn": 2.0,
+   "srcOut": 2.6,
+   "trans": "punch",
+   "interp": false
+  },
+  {
+   "id": "b04",
+   "source": "f02.mp4",
+   "from": 45,
+   "frames": 23,
+   "srcIn": 4.2,
+   "srcOut": 4.9,
+   "trans": "whip",
+   "interp": false
+  },
+  {
+   "id": "b05",
+   "source": "n9.mp4",
+   "from": 68,
+   "frames": 50,
+   "srcIn": 3.8,
+   "srcOut": 5.4,
+   "trans": "impact",
+   "interp": false,
+   "drift": [
+    1.0,
+    1.1
+   ]
+  },
+  {
+   "id": "b06",
+   "source": "c2-jacket.mp4",
+   "from": 118,
+   "frames": 25,
+   "srcIn": 5.6,
+   "srcOut": 6.4,
+   "trans": "impact",
+   "interp": false,
+   "scale": 1.3,
+   "origin": {
+    "x": 600,
+    "y": 1050
+   }
+  },
+  {
+   "id": "b07",
+   "source": "v1.mp4",
+   "from": 143,
+   "frames": 23,
+   "srcIn": 3.6,
+   "srcOut": 4.3,
+   "trans": "punch",
+   "interp": false
+  },
+  {
+   "id": "b08",
+   "source": "v2.mp4",
+   "from": 166,
+   "frames": 24,
+   "srcIn": 1.6,
+   "srcOut": 2.2,
+   "trans": "punch",
+   "interp": false
+  },
+  {
+   "id": "b09",
+   "source": "v4.mp4",
+   "from": 190,
+   "frames": 16,
+   "srcIn": 5.2,
+   "srcOut": 5.8,
+   "trans": "punch",
+   "interp": false
+  },
+  {
+   "id": "b10",
+   "source": "v5.mp4",
+   "from": 206,
+   "frames": 41,
+   "srcIn": 4.2,
+   "srcOut": 5.6,
+   "trans": "punch",
+   "interp": false,
+   "drift": [
+    1.0,
+    1.05
+   ]
+  },
+  {
+   "id": "b11",
+   "source": "ea.mp4",
+   "from": 247,
+   "frames": 28,
+   "srcIn": 0.5,
+   "srcOut": 1.4,
+   "trans": "whip",
+   "interp": false
+  },
+  {
+   "id": "b12",
+   "source": "m28.mp4",
+   "from": 275,
+   "frames": 36,
+   "srcIn": 6.9,
+   "srcOut": 7.95,
+   "trans": "zoom",
+   "interp": true,
+   "scale": 1.32,
+   "origin": {
+    "x": 760,
+    "y": 700
+   }
+  },
+  {
+   "id": "b13",
+   "source": "n6.mp4",
+   "from": 311,
+   "frames": 32,
+   "srcIn": 5.8,
+   "srcOut": 7.0,
+   "trans": "impact",
+   "interp": false
+  },
+  {
+   "id": "b14",
+   "source": "n3.mp4",
+   "from": 343,
+   "frames": 17,
+   "srcIn": 6.7,
+   "srcOut": 7.3,
+   "trans": "punch",
+   "interp": false
+  },
+  {
+   "id": "b15",
+   "source": "c4-backpack.mp4",
+   "from": 360,
+   "frames": 20,
+   "srcIn": 2.6,
+   "srcOut": 3.3,
+   "trans": "punch",
+   "interp": false,
+   "y": 60,
+   "scale": 1.07
+  },
+  {
+   "id": "b16",
+   "source": "f10.mp4",
+   "from": 380,
+   "frames": 30,
+   "srcIn": 0.0,
+   "srcOut": 1.0,
+   "trans": "punch",
+   "interp": false
+  },
+  {
+   "id": "b17",
+   "source": "f06.mp4",
+   "from": 410,
+   "frames": 8,
+   "srcIn": 3.8,
+   "srcOut": 4.2,
+   "trans": "cut",
+   "interp": false,
+   "scale": 1.12
+  },
+  {
+   "id": "b18",
+   "source": "m21.mp4",
+   "from": 418,
+   "frames": 10,
+   "srcIn": 3.4,
+   "srcOut": 3.8,
+   "trans": "cut",
+   "interp": false
+  },
+  {
+   "id": "b19",
+   "source": "n1.mp4",
+   "from": 428,
+   "frames": 37,
+   "srcIn": 6.3,
+   "srcOut": 7.4,
+   "trans": "impact",
+   "interp": false,
+   "drift": [
+    1.0,
+    1.08
+   ]
+  }
+ ],
+ "desk": [
+  {
+   "id": "w1",
+   "source": "web.mp4",
+   "from": 550,
+   "frames": 38,
+   "srcIn": 2.8,
+   "srcOut": 3.75,
+   "focus": [
+    470,
+    330,
+    1.22
+   ],
+   "taps": [
+    [
+     19,
+     150,
+     305
+    ]
+   ],
+   "step": 1,
+   "title": "PICK YOUR PATCH TYPE",
+   "kind": "type"
+  },
+  {
+   "id": "w2",
+   "source": "web.mp4",
+   "from": 588,
+   "frames": 38,
+   "srcIn": 7.7,
+   "srcOut": 9.0,
+   "focus": [
+    380,
+    300,
+    1.45
+   ],
+   "taps": [],
+   "step": 2,
+   "title": "CHOOSE YOUR SIZE",
+   "kind": "size"
+  },
+  {
+   "id": "w3",
+   "source": "web.mp4",
+   "from": 626,
+   "frames": 28,
+   "srcIn": 11.0,
+   "srcOut": 11.85,
+   "focus": [
+    545,
+    330,
+    1.08
+   ],
+   "taps": [
+    [
+     17,
+     580,
+     385
+    ]
+   ],
+   "step": 3,
+   "title": "UPLOAD YOUR ARTWORK",
+   "kind": "upload"
+  }
+ ],
+ "text": [
+  {
+   "type": "slam",
+   "from": 0,
+   "to": 44,
+   "text": "YOUR LOGO",
+   "size": 170,
+   "top": 300,
+   "sub": null
+  },
+  {
+   "type": "slam",
+   "from": 45,
+   "to": 68,
+   "text": "PRINT?",
+   "size": 210,
+   "top": 270,
+   "sub": null
+  },
+  {
+   "type": "slam",
+   "from": 68,
+   "to": 118,
+   "text": "CUSTOM PATCH.",
+   "size": 170,
+   "top": 270,
+   "sub": "MAKE IT A"
+  },
+  {
+   "type": "slam",
+   "from": 118,
+   "to": 142,
+   "text": "PVC.",
+   "size": 260,
+   "top": 270,
+   "sub": null
+  },
+  {
+   "type": "slam",
+   "from": 143,
+   "to": 165,
+   "text": "EMBROIDERED.",
+   "size": 150,
+   "top": 270,
+   "sub": null
+  },
+  {
+   "type": "slam",
+   "from": 166,
+   "to": 189,
+   "text": "CHENILLE.",
+   "size": 190,
+   "top": 270,
+   "sub": null
+  },
+  {
+   "type": "slam",
+   "from": 190,
+   "to": 206,
+   "text": "WOVEN.",
+   "size": 220,
+   "top": 270,
+   "sub": null
+  },
+  {
+   "type": "slam",
+   "from": 206,
+   "to": 246,
+   "text": "SUBLIMATION.",
+   "size": 150,
+   "top": 270,
+   "sub": null
+  },
+  {
+   "type": "slam",
+   "from": 247,
+   "to": 274,
+   "text": "YOUR DESIGN.",
+   "size": 160,
+   "top": 270,
+   "sub": null
+  },
+  {
+   "type": "slam",
+   "from": 275,
+   "to": 310,
+   "text": "YOUR STYLE.",
+   "size": 170,
+   "top": 270,
+   "sub": null
+  },
+  {
+   "type": "slam",
+   "from": 315,
+   "to": 342,
+   "text": "VARSITY.",
+   "size": 200,
+   "top": 270,
+   "sub": null
+  },
+  {
+   "type": "slam",
+   "from": 343,
+   "to": 359,
+   "text": "CAPS.",
+   "size": 230,
+   "top": 270,
+   "sub": null
+  },
+  {
+   "type": "slam",
+   "from": 360,
+   "to": 380,
+   "text": "BACKPACKS.",
+   "size": 170,
+   "top": 270,
+   "sub": null
+  },
+  {
+   "type": "slam",
+   "from": 380,
+   "to": 409,
+   "text": "UNIFORMS.",
+   "size": 190,
+   "top": 270,
+   "sub": null
+  },
+  {
+   "type": "slam",
+   "from": 428,
+   "to": 464,
+   "text": "STAND OUT.",
+   "size": 190,
+   "top": 270,
+   "sub": "MAKE EVERY DETAIL"
+  }
+ ],
+ "reveal": {
+  "from": 465,
+  "to": 519,
+  "lines": []
+ },
+ "cta": {
+  "from": 519,
+  "to": 550,
+  "clickAt": 521,
+  "quoteAt": 531
+ },
+ "card": {
+  "from": 654,
+  "t": {
+   "move": -100,
+   "get": 4,
+   "your": 6,
+   "custom": 8,
+   "patches": 10,
+   "made": 12,
+   "click": 15,
+   "quote": 24,
+   "url": 33
+  }
+ },
+ "capsOff": [
+  [
+   465,
+   550
+  ],
+  [
+   654,
+   738
+  ]
+ ],
+ "flashes": [
+  68,
+  118,
+  311,
+  428,
+  465
+ ],
+ "shakes": [
+  68,
+  118,
+  311,
+  428,
+  465
+ ],
+ "music": [
+  [
+   0.0,
+   2.28,
+   "hook"
+  ],
+  [
+   2.28,
+   8.23,
+   "drop"
+  ],
+  [
+   8.23,
+   10.36,
+   "groove"
+  ],
+  [
+   10.36,
+   15.5,
+   "drop2"
+  ],
+  [
+   15.5,
+   17.3,
+   "reveal"
+  ],
+  [
+   17.3,
+   18.35,
+   "build"
+  ],
+  [
+   18.35,
+   21.8,
+   "half"
+  ],
+  [
+   21.8,
+   24.6,
+   "outro"
+  ]
+ ],
+ "foley": {
+  "b02": "pvc",
+  "b05": "handle",
+  "b06": "pvc",
+  "b07": "machine",
+  "b08": "brush",
+  "b09": "fabric",
+  "b10": "paper",
+  "b11": "paper",
+  "b13": "fabric",
+  "b14": "cap",
+  "b15": "fabric",
+  "b16": "fabric",
+  "b17": "machine",
+  "b19": "pvc"
+ },
+ "drops": [
+  2.28,
+  10.36,
+  15.5,
+  21.8
+ ],
+ "deskCrop": "1160:820:170:20"
+}

@@ -1,0 +1,374 @@
+{
+ "source": "assets/source/americancustom/audio/vo-meta-b.mp3",
+ "duration": 23.484,
+ "phrases": [
+  {
+   "text": "Your logo deserves more than a print.",
+   "start": 0.04,
+   "end": 1.98,
+   "method": "forced-alignment",
+   "words": [
+    {
+     "w": "Your",
+     "start": 0.04,
+     "end": 0.19
+    },
+    {
+     "w": "logo",
+     "start": 0.19,
+     "end": 0.57
+    },
+    {
+     "w": "deserves",
+     "start": 0.57,
+     "end": 1.0
+    },
+    {
+     "w": "more",
+     "start": 1.0,
+     "end": 1.34
+    },
+    {
+     "w": "than",
+     "start": 1.34,
+     "end": 1.5
+    },
+    {
+     "w": "a",
+     "start": 1.5,
+     "end": 1.56
+    },
+    {
+     "w": "print.",
+     "start": 1.56,
+     "end": 1.98
+    }
+   ]
+  },
+  {
+   "text": "Make it a custom patch.",
+   "start": 2.32,
+   "end": 3.53,
+   "method": "forced-alignment",
+   "words": [
+    {
+     "w": "Make",
+     "start": 2.32,
+     "end": 2.51
+    },
+    {
+     "w": "it",
+     "start": 2.51,
+     "end": 2.59
+    },
+    {
+     "w": "a",
+     "start": 2.59,
+     "end": 2.63
+    },
+    {
+     "w": "custom",
+     "start": 2.63,
+     "end": 3.03
+    },
+    {
+     "w": "patch.",
+     "start": 3.03,
+     "end": 3.53
+    }
+   ]
+  },
+  {
+   "text": "PVC, embroidered, chenille, woven, or sublimation.",
+   "start": 3.97,
+   "end": 7.84,
+   "method": "measured",
+   "words": [
+    {
+     "w": "PVC,",
+     "start": 3.98,
+     "end": 4.78
+    },
+    {
+     "w": "embroidered,",
+     "start": 4.8,
+     "end": 5.54
+    },
+    {
+     "w": "chenille,",
+     "start": 5.56,
+     "end": 6.340000000000001
+    },
+    {
+     "w": "woven,",
+     "start": 6.36,
+     "end": 6.6000000000000005
+    },
+    {
+     "w": "or",
+     "start": 6.62,
+     "end": 6.880000000000001
+    },
+    {
+     "w": "sublimation.",
+     "start": 6.9,
+     "end": 7.84
+    }
+   ]
+  },
+  {
+   "text": "Your design, your style.",
+   "start": 8.25,
+   "end": 9.9,
+   "method": "forced-alignment",
+   "words": [
+    {
+     "w": "Your",
+     "start": 8.25,
+     "end": 8.44
+    },
+    {
+     "w": "design,",
+     "start": 8.44,
+     "end": 9.2
+    },
+    {
+     "w": "your",
+     "start": 9.2,
+     "end": 9.4
+    },
+    {
+     "w": "style.",
+     "start": 9.4,
+     "end": 9.9
+    }
+   ]
+  },
+  {
+   "text": "From varsity jackets and caps to backpacks and uniforms.",
+   "start": 10.38,
+   "end": 13.34,
+   "method": "forced-alignment",
+   "words": [
+    {
+     "w": "From",
+     "start": 10.38,
+     "end": 10.52
+    },
+    {
+     "w": "varsity",
+     "start": 10.52,
+     "end": 10.91
+    },
+    {
+     "w": "jackets",
+     "start": 10.91,
+     "end": 11.32
+    },
+    {
+     "w": "and",
+     "start": 11.32,
+     "end": 11.44
+    },
+    {
+     "w": "caps",
+     "start": 11.44,
+     "end": 11.92
+    },
+    {
+     "w": "to",
+     "start": 11.92,
+     "end": 12.02
+    },
+    {
+     "w": "backpacks",
+     "start": 12.02,
+     "end": 12.61
+    },
+    {
+     "w": "and",
+     "start": 12.61,
+     "end": 12.7
+    },
+    {
+     "w": "uniforms.",
+     "start": 12.7,
+     "end": 13.34
+    }
+   ]
+  },
+  {
+   "text": "Make every detail stand out.",
+   "start": 13.68,
+   "end": 15.22,
+   "method": "forced-alignment",
+   "words": [
+    {
+     "w": "Make",
+     "start": 13.68,
+     "end": 13.95
+    },
+    {
+     "w": "every",
+     "start": 13.95,
+     "end": 14.3
+    },
+    {
+     "w": "detail",
+     "start": 14.3,
+     "end": 14.69
+    },
+    {
+     "w": "stand",
+     "start": 14.69,
+     "end": 15.03
+    },
+    {
+     "w": "out.",
+     "start": 15.03,
+     "end": 15.22
+    }
+   ]
+  },
+  {
+   "text": "American Custom Patch.",
+   "start": 15.7,
+   "end": 16.93,
+   "method": "forced-alignment",
+   "words": [
+    {
+     "w": "American",
+     "start": 15.7,
+     "end": 16.15
+    },
+    {
+     "w": "Custom",
+     "start": 16.15,
+     "end": 16.53
+    },
+    {
+     "w": "Patch.",
+     "start": 16.53,
+     "end": 16.93
+    }
+   ]
+  },
+  {
+   "text": "Click below.",
+   "start": 17.38,
+   "end": 17.95,
+   "method": "forced-alignment",
+   "words": [
+    {
+     "w": "Click",
+     "start": 17.38,
+     "end": 17.52
+    },
+    {
+     "w": "below.",
+     "start": 17.52,
+     "end": 17.95
+    }
+   ]
+  },
+  {
+   "text": "Pick your patch type.",
+   "start": 18.44,
+   "end": 19.3,
+   "method": "forced-alignment",
+   "words": [
+    {
+     "w": "Pick",
+     "start": 18.44,
+     "end": 18.58
+    },
+    {
+     "w": "your",
+     "start": 18.58,
+     "end": 18.67
+    },
+    {
+     "w": "patch",
+     "start": 18.67,
+     "end": 18.99
+    },
+    {
+     "w": "type.",
+     "start": 18.99,
+     "end": 19.3
+    }
+   ]
+  },
+  {
+   "text": "Choose your size.",
+   "start": 19.65,
+   "end": 20.55,
+   "method": "forced-alignment",
+   "words": [
+    {
+     "w": "Choose",
+     "start": 19.65,
+     "end": 19.89
+    },
+    {
+     "w": "your",
+     "start": 19.89,
+     "end": 19.99
+    },
+    {
+     "w": "size.",
+     "start": 19.99,
+     "end": 20.55
+    }
+   ]
+  },
+  {
+   "text": "Upload your artwork, and request your free quote.",
+   "start": 20.92,
+   "end": 23.3,
+   "method": "forced-alignment",
+   "words": [
+    {
+     "w": "Upload",
+     "start": 20.92,
+     "end": 21.22
+    },
+    {
+     "w": "your",
+     "start": 21.22,
+     "end": 21.39
+    },
+    {
+     "w": "artwork,",
+     "start": 21.39,
+     "end": 21.83
+    },
+    {
+     "w": "and",
+     "start": 21.83,
+     "end": 22.07
+    },
+    {
+     "w": "request",
+     "start": 22.07,
+     "end": 22.51
+    },
+    {
+     "w": "your",
+     "start": 22.51,
+     "end": 22.61
+    },
+    {
+     "w": "free",
+     "start": 22.61,
+     "end": 22.91
+    },
+    {
+     "w": "quote.",
+     "start": 22.91,
+     "end": 23.3
+    }
+   ]
+  }
+ ]
+}
